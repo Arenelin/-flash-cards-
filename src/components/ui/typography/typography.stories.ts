@@ -30,86 +30,86 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const H1: Story = {
+export const H1 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'h1',
   },
-}
+} satisfies Story
 
-export const H2: Story = {
+export const H2 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'h2',
   },
-}
+} satisfies Story
 
-export const H3: Story = {
+export const H3 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'h3',
   },
-}
+} satisfies Story
 
-export const H4: Story = {
+export const H4 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'h4',
   },
-}
+} satisfies Story
 
-export const Body1: Story = {
+export const Body1 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'body1',
   },
-}
+} satisfies Story
 
-export const Subtitle1: Story = {
+export const Subtitle1 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'subtitle1',
   },
-}
+} satisfies Story
 
-export const Body2: Story = {
+export const Body2 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'body2',
   },
-}
+} satisfies Story
 
-export const Subtitle2: Story = {
+export const Subtitle2 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'subtitle2',
   },
-}
+} satisfies Story
 
-export const Caption: Story = {
+export const Caption = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'caption',
   },
-}
+} satisfies Story
 
-export const Overline: Story = {
+export const Overline = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'overline',
   },
-}
+} satisfies Story
 
-export const Link1: Story = {
+export const Link1 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'link1',
   },
-}
+} satisfies Story
 
-export const Link2: Story = {
+export const Link2 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
     variant: 'link2',
   },
-}
+} satisfies Story

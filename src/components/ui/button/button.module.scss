@@ -35,7 +35,7 @@
     background-color: var(--color-accent-700);
   }
 
-  &:disabled{
+  &:disabled {
     background-color: var(--color-accent-900);
   }
 }
@@ -44,15 +44,15 @@
   background-color: var(--color-dark-300);
   box-shadow: 0 2px 10px 0 rgb(109 109 109 / 25%);
 
-  &:hover{
+  &:hover {
     background-color: var(--color-dark-100);
   }
 
-  &:active{
+  &:active {
     background-color: var(--color-dark-500);
   }
 
-  &:disabled{
+  &:disabled {
     background-color: var(--color-dark-300);
   }
 }

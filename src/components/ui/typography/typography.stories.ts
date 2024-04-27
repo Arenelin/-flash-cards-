@@ -30,8 +30,6 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-//
-
 export const H1: Story = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',

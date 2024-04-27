@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementType } from 'react'
 
 import s from './typography.module.scss'
 
@@ -6,8 +6,6 @@ type Theme = 'dark' | 'light' // TODO move to store
 
 export type TextProps<T extends ElementType> = {
   as?: T
-  children?: ReactNode
-  className?: string
   variant?:
     | 'body1'
     | 'body2'
@@ -21,15 +19,10 @@ export type TextProps<T extends ElementType> = {
     | 'overline'
     | 'subtitle1'
     | 'subtitle2'
-}
+} & ComponentPropsWithoutRef<T>
 
-export function Typography<T extends ElementType = 'p'>({
-  as,
-  className,
-  variant = 'body1',
-  ...restProps
-}: Omit<ComponentPropsWithoutRef<T>, keyof TextProps<T>> & TextProps<T>) {
-  const Component = as || 'p'
+export const Typography = <T extends ElementType = 'p'>(props: TextProps<T>) => {
+  const { as: Component = 'p', className, variant = 'body1', ...restProps } = props
   const theme: Theme = 'light' // TODO rewrite the values from the store to the call
   const classNames = `${s[theme]} ${s[variant]} ${className}` // TODO rewrite with using clsx-library or similar
 

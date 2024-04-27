@@ -1,4 +1,4 @@
-// Отключаем браузерную подсветку по умолчанию в инпуте
+// Disable default browser highlighting in input field
 :focus {
   outline: none !important;
 }
@@ -75,7 +75,7 @@
   width: 284px;
   height: 36px;
 
-  // Отключаем кнопку очистки у инпута с type='search'
+  // Disable clear button for input with type='search'
   &::-webkit-search-cancel-button {
     visibility: hidden;
     &:hover {

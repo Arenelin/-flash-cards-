@@ -2,7 +2,10 @@ import { ChangeEvent, KeyboardEvent, ReactNode, useState } from 'react'
 
 import { InputType } from './Input'
 
-type UseIconReturnType =
+// This function is a custom hook called useInput that is used for managing state and handling input text events in an
+// input field.
+
+type Type =
   | [
       (e: ChangeEvent<HTMLInputElement>) => void,
       (e: KeyboardEvent<HTMLInputElement>) => void,
@@ -10,16 +13,16 @@ type UseIconReturnType =
       ReactNode,
     ]
   | [(e: ChangeEvent<HTMLInputElement>) => void, (e: KeyboardEvent<HTMLInputElement>) => void]
-export const useIcon = (
+export const useInput = (
   onChangeText: (value: string) => void,
   onEnter: (() => void) | undefined,
   disabled: boolean | undefined,
   IconActive: ReactNode,
   IconNotActive: ReactNode
-): UseIconReturnType => {
+): Type => {
   const [active, setActive] = useState(false)
 
-  const IconActiveNow = (
+  const IconToggleButton = (
     <button disabled={disabled} onClick={() => setActive(prevActive => !prevActive)}>
       {active ? IconNotActive : IconActive}{' '}
     </button>
@@ -27,18 +30,20 @@ export const useIcon = (
 
   const type = active ? InputType.text : InputType.password
 
-  const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     onChangeText?.(e.currentTarget.value)
   }
-  const onKeyDownCallBack = (e: KeyboardEvent<HTMLInputElement>) => {
+  const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       onEnter?.()
     }
   }
 
+  //  In this return statement, we cannot do without a condition because our variable type has the InputType type and when
+  //  returning without a condition, the type variable conflicts with undefined.
   if (IconActive && IconNotActive) {
-    return [onChangeCallback, onKeyDownCallBack, type, IconActiveNow]
+    return [onChangeHandler, onKeyDownHandler, type, IconToggleButton]
   } else {
-    return [onChangeCallback, onKeyDownCallBack]
+    return [onChangeHandler, onKeyDownHandler]
   }
 }

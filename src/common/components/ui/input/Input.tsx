@@ -1,29 +1,30 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
+import { useInputStyle } from '@/common/components/ui/input/useInputStyle'
+import classNames from 'classnames'
+
 import s from './input.module.scss'
 
 import { useInput } from './useInput'
-
 // This component represents an input field with various props such as type, value, label, icon, error message,
 // and event handlers. It uses a custom hook called useInput to handle input text events and state management.
 export enum InputType {
-  'password' = 'password',
-  'search' = 'search',
-  'text' = 'text',
+  password = 'password',
+  search = 'search',
+  text = 'text',
 }
 
 type InputProps = {
-  disabled?: boolean
   errorMessage?: null | string
   iconEnd?: ReactNode
   iconEndNotActive?: ReactNode
   iconStart?: ReactNode
   label?: string
-  onChangeText: (value: string) => void
-  onClearClick?: () => void
-  onEnter?: () => void
+  onChange?: (value: string) => void
+  onClickIconEnd?: () => void
+  onKeyDown?: () => void
   type: InputType
-  value: string
+  value?: string
 }
 
 type Props = InputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof InputProps>
@@ -33,52 +34,63 @@ export const Input = (props: Props) => {
     className,
     disabled,
     errorMessage,
-    iconEnd,
-    iconEndNotActive,
-    iconStart,
+    iconEnd: IconEnd,
+    iconEndNotActive: IconEndNotActive,
+    iconStart: IconStart,
     label,
-    onChangeText,
-    onClearClick,
-    onEnter,
+    onChange,
+    onClickIconEnd,
+    onKeyDown,
     type,
     value,
     ...rest
   } = props
 
   const isDisabled = !!(disabled || errorMessage) //disabled || errorMessage ? true : false
-  const [onChangeHandler, onKeyDownHandler, typePassword, IconToggleButton] = useInput(
-    onChangeText,
-    onEnter,
-    isDisabled,
-    iconEnd,
-    iconEndNotActive
-  )
+  const { IconEndOrIconToggle, onChangeHandler, onKeyDownHandler, typeToggle } = useInput({
+    IconActive: IconEnd,
+    IconNotActive: IconEndNotActive,
+    disabled: isDisabled,
+    onChange,
+    onKeyDown,
+  })
+  // const isSearch = type === InputType.search
+  // const inputIconStart = IconStart ? s.iconStart : ''
+  // const inputEndStart = IconEnd ? s.iconEnd : ''
+  // const inputSearchIconEnd = isSearch ? s.search : ''
+  // const inputStyle = classNames(s.input, inputIconStart, inputEndStart, inputSearchIconEnd)
   const isSearch = type === InputType.search
-  const inputStyleWithIcon = `${s.input} ${isSearch ? s.search : s.password}`
-  const inputStyle = iconStart || IconToggleButton ? inputStyleWithIcon : s.input
-  const baseInputStyle = `${inputStyle} ${errorMessage && s.error}`
-  const iconEndStyle = `${s.iconEnd} ${isSearch && s.search}`
-  const labelStyle = `${s.label} ${disabled && s.labelDisabled}`
+  const inputStyle = useInputStyle({
+    iconEnd: IconEndOrIconToggle,
+    iconStart: IconStart,
+    isSearch,
+    type: type || typeToggle,
+  })
+  const baseInputStyle = classNames(inputStyle, errorMessage ? s.error : '')
+  const iconEndStyle = classNames(s.icon, s.iconEnd, isSearch ? s.search : '')
+  const labelStyle = classNames(s.label, disabled ? s.labelDisabled : '')
 
   return (
     <div className={s.box}>
       {label && <label className={labelStyle}>{label}</label>}
       <div className={s.inputContainer}>
         <input
-          className={baseInputStyle}
+          className={classNames(baseInputStyle, className)}
           disabled={disabled}
           onChange={onChangeHandler}
           onKeyDown={onKeyDownHandler}
-          type={typePassword || type}
+          type={typeToggle || type}
           value={value}
           {...rest}
         />
-        {iconStart && <span className={s.iconStart}>{iconStart}</span>}
-        {IconToggleButton && <span className={iconEndStyle}>{IconToggleButton}</span>}
-        {isSearch && value?.trim() && (
-          <button className={iconEndStyle} onClick={onClearClick}>
-            {iconEnd}
+        {IconStart && <span className={classNames(s.icon, s.iconStart)}>{IconStart}</span>}
+        {isSearch && value && !errorMessage ? (
+          <button className={iconEndStyle} onClick={onClickIconEnd}>
+            {IconEnd}
           </button>
+        ) : (
+          !isSearch &&
+          IconEndOrIconToggle && <span className={iconEndStyle}>{IconEndOrIconToggle}</span>
         )}
       </div>
       {!!errorMessage && <span className={s.error}>{errorMessage}</span>}

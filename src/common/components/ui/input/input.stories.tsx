@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
+import { PersonOutline, PlayCircle } from '@/assets/icons/components'
 import CloseOutline from '@/assets/icons/components/CloseOutline'
 import EyeOffOutline from '@/assets/icons/components/EyeOffOutline'
 import EyeOutline from '@/assets/icons/components/EyeOutline'
@@ -18,24 +19,23 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
-
-export const Text = {
+export const TextInput = {
   render: () => {
     const [value, setValue] = useState('')
     const [text, setText] = useState('')
     const [error, setError] = useState<null | string>(null)
 
-    const onChangeText = (value: string) => {
+    const onChangeHandler = (value: string) => {
       setValue(value)
     }
-    const onClickButton = () => {
+    const onClick = () => {
       if (!value.trim()) {
         setError('Error!')
       } else {
         setText(value)
       }
     }
-    const onEnter = () => {
+    const onKeyDownHandler = () => {
       setText(value)
     }
 
@@ -44,36 +44,36 @@ export const Text = {
         <Input
           errorMessage={error}
           label={'Input'}
-          onChangeText={onChangeText}
-          onEnter={onEnter}
+          onChange={onChangeHandler}
+          onKeyDown={onKeyDownHandler}
           placeholder={'Input'}
           type={InputType.text}
           value={value}
         />
-        <button onClick={onClickButton}>onClick</button>
+        <button onClick={onClick}>onClick</button>
         <div>{text}</div>
       </>
     )
   },
 }
 
-export const Password = {
+export const PasswordInput = {
   render: () => {
     const [value, setValue] = useState('')
     const [text, setText] = useState('')
     const [error, setError] = useState<null | string>(null)
 
-    const onChangeText = (value: string) => {
+    const onChangeHandler = (value: string) => {
       setValue(value)
     }
-    const onClickButton = () => {
+    const onClick = () => {
       if (!value.trim()) {
         setError('Error!')
       } else {
         setText(value)
       }
     }
-    const onEnter = () => {
+    const onKeyDownHandler = () => {
       setText(value)
     }
 
@@ -84,29 +84,29 @@ export const Password = {
           iconEnd={<EyeOffOutline />}
           iconEndNotActive={<EyeOutline />}
           label={'Input'}
-          onChangeText={onChangeText}
-          onEnter={onEnter}
+          onChange={onChangeHandler}
+          onKeyDown={onKeyDownHandler}
           placeholder={'Input'}
           type={InputType.password}
           value={value}
         />
-        <button onClick={onClickButton}>onClick</button>
+        <button onClick={onClick}>onClick</button>
         <div>{text}</div>
       </>
     )
   },
 }
 
-export const Search = {
+export const SearchInput = {
   render: () => {
     const [value, setValue] = useState('')
     const [text, setText] = useState('')
     const [error, setError] = useState<null | string>(null)
 
-    const onChangeText = (value: string) => {
+    const onChangeHandler = (value: string) => {
       setValue(value)
     }
-    const onClickButton = () => {
+    const onClick = () => {
       if (!value.trim()) {
         setError('Error!')
       } else {
@@ -117,7 +117,7 @@ export const Search = {
     const onClearClick = () => {
       setValue('')
     }
-    const onEnter = () => {
+    const onKeyDownHandler = () => {
       setText(value)
     }
 
@@ -127,14 +127,14 @@ export const Search = {
           errorMessage={error}
           iconEnd={<CloseOutline />}
           iconStart={<SearchOutline />}
-          onChangeText={onChangeText}
-          onClearClick={onClearClick}
-          onEnter={onEnter}
+          onChange={onChangeHandler}
+          onClickIconEnd={onClearClick}
+          onKeyDown={onKeyDownHandler}
           placeholder={'Input search'}
           type={InputType.search}
           value={value}
         />
-        <button onClick={onClickButton}>onClick</button>
+        <button onClick={onClick}>onClick</button>
         <div>{text}</div>
       </>
     )
@@ -144,10 +144,8 @@ export const DisabledText = {
   args: {
     disabled: true,
     label: 'Disabled text field',
-    onChangeText: () => {},
     placeholder: 'Input',
     type: InputType.text,
-    value: '',
   },
 } satisfies Story
 
@@ -157,10 +155,8 @@ export const DisabledPassword = {
     iconEnd: <EyeOffOutline />,
     iconEndNotActive: <EyeOutline />,
     label: 'Disabled password text field',
-    onChangeText: () => {},
     placeholder: 'Input',
     type: InputType.password,
-    value: '',
   },
 } satisfies Story
 
@@ -169,10 +165,8 @@ export const DisabledSearch = {
     disabled: true,
     iconEnd: <CloseOutline />,
     iconStart: <SearchOutline />,
-    onChangeText: () => {},
     placeholder: 'Input search',
     type: InputType.search,
-    value: '',
   },
 } satisfies Story
 
@@ -180,10 +174,8 @@ export const ErrorText = {
   args: {
     errorMessage: 'Some Error!!!',
     label: 'Error text field',
-    onChangeText: () => {},
     placeholder: 'Input',
     type: InputType.text,
-    value: '',
   },
 } satisfies Story
 export const ErrorPassword = {
@@ -192,10 +184,8 @@ export const ErrorPassword = {
     iconEnd: <EyeOffOutline />,
     iconEndNotActive: <EyeOutline />,
     label: 'Error password text field',
-    onChangeText: () => {},
     placeholder: 'Input',
     type: InputType.password,
-    value: '',
   },
 } satisfies Story
 
@@ -204,9 +194,26 @@ export const ErrorSearch = {
     errorMessage: 'Some Error!!!',
     iconEnd: <CloseOutline />,
     iconStart: <SearchOutline />,
-    onChangeText: () => {},
     placeholder: 'Input search',
     type: InputType.search,
-    value: '',
+  },
+} satisfies Story
+
+//Here are some examples of using the input with different types of icons
+export const MultiPurposeInputIconStart = {
+  args: {
+    iconStart: <PersonOutline />,
+    label: 'MultiPurposeInput',
+    placeholder: 'Input',
+    type: InputType.text,
+  },
+} satisfies Story
+
+export const MultiPurposeInputIconEnd = {
+  args: {
+    iconEnd: <PlayCircle />,
+    label: 'MultiPurposeInput',
+    placeholder: 'Input',
+    type: InputType.text,
   },
 } satisfies Story

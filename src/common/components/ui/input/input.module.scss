@@ -4,7 +4,7 @@
 }
 ::-moz-focus-outer,
 ::-moz-focus-inner {
-  border: 0px !important;
+  border: 0 !important;
   padding: 0;
 }
 
@@ -30,34 +30,25 @@
   }
 }
 
-.iconStart {
+.icon {
   position: absolute;
   top: 50%;
-  left: 6px;
   transform: translateY(-50%);
-
-  display: grid;
-  place-items: center;
-
   width: 20px;
   height: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.iconStart {
+  left: 12px;
 }
 
 .iconEnd {
-  position: absolute;
-  top: 50%;
-  right: calc(10px + 12px);
-  transform: translateY(-50%);
-
-  width: 20px;
-  height: 20px;
-
-  display: grid;
-  place-items: center;
+  right: 12px;
 }
 
 .search {
-  right: calc(8px + 12px);
   width: 16px;
   height: 16px;
 }
@@ -83,13 +74,16 @@
     }
   }
 
-  &.search {
-    padding-left: calc(20px + 6px + 6px);
-    padding-right: calc(16px + 6px + 6px);
+  &.iconStart {
+    padding-left: calc(20px + 12px + 12px);
   }
 
-  &.password {
-    padding-right: calc(20px + 6px + 6px);
+  &.iconEnd {
+    padding-right: calc(20px + 12px);
+  }
+
+  &.search {
+    padding-right: 12px;
   }
 
   & ~ .iconStart {

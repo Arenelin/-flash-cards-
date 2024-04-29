@@ -52,6 +52,7 @@ export const Input = (props: Props) => {
     IconNotActive: IconEndNotActive,
     disabled: isDisabled,
     onChange,
+    onClickIconEnd,
     onKeyDown,
   })
   // const isSearch = type === InputType.search
@@ -69,6 +70,7 @@ export const Input = (props: Props) => {
   const baseInputStyle = classNames(inputStyle, errorMessage ? s.error : '')
   const iconEndStyle = classNames(s.icon, s.iconEnd, isSearch ? s.search : '')
   const labelStyle = classNames(s.label, disabled ? s.labelDisabled : '')
+  const BaseIconEnd = <span className={iconEndStyle}>{IconEndOrIconToggle}</span>
 
   return (
     <div className={s.box}>
@@ -84,14 +86,9 @@ export const Input = (props: Props) => {
           {...rest}
         />
         {IconStart && <span className={classNames(s.icon, s.iconStart)}>{IconStart}</span>}
-        {isSearch && value && !errorMessage ? (
-          <button className={iconEndStyle} onClick={onClickIconEnd}>
-            {IconEnd}
-          </button>
-        ) : (
-          !isSearch &&
-          IconEndOrIconToggle && <span className={iconEndStyle}>{IconEndOrIconToggle}</span>
-        )}
+        {isSearch && value && !errorMessage
+          ? BaseIconEnd
+          : !isSearch && IconEndOrIconToggle && BaseIconEnd}
       </div>
       {!!errorMessage && <span className={s.error}>{errorMessage}</span>}
     </div>

@@ -13,14 +13,21 @@ type useInputParameters = {
   IconNotActive?: ReactNode
   disabled?: boolean
   onChange?: (value: string) => void
+  onClickIconEnd?: () => void
   onKeyDown?: () => void
 }
 export const useInput = (parameters: useInputParameters): useInputReturnType => {
-  const { IconActive, IconNotActive, disabled, onChange, onKeyDown } = parameters
+  const { IconActive, IconNotActive, disabled, onChange, onClickIconEnd, onKeyDown } = parameters
   const [active, setActive] = useState(false)
 
+  const onClickHandler = () => {
+    setActive(prevActive => !prevActive)
+    if (onClickIconEnd) {
+      onClickIconEnd()
+    }
+  }
   const IconToggleButton = (
-    <button disabled={disabled} onClick={() => setActive(prevActive => !prevActive)}>
+    <button disabled={disabled} onClick={onClickHandler}>
       {active ? IconNotActive : IconActive}
     </button>
   )

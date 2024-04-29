@@ -9,10 +9,9 @@ type Props = {
 }
 export const PageButton = (props: Props) => {
   const { isSelected, onClick, page } = props
-  const baseStyle = classNames(s.default, isSelected ? s.selected : '')
 
   return (
-    <button className={baseStyle} onClick={onClick}>
+    <button className={classNames(s.default, isSelected ? s.selected : '')} onClick={onClick}>
       {page}
     </button>
   )

@@ -1,39 +1,58 @@
 import { ChangeEvent, KeyboardEvent, ReactNode, useState } from 'react'
 
+import classNames from 'classnames'
+
+import s from '@/common/components/ui/input/input.module.scss'
+
 import { InputType } from './Input'
 
 type useInputReturnType = {
   IconEndOrIconToggle?: ReactNode
+  baseTypeInput?: InputType
+  inputStyle: string
+  isSearch: boolean
   onChangeHandler?: (e: ChangeEvent<HTMLInputElement>) => void
   onKeyDownHandler?: (e: KeyboardEvent<HTMLInputElement>) => void
-  typeToggle?: InputType | undefined
 }
 type useInputParameters = {
   IconActive?: ReactNode
   IconNotActive?: ReactNode
+  IconStart?: ReactNode
   disabled?: boolean
   onChange?: (value: string) => void
   onClickIconEnd?: () => void
   onKeyDown?: () => void
+  type: InputType
 }
 export const useInput = (parameters: useInputParameters): useInputReturnType => {
-  const { IconActive, IconNotActive, disabled, onChange, onClickIconEnd, onKeyDown } = parameters
+  const {
+    IconActive,
+    IconNotActive,
+    IconStart,
+    disabled,
+    onChange,
+    onClickIconEnd,
+    onKeyDown,
+    type,
+  } = parameters
   const [active, setActive] = useState(false)
 
   const onClickHandler = () => {
-    setActive(prevActive => !prevActive)
+    if (IconNotActive) {
+      setActive(prevActive => !prevActive)
+    }
     if (onClickIconEnd) {
       onClickIconEnd()
     }
   }
-  const IconToggleButton = (
+  const IconEndOrIconToggle = (
     <button disabled={disabled} onClick={onClickHandler}>
       {active ? IconNotActive : IconActive}
     </button>
   )
-  const IconEndOrIconToggle = IconNotActive ? IconToggleButton : IconActive
-  const type = active ? InputType.text : InputType.password
-  const typeToggle = IconNotActive ? type : undefined
+  const isSearch = type === InputType.search
+  const typeToggle = active ? InputType.text : InputType.password
+  const baseTypeInput = IconNotActive ? typeToggle : type
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     onChange?.(e.currentTarget.value)
@@ -43,6 +62,17 @@ export const useInput = (parameters: useInputParameters): useInputReturnType => 
       onKeyDown?.()
     }
   }
+  const inputIconStart = IconStart ? s.iconStart : ''
+  const inputEndStart = IconActive ? s.iconEnd : ''
+  const inputSearchIcon = isSearch ? s.search : ''
+  const inputStyle = classNames(s.input, inputIconStart, inputEndStart, inputSearchIcon)
 
-  return { IconEndOrIconToggle, onChangeHandler, onKeyDownHandler, typeToggle }
+  return {
+    IconEndOrIconToggle,
+    baseTypeInput,
+    inputStyle,
+    isSearch,
+    onChangeHandler,
+    onKeyDownHandler,
+  }
 }

@@ -25,37 +25,27 @@ type Story = StoryObj<typeof Input>
 export const TextInput = {
   render: () => {
     const [value, setValue] = useState('')
-    const [text, setText] = useState('')
     const [error, setError] = useState<null | string>(null)
 
     const onChangeHandler = (value: string) => {
       setValue(value)
     }
-    const onClick = () => {
+    const onKeyDownHandler = () => {
       if (!value.trim()) {
         setError('Error!')
-      } else {
-        setText(value)
       }
-    }
-    const onKeyDownHandler = () => {
-      setText(value)
     }
 
     return (
-      <>
-        <Input
-          errorMessage={error}
-          label={'Input'}
-          onChange={onChangeHandler}
-          onKeyDown={onKeyDownHandler}
-          placeholder={'Input'}
-          type={InputType.text}
-          value={value}
-        />
-        <button onClick={onClick}>onClick</button>
-        <div>{text}</div>
-      </>
+      <Input
+        errorMessage={error}
+        label={'Input'}
+        onChange={onChangeHandler}
+        onKeyDown={onKeyDownHandler}
+        placeholder={'Input'}
+        type={InputType.text}
+        value={value}
+      />
     )
   },
 } satisfies Story
@@ -63,39 +53,29 @@ export const TextInput = {
 export const PasswordInput = {
   render: () => {
     const [value, setValue] = useState('')
-    const [text, setText] = useState('')
     const [error, setError] = useState<null | string>(null)
 
     const onChangeHandler = (value: string) => {
       setValue(value)
     }
-    const onClick = () => {
+    const onKeyDownHandler = () => {
       if (!value.trim()) {
         setError('Error!')
-      } else {
-        setText(value)
       }
-    }
-    const onKeyDownHandler = () => {
-      setText(value)
     }
 
     return (
-      <>
-        <Input
-          errorMessage={error}
-          iconEnd={<EyeOffOutline />}
-          iconEndNotActive={<EyeOutline />}
-          label={'Input'}
-          onChange={onChangeHandler}
-          onKeyDown={onKeyDownHandler}
-          placeholder={'Input'}
-          type={InputType.password}
-          value={value}
-        />
-        <button onClick={onClick}>onClick</button>
-        <div>{text}</div>
-      </>
+      <Input
+        errorMessage={error}
+        iconEnd={<EyeOffOutline />}
+        iconEndNotActive={<EyeOutline />}
+        label={'Input'}
+        onChange={onChangeHandler}
+        onKeyDown={onKeyDownHandler}
+        placeholder={'Input'}
+        type={InputType.password}
+        value={value}
+      />
     )
   },
 } satisfies Story
@@ -103,43 +83,32 @@ export const PasswordInput = {
 export const SearchInput = {
   render: () => {
     const [value, setValue] = useState('')
-    const [text, setText] = useState('')
     const [error, setError] = useState<null | string>(null)
 
     const onChangeHandler = (value: string) => {
       setValue(value)
     }
-    const onClick = () => {
-      if (!value.trim()) {
-        setError('Error!')
-      } else {
-        setText(value)
-      }
-    }
-
     const onClearClick = () => {
       setValue('')
     }
     const onKeyDownHandler = () => {
-      setText(value)
+      if (!value.trim()) {
+        setError('Error!')
+      }
     }
 
     return (
-      <>
-        <Input
-          errorMessage={error}
-          iconEnd={<CloseOutline />}
-          iconStart={<SearchOutline />}
-          onChange={onChangeHandler}
-          onClickIconEnd={onClearClick}
-          onKeyDown={onKeyDownHandler}
-          placeholder={'Input search'}
-          type={InputType.search}
-          value={value}
-        />
-        <button onClick={onClick}>onClick</button>
-        <div>{text}</div>
-      </>
+      <Input
+        errorMessage={error}
+        iconEnd={<CloseOutline />}
+        iconStart={<SearchOutline />}
+        onChange={onChangeHandler}
+        onClickIconEnd={onClearClick}
+        onKeyDown={onKeyDownHandler}
+        placeholder={'Input search'}
+        type={InputType.search}
+        value={value}
+      />
     )
   },
 } satisfies Story

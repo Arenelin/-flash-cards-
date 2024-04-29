@@ -1,6 +1,5 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
-import { useInputStyle } from '@/common/components/ui/input/useInputStyle'
 import classNames from 'classnames'
 
 import s from './input.module.scss'
@@ -47,22 +46,25 @@ export const Input = (props: Props) => {
   } = props
 
   const isDisabled = !!(disabled || errorMessage) //disabled || errorMessage ? true : false
-  const { IconEndOrIconToggle, onChangeHandler, onKeyDownHandler, typeToggle } = useInput({
+
+  const {
+    IconEndOrIconToggle,
+    baseTypeInput,
+    inputStyle,
+    isSearch,
+    onChangeHandler,
+    onKeyDownHandler,
+  } = useInput({
     IconActive: IconEnd,
     IconNotActive: IconEndNotActive,
+    IconStart,
     disabled: isDisabled,
     onChange,
     onClickIconEnd,
     onKeyDown,
+    type,
   })
 
-  const isSearch = type === InputType.search
-  const inputStyle = useInputStyle({
-    iconEnd: IconEndOrIconToggle,
-    iconStart: IconStart,
-    isSearch,
-    type: type || typeToggle,
-  })
   const baseInputStyle = classNames(inputStyle, errorMessage ? s.error : '')
   const iconEndStyle = classNames(s.icon, s.iconEnd, isSearch ? s.search : '')
   const labelStyle = classNames(s.label, disabled ? s.labelDisabled : '')
@@ -77,7 +79,7 @@ export const Input = (props: Props) => {
           disabled={disabled}
           onChange={onChangeHandler}
           onKeyDown={onKeyDownHandler}
-          type={typeToggle || type}
+          type={baseTypeInput}
           value={value}
           {...rest}
         />

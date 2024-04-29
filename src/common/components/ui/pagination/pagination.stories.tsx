@@ -17,7 +17,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof Pagination>
 
-export const Default: Story = {
+export const Default = {
   render: () => {
     const [page, setPage] = useState(1)
     const TOTAL_PAGE_COUNT = 42
@@ -27,7 +27,7 @@ export const Default: Story = {
     )
   },
 } satisfies Story
-export const DefaultWithTwoPages: Story = {
+export const DefaultWithTwoPages = {
   render: () => {
     const [page, setPage] = useState(1)
     const TOTAL_PAGE_COUNT = 2
@@ -37,7 +37,7 @@ export const DefaultWithTwoPages: Story = {
     )
   },
 } satisfies Story
-export const DefaultWithOnePages: Story = {
+export const DefaultWithOnePages = {
   render: () => {
     const [page, setPage] = useState(1)
     const TOTAL_PAGE_COUNT = 1

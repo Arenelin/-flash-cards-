@@ -39,3 +39,9 @@ body {
 
   background-color: var(--color-dark-900);
 }
+
+button {
+  cursor: pointer;
+  background-color: unset;
+  border: none;
+}

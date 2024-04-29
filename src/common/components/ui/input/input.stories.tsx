@@ -13,12 +13,15 @@ import { Input, InputType } from './Input'
 const meta = {
   argTypes: {},
   component: Input,
+  parameters: {
+    layout: 'centered',
+  },
   tags: ['autodocs'],
   title: 'Components/Input',
 } satisfies Meta<typeof Input>
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof Input>
 export const TextInput = {
   render: () => {
     const [value, setValue] = useState('')
@@ -55,7 +58,7 @@ export const TextInput = {
       </>
     )
   },
-}
+} satisfies Story
 
 export const PasswordInput = {
   render: () => {
@@ -95,7 +98,7 @@ export const PasswordInput = {
       </>
     )
   },
-}
+} satisfies Story
 
 export const SearchInput = {
   render: () => {
@@ -139,7 +142,7 @@ export const SearchInput = {
       </>
     )
   },
-}
+} satisfies Story
 export const DisabledText = {
   args: {
     disabled: true,

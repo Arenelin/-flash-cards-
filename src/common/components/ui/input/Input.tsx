@@ -24,7 +24,7 @@ type InputProps = {
   onClickIconEnd?: () => void
   onKeyDown?: () => void
   type: InputType
-  value?: string
+  value: string
 }
 
 type Props = InputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof InputProps>
@@ -55,11 +55,7 @@ export const Input = (props: Props) => {
     onClickIconEnd,
     onKeyDown,
   })
-  // const isSearch = type === InputType.search
-  // const inputIconStart = IconStart ? s.iconStart : ''
-  // const inputEndStart = IconEnd ? s.iconEnd : ''
-  // const inputSearchIconEnd = isSearch ? s.search : ''
-  // const inputStyle = classNames(s.input, inputIconStart, inputEndStart, inputSearchIconEnd)
+
   const isSearch = type === InputType.search
   const inputStyle = useInputStyle({
     iconEnd: IconEndOrIconToggle,
@@ -86,9 +82,7 @@ export const Input = (props: Props) => {
           {...rest}
         />
         {IconStart && <span className={classNames(s.icon, s.iconStart)}>{IconStart}</span>}
-        {isSearch && value && !errorMessage
-          ? BaseIconEnd
-          : !isSearch && IconEndOrIconToggle && BaseIconEnd}
+        {isSearch && value && !errorMessage ? BaseIconEnd : !isSearch && BaseIconEnd}
       </div>
       {!!errorMessage && <span className={s.error}>{errorMessage}</span>}
     </div>

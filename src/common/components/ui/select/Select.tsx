@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 import Icon from '@/assets/icons/components/ArrowDown'
 import { Typography } from '@/common/components/ui/typography'
@@ -6,6 +6,7 @@ import * as SelectRadix from '@radix-ui/react-select'
 import classNames from 'classnames'
 
 import s from './select.module.scss'
+
 type Option = {
   label: string
   value: string
@@ -21,7 +22,7 @@ type SelectProps = {
   required?: boolean
   small?: boolean
   value?: string
-}
+} & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 export const Select = (props: SelectProps) => {
   const {
     className,

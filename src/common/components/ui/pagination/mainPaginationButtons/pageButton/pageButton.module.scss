@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 24px;
   height: 24px;
 
@@ -24,9 +25,9 @@
 
 .selected {
   color: var(--color-dark-900);
-  background-color: var(--color-light-100);
+}
 
-  &:hover {
-    background-color: var(--color-light-100);
-  }
+.selected,
+.selected:hover {
+  background-color: var(--color-light-100);
 }

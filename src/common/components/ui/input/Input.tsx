@@ -1,5 +1,6 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef, useId } from 'react'
 
+import { Typography } from '@/common/components'
 import classNames from 'classnames'
 
 import s from './input.module.scss'
@@ -23,12 +24,11 @@ type InputProps = {
   onClickIconEnd?: () => void
   onKeyDown?: () => void
   type: InputType
-  value: string
 }
 
 type Props = InputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof InputProps>
 
-export const Input = (props: Props) => {
+export const Input = forwardRef<ElementRef<'input'>, Props>((props, ref) => {
   const {
     className,
     disabled,
@@ -36,16 +36,17 @@ export const Input = (props: Props) => {
     iconEnd: IconEnd,
     iconEndNotActive: IconEndNotActive,
     iconStart: IconStart,
+    id,
     label,
     onChange,
     onClickIconEnd,
     onKeyDown,
     type,
-    value,
-    ...rest
+    ...inputProps
   } = props
-
-  const isDisabled = !!(disabled || errorMessage) //disabled || errorMessage ? true : false
+  const genID = useId()
+  const finalId = id || genID
+  const isDisabled = Boolean(disabled || errorMessage)
 
   const {
     IconEndOrIconToggle,
@@ -64,29 +65,43 @@ export const Input = (props: Props) => {
     onKeyDown,
     type,
   })
+  const baseClassNames = {
+    error: s.error,
+    iconEndStyle: classNames(s.icon, s.iconEnd, isSearch ? s.search : ''),
+    inputStyle: classNames(inputStyle, errorMessage ? s.error : ''),
+    labelStyle: classNames(s.label, disabled ? s.labelDisabled : ''),
+  }
 
-  const baseInputStyle = classNames(inputStyle, errorMessage ? s.error : '')
-  const iconEndStyle = classNames(s.icon, s.iconEnd, isSearch ? s.search : '')
-  const labelStyle = classNames(s.label, disabled ? s.labelDisabled : '')
-  const BaseIconEnd = <span className={iconEndStyle}>{IconEndOrIconToggle}</span>
+  const BaseIconEnd = <span className={baseClassNames.iconEndStyle}>{IconEndOrIconToggle}</span>
 
   return (
     <div className={s.box}>
-      {label && <label className={labelStyle}>{label}</label>}
+      {Boolean(label) && (
+        <label className={baseClassNames.labelStyle} htmlFor={finalId}>
+          {label}
+        </label>
+      )}
       <div className={s.inputContainer}>
         <input
-          className={classNames(baseInputStyle, className)}
+          className={classNames(baseClassNames.inputStyle, className)}
           disabled={disabled}
+          id={finalId}
           onChange={onChangeHandler}
           onKeyDown={onKeyDownHandler}
+          ref={ref}
           type={baseTypeInput}
-          value={value}
-          {...rest}
+          {...inputProps}
         />
-        {IconStart && <span className={classNames(s.icon, s.iconStart)}>{IconStart}</span>}
-        {isSearch && value && !errorMessage ? BaseIconEnd : !isSearch && BaseIconEnd}
+        {Boolean(IconStart) && <span className={classNames(s.icon, s.iconStart)}>{IconStart}</span>}
+        {isSearch && Boolean(inputProps.value) && !errorMessage
+          ? BaseIconEnd
+          : !isSearch && BaseIconEnd}
       </div>
-      {!!errorMessage && <span className={s.error}>{errorMessage}</span>}
+      {Boolean(errorMessage) && (
+        <Typography as={'span'} className={baseClassNames.error}>
+          {errorMessage}
+        </Typography>
+      )}
     </div>
   )
-}
+})

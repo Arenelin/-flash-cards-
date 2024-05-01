@@ -14,7 +14,7 @@ export enum InputType {
   text = 'text',
 }
 
-type InputProps = {
+type Props = {
   errorMessage?: null | string
   iconEnd?: ReactNode
   iconEndNotActive?: ReactNode
@@ -26,9 +26,9 @@ type InputProps = {
   type: InputType
 }
 
-type Props = InputProps & Omit<ComponentPropsWithoutRef<'input'>, keyof InputProps>
+type InputProps = Omit<ComponentPropsWithoutRef<'input'>, keyof Props> & Props
 
-export const Input = forwardRef<ElementRef<'input'>, Props>((props, ref) => {
+export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) => {
   const {
     className,
     disabled,

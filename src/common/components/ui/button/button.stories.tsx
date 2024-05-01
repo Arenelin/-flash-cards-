@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '@/common/components'
+import { Button } from '@/common/components/ui'
 
 const meta = {
   argTypes: {},

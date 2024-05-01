@@ -17,6 +17,7 @@
   "dependencies": {
     "@fontsource/roboto": "^5.0.13",
     "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-slider": "^1.1.2",
     "classnames": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

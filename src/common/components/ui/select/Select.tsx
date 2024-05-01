@@ -13,63 +13,47 @@ type Option = {
 }
 type SelectProps = {
   className?: string
-  defaultValue?: string
-  disabled?: boolean
   label?: string
   onValueChange?: (value: string) => void
   options: Option[]
   placeholder?: ReactNode
-  required?: boolean
   small?: boolean
-  value?: string
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
+
 export const Select = (props: SelectProps) => {
   const {
     className,
-    defaultValue,
-    disabled = false,
+    disabled,
     label,
     onValueChange,
     options,
     placeholder,
-    required,
     small = false,
     value,
+    ...rest
   } = props
+  const baseclassNames = {
+    icon: classNames(s.icon, disabled ? s.iconDisabled : ''),
+    item: classNames(s.item, small ? s.small : ''),
+    trigger: classNames(s.trigger, disabled ? s.triggerDisabled : '', small ? s.small : ''),
+    typography: classNames(s.label, disabled ? s.labelDisabled : '', className),
+  }
 
   return (
-    <Typography
-      as={'label'}
-      className={classNames(s.label, disabled ? s.labelDisabled : '', className)}
-      variant={'body2'}
-    >
+    <Typography as={'label'} className={baseclassNames.typography} variant={'body2'}>
       {label}
-      <SelectRadix.Root
-        defaultValue={defaultValue}
-        disabled={disabled}
-        onValueChange={onValueChange}
-        required={required}
-        value={value}
-      >
-        <SelectRadix.Trigger
-          aria-label={'select'}
-          asChild
-          className={classNames(s.trigger, disabled ? s.triggerDisabled : '', small ? s.small : '')}
-        >
+      <SelectRadix.Root onValueChange={onValueChange} value={value} {...rest}>
+        <SelectRadix.Trigger aria-label={'select'} asChild className={baseclassNames.trigger}>
           <button>
             <SelectRadix.Value placeholder={placeholder} />
-            <Icon className={classNames(s.icon, disabled ? s.iconDisabled : '')} name={'arrow'} />
+            <Icon className={baseclassNames.icon} name={'arrow'} />
           </button>
         </SelectRadix.Trigger>
         <SelectRadix.Portal>
           <SelectRadix.Content className={s.content} position={'popper'}>
             <SelectRadix.Viewport>
               {options.map(el => (
-                <SelectRadix.Item
-                  className={classNames(s.item, small ? s.small : '')}
-                  key={el.value}
-                  value={el.value}
-                >
+                <SelectRadix.Item className={baseclassNames.item} key={el.value} value={el.value}>
                   <SelectRadix.ItemText>{el.label}</SelectRadix.ItemText>
                 </SelectRadix.Item>
               ))}

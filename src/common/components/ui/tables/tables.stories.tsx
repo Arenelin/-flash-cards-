@@ -20,51 +20,51 @@ export const Tables = {
   render: () => {
     const header = ['Name', 'Cards', 'Last Updated', 'Created by', 'Grade', '']
     const headCells = header.map((headCell, index) => {
-      return <TableComponents.HeadCell key={index}>{headCell}</TableComponents.HeadCell>
+      return <TableComponents.Th key={index}>{headCell}</TableComponents.Th>
     })
 
     return (
       <TableComponents.Table>
         <TableComponents.Thead>
-          <TableComponents.Row>{headCells}</TableComponents.Row>
+          <TableComponents.Tr>{headCells}</TableComponents.Tr>
         </TableComponents.Thead>
         <TableComponents.Body>
-          <TableComponents.Row>
-            <TableComponents.Cell>Name Cards</TableComponents.Cell>
-            <TableComponents.Cell>4</TableComponents.Cell>
-            <TableComponents.Cell>18.06.1967</TableComponents.Cell>
-            <TableComponents.Cell>3</TableComponents.Cell>
-            <TableComponents.Cell>
+          <TableComponents.Tr>
+            <TableComponents.Td>Name Cards</TableComponents.Td>
+            <TableComponents.Td>4</TableComponents.Td>
+            <TableComponents.Td>18.06.1967</TableComponents.Td>
+            <TableComponents.Td>3</TableComponents.Td>
+            <TableComponents.Td>
               <Grade currentGrade={2} />{' '}
-            </TableComponents.Cell>
-            <TableComponents.Cell>
+            </TableComponents.Td>
+            <TableComponents.Td>
               <Tools canUseTool />
-            </TableComponents.Cell>
-          </TableComponents.Row>
-          <TableComponents.Row>
-            <TableComponents.Cell>Name Cards</TableComponents.Cell>
-            <TableComponents.Cell>4</TableComponents.Cell>
-            <TableComponents.Cell>18.06.1967</TableComponents.Cell>
-            <TableComponents.Cell>3</TableComponents.Cell>
-            <TableComponents.Cell>
+            </TableComponents.Td>
+          </TableComponents.Tr>
+          <TableComponents.Tr>
+            <TableComponents.Td>Name Cards</TableComponents.Td>
+            <TableComponents.Td>4</TableComponents.Td>
+            <TableComponents.Td>18.06.1967</TableComponents.Td>
+            <TableComponents.Td>3</TableComponents.Td>
+            <TableComponents.Td>
               <Grade currentGrade={4} />
-            </TableComponents.Cell>
-            <TableComponents.Cell>
+            </TableComponents.Td>
+            <TableComponents.Td>
               <Tools canUseTool />
-            </TableComponents.Cell>
-          </TableComponents.Row>
-          <TableComponents.Row>
-            <TableComponents.Cell>Name Cards</TableComponents.Cell>
-            <TableComponents.Cell>4</TableComponents.Cell>
-            <TableComponents.Cell>18.06.1967</TableComponents.Cell>
-            <TableComponents.Cell>3</TableComponents.Cell>
-            <TableComponents.Cell>
+            </TableComponents.Td>
+          </TableComponents.Tr>
+          <TableComponents.Tr>
+            <TableComponents.Td>Name Cards</TableComponents.Td>
+            <TableComponents.Td>4</TableComponents.Td>
+            <TableComponents.Td>18.06.1967</TableComponents.Td>
+            <TableComponents.Td>3</TableComponents.Td>
+            <TableComponents.Td>
               <Grade currentGrade={1} />
-            </TableComponents.Cell>
-            <TableComponents.Cell>
+            </TableComponents.Td>
+            <TableComponents.Td>
               <Tools canUseTool />
-            </TableComponents.Cell>
-          </TableComponents.Row>
+            </TableComponents.Td>
+          </TableComponents.Tr>
         </TableComponents.Body>
       </TableComponents.Table>
     )

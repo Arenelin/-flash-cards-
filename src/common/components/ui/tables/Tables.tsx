@@ -35,7 +35,7 @@ const Body = forwardRef<ElementRef<'tbody'>, ComponentPropsWithoutRef<'tbody'>>(
   }
 )
 
-const Row = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
+const Tr = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
   ({ className, ...rest }, ref) => {
     const baseClassNames = {
       tr: classNames(s.tr, className),
@@ -45,7 +45,7 @@ const Row = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
   }
 )
 
-const HeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
+const Th = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
   ({ className, ...rest }, ref) => {
     const baseClassNames = {
       th: classNames(s.th, className),
@@ -55,7 +55,7 @@ const HeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
   }
 )
 
-const Cell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
+const Td = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
   ({ className, ...rest }, ref) => {
     const baseClassNames = {
       td: classNames(s.td, className),
@@ -67,9 +67,9 @@ const Cell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
 
 export const TableComponents = {
   Body,
-  Cell,
-  HeadCell,
-  Row,
   Table,
+  Td,
+  Th,
   Thead,
+  Tr,
 }

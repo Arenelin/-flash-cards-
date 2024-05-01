@@ -4,10 +4,10 @@ import { Star, StarOutline } from '@/assets/icons/components'
 import classNames from 'classnames'
 
 import s from './grade.module.scss'
-type gradeType = 0 | 1 | 2 | 3 | 4 | 5
+type GradeScale = 0 | 1 | 2 | 3 | 4 | 5
 
 type GradeProps = {
-  currentGrade: gradeType
+  currentGrade: GradeScale
 } & ComponentPropsWithoutRef<'div'>
 
 export const Grade = forwardRef<ElementRef<'div'>, GradeProps>(

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { Pagination } from '@/common/components'
+import { Pagination } from '@/common/components/ui'
 
 const meta = {
   argTypes: {},

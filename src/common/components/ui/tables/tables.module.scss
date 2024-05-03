@@ -1,0 +1,26 @@
+.table {
+  border-bottom: 1px solid var(--color-dark-500);
+  border-left: 1px solid var(--color-dark-500);
+  border-right: 1px solid var(--color-dark-500);
+  border-collapse: collapse;
+
+  text-align: left;
+}
+
+.th {
+  padding: 6px 24px;
+  width: 201px;
+  height: 36px;
+  background: var(--color-dark-500);
+  table:focus {
+    outline: 2px solid var(--color-color-info-700);
+    outline-offset: 2px;
+  }
+}
+
+.td {
+  border-bottom: 1px solid var(--dark-500);
+  padding: 6px 24px;
+  width: 201px;
+  height: 36px;
+}

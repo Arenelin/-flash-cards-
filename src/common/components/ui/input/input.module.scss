@@ -1,0 +1,177 @@
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-self: flex-start;
+  & button,
+  button:active {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    border-radius: 2px;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & button:focus-visible {
+    outline: 2px solid var(--color-info-700);
+    outline-offset: 2px;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.iconStart {
+  left: 12px;
+}
+
+.iconEnd {
+  right: 12px;
+  &:focus-visible {
+    outline: var(--color-light-100);
+  }
+}
+
+.search {
+  & svg {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.input {
+  background: transparent;
+  padding: 6px 12px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+  width: 284px;
+  height: 36px;
+
+  // Disable clear button for input with type='search'
+  &::-webkit-search-cancel-button {
+    visibility: hidden;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &.iconStart {
+    padding-left: 44px;
+  }
+
+  &.iconEnd {
+    padding-right: 32px;
+  }
+
+  &.search {
+    padding-right: 12px;
+  }
+
+  & ~ .iconStart {
+    color: var(--color-dark-100);
+  }
+
+  & ~ .iconEnd {
+    color: var(--color-light-100);
+  }
+
+   &:hover {
+       border: 1px solid var(--color-dark-100);
+       background: var(--color-dark-700);
+     }
+
+   &:focus {
+       border: 2px solid var(--color-info-700);
+     & ~ .iconStart,
+     & ~ .search,
+     & ~ .iconEnd {
+         color: var(--color-light-100);
+       }
+     }
+
+   &:active {
+       border: 1px solid var(--color-light-100);
+     }
+   &:active::placeholder {
+      color: var(--color-light-100);
+  }
+
+  // TODO Нужен ли здесь focus-visible,или достаточно focus,
+  //  При текстовом инпуте добавляется подсветка браузерная которая портит стили
+  //&:focus-visible {
+  //  outline: 2px solid var(--color-info-700);
+  //  outline-offset: 2px;
+  //}
+
+  &:disabled {
+    border: 1px solid var(--color-dark-300);
+    & ~ .iconEnd,
+    & ~ .iconStart {
+      color: var(--color-dark-300);
+    }
+    &::placeholder {
+      color: var(--color-dark-300);
+    }
+  }
+
+  &::placeholder {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--line-height-s);
+    line-height: var(--line-height-m);
+    color: var(--color-dark-100);
+  }
+
+  &.error::placeholder {
+    color: var(--color-danger-300);
+  }
+}
+
+.label {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--line-height-s);
+  line-height: var(--line-height-m);
+  cursor: default;
+  color: var(--color-dark-100);
+}
+
+.labelDisabled {
+  color: var(--color-dark-300);
+}
+
+.error {
+  color: var(--color-danger-300);
+  border-color: var(--color-danger-300);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+}

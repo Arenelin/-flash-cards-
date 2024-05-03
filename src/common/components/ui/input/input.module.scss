@@ -54,7 +54,7 @@
 
 .search {
   & svg {
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     align-content: center;
@@ -104,25 +104,25 @@
     color: var(--color-light-100);
   }
 
-   &:hover {
-       border: 1px solid var(--color-dark-100);
-       background: var(--color-dark-700);
-     }
+  &:hover {
+    border: 1px solid var(--color-dark-100);
+    background: var(--color-dark-700);
+  }
 
-   &:focus {
-       border: 2px solid var(--color-info-700);
-     & ~ .iconStart,
-     & ~ .search,
-     & ~ .iconEnd {
-         color: var(--color-light-100);
-       }
-     }
-
-   &:active {
-       border: 1px solid var(--color-light-100);
-     }
-   &:active::placeholder {
+  &:focus {
+    border: 2px solid var(--color-info-700);
+    & ~ .iconStart,
+    & ~ .search,
+    & ~ .iconEnd {
       color: var(--color-light-100);
+    }
+  }
+
+  &:active {
+    border: 1px solid var(--color-light-100);
+  }
+  &:active::placeholder {
+    color: var(--color-light-100);
   }
 
   // TODO Нужен ли здесь focus-visible,или достаточно focus,

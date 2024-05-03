@@ -2,14 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import {
-  CloseOutline,
-  EyeOffOutline,
-  EyeOutline,
-  PersonOutline,
-  PlayCircle,
-} from '@/assets/icons/components'
-import SearchOutline from '@/assets/icons/components/SearchOutline'
+import CloseOutline from '@/assets/icons/CloseOutline'
+import EyeOffOutline from '@/assets/icons/EyeOffOutline'
+import EyeOutline from '@/assets/icons/EyeOutline'
+import PersonOutline from '@/assets/icons/PersonOutline'
+import PlayCircle from '@/assets/icons/PlayCircle'
+import SearchOutline from '@/assets/icons/SearchOutline'
 
 import { Input, InputType } from './Input'
 

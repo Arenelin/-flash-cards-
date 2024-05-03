@@ -15,7 +15,7 @@ button {
     position: absolute;
     display: inline-block;
 
-    content: "";
+    content: '';
     width: 36px;
     height: 36px;
     z-index: -1;
@@ -35,9 +35,10 @@ button {
       background-color: var(--color-dark-500);
     }
   }
-  &:active,&:focus-visible {
+  &:active,
+  &:focus-visible {
     &::before {
-      background-color:var(--color-dark-100);
+      background-color: var(--color-dark-100);
     }
   }
 }
@@ -54,15 +55,15 @@ button {
 
   background-color: var(--color-light-100);
   border: none;
-  &[data-state="unchecked"] {
+  &[data-state='unchecked'] {
     border: 2px solid var(--color-light-900);
     background-color: transparent;
   }
   &[data-disabled] {
-    background-color:var(--color-dark-100);
-     border: none;
-    }
-  &[data-state="unchecked"][data-disabled] {
+    background-color: var(--color-dark-100);
+    border: none;
+  }
+  &[data-state='unchecked'][data-disabled] {
     border: 2px solid var(--color-dark-100);
     background-color: transparent;
   }
@@ -83,7 +84,7 @@ button {
 }
 
 .label {
-  font-family: var( --font-family-primary);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-s);
   line-height: var(--line-height-m);
@@ -91,7 +92,6 @@ button {
   &.disabled {
     color: var(--color-dark-100);
   }
-
 }
 
 .icon {

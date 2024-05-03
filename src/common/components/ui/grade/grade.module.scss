@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.icon {
+  color: var(--color-warning-300);
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}

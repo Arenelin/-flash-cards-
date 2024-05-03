@@ -1,0 +1,70 @@
+.trigger {
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+.triggerButton {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+}
+
+.DropdownMenuContent {
+  position: absolute;
+  top: 10px;
+  right: -23.5px;
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 13px;
+
+  min-width: 80px;
+  padding: 12px;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 4px;
+
+  animation: scaleIn 0.4s ease-in-out;
+
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    right: 15px;
+
+    display: block;
+
+    border: 8px solid transparent;
+  }
+
+  &::before {
+    top: -16px;
+    border-bottom: 8px solid var(--color-dark-500);
+  }
+
+  &::after {
+    top: -15px;
+    border-bottom: 8px solid var(--color-dark-700);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

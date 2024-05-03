@@ -16,12 +16,9 @@
   },
   "dependencies": {
     "@fontsource/roboto": "^5.0.13",
-<<<<<<< HEAD
     "@radix-ui/react-select": "^2.0.0",
-=======
     "@radix-ui/react-checkbox": "^1.0.4",
->>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
-    "classnames": "^2.5.1",
+        "classnames": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

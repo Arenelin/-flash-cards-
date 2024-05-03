@@ -1,34 +1,8 @@
-import ArrowBack from '@/assets/icons/components/ArrowBack'
-import ArrowDown from '@/assets/icons/components/ArrowDown'
-import ArrowForward from '@/assets/icons/components/ArrowForward'
-import ArrowUp from '@/assets/icons/components/ArrowUp'
-import CheckboxIcon from '@/assets/icons/components/CheckboxIcon'
-import Close from '@/assets/icons/components/Close'
-import CloseOutline from '@/assets/icons/components/CloseOutline'
-import Edit2 from '@/assets/icons/components/Edit2'
-import Edit2Outline from '@/assets/icons/components/Edit2Outline'
-import Eye from '@/assets/icons/components/Eye'
-import EyeOff from '@/assets/icons/components/EyeOff'
-import EyeOffOutline from '@/assets/icons/components/EyeOffOutline'
-import EyeOutline from '@/assets/icons/components/EyeOutline'
-import Image from '@/assets/icons/components/Image'
-import ImageOutline from '@/assets/icons/components/ImageOutline'
-import LogOut from '@/assets/icons/components/LogOut'
-import LogOutOutline from '@/assets/icons/components/LogOutOutline'
-import MoreVerticalOutline from '@/assets/icons/components/MoreVerticalOutline'
-import Person from '@/assets/icons/components/Person'
-import PersonOutline from '@/assets/icons/components/PersonOutline'
-import PlayCircle from '@/assets/icons/components/PlayCircle'
-import PlayCircleOutline from '@/assets/icons/components/PlayCircleOutline'
-import Search from '@/assets/icons/components/Search'
-import SearchOutline from '@/assets/icons/components/SearchOutline'
-import Star from '@/assets/icons/components/Star'
-import StarOutline from '@/assets/icons/components/StarOutline'
-import Trash from '@/assets/icons/components/Trash'
-import TrashOutline from '@/assets/icons/components/TrashOutline'
 import { Meta } from '@storybook/react'
 
 import s from './_IconGallery_.module.scss'
+
+import * as Icons from './'
 
 export default {
   title: 'Icons Gallery',
@@ -37,115 +11,115 @@ export default {
 export const IconsGallery = () => (
   <div className={s.blockStyle}>
     <div className={s.elementStyle}>
-      <ArrowBack />
+      <Icons.ArrowBack />
       <p className={s.textStyle}>&nbsp; ArrowBack</p>
     </div>
     <div className={s.elementStyle}>
-      <ArrowDown />
+      <Icons.ArrowDown />
       <p className={s.textStyle}>ArrowDown</p>
     </div>
     <div className={s.elementStyle}>
-      <ArrowForward />
+      <Icons.ArrowForward />
       <p className={s.textStyle}>&nbsp; ArrowForward</p>
     </div>
     <div className={s.elementStyle}>
-      <ArrowUp />
+      <Icons.ArrowUp />
       <p className={s.textStyle}>ArrowUp</p>
     </div>
     <div className={s.elementStyle}>
-      <CheckboxIcon />
+      <Icons.CheckboxIcon />
       <p className={s.textStyle}>&nbsp; CheckboxIcon</p>
     </div>
     <div className={s.elementStyle}>
-      <Close />
+      <Icons.Close />
       <p className={s.textStyle}>Close</p>
     </div>
     <div className={s.elementStyle}>
-      <CloseOutline />
+      <Icons.CloseOutline />
       <p className={s.textStyle}>CloseOutline</p>
     </div>
     <div className={s.elementStyle}>
-      <Edit2 />
+      <Icons.Edit2 />
       <p className={s.textStyle}>Edit2</p>
     </div>
     <div className={s.elementStyle}>
-      <Edit2Outline />
+      <Icons.Edit2Outline />
       <p className={s.textStyle}>Edit2Outline</p>
     </div>
     <div className={s.elementStyle}>
-      <Eye />
+      <Icons.Eye />
       <p className={s.textStyle}>Eye</p>
     </div>
     <div className={s.elementStyle}>
-      <EyeOff />
+      <Icons.EyeOff />
       <p className={s.textStyle}>EyeOff</p>
     </div>
     <div className={s.elementStyle}>
-      <EyeOffOutline />
+      <Icons.EyeOffOutline />
       <p className={s.textStyle}>EyeOffOutline</p>
     </div>
     <div className={s.elementStyle}>
-      <EyeOutline />
+      <Icons.EyeOutline />
       <p className={s.textStyle}>EyeOutline</p>
     </div>
     <div className={s.elementStyle}>
-      <Image />
+      <Icons.Image />
       <p className={s.textStyle}>Image</p>
     </div>
     <div className={s.elementStyle}>
-      <ImageOutline />
+      <Icons.ImageOutline />
       <p className={s.textStyle}>ImageOutline</p>
     </div>
     <div className={s.elementStyle}>
-      <LogOut />
+      <Icons.LogOut />
       <p className={s.textStyle}>LogOut</p>
     </div>
     <div className={s.elementStyle}>
-      <LogOutOutline />
+      <Icons.LogOutOutline />
       <p className={s.textStyle}>LogOutOutline</p>
     </div>
     <div className={s.elementStyle}>
-      <MoreVerticalOutline />
+      <Icons.MoreVerticalOutline />
       <p className={s.textStyle}>MoreVerticalOutline</p>
     </div>
     <div className={s.elementStyle}>
-      <Person />
+      <Icons.Person />
       <p className={s.textStyle}>ArrowPersonBack</p>
     </div>
     <div className={s.elementStyle}>
-      <PersonOutline />
+      <Icons.PersonOutline />
       <p className={s.textStyle}>PersonOutline</p>
     </div>
     <div className={s.elementStyle}>
-      <PlayCircle />
+      <Icons.PlayCircle />
       <p className={s.textStyle}>PlayCircle</p>
     </div>
     <div className={s.elementStyle}>
-      <PlayCircleOutline />
+      <Icons.PlayCircleOutline />
       <p className={s.textStyle}>PlayCircleOutline</p>
     </div>
     <div className={s.elementStyle}>
-      <Search />
+      <Icons.Search />
       <p className={s.textStyle}>Search</p>
     </div>
     <div className={s.elementStyle}>
-      <SearchOutline />
+      <Icons.SearchOutline />
       <p className={s.textStyle}>SearchOutline</p>
     </div>
     <div className={s.elementStyle}>
-      <Star />
+      <Icons.Star />
       <p className={s.textStyle}>Star</p>
     </div>
     <div className={s.elementStyle}>
-      <StarOutline />
+      <Icons.StarOutline />
       <p className={s.textStyle}>StarOutline</p>
     </div>
     <div className={s.elementStyle}>
-      <Trash />
+      <Icons.Trash />
       <p className={s.textStyle}>Trash</p>
     </div>
     <div className={s.elementStyle}>
-      <TrashOutline />
+      <Icons.TrashOutline />
       <p className={s.textStyle}>TrashOutline</p>
     </div>
   </div>

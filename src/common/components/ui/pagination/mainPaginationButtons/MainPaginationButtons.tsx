@@ -1,4 +1,4 @@
-import { PaginationProps } from '@/common/components'
+import { PaginationProps } from '@/common/components/ui'
 import { Dots } from '@/common/components/ui/pagination/dots/Dots'
 import { PageButton } from '@/common/components/ui/pagination/mainPaginationButtons/pageButton/PageButton'
 import { PaginationRange } from '@/common/components/ui/pagination/usePagination'

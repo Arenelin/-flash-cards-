@@ -25,7 +25,7 @@ export type TextProps<T extends ElementType> = {
 
 export const Typography = <T extends ElementType = 'p'>(props: TextProps<T>) => {
   const { as: Component = 'p', className, variant = 'body1', ...restProps } = props
-  const theme: Theme = 'light' // TODO rewrite the values from the store to the call
+  const theme: Theme = 'dark' // TODO rewrite the values from the store to the call
 
   return <Component className={classNames(s[theme], s[variant], className)} {...restProps} />
 }

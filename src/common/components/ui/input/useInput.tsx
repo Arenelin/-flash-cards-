@@ -45,11 +45,12 @@ export const useInput = (parameters: useInputParameters): useInputReturnType => 
       onClickIconEnd()
     }
   }
-  const IconEndOrIconToggle = (
+  const Icon = (
     <button disabled={disabled} onClick={onClickHandler}>
       {active ? IconNotActive : IconActive}
     </button>
   )
+  const IconEndOrIconToggle = IconActive ? Icon : undefined
   const isSearch = type === InputType.search
   const typeToggle = active ? InputType.text : InputType.password
   const baseTypeInput = IconNotActive ? typeToggle : type

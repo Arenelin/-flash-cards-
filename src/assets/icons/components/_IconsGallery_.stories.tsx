@@ -28,123 +28,125 @@ import Trash from '@/assets/icons/components/Trash'
 import TrashOutline from '@/assets/icons/components/TrashOutline'
 import { Meta } from '@storybook/react'
 
+import s from './_IconGallery_.module.scss'
+
 export default {
   title: 'Icons Gallery',
 } as Meta
 
 export const IconsGallery = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-    <div style={{ display: 'flex', gap: '25px' }}>
+  <div className={s.blockStyle}>
+    <div className={s.elementStyle}>
       <ArrowBack />
-      <p style={{ margin: '0' }}>&nbsp; ArrowBack</p>
+      <p className={s.textStyle}>&nbsp; ArrowBack</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <ArrowDown />
-      <p style={{ margin: '0' }}>ArrowDown</p>
+      <p className={s.textStyle}>ArrowDown</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <ArrowForward />
-      <p style={{ margin: '0' }}>&nbsp; ArrowForward</p>
+      <p className={s.textStyle}>&nbsp; ArrowForward</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <ArrowUp />
-      <p style={{ margin: '0' }}>ArrowUp</p>
+      <p className={s.textStyle}>ArrowUp</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <CheckboxIcon />
-      <p style={{ margin: '0' }}>&nbsp; CheckboxIcon</p>
+      <p className={s.textStyle}>&nbsp; CheckboxIcon</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <Close />
-      <p style={{ margin: '0' }}>Close</p>
+      <p className={s.textStyle}>Close</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <CloseOutline />
-      <p style={{ margin: '0' }}>CloseOutline</p>
+      <p className={s.textStyle}>CloseOutline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <Edit2 />
-      <p style={{ margin: '0' }}>Edit2</p>
+      <p className={s.textStyle}>Edit2</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <Edit2Outline />
-      <p style={{ margin: '0' }}>Edit2Outline</p>
+      <p className={s.textStyle}>Edit2Outline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <Eye />
-      <p style={{ margin: '0' }}>Eye</p>
+      <p className={s.textStyle}>Eye</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <EyeOff />
-      <p style={{ margin: '0' }}>EyeOff</p>
+      <p className={s.textStyle}>EyeOff</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <EyeOffOutline />
-      <p style={{ margin: '0' }}>EyeOffOutline</p>
+      <p className={s.textStyle}>EyeOffOutline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <EyeOutline />
-      <p style={{ margin: '0' }}>EyeOutline</p>
+      <p className={s.textStyle}>EyeOutline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <Image />
-      <p style={{ margin: '0' }}>Image</p>
+      <p className={s.textStyle}>Image</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <ImageOutline />
-      <p style={{ margin: '0' }}>ImageOutline</p>
+      <p className={s.textStyle}>ImageOutline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <LogOut />
-      <p style={{ margin: '0' }}>LogOut</p>
+      <p className={s.textStyle}>LogOut</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <LogOutOutline />
-      <p style={{ margin: '0' }}>LogOutOutline</p>
+      <p className={s.textStyle}>LogOutOutline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <MoreVerticalOutline />
-      <p style={{ margin: '0' }}>MoreVerticalOutline</p>
+      <p className={s.textStyle}>MoreVerticalOutline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <Person />
-      <p style={{ margin: '0' }}>ArrowPersonBack</p>
+      <p className={s.textStyle}>ArrowPersonBack</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <PersonOutline />
-      <p style={{ margin: '0' }}>PersonOutline</p>
+      <p className={s.textStyle}>PersonOutline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <PlayCircle />
-      <p style={{ margin: '0' }}>PlayCircle</p>
+      <p className={s.textStyle}>PlayCircle</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <PlayCircleOutline />
-      <p style={{ margin: '0' }}>PlayCircleOutline</p>
+      <p className={s.textStyle}>PlayCircleOutline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <Search />
-      <p style={{ margin: '0' }}>Search</p>
+      <p className={s.textStyle}>Search</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <SearchOutline />
-      <p style={{ margin: '0' }}>SearchOutline</p>
+      <p className={s.textStyle}>SearchOutline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <Star />
-      <p style={{ margin: '0' }}>Star</p>
+      <p className={s.textStyle}>Star</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <StarOutline />
-      <p style={{ margin: '0' }}>StarOutline</p>
+      <p className={s.textStyle}>StarOutline</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <Trash />
-      <p style={{ margin: '0' }}>Trash</p>
+      <p className={s.textStyle}>Trash</p>
     </div>
-    <div style={{ display: 'flex', gap: '25px' }}>
+    <div className={s.elementStyle}>
       <TrashOutline />
-      <p style={{ margin: '0' }}>TrashOutline</p>
+      <p className={s.textStyle}>TrashOutline</p>
     </div>
   </div>
 )

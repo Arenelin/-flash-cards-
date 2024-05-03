@@ -7,7 +7,7 @@ import {
   PersonOutline,
   PlayCircleOutline,
   TrashOutline,
-} from '@/assets/icons/components'
+} from '@/assets/icons'
 import { Dropdown } from '@/common/components/ui/dropdown/Dropdown'
 import { DropdownSeparator } from '@/common/components/ui/dropdown/dropdownSeparator/DropdownSeparator'
 import { ToolbarItemWithIcon } from '@/common/components/ui/dropdown/toolbarItemWithIcon/ToolbarItemWithIcon'

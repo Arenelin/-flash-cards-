@@ -2,11 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { PersonOutline, PlayCircle } from '@/assets/icons/components'
-import CloseOutline from '@/assets/icons/components/CloseOutline'
-import EyeOffOutline from '@/assets/icons/components/EyeOffOutline'
-import EyeOutline from '@/assets/icons/components/EyeOutline'
-import SearchOutline from '@/assets/icons/components/SearchOutline'
+import { PersonOutline, PlayCircle } from '@/assets/icons'
+import CloseOutline from '@/assets/icons/CloseOutline'
+import EyeOffOutline from '@/assets/icons/EyeOffOutline'
+import EyeOutline from '@/assets/icons/EyeOutline'
+import SearchOutline from '@/assets/icons/SearchOutline'
 
 import { Input, InputType } from './Input'
 

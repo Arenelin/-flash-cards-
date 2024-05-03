@@ -1,5 +1,5 @@
-import ArrowBack from '@/assets/icons/components/ArrowBack'
-import ArrowForward from '@/assets/icons/components/ArrowForward'
+import ArrowBack from '@/assets/icons/ArrowBack'
+import ArrowForward from '@/assets/icons/ArrowForward'
 import { ButtonArrow } from '@/common/components/ui/pagination/buttonArrow/ButtonArrow'
 import { MainPaginationButtons } from '@/common/components/ui/pagination/mainPaginationButtons/MainPaginationButtons'
 

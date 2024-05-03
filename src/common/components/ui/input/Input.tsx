@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef, useId } from 'react'
 
-import { Typography } from '@/common/components'
+import { Typography } from '@/common/components/ui'
 import classNames from 'classnames'
 
 import s from './input.module.scss'

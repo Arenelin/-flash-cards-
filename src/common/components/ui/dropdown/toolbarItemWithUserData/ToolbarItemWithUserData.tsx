@@ -1,4 +1,4 @@
-import { Typography } from '@/common/components'
+import { Typography } from '@/common/components/ui'
 import { UserAvatar } from '@/common/components/ui/userAvatar/UserAvatar'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 

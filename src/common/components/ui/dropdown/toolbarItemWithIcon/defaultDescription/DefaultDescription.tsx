@@ -1,4 +1,4 @@
-import { Typography } from '@/common/components'
+import { Typography } from '@/common/components/ui'
 
 import s from './defaultDescription.module.scss'
 

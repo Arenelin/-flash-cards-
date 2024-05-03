@@ -1,6 +1,0 @@
-import{j as C}from"./jsx-runtime-DRTy3Uxn.js";import{r as a}from"./index-BBkUAzwr.js";import{c as g}from"./index-DtBkkNk_.js";const v="_container_1goip_1",_={container:v},t=a.forwardRef(function(o,i){const{as:c="div",className:m,id:d,...l}=o,p=a.useId(),f=d||p,u={container:g(_.container,m)};return C.jsx(c,{className:u.container,ref:i,...l,id:f})});t.__docgenInfo={description:"",methods:[],displayName:"Card",props:{as:{required:!1,tsType:{name:"union",raw:"T | Variant",elements:[{name:"T"},{name:"union",raw:"'article' | 'aside' | 'div' | 'section'",elements:[{name:"literal",value:"'article'"},{name:"literal",value:"'aside'"},{name:"literal",value:"'div'"},{name:"literal",value:"'section'"}]}]},description:""},ref:{required:!1,tsType:{name:"ComponentPropsWithRef['ref']",raw:"ComponentPropsWithRef<T>['ref']"},description:""}}};const w={argTypes:{},component:t,tags:["autodocs"],title:"Components/Card"},e={args:{as:"section",ref:null}};var s,n,r;e.parameters={...e.parameters,docs:{...(s=e.parameters)==null?void 0:s.docs,source:{originalSource:`{
-  args: {
-    as: 'section',
-    ref: null
-  }
-} satisfies Story`,...(r=(n=e.parameters)==null?void 0:n.docs)==null?void 0:r.source}}};const I=["CardSection"];export{e as CardSection,I as __namedExportsOrder,w as default};

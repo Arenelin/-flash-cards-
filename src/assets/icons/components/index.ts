@@ -1,5 +1,7 @@
 export { default as ArrowIosBack } from './ArrowBack'
+export { default as ArrowIosDown } from './ArrowDown'
 export { default as ArrowIosForward } from './ArrowForward'
+export { default as ArrowIosUp } from './ArrowUp'
 export { default as Close } from './Close'
 export { default as CloseOutline } from './CloseOutline'
 export { default as Edit2 } from './Edit2'

@@ -35,6 +35,10 @@
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .iconStart {
@@ -49,8 +53,14 @@
 }
 
 .search {
-  width: 16px;
-  height: 16px;
+  & svg {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .input {
@@ -94,26 +104,33 @@
     color: var(--color-light-100);
   }
 
-  // focus, focus=visible, иконки
-  &:focus {
-    border: 2px solid var(--color-light-100);
-    outline-offset: 2px;
-    & ~ .iconStart,
-    & ~ .search,
-    & ~ .iconEnd {
+   &:hover {
+       border: 1px solid var(--color-dark-100);
+       background: var(--color-dark-700);
+     }
+
+   &:focus {
+       border: 2px solid var(--color-info-700);
+     & ~ .iconStart,
+     & ~ .search,
+     & ~ .iconEnd {
+         color: var(--color-light-100);
+       }
+     }
+
+   &:active {
+       border: 1px solid var(--color-light-100);
+     }
+   &:active::placeholder {
       color: var(--color-light-100);
-    }
   }
 
-  &:focus-visible {
-    outline: 2px solid var(--color-info-700);
-    outline-offset: 2px;
-  }
-
-  &:hover {
-    border: 1px solid var(--color-dark-100);
-    background: var(--color-dark-700);
-  }
+  // TODO Нужен ли здесь focus-visible,или достаточно focus,
+  //  При текстовом инпуте добавляется подсветка браузерная которая портит стили
+  //&:focus-visible {
+  //  outline: 2px solid var(--color-info-700);
+  //  outline-offset: 2px;
+  //}
 
   &:disabled {
     border: 1px solid var(--color-dark-300);

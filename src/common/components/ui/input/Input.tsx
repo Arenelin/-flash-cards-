@@ -67,23 +67,24 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) =>
   })
   const baseClassNames = {
     error: s.error,
-    iconEndStyle: classNames(s.icon, s.iconEnd, isSearch ? s.search : ''),
-    inputStyle: classNames(inputStyle, errorMessage ? s.error : ''),
-    labelStyle: classNames(s.label, disabled ? s.labelDisabled : ''),
+    iconEnd: classNames(s.icon, s.iconEnd, isSearch ? s.search : ''),
+    iconStart: classNames(s.icon, s.iconStart),
+    input: classNames(inputStyle, errorMessage ? s.error : ''),
+    label: classNames(s.label, disabled ? s.labelDisabled : ''),
   }
 
-  const BaseIconEnd = <span className={baseClassNames.iconEndStyle}>{IconEndOrIconToggle}</span>
+  const BaseIconEnd = <span className={baseClassNames.iconEnd}>{IconEndOrIconToggle}</span>
 
   return (
     <div className={s.box}>
       {Boolean(label) && (
-        <label className={baseClassNames.labelStyle} htmlFor={finalId}>
+        <label className={baseClassNames.label} htmlFor={finalId}>
           {label}
         </label>
       )}
       <div className={s.inputContainer}>
         <input
-          className={classNames(baseClassNames.inputStyle, className)}
+          className={classNames(baseClassNames.input, className)}
           disabled={disabled}
           id={finalId}
           onChange={onChangeHandler}
@@ -92,10 +93,10 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) =>
           type={baseTypeInput}
           {...inputProps}
         />
-        {Boolean(IconStart) && <span className={classNames(s.icon, s.iconStart)}>{IconStart}</span>}
+        {Boolean(IconStart) && <span className={baseClassNames.iconStart}>{IconStart}</span>}
         {isSearch && Boolean(inputProps.value) && !errorMessage
           ? BaseIconEnd
-          : !isSearch && BaseIconEnd}
+          : !isSearch && Boolean(BaseIconEnd) && BaseIconEnd}
       </div>
       {Boolean(errorMessage) && (
         <Typography as={'span'} className={baseClassNames.error}>
@@ -105,3 +106,5 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) =>
     </div>
   )
 })
+
+Input.displayName = 'Input'

@@ -11,9 +11,15 @@ importers:
       '@fontsource/roboto':
         specifier: ^5.0.13
         version: 5.0.13
+<<<<<<< HEAD
       '@radix-ui/react-select':
         specifier: ^2.0.0
         version: 2.0.0(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+=======
+      '@radix-ui/react-checkbox':
+        specifier: ^1.0.4
+        version: 1.0.4(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -1070,6 +1076,7 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
+<<<<<<< HEAD
   '@radix-ui/number@1.0.1':
     resolution: {integrity: sha512-T5gIdVO2mmPW3NNhjNgEP3cqMXjXL9UbO0BzWcXfvdBs+BohbQxvd/K5hSVKmn9/lbTdsQVKbUcP5WLCwvUbBg==}
 
@@ -1091,6 +1098,13 @@ packages:
 
   '@radix-ui/react-collection@1.0.3':
     resolution: {integrity: sha512-3SzW+0PW7yBBoQlT8wNcGtaxaD0XSu0uLUFgrtHY08Acx05TaHaOmVLR73c0j/cqpDy53KBMO7s0dx2wmOIDIA==}
+=======
+  '@radix-ui/primitive@1.0.1':
+    resolution: {integrity: sha512-yQ8oGX2GVsEYMWGxcovu1uGWPCxV5BFfeeYxqPmuAzUyLT9qmaMXSAhXpb0WrspIeqYzdJpkh2vHModJPgRIaw==}
+
+  '@radix-ui/react-checkbox@1.0.4':
+    resolution: {integrity: sha512-CBuGQa52aAYnADZVt/KBQzXrwx6TqnlwtcIPGtVt5JkkzQwMOLJjPukimhfKEr4GQNd43C+djUh5Ikopj8pSLg==}
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -1120,6 +1134,7 @@ packages:
       '@types/react':
         optional: true
 
+<<<<<<< HEAD
   '@radix-ui/react-direction@1.0.1':
     resolution: {integrity: sha512-RXcvnXgyvYvBEOhCBuddKecVkoMiI10Jcm5cTI7abJRAHYfFxeu+FBQs/DvdxSYucxR5mna0dNsL6QFlds5TMA==}
     peerDependencies:
@@ -1188,6 +1203,10 @@ packages:
 
   '@radix-ui/react-portal@1.0.4':
     resolution: {integrity: sha512-Qki+C/EuGUVCQTOTD5vzJzJuMUlewbzuKyUy+/iHM2uwGiru9gZeBJtHAPKAEkB5KWGi9mP/CHKcY0wt1aW45Q==}
+=======
+  '@radix-ui/react-presence@1.0.1':
+    resolution: {integrity: sha512-UXLW4UAbIY5ZjcvzjfRFo5gxva8QirC9hF7wRE4U5gz+TP0DbRk+//qyuAQ1McDxBt1xNMBTaciFGvEmJvAZCg==}
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -1212,6 +1231,7 @@ packages:
       '@types/react-dom':
         optional: true
 
+<<<<<<< HEAD
   '@radix-ui/react-select@2.0.0':
     resolution: {integrity: sha512-RH5b7af4oHtkcHS7pG6Sgv5rk5Wxa7XI8W5gvB1N/yiuDGZxko1ynvOiVhFM7Cis2A8zxF9bTOUVbRDzPepe6w==}
     peerDependencies:
@@ -1225,6 +1245,8 @@ packages:
       '@types/react-dom':
         optional: true
 
+=======
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
   '@radix-ui/react-slot@1.0.2':
     resolution: {integrity: sha512-YeTpuq4deV+6DusvVUW4ivBgnkHwECUu0BiN43L5UCDFgdhsRUWAghhTF5MbvNTPzmiFOx90asDSUjWuCNapwg==}
     peerDependencies:
@@ -1252,6 +1274,7 @@ packages:
       '@types/react':
         optional: true
 
+<<<<<<< HEAD
   '@radix-ui/react-use-escape-keydown@1.0.3':
     resolution: {integrity: sha512-vyL82j40hcFicA+M4Ex7hVkB9vHgSse1ZWomAqV2Je3RleKGO5iM8KMOEtfoSB0PnIelMd2lATjTGMYqN5ylTg==}
     peerDependencies:
@@ -1261,6 +1284,8 @@ packages:
       '@types/react':
         optional: true
 
+=======
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
   '@radix-ui/react-use-layout-effect@1.0.1':
     resolution: {integrity: sha512-v/5RegiJWYdoCvMnITBkNNx6bCj20fiaJnWtRkU18yITptraXjffz5Qbn05uOiQnOvi+dbkznkoaMltz1GnszQ==}
     peerDependencies:
@@ -1279,6 +1304,7 @@ packages:
       '@types/react':
         optional: true
 
+<<<<<<< HEAD
   '@radix-ui/react-use-rect@1.0.1':
     resolution: {integrity: sha512-Cq5DLuSiuYVKNU8orzJMbl15TXilTnJKUCltMVQg53BQOF1/C5toAaGrowkgksdBQ9H+SRL23g0HDmg9tvmxXw==}
     peerDependencies:
@@ -1288,6 +1314,8 @@ packages:
       '@types/react':
         optional: true
 
+=======
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
   '@radix-ui/react-use-size@1.0.1':
     resolution: {integrity: sha512-ibay+VqrgcaI6veAojjofPATwledXiSmX+C0KrBk/xgpX9rBzPV3OsfwlhQdUOFbh+LKQorLYT+xTXW9V8yd0g==}
     peerDependencies:
@@ -1297,6 +1325,7 @@ packages:
       '@types/react':
         optional: true
 
+<<<<<<< HEAD
   '@radix-ui/react-visually-hidden@1.0.3':
     resolution: {integrity: sha512-D4w41yN5YRKtu464TLnByKzMDG/JlMPHtfZgQAu9v6mNakUqGUI9vUrfQKz8NK41VMm/xbZbh76NUTVtIYqOMA==}
     peerDependencies:
@@ -1313,6 +1342,8 @@ packages:
   '@radix-ui/rect@1.0.1':
     resolution: {integrity: sha512-fyrgCaedtvMg9NK3en0pnOYJdtfwxUcNolezkNPUsoX57X8oQk+NkqcvzHXD2uKNij6GXmWU9NDru2IWjrO4BQ==}
 
+=======
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
   '@rollup/pluginutils@5.1.0':
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
     engines: {node: '>=14.0.0'}
@@ -5844,14 +5875,18 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
+<<<<<<< HEAD
   '@radix-ui/number@1.0.1':
     dependencies:
       '@babel/runtime': 7.24.4
 
+=======
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
   '@radix-ui/primitive@1.0.1':
     dependencies:
       '@babel/runtime': 7.24.4
 
+<<<<<<< HEAD
   '@radix-ui/react-arrow@1.0.3(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.24.4
@@ -5869,6 +5904,19 @@ snapshots:
       '@radix-ui/react-context': 1.0.1(@types/react@18.2.79)(react@18.2.0)
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@radix-ui/react-slot': 1.0.2(@types/react@18.2.79)(react@18.2.0)
+=======
+  '@radix-ui/react-checkbox@1.0.4(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@babel/runtime': 7.24.4
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.79)(react@18.2.0)
+      '@radix-ui/react-context': 1.0.1(@types/react@18.2.79)(react@18.2.0)
+      '@radix-ui/react-presence': 1.0.1(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.2.79)(react@18.2.0)
+      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.2.79)(react@18.2.0)
+      '@radix-ui/react-use-size': 1.0.1(@types/react@18.2.79)(react@18.2.0)
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     optionalDependencies:
@@ -5889,6 +5937,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.79
 
+<<<<<<< HEAD
   '@radix-ui/react-direction@1.0.1(@types/react@18.2.79)(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.24.4
@@ -5961,6 +6010,14 @@ snapshots:
       '@babel/runtime': 7.24.4
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
+=======
+  '@radix-ui/react-presence@1.0.1(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@babel/runtime': 7.24.4
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.79)(react@18.2.0)
+      '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.79)(react@18.2.0)
+      react: 18.2.0
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
       react-dom: 18.2.0(react@18.2.0)
     optionalDependencies:
       '@types/react': 18.2.79
@@ -5976,6 +6033,7 @@ snapshots:
       '@types/react': 18.2.79
       '@types/react-dom': 18.2.25
 
+<<<<<<< HEAD
   '@radix-ui/react-select@2.0.0(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.24.4
@@ -6006,6 +6064,8 @@ snapshots:
       '@types/react': 18.2.79
       '@types/react-dom': 18.2.25
 
+=======
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
   '@radix-ui/react-slot@1.0.2(@types/react@18.2.79)(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.24.4
@@ -6029,6 +6089,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.79
 
+<<<<<<< HEAD
   '@radix-ui/react-use-escape-keydown@1.0.3(@types/react@18.2.79)(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.24.4
@@ -6037,6 +6098,8 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.79
 
+=======
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
   '@radix-ui/react-use-layout-effect@1.0.1(@types/react@18.2.79)(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.24.4
@@ -6051,6 +6114,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.79
 
+<<<<<<< HEAD
   '@radix-ui/react-use-rect@1.0.1(@types/react@18.2.79)(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.24.4
@@ -6059,6 +6123,8 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.79
 
+=======
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
   '@radix-ui/react-use-size@1.0.1(@types/react@18.2.79)(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.24.4
@@ -6067,6 +6133,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.79
 
+<<<<<<< HEAD
   '@radix-ui/react-visually-hidden@1.0.3(@types/react-dom@18.2.25)(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.24.4
@@ -6081,6 +6148,8 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.24.4
 
+=======
+>>>>>>> bb6f7b9 (feat: Develop components/UI/Checkbox)
   '@rollup/pluginutils@5.1.0(rollup@4.16.4)':
     dependencies:
       '@types/estree': 1.0.5

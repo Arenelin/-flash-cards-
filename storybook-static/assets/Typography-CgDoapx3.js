@@ -1,0 +1,12 @@
+import{j as o}from"./jsx-runtime-DRTy3Uxn.js";const c="_dark_6syuc_1",_="_light_6syuc_5",r="_h1_6syuc_9",u="_h2_6syuc_16",y="_h3_6syuc_23",h="_h4_6syuc_30",m="_body1_6syuc_37",p="_subtitle1_6syuc_44",d="_body2_6syuc_51",b="_subtitle2_6syuc_58",v="_overline_6syuc_65",k="_caption_6syuc_72",g="_link1_6syuc_79",T="_link2_6syuc_90",e={dark:c,light:_,h1:r,h2:u,h3:y,h4:h,body1:m,subtitle1:p,body2:d,subtitle2:b,overline:v,caption:k,link1:g,link2:T},f=n=>{const{as:t="p",className:l,variant:s="body1",...a}=n,i=`${e["light"]} ${e[s]} ${l}`;return o.jsx(t,{className:i,...a})};f.__docgenInfo={description:"",methods:[],displayName:"Typography",props:{as:{required:!1,tsType:{name:"T"},description:""},variant:{required:!1,tsType:{name:"union",raw:`| 'body1'
+| 'body2'
+| 'caption'
+| 'h1'
+| 'h2'
+| 'h3'
+| 'h4'
+| 'link1'
+| 'link2'
+| 'overline'
+| 'subtitle1'
+| 'subtitle2'`,elements:[{name:"literal",value:"'body1'"},{name:"literal",value:"'body2'"},{name:"literal",value:"'caption'"},{name:"literal",value:"'h1'"},{name:"literal",value:"'h2'"},{name:"literal",value:"'h3'"},{name:"literal",value:"'h4'"},{name:"literal",value:"'link1'"},{name:"literal",value:"'link2'"},{name:"literal",value:"'overline'"},{name:"literal",value:"'subtitle1'"},{name:"literal",value:"'subtitle2'"}]},description:""}}};export{f as T};

@@ -9,7 +9,7 @@ import {
 
 import classNames from 'classnames'
 
-import s from './card.module.scss'
+import s from '@/common/components/ui/card/card.module.scss'
 
 //https://www.benmvp.com/blog/forwarding-refs-polymorphic-react-component-typescript/
 //https://www.freecodecamp.org/news/build-strongly-typed-polymorphic-components-with-react-and-typescript/

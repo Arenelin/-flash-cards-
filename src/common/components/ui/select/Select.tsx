@@ -45,7 +45,12 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
   const baseclassNames = {
     icon: classNames(s.icon, disabled ? s.iconDisabled : ''),
     item: classNames(s.item, small ? s.small : ''),
-    trigger: classNames(s.trigger, disabled ? s.triggerDisabled : '', small ? s.small : ''),
+    trigger: classNames(
+      s.trigger,
+      disabled ? s.triggerDisabled : '',
+      small ? s.small : '',
+      className
+    ),
     typography: classNames(s.label, disabled ? s.labelDisabled : '', classNameTypography),
   }
 

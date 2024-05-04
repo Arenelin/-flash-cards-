@@ -48,3 +48,15 @@ export const CheckboxToggles = {
     return <Checkbox checked={checked} onChange={onChangeHandler} />
   },
 } satisfies Story
+
+const label = 'Checkbox-box'
+
+export const CheckboxTogglesWithLabel = {
+  args: { label },
+  render: args => {
+    const [checked, setChecked] = useState(false)
+    const onChangeHandler = () => setChecked(!checked)
+
+    return <Checkbox checked={checked} label={args.label} onChange={onChangeHandler} />
+  },
+} satisfies Story

@@ -14,6 +14,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof Checkbox>
 
+const label = 'Checkbox-box'
+const disabled = true
+
 export const CheckboxChecked = {
   args: {
     checked: true,
@@ -23,20 +26,22 @@ export const CheckboxChecked = {
 export const CheckboxNotChecked = {
   args: {
     checked: false,
+    label: label,
   },
 } satisfies Story
 
 export const CheckboxCheckedDisabled = {
   args: {
     checked: true,
-    disabled: true,
+    disabled: disabled,
   },
 } satisfies Story
 
 export const CheckboxNotCheckedDisabled = {
   args: {
     checked: false,
-    disabled: true,
+    disabled: disabled,
+    label: label,
   },
 } satisfies Story
 
@@ -48,9 +53,6 @@ export const CheckboxToggles = {
     return <Checkbox checked={checked} onChange={onChangeHandler} />
   },
 } satisfies Story
-
-const label = 'Checkbox-box'
-
 export const CheckboxTogglesWithLabel = {
   args: { label },
   render: args => {
@@ -58,5 +60,22 @@ export const CheckboxTogglesWithLabel = {
     const onChangeHandler = () => setChecked(!checked)
 
     return <Checkbox checked={checked} label={args.label} onChange={onChangeHandler} />
+  },
+} satisfies Story
+
+export const CheckboxTogglesWithLabelDisabled = {
+  args: { disabled, label },
+  render: args => {
+    const [checked, setChecked] = useState(false)
+    const onChangeHandler = () => setChecked(!checked)
+
+    return (
+      <Checkbox
+        checked={checked}
+        disabled={args.disabled}
+        label={args.label}
+        onChange={onChangeHandler}
+      />
+    )
   },
 } satisfies Story

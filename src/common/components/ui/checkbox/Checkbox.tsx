@@ -1,7 +1,9 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
 
 import CheckboxIcon from '@/assets/icons/CheckboxIcon'
+import { Typography } from '@/common/components/ui'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
+import classNames from 'classnames'
 
 import s from './checkbox.module.scss'
 
@@ -35,9 +37,14 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
           </CheckboxRadix.Root>
         </div>
         {Boolean(label) && (
-          <label className={s.label} htmlFor={finalId}>
+          <Typography
+            as={'label'}
+            className={classNames(s.label, disabled ? s.disabled : '')}
+            htmlFor={finalId}
+            variant={'body2'}
+          >
             {label}
-          </label>
+          </Typography>
         )}
       </div>
     )

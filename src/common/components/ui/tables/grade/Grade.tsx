@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
 
-import { Star, StarOutline } from '@/assets/icons'
+import { Star, StarOutline } from '@/assets/icons/components'
 import classNames from 'classnames'
 
 import s from './grade.module.scss'

@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef, useId } from 'react'
 
-import Icon from '@/assets/icons/ArrowDown'
+import Icon from '@/assets/icons/components/ArrowDown'
 import { Typography } from '@/common/components/ui'
 import * as SelectRadix from '@radix-ui/react-select'
 import classNames from 'classnames'

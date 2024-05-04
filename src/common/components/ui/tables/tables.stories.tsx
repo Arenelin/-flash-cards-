@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Grade } from '@/common/components/ui/grade/Grade'
 import { TableComponents } from '@/common/components/ui/tables/Tables'
-import { Tools } from '@/common/components/ui/tools/Tools'
+import { Grade } from '@/common/components/ui/tables/grade/Grade'
+import { Tools } from '@/common/components/ui/tables/tools/Tools'
 
 const meta = {
   component: TableComponents.Table,

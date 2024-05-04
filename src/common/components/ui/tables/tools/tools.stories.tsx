@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Tools } from '@/common/components/ui/tools/Tools'
+import { Tools } from '@/common/components/ui/tables/tools/Tools'
 
 const meta = {
   component: Tools,

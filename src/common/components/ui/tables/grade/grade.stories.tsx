@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Grade } from '@/common/components/ui/grade/Grade'
+import { Grade } from '@/common/components/ui/tables/grade/Grade'
 
 const meta = {
   component: Grade,

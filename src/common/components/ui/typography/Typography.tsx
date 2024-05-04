@@ -39,7 +39,7 @@ type TypographyWithRef = <T extends ElementType = 'div'>(
 ) => ReactNode
 export const Typography: TypographyWithRef = forwardRef(
   <T extends ElementType = 'p'>(props: TextProps<T>, ref?: PolymorphicRef<T>) => {
-    const { as: Component = 'p', className, id, variant = 'body1', ...restProps } = props
+    const { as: Component = 'p', className, id, variant = 'body1', ...rest } = props
     const theme: Theme = 'dark' // TODO rewrite the values from the store to the call
     const genID = useId()
     const finalId = id || genID
@@ -49,7 +49,7 @@ export const Typography: TypographyWithRef = forwardRef(
         className={classNames(s[theme], s[variant], className)}
         id={finalId}
         ref={ref}
-        {...restProps}
+        {...rest}
       />
     )
   }

@@ -65,6 +65,12 @@ const Td = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
   }
 )
 
+Table.displayName = 'Table'
+Thead.displayName = 'Thead'
+Body.displayName = 'Body'
+Td.displayName = 'Td'
+Th.displayName = 'Th'
+Tr.displayName = 'Tr'
 export const TableComponents = {
   Body,
   Table,

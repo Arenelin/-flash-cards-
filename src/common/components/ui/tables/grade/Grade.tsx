@@ -35,3 +35,5 @@ export const Grade = forwardRef<ElementRef<'div'>, GradeProps>(
     )
   }
 )
+
+Grade.displayName = 'Grade'

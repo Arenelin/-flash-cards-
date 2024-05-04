@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef, useId } from 'react'
 
 import Icon from '@/assets/icons/ArrowDown'
 import { Typography } from '@/common/components/ui'
@@ -11,8 +11,11 @@ type Option = {
   label: string
   value: string
 }
-type SelectProps = {
+
+type Props = {
   className?: string
+  classNameTypography?: string
+  id?: string
   label?: string
   onValueChange?: (value: string) => void
   options: Option[]
@@ -20,10 +23,14 @@ type SelectProps = {
   small?: boolean
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
-export const Select = (props: SelectProps) => {
+type SelectProps = Omit<ComponentPropsWithoutRef<typeof SelectRadix.Root>, keyof Props> & Props
+
+export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>((props, ref) => {
   const {
     className,
+    classNameTypography,
     disabled,
+    id,
     label,
     onValueChange,
     options,
@@ -32,18 +39,32 @@ export const Select = (props: SelectProps) => {
     value,
     ...rest
   } = props
+  const genID = useId()
+  const finalId = id || genID
+
   const baseclassNames = {
     icon: classNames(s.icon, disabled ? s.iconDisabled : ''),
     item: classNames(s.item, small ? s.small : ''),
-    trigger: classNames(s.trigger, disabled ? s.triggerDisabled : '', small ? s.small : ''),
-    typography: classNames(s.label, disabled ? s.labelDisabled : '', className),
+    trigger: classNames(
+      s.trigger,
+      disabled ? s.triggerDisabled : '',
+      small ? s.small : '',
+      className
+    ),
+    typography: classNames(s.label, disabled ? s.labelDisabled : '', classNameTypography),
   }
 
   return (
     <Typography as={'label'} className={baseclassNames.typography} variant={'body2'}>
       {label}
       <SelectRadix.Root onValueChange={onValueChange} value={value} {...rest}>
-        <SelectRadix.Trigger aria-label={'select'} asChild className={baseclassNames.trigger}>
+        <SelectRadix.Trigger
+          aria-label={'select'}
+          asChild
+          className={baseclassNames.trigger}
+          id={finalId}
+          ref={ref}
+        >
           <button>
             <SelectRadix.Value placeholder={placeholder} />
             <Icon className={baseclassNames.icon} name={'arrow'} />
@@ -63,4 +84,4 @@ export const Select = (props: SelectProps) => {
       </SelectRadix.Root>
     </Typography>
   )
-}
+})

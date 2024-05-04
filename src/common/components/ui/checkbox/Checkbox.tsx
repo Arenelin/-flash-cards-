@@ -8,12 +8,12 @@ import s from './checkbox.module.scss'
 type Props = {
   label?: string
   onChange?: (checked: boolean) => void
-} & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
+}
 
 type CheckboxProps = Omit<ComponentPropsWithoutRef<typeof CheckboxRadix.Root>, keyof Props> & Props
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckboxProps>(
   (props, ref) => {
-    const { checked, className, disabled, id, onChange, ...rest } = props
+    const { checked, className, disabled, id, label, onChange, ...rest } = props
     const genID = useId()
     const finalId = id || genID
 
@@ -34,9 +34,11 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             </CheckboxRadix.Indicator>
           </CheckboxRadix.Root>
         </div>
-        <label className={s.label} htmlFor={finalId}>
-          Check-box
-        </label>
+        {Boolean(label) && (
+          <label className={s.label} htmlFor={finalId}>
+            {label}
+          </label>
+        )}
       </div>
     )
   }

@@ -1,0 +1,6 @@
+export { default as Search } from './Search'
+export { default as SearchOutline } from './SearchOutline'
+export { default as Star } from './Star'
+export { default as StarOutline } from './StarOutline'
+export { default as Trash } from './Trash'
+export { default as TrashOutline } from './TrashOutline'

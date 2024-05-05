@@ -1,11 +1,4 @@
-import {
-  ComponentPropsWithRef,
-  ComponentPropsWithoutRef,
-  ElementType,
-  ReactNode,
-  forwardRef,
-  useId,
-} from 'react'
+import { ComponentPropsWithoutRef, ElementType } from 'react'
 
 import classNames from 'classnames'
 
@@ -29,28 +22,11 @@ export type TextProps<T extends ElementType = 'p'> = {
     | 'overline'
     | 'subtitle1'
     | 'subtitle2'
-} & { ref?: PolymorphicRef<T> } & ComponentPropsWithoutRef<T>
+} & ComponentPropsWithoutRef<T>
 
-type PolymorphicRef<T extends ElementType = 'p'> = ComponentPropsWithRef<T>['ref']
+export const Typography = <T extends ElementType = 'p'>(props: TextProps<T>) => {
+  const { as: Component = 'p', className, id, variant = 'body1', ...rest } = props
+  const theme: Theme = 'dark' // TODO rewrite the values from the store to the call
 
-type TypographyWithRef = <T extends ElementType = 'div'>(
-  props: TextProps<T>,
-  ref?: PolymorphicRef<T>
-) => ReactNode
-export const Typography: TypographyWithRef = forwardRef(
-  <T extends ElementType = 'p'>(props: TextProps<T>, ref?: PolymorphicRef<T>) => {
-    const { as: Component = 'p', className, id, variant = 'body1', ...rest } = props
-    const theme: Theme = 'dark' // TODO rewrite the values from the store to the call
-    const genID = useId()
-    const finalId = id || genID
-
-    return (
-      <Component
-        className={classNames(s[theme], s[variant], className)}
-        id={finalId}
-        ref={ref}
-        {...rest}
-      />
-    )
-  }
-)
+  return <Component className={classNames(s[theme], s[variant], className)} {...rest} />
+}

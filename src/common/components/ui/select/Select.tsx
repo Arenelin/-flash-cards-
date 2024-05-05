@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef, useId } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
 import Icon from '@/assets/icons/ArrowDown'
 import { Typography } from '@/common/components/ui'
@@ -12,7 +12,7 @@ type Option = {
   value: string
 }
 
-type Props = {
+type SelectProps = {
   className?: string
   classNameTypography?: string
   id?: string
@@ -23,14 +23,11 @@ type Props = {
   small?: boolean
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
-type SelectProps = Omit<ComponentPropsWithoutRef<typeof SelectRadix.Root>, keyof Props> & Props
-
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>((props, ref) => {
   const {
     className,
     classNameTypography,
     disabled,
-    id,
     label,
     onValueChange,
     options,
@@ -39,18 +36,11 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
     value,
     ...rest
   } = props
-  const genID = useId()
-  const finalId = id || genID
 
   const baseclassNames = {
     icon: classNames(s.icon, disabled ? s.iconDisabled : ''),
     item: classNames(s.item, small ? s.small : ''),
-    trigger: classNames(
-      s.trigger,
-      disabled ? s.triggerDisabled : '',
-      small ? s.small : '',
-      className
-    ),
+    trigger: classNames(s.trigger, disabled && s.triggerDisabled, small && s.small, className),
     typography: classNames(s.label, disabled ? s.labelDisabled : '', classNameTypography),
   }
 
@@ -58,13 +48,7 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
     <Typography as={'label'} className={baseclassNames.typography} variant={'body2'}>
       {label}
       <SelectRadix.Root onValueChange={onValueChange} value={value} {...rest}>
-        <SelectRadix.Trigger
-          aria-label={'select'}
-          asChild
-          className={baseclassNames.trigger}
-          id={finalId}
-          ref={ref}
-        >
+        <SelectRadix.Trigger asChild className={baseclassNames.trigger} ref={ref}>
           <button>
             <SelectRadix.Value placeholder={placeholder} />
             <Icon className={baseclassNames.icon} name={'arrow'} />

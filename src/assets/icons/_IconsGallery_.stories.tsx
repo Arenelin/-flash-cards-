@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react'
 
-import s from './_IconGallery_.module.scss'
+import s from './_iconGallery_.module.scss'
 
 import * as Icons from './'
 
@@ -121,6 +121,10 @@ export const IconsGallery = () => (
     <div className={s.elementStyle}>
       <Icons.TrashOutline />
       <p className={s.textStyle}>TrashOutline</p>
+    </div>
+    <div className={s.elementStyle}>
+      <Icons.CheckEmail />
+      <p className={s.textStyle}>CheckEmail</p>
     </div>
   </div>
 )

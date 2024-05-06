@@ -1,8 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
 
-import { TrashOutline } from '@/assets/icons/components'
-import Edit2Outline from '@/assets/icons/components/Edit2Outline'
-import PlayCircleOutline from '@/assets/icons/components/PlayCircleOutline'
+import { Edit2Outline, PlayCircleOutline, TrashOutline } from '@/assets/icons'
 import classNames from 'classnames'
 
 import s from './tools.module.scss'

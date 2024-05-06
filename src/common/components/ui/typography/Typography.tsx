@@ -8,7 +8,6 @@ type Theme = 'dark' | 'light' // TODO move to store
 
 export type TextProps<T extends ElementType = 'p'> = {
   as?: T
-  id?: string
   variant?:
     | 'body1'
     | 'body2'
@@ -25,8 +24,10 @@ export type TextProps<T extends ElementType = 'p'> = {
 } & ComponentPropsWithoutRef<T>
 
 export const Typography = <T extends ElementType = 'p'>(props: TextProps<T>) => {
-  const { as: Component = 'p', className, id, variant = 'body1', ...rest } = props
+  const { as: Component = 'p', className, variant = 'body1', ...rest } = props
   const theme: Theme = 'dark' // TODO rewrite the values from the store to the call
 
   return <Component className={classNames(s[theme], s[variant], className)} {...rest} />
 }
+
+Typography.displayName = 'Typography'

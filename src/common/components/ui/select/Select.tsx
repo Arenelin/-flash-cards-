@@ -14,8 +14,7 @@ type Option = {
 
 type SelectProps = {
   className?: string
-  classNameTypography?: string
-  id?: string
+  classTypography?: string
   label?: string
   onValueChange?: (value: string) => void
   options: Option[]
@@ -26,7 +25,7 @@ type SelectProps = {
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>((props, ref) => {
   const {
     className,
-    classNameTypography,
+    classTypography,
     disabled,
     label,
     onValueChange,
@@ -37,28 +36,28 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
     ...rest
   } = props
 
-  const baseclassNames = {
+  const baseClassNames = {
     icon: classNames(s.icon, disabled ? s.iconDisabled : ''),
     item: classNames(s.item, small ? s.small : ''),
     trigger: classNames(s.trigger, disabled && s.triggerDisabled, small && s.small, className),
-    typography: classNames(s.label, disabled ? s.labelDisabled : '', classNameTypography),
+    typography: classNames(s.label, disabled ? s.labelDisabled : '', classTypography),
   }
 
   return (
-    <Typography as={'label'} className={baseclassNames.typography} variant={'body2'}>
+    <Typography as={'label'} className={baseClassNames.typography} variant={'body2'}>
       {label}
       <SelectRadix.Root onValueChange={onValueChange} value={value} {...rest}>
-        <SelectRadix.Trigger asChild className={baseclassNames.trigger} ref={ref}>
+        <SelectRadix.Trigger asChild className={baseClassNames.trigger} ref={ref}>
           <button>
             <SelectRadix.Value placeholder={placeholder} />
-            <Icon className={baseclassNames.icon} name={'arrow'} />
+            <Icon className={baseClassNames.icon} name={'arrow'} />
           </button>
         </SelectRadix.Trigger>
         <SelectRadix.Portal>
           <SelectRadix.Content className={s.content} position={'popper'}>
             <SelectRadix.Viewport>
               {options.map(el => (
-                <SelectRadix.Item className={baseclassNames.item} key={el.value} value={el.value}>
+                <SelectRadix.Item className={baseClassNames.item} key={el.value} value={el.value}>
                   <SelectRadix.ItemText>{el.label}</SelectRadix.ItemText>
                 </SelectRadix.Item>
               ))}
@@ -69,3 +68,5 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
     </Typography>
   )
 })
+
+Select.displayName = 'Select'

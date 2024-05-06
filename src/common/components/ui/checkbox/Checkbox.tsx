@@ -7,15 +7,13 @@ import classNames from 'classnames'
 
 import s from './checkbox.module.scss'
 
-type Props = {
+type CheckboxProps = {
   label?: string
-  onChange?: (checked: boolean) => void
-}
+} & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 
-type CheckboxProps = Omit<ComponentPropsWithoutRef<typeof CheckboxRadix.Root>, keyof Props> & Props
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckboxProps>(
   (props, ref) => {
-    const { checked, className, disabled, id, label, onChange, ...rest } = props
+    const { checked, className, disabled, id, label, ...rest } = props
     const genID = useId()
     const finalId = id || genID
 
@@ -27,7 +25,6 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             className={s.checkboxRoot}
             disabled={disabled}
             id={finalId}
-            onCheckedChange={onChange}
             ref={ref}
             {...rest}
           >

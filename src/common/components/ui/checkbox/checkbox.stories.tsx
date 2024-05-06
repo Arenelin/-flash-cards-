@@ -50,7 +50,7 @@ export const CheckboxToggles = {
     const [checked, setChecked] = useState(false)
     const onChangeHandler = () => setChecked(!checked)
 
-    return <Checkbox checked={checked} onChange={onChangeHandler} />
+    return <Checkbox checked={checked} onCheckedChange={onChangeHandler} />
   },
 } satisfies Story
 export const CheckboxTogglesWithLabel = {
@@ -59,7 +59,7 @@ export const CheckboxTogglesWithLabel = {
     const [checked, setChecked] = useState(false)
     const onChangeHandler = () => setChecked(!checked)
 
-    return <Checkbox checked={checked} label={args.label} onChange={onChangeHandler} />
+    return <Checkbox checked={checked} label={args.label} onCheckedChange={onChangeHandler} />
   },
 } satisfies Story
 
@@ -74,7 +74,7 @@ export const CheckboxTogglesWithLabelDisabled = {
         checked={checked}
         disabled={args.disabled}
         label={args.label}
-        onChange={onChangeHandler}
+        onCheckedChange={onChangeHandler}
       />
     )
   },

@@ -31,7 +31,7 @@ button {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
   &:hover &::before {
-      background-color: var(--color-dark-500);
+    background-color: var(--color-dark-500);
   }
   &:active,
   &:focus-visible {

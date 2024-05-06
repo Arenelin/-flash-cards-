@@ -25,16 +25,7 @@ type useInputParameters = {
   type: InputType
 }
 export const useInput = (parameters: useInputParameters): useInputReturnType => {
-  const {
-    IconActive,
-    IconNotActive,
-    IconStart,
-    disabled,
-    onChange,
-    onClickIconEnd,
-    onKeyDown,
-    type,
-  } = parameters
+  const { IconActive, IconNotActive, IconStart, disabled, onClickIconEnd, type } = parameters
   const [active, setActive] = useState(false)
 
   const onClickHandler = () => {
@@ -55,14 +46,6 @@ export const useInput = (parameters: useInputParameters): useInputReturnType => 
   const typeToggle = active ? InputType.text : InputType.password
   const baseTypeInput = IconNotActive ? typeToggle : type
 
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.currentTarget.value)
-  }
-  const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      onKeyDown?.()
-    }
-  }
   const inputIconStart = IconStart ? s.iconStart : ''
   const inputEndStart = IconActive ? s.iconEnd : ''
   const inputSearchIcon = isSearch ? s.search : ''
@@ -73,7 +56,5 @@ export const useInput = (parameters: useInputParameters): useInputReturnType => 
     baseTypeInput,
     inputStyle,
     isSearch,
-    onChangeHandler,
-    onKeyDownHandler,
   }
 }

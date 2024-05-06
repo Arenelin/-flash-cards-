@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { Option, RadioGroup } from './radioGroup'
+// eslint-disable-next-line import/namespace
+import { Option, RadioGroup } from './RadioGroup'
 
 const meta = {
   component: RadioGroup,
@@ -14,9 +15,9 @@ export default meta
 type Story = StoryObj<typeof RadioGroup>
 
 const options: Option[] = [
-  { label: 'Redux', value: 'redux' },
-  { label: 'Redux Toolkit', value: 'redux toolkit' },
-  { label: 'RTK Query', value: 'rtc query' },
+  { label: 'Redux', value: 'Redux' },
+  { label: 'Redux Toolkit', value: 'Redux Toolkit' },
+  { label: 'RTK Query', value: 'RTC Query' },
 ]
 
 export const RadioGroupToggle = {
@@ -29,8 +30,8 @@ export const RadioGroupToggle = {
 
     return (
       <div style={{ display: 'flex', gap: '50px' }}>
-        <RadioGroup onChange={onChangeHandler} options={args.options} />
-        <div>{value}</div>
+        <RadioGroup onValueChange={onChangeHandler} options={args.options} />
+        <div>{`value: ${value}`}</div>
       </div>
     )
   },

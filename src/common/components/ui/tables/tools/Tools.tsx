@@ -26,3 +26,5 @@ export const Tools = forwardRef<ElementRef<'div'>, ToolsProps>(
     )
   }
 )
+
+Tools.displayName = 'Tools'

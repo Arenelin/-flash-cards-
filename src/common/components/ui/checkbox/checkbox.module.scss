@@ -30,13 +30,14 @@ button {
     stroke: var(--color-dark-900);
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
-  &:hover &::before {
-    background-color: var(--color-dark-500);
-  }
-  &:active,
-  &:focus-visible {
+  &:hover {
     &::before {
-      background-color: var(--color-dark-100);
+      background-color: var(--color-dark-500);
+    }
+  }
+  &:active,&:focus-visible {
+    &::before {
+      background-color:var(--color-dark-100);
     }
   }
 }
@@ -55,13 +56,15 @@ button {
 
   background-color: var(--color-light-100);
   border: none;
-
   &[data-state='unchecked'] {
     border: 2px solid var(--color-light-900);
     background-color: transparent;
   }
-
   &[data-disabled] {
+    background-color: var(--color-dark-100);
+    border: none;
+  }
+  &[data-state='unchecked'][data-disabled] {
     pointer-events: none;
     background-color: var(--color-dark-100);
     border: none;
@@ -71,7 +74,6 @@ button {
     border: 2px solid var(--color-dark-100);
     background-color: transparent;
   }
-
   &:focus-visible {
     outline: 2px solid var(--color-info-700);
     border-radius: 2px;
@@ -82,9 +84,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: var(--color-dark-900);
-
   &[data-disabled] {
     color: var(--color-light-700);
   }
@@ -95,6 +95,7 @@ button {
   &.disabled {
     color: var(--color-dark-100);
   }
+
 }
 
 .icon {

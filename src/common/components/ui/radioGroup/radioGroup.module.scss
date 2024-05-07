@@ -1,0 +1,89 @@
+button {
+  all: unset;
+}
+
+.radioGroupRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.containerItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.radioGroupItem {
+  cursor: pointer;
+
+  position: relative;
+
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent-500);
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+
+    content: '';
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: transparent;
+  }
+  &:hover::before {
+    background-color: var(--color-dark-500);
+  }
+  &:active::before {
+    background-color: var(--color-accent-900);
+  }
+  &:focus-visible::before {
+    background-color: var(--color-dark-700);
+  }
+  &:disabled {
+    pointer-events: none;
+
+    border: 2px solid var(--color-accent-900);
+    & + .label {
+      pointer-events: none;
+
+      color: var(--color-light-900);
+    }
+  }
+}
+
+.radioGroupIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  &::after {
+    content: '';
+    display: block;
+
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    background-color: var(--color-accent-500);
+  }
+  &[data-disabled] {
+    &::after {
+      background-color: var(--color-accent-900);
+    }
+  }
+}
+
+.label {
+  color: var(--color-light-100);
+}

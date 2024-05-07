@@ -2,9 +2,10 @@ import { Ref, SVGProps, forwardRef, memo } from 'react'
 const SvgEyeOutline = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg
     fill={'none'}
-    height={24}
+    height={'1em'}
     ref={ref}
-    width={24}
+    viewBox={'0 0 24 24'}
+    width={'1em'}
     xmlns={'http://www.w3.org/2000/svg'}
     {...props}
   >

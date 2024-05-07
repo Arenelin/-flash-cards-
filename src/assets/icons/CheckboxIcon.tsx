@@ -2,9 +2,10 @@ import { Ref, SVGProps, forwardRef, memo } from 'react'
 const SvgCheckboxIcon = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg
     fill={'none'}
-    height={15}
+    height={'1em'}
     ref={ref}
-    width={15}
+    viewBox={'0 0 15 15'}
+    width={'1em'}
     xmlns={'http://www.w3.org/2000/svg'}
     {...props}
   >

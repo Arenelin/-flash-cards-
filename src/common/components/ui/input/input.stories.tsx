@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 
 import CloseOutline from '@/assets/icons/CloseOutline'
 import EyeOffOutline from '@/assets/icons/EyeOffOutline'
@@ -23,19 +23,31 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof Input>
+
+const buildStoryBook = () => {
+  const [value, setValue] = useState('')
+  const [error, setError] = useState<null | string>(null)
+
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.currentTarget.value)
+  }
+  const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && !value.trim()) {
+      setError('error')
+    } else if (typeof error === 'string') {
+      setError(null)
+    }
+  }
+  const onClearClick = () => {
+    setValue('')
+  }
+
+  return { error, onChangeHandler, onClearClick, onKeyDownHandler, setError, setValue, value }
+}
+
 export const TextInput = {
   render: () => {
-    const [value, setValue] = useState('')
-    const [error, setError] = useState<null | string>(null)
-
-    const onChangeHandler = (value: string) => {
-      setValue(value)
-    }
-    const onKeyDownHandler = () => {
-      if (!value.trim()) {
-        setError('Error!')
-      }
-    }
+    const { error, onChangeHandler, onKeyDownHandler, value } = buildStoryBook()
 
     return (
       <Input
@@ -53,17 +65,7 @@ export const TextInput = {
 
 export const PasswordInput = {
   render: () => {
-    const [value, setValue] = useState('')
-    const [error, setError] = useState<null | string>(null)
-
-    const onChangeHandler = (value: string) => {
-      setValue(value)
-    }
-    const onKeyDownHandler = () => {
-      if (!value.trim()) {
-        setError('Error!')
-      }
-    }
+    const { error, onChangeHandler, onKeyDownHandler, value } = buildStoryBook()
 
     return (
       <Input
@@ -83,20 +85,7 @@ export const PasswordInput = {
 
 export const SearchInput = {
   render: () => {
-    const [value, setValue] = useState('')
-    const [error, setError] = useState<null | string>(null)
-
-    const onChangeHandler = (value: string) => {
-      setValue(value)
-    }
-    const onClearClick = () => {
-      setValue('')
-    }
-    const onKeyDownHandler = () => {
-      if (!value.trim()) {
-        setError('Error!')
-      }
-    }
+    const { error, onChangeHandler, onClearClick, onKeyDownHandler, value } = buildStoryBook()
 
     return (
       <Input

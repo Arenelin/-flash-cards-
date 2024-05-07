@@ -7,7 +7,7 @@ import classNames from 'classnames'
 
 import s from './checkbox.module.scss'
 
-type CheckboxProps = {
+export type CheckboxProps = {
   label?: string
 } & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 

@@ -35,9 +35,10 @@ button {
       background-color: var(--color-dark-500);
     }
   }
-  &:active,&:focus-visible {
+  &:active,
+  &:focus-visible {
     &::before {
-      background-color:var(--color-dark-100);
+      background-color: var(--color-dark-100);
     }
   }
 }
@@ -95,7 +96,6 @@ button {
   &.disabled {
     color: var(--color-dark-100);
   }
-
 }
 
 .icon {

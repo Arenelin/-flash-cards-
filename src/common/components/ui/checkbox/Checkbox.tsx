@@ -1,19 +1,19 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
 
 import { CheckboxIcon } from '@/assets/icons'
+import { Typography } from '@/common/components/ui'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
+import classNames from 'classnames'
 
 import s from './checkbox.module.scss'
 
-type Props = {
+type CheckboxProps = {
   label?: string
-  onChange?: (checked: boolean) => void
 } & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 
-type CheckboxProps = Omit<ComponentPropsWithoutRef<typeof CheckboxRadix.Root>, keyof Props> & Props
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckboxProps>(
   (props, ref) => {
-    const { checked, className, disabled, id, onChange, ...rest } = props
+    const { checked, className, disabled, id, label, ...rest } = props
     const genID = useId()
     const finalId = id || genID
 
@@ -25,7 +25,6 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             className={s.checkboxRoot}
             disabled={disabled}
             id={finalId}
-            onCheckedChange={onChange}
             ref={ref}
             {...rest}
           >
@@ -34,9 +33,16 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             </CheckboxRadix.Indicator>
           </CheckboxRadix.Root>
         </div>
-        <label className={s.label} htmlFor={finalId}>
-          Check-box
-        </label>
+        {Boolean(label) && (
+          <Typography
+            as={'label'}
+            className={classNames(s.label, disabled ? s.disabled : '')}
+            htmlFor={finalId}
+            variant={'body2'}
+          >
+            {label}
+          </Typography>
+        )}
       </div>
     )
   }

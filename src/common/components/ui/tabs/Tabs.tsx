@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Typography } from '@/common/components/ui'
 import * as TabsSwitcher from '@radix-ui/react-tabs'
@@ -19,7 +19,7 @@ type Props = {
   tabs: Tab[]
 } & ComponentPropsWithoutRef<typeof TabsSwitcher.Root>
 
-export const Tabs = (props: Props) => {
+export const Tabs = forwardRef<ElementRef<typeof TabsSwitcher.Root>, Props>((props, ref) => {
   const { className, classNameTypography, label, onValueChange, tabs, value, ...rest } = props
 
   return (
@@ -28,6 +28,7 @@ export const Tabs = (props: Props) => {
       <TabsSwitcher.Root
         className={classNames(s.root, className)}
         onValueChange={onValueChange}
+        ref={ref}
         value={value}
         {...rest}
       >
@@ -46,4 +47,6 @@ export const Tabs = (props: Props) => {
       </TabsSwitcher.Root>
     </Typography>
   )
-}
+})
+
+Tabs.displayName = 'Tabs'

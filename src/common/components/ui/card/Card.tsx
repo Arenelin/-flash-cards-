@@ -17,10 +17,10 @@ type CardProps<T extends ElementType = 'div'> = {
 
 type PolymorphicRef<T extends ElementType> = ComponentPropsWithRef<T>['ref']
 
-const CardPolymorph = <T extends ElementType = 'div'>(
+function CardPolymorph<T extends ElementType = 'div'>(
   props: CardProps<T>,
   ref?: PolymorphicRef<T>
-) => {
+) {
   const { as: Component = 'div', className, id, ...rest } = props
 
   return <Component className={classNames(s.container, className)} {...rest} ref={ref}></Component>

@@ -1,4 +1,11 @@
-import { ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType, forwardRef } from 'react'
+import {
+  ComponentPropsWithRef,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ElementType,
+  ForwardedRef,
+  forwardRef,
+} from 'react'
 
 import classNames from 'classnames'
 
@@ -25,15 +32,21 @@ export type TextProps<T extends ElementType> = {
 
 type PolymorphicRef<T extends ElementType> = ComponentPropsWithRef<T>['ref']
 
-export const Typography = forwardRef(
-  <T extends ElementType = 'p'>(props: TextProps<T>, ref: PolymorphicRef<T>) => {
-    const { as: Component = 'p', className, variant = 'body1', ...restProps } = props
-    const theme: Theme = 'dark' // TODO rewrite the values from the store to the call
+function TypographyPolymorph<T extends ElementType = 'p'>(
+  props: TextProps<T>,
+  ref: PolymorphicRef<T>
+) {
+  const { as: Component = 'p', className, variant = 'body1', ...restProps } = props
+  const theme: Theme = 'dark' // TODO rewrite the values from the store to the call
 
-    return (
-      <Component className={classNames(s[theme], s[variant], className)} ref={ref} {...restProps} />
-    )
-  }
-)
+  return (
+    <Component className={classNames(s[theme], s[variant], className)} ref={ref} {...restProps} />
+  )
+}
 
-Typography.displayName = 'Typography'
+export const Typography = forwardRef(TypographyPolymorph) as <T extends ElementType = 'button'>(
+  props: {
+    ref?: ForwardedRef<ElementRef<T>>
+  } & Omit<ComponentPropsWithoutRef<T>, keyof TextProps<T>> &
+    TextProps<T>
+) => ReturnType<typeof TypographyPolymorph>

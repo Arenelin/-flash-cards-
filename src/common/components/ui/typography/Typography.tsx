@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType } from 'react'
+import { ComponentPropsWithRef, ComponentPropsWithoutRef, ElementType, forwardRef } from 'react'
 
 import classNames from 'classnames'
 
@@ -6,7 +6,7 @@ import s from './typography.module.scss'
 
 type Theme = 'dark' | 'light' // TODO move to store
 
-export type TextProps<T extends ElementType = 'p'> = {
+export type TextProps<T extends ElementType> = {
   as?: T
   variant?:
     | 'body1'
@@ -23,11 +23,17 @@ export type TextProps<T extends ElementType = 'p'> = {
     | 'subtitle2'
 } & ComponentPropsWithoutRef<T>
 
-export const Typography = <T extends ElementType = 'p'>(props: TextProps<T>) => {
-  const { as: Component = 'p', className, variant = 'body1', ...rest } = props
-  const theme: Theme = 'dark' // TODO rewrite the values from the store to the call
+type PolymorphicRef<T extends ElementType> = ComponentPropsWithRef<T>['ref']
 
-  return <Component className={classNames(s[theme], s[variant], className)} {...rest} />
-}
+export const Typography = forwardRef(
+  <T extends ElementType = 'p'>(props: TextProps<T>, ref: PolymorphicRef<T>) => {
+    const { as: Component = 'p', className, variant = 'body1', ...restProps } = props
+    const theme: Theme = 'dark' // TODO rewrite the values from the store to the call
+
+    return (
+      <Component className={classNames(s[theme], s[variant], className)} ref={ref} {...restProps} />
+    )
+  }
+)
 
 Typography.displayName = 'Typography'

@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 
 import { Typography } from '@/common/components/ui'
 import * as SliderRadix from '@radix-ui/react-slider'
@@ -7,23 +7,21 @@ import classNames from 'classnames'
 import s from './slider.module.scss'
 
 type SliderProps = {
-  classTypography?: string
   onValueChange: (value: number[]) => void
   value: number[]
 } & ComponentPropsWithoutRef<typeof SliderRadix.Root>
 
-export const Slider = forwardRef<ElementRef<typeof SliderRadix.Root>, SliderProps>((props, ref) => {
-  const { className, classTypography, onValueChange, value, ...rest } = props
+export const Slider = (props: SliderProps) => {
+  const { className, onValueChange, value, ...rest } = props
 
   return (
     <div className={s.container}>
-      <Typography as={'span'} className={classNames(s.value, classTypography)} variant={'body1'}>
+      <Typography as={'span'} className={s.value} variant={'body1'}>
         {value[0]}
       </Typography>
       <SliderRadix.Root
         className={classNames(s.slider, className)}
         onValueChange={onValueChange}
-        ref={ref}
         value={value}
         {...rest}
       >
@@ -33,11 +31,9 @@ export const Slider = forwardRef<ElementRef<typeof SliderRadix.Root>, SliderProp
         <SliderRadix.Thumb className={s.thumb} />
         <SliderRadix.Thumb className={s.thumb} />
       </SliderRadix.Root>
-      <Typography as={'span'} className={classNames(s.value, classTypography)} variant={'body1'}>
+      <Typography as={'span'} className={s.value} variant={'body1'}>
         {value[1]}
       </Typography>
     </div>
   )
-})
-
-Slider.displayName = 'Slider'
+}

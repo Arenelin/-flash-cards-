@@ -6,7 +6,7 @@ import s from './typography.module.scss'
 
 type Theme = 'dark' | 'light' // TODO move to store
 
-export type TextProps<T extends ElementType = 'p'> = {
+export type TextProps<T extends ElementType> = {
   as?: T
   variant?:
     | 'body1'
@@ -24,10 +24,8 @@ export type TextProps<T extends ElementType = 'p'> = {
 } & ComponentPropsWithoutRef<T>
 
 export const Typography = <T extends ElementType = 'p'>(props: TextProps<T>) => {
-  const { as: Component = 'p', className, variant = 'body1', ...rest } = props
+  const { as: Component = 'p', className, variant = 'body1', ...restProps } = props
   const theme: Theme = 'dark' // TODO rewrite the values from the store to the call
 
-  return <Component className={classNames(s[theme], s[variant], className)} {...rest} />
+  return <Component className={classNames(s[theme], s[variant], className)} {...restProps} />
 }
-
-Typography.displayName = 'Typography'

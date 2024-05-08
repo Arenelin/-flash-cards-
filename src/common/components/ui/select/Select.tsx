@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
 import Icon from '@/assets/icons/ArrowDown'
 import { Typography } from '@/common/components/ui'
@@ -20,7 +20,7 @@ type SelectProps = {
   small?: boolean
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
-export const Select = (props: SelectProps) => {
+export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>((props, ref) => {
   const {
     className,
     disabled,
@@ -43,7 +43,7 @@ export const Select = (props: SelectProps) => {
     <Typography as={'label'} className={baseclassNames.typography} variant={'body2'}>
       {label}
       <SelectRadix.Root onValueChange={onValueChange} value={value} {...rest}>
-        <SelectRadix.Trigger aria-label={'select'} asChild className={baseclassNames.trigger}>
+        <SelectRadix.Trigger asChild className={baseclassNames.trigger} ref={ref}>
           <button>
             <SelectRadix.Value placeholder={placeholder} />
             <Icon className={baseclassNames.icon} name={'arrow'} />
@@ -63,4 +63,6 @@ export const Select = (props: SelectProps) => {
       </SelectRadix.Root>
     </Typography>
   )
-}
+})
+
+Select.displayName = 'Select'

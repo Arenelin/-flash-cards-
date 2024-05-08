@@ -24,7 +24,7 @@ type Props = {
   type: InputType
 }
 
-type InputProps = Omit<ComponentPropsWithoutRef<'input'>, keyof Props> & Props
+export type InputProps = Omit<ComponentPropsWithoutRef<'input'>, keyof Props> & Props
 
 export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) => {
   const {

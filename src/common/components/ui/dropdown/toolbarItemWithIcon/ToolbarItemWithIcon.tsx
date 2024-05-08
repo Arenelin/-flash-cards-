@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ElementRef, ReactNode, forwardRef } from 'react'
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
@@ -9,15 +9,17 @@ type Props = {
   onSelect: () => void
   textContent: ReactNode
 }
-export const ToolbarItemWithIcon = (props: Props) => {
-  const { icon, onSelect, textContent } = props
+export const ToolbarItemWithIcon = forwardRef<ElementRef<typeof DropdownMenu.Item>, Props>(
+  ({ icon, onSelect, textContent }, ref) => {
+    return (
+      <>
+        <DropdownMenu.Item className={s.DropdownMenuItem} onSelect={onSelect} ref={ref}>
+          {icon}
+          {textContent}
+        </DropdownMenu.Item>
+      </>
+    )
+  }
+)
 
-  return (
-    <>
-      <DropdownMenu.Item className={s.DropdownMenuItem} onSelect={onSelect}>
-        {icon}
-        {textContent}
-      </DropdownMenu.Item>
-    </>
-  )
-}
+ToolbarItemWithIcon.displayName = 'ToolbarItemWithIcon'

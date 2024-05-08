@@ -1,4 +1,11 @@
-import { ComponentPropsWithoutRef, ElementRef, ElementType, ForwardedRef, forwardRef } from 'react'
+import {
+  ComponentPropsWithRef,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ElementType,
+  ForwardedRef,
+  forwardRef,
+} from 'react'
 
 import classNames from 'classnames'
 
@@ -8,7 +15,12 @@ type CardProps<T extends ElementType = 'div'> = {
   as?: T
 } & ComponentPropsWithoutRef<T>
 
-const CardPolymorph = <T extends ElementType = 'div'>(props: CardProps<T>, ref?: any) => {
+type PolymorphicRef<T extends ElementType> = ComponentPropsWithRef<T>['ref']
+
+const CardPolymorph = <T extends ElementType = 'div'>(
+  props: CardProps<T>,
+  ref?: PolymorphicRef<T>
+) => {
   const { as: Component = 'div', className, id, ...rest } = props
 
   return <Component className={classNames(s.container, className)} {...rest} ref={ref}></Component>

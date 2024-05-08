@@ -27,8 +27,8 @@ export const CardSection = {
 
 export const StoryCardRef = {
   render: () => {
-    const ref = useRef<ElementRef<'section'>>(null)
+    const ref = useRef<ElementRef<'div'>>(null)
 
-    return <Card as={'section'} ref={ref} style={{ height: '552px', width: ' 420px' }} />
+    return <Card as={'div'} ref={ref} style={{ height: '552px', width: ' 420px' }} />
   },
 }

@@ -1,3 +1,5 @@
+import { forwardRef } from 'react'
+
 import classNames from 'classnames'
 
 import s from './pageButton.module.scss'
@@ -7,12 +9,18 @@ type Props = {
   onClick: () => void
   page: number
 }
-export const PageButton = (props: Props) => {
-  const { isSelected, onClick, page } = props
+export const PageButton = forwardRef<HTMLButtonElement, Props>(
+  ({ isSelected, onClick, page }, ref) => {
+    return (
+      <button
+        className={classNames(s.default, isSelected ? s.selected : '')}
+        onClick={onClick}
+        ref={ref}
+      >
+        {page}
+      </button>
+    )
+  }
+)
 
-  return (
-    <button className={classNames(s.default, isSelected ? s.selected : '')} onClick={onClick}>
-      {page}
-    </button>
-  )
-}
+PageButton.displayName = 'PageButton'

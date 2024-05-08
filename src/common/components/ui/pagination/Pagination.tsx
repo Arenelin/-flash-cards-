@@ -1,3 +1,5 @@
+import { forwardRef } from 'react'
+
 import ArrowBack from '@/assets/icons/ArrowBack'
 import ArrowForward from '@/assets/icons/ArrowForward'
 import { ButtonArrow } from '@/common/components/ui/pagination/buttonArrow/ButtonArrow'
@@ -14,7 +16,7 @@ export type PaginationProps = {
   totalPageCount: number
 }
 
-export const Pagination = (props: PaginationProps) => {
+export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
   const { currentPage, onPageChange, siblingCount = 1, totalPageCount } = props
 
   const { isFirstPage, isLastPage, onNextPage, onPreviousPage, paginationRange } = usePagination({
@@ -25,7 +27,7 @@ export const Pagination = (props: PaginationProps) => {
   })
 
   return (
-    <div className={s.container}>
+    <div className={s.container} ref={ref}>
       <ButtonArrow disabled={isFirstPage} onClick={onPreviousPage}>
         <ArrowBack />
       </ButtonArrow>
@@ -39,4 +41,6 @@ export const Pagination = (props: PaginationProps) => {
       </ButtonArrow>
     </div>
   )
-}
+})
+
+Pagination.displayName = 'Pagination'

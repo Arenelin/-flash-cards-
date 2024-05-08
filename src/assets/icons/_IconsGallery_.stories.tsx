@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react'
 
-import s from './_iconGallery_.module.scss'
+import s from '@/assets/icons/_iconGallery_.module.scss'
 
 import * as Icons from './'
 
@@ -12,7 +12,7 @@ export const IconsGallery = () => (
   <div className={s.blockStyle}>
     <div className={s.elementStyle}>
       <Icons.ArrowBack />
-      <p className={s.textStyle}>&nbsp; ArrowBack</p>
+      <p className={s.textStyle}>ArrowBack</p>
     </div>
     <div className={s.elementStyle}>
       <Icons.ArrowDown />
@@ -20,7 +20,7 @@ export const IconsGallery = () => (
     </div>
     <div className={s.elementStyle}>
       <Icons.ArrowForward />
-      <p className={s.textStyle}>&nbsp; ArrowForward</p>
+      <p className={s.textStyle}>ArrowForward</p>
     </div>
     <div className={s.elementStyle}>
       <Icons.ArrowUp />
@@ -28,7 +28,11 @@ export const IconsGallery = () => (
     </div>
     <div className={s.elementStyle}>
       <Icons.CheckboxIcon />
-      <p className={s.textStyle}>&nbsp; CheckboxIcon</p>
+      <p className={s.textStyle}>CheckboxIcon</p>
+    </div>
+    <div className={s.elementStyle}>
+      <Icons.CheckEmail />
+      <p className={s.textStyle}>CheckEmail</p>
     </div>
     <div className={s.elementStyle}>
       <Icons.Close />
@@ -121,10 +125,6 @@ export const IconsGallery = () => (
     <div className={s.elementStyle}>
       <Icons.TrashOutline />
       <p className={s.textStyle}>TrashOutline</p>
-    </div>
-    <div className={s.elementStyle}>
-      <Icons.CheckEmail />
-      <p className={s.textStyle}>CheckEmail</p>
     </div>
   </div>
 )

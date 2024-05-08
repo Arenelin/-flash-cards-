@@ -15,3 +15,5 @@ export const UserAvatar = forwardRef<HTMLDivElement, Props>(({ name = '', src },
     </div>
   )
 })
+
+UserAvatar.displayName = 'UserAvatar'

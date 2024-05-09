@@ -1,5 +1,6 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
+import { Option } from '@/common/components/ui/'
 import { PaginationProps } from '@/common/components/ui/pagination/Pagination'
 
 // original code: https://www.freecodecamp.org/news/build-a-custom-pagination-component-in-react/
@@ -20,9 +21,20 @@ export const usePagination = ({
   currentPage,
   onPageChange,
   siblingCount = 1,
-  totalPageCount,
+  totalCount,
 }: PaginationProps) => {
+  const [pageSize, onPageSizeChange] = useState('10')
+
+  const options: Option[] = [
+    { label: '10', value: '10' },
+    { label: '20', value: '20' },
+    { label: '30', value: '30' },
+    { label: '50', value: '50' },
+    { label: '100', value: '100' },
+  ]
+
   const paginationRange = useMemo(() => {
+    const totalPageCount = Math.ceil(totalCount / +pageSize)
     // Pages count is determined as siblingCount + firstPage + lastPage + currentPage + 2*DOTS
     const totalPageNumbers = siblingCount + 5
 
@@ -76,7 +88,7 @@ export const usePagination = ({
 
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex]
     }
-  }, [siblingCount, currentPage, totalPageCount]) as PaginationRange
+  }, [siblingCount, currentPage, pageSize, totalCount]) as PaginationRange
 
   const isLastPage = currentPage === paginationRange.at(-1)
   const isFirstPage = currentPage === 1
@@ -87,5 +99,14 @@ export const usePagination = ({
     onPageChange(currentPage - 1)
   }
 
-  return { isFirstPage, isLastPage, onNextPage, onPreviousPage, paginationRange }
+  return {
+    isFirstPage,
+    isLastPage,
+    onNextPage,
+    onPageSizeChange,
+    onPreviousPage,
+    options,
+    pageSize,
+    paginationRange,
+  }
 }

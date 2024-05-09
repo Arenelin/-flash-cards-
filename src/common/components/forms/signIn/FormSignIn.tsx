@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import { useForm } from 'react-hook-form'
 
 import EyeOffOutline from '@/assets/icons/EyeOffOutline'
@@ -31,13 +32,14 @@ const loginSchema = z.object({
 export type SignIn = z.infer<typeof loginSchema>
 export const FormSignIn = ({ onSubmit }: Props) => {
   const { control, handleSubmit } = useForm<SignIn>({ resolver: zodResolver(loginSchema) })
+  const formId = useId()
 
   return (
     <Card className={s.card}>
       <Typography as={'h2'} variant={'h1'}>
         Sign In
       </Typography>
-      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={s.form} id={formId} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.containerInput}>
           <ControlledInput
             className={s.input}
@@ -61,11 +63,11 @@ export const FormSignIn = ({ onSubmit }: Props) => {
 
         <div className={s.containerCheckbox}>
           <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
-          <Typography as={'a'} className={s.containerTypography} variant={'body2'}>
+          <Typography as={'a'} className={s.forgotPassword} variant={'body2'}>
             Forgot Password?
           </Typography>
         </div>
-        <Button as={'button'} fullWidth>
+        <Button as={'button'} form={formId} fullWidth type={'submit'}>
           Sign In
         </Button>
       </form>

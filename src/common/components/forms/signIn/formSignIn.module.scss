@@ -1,0 +1,33 @@
+
+.card {
+  padding: 35px 35px 35px 25px;
+}
+.form {
+  margin: 28px 0 20px;
+}
+
+.containerInput {
+  display: grid;
+  gap: 24px;
+}
+
+.containerCheckbox {
+  margin: 12px 0 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.containerTypography {
+  margin-top: 36px;
+
+}
+
+.registration {
+    color: var(--color-light-900);
+  margin-bottom: 8px;
+  }
+
+  .signUp {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: var(--color-accent-500);
+  }

@@ -60,6 +60,11 @@
   &:visited {
     color: var(--color-info-500);
   }
+  &:focus-visible {
+    outline: 2px solid var(--color-info-700);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 }
 
 .link2 {
@@ -68,6 +73,11 @@
   text-decoration: underline;
   &:visited {
     color: var(--color-info-500);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-info-700);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 

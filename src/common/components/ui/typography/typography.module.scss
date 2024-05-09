@@ -53,20 +53,25 @@
   @include typography(var(--font-size-xs), var(--line-height-s), var(--font-weight-regular));
 }
 
-.link1,
-.link1:visited {
+.link1{
   @include typography(var(--font-size-s), var(--line-height-m), var(--font-weight-regular));
-
   cursor: pointer;
-  color: var(--color-info-500);
   text-decoration: underline;
+  &:visited {
+    color: var(--color-info-500);
+  }
 }
 
-.link2,
-.link2:visited {
+.link2 {
   @include typography(var(--font-size-xs), var(--line-height-s), var(--font-weight-regular));
-
   cursor: pointer;
-  color: var(--color-info-500);
   text-decoration: underline;
+  &:visited {
+    color: var(--color-info-500);
+  }
+}
+
+.error {
+  @include typography(var(--font-size-xs), var(--line-height-s), var(--font-weight-regular));
+  color: var(--color-danger-300);
 }

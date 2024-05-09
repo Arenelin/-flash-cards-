@@ -26,13 +26,12 @@ button {
 
     background-color: transparent;
     transition: ease-in 0.2s;
-    stroke-width: 1px;
-    stroke: var(--color-dark-900);
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
   &:hover {
     &::before {
       background-color: var(--color-dark-500);
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
     }
   }
   &:active,
@@ -101,5 +100,4 @@ button {
 .icon {
   width: 18px;
   height: 18px;
-  transform: translate(10%, 10%);
 }

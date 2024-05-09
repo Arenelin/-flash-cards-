@@ -19,6 +19,7 @@ export type TextProps<T extends ElementType> = {
     | 'body1'
     | 'body2'
     | 'caption'
+    | 'error'
     | 'h1'
     | 'h2'
     | 'h3'

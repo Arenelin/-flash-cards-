@@ -63,7 +63,7 @@ export const FormSignIn = ({ onSubmit }: Props) => {
 
         <div className={s.containerCheckbox}>
           <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
-          <Typography as={'a'} className={s.forgotPassword} variant={'body2'}>
+          <Typography as={'a'} className={s.forgotPassword} href={'#'} variant={'body2'}>
             Forgot Password?
           </Typography>
         </div>
@@ -74,7 +74,7 @@ export const FormSignIn = ({ onSubmit }: Props) => {
       <Typography as={'h3'} className={s.registration} variant={'body2'}>
         Don&apos;t have an account?
       </Typography>
-      <Typography as={'a'} className={s.signUp} variant={'h4'}>
+      <Typography as={'a'} className={s.signUp} href={'#'} variant={'h4'}>
         Sign Up
       </Typography>
     </Card>

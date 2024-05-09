@@ -11,7 +11,7 @@ import { z } from 'zod'
 import s from './formSignIn.module.scss'
 
 type Props = {
-  onSubmit: (data: any) => void
+  onSubmit: (data: SignIn) => void
 }
 const passwordValidationRegex = /^(?=.*[A-Z]).+$/
 const loginSchema = z.object({
@@ -40,6 +40,7 @@ export const FormSignIn = ({ onSubmit }: Props) => {
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.containerInput}>
           <ControlledInput
+            className={s.input}
             control={control}
             label={'Email'}
             name={'email'}
@@ -47,6 +48,7 @@ export const FormSignIn = ({ onSubmit }: Props) => {
             type={InputType.text}
           />
           <ControlledInput
+            className={s.input}
             control={control}
             iconEnd={<EyeOffOutline />}
             iconEndNotActive={<EyeOutline />}
@@ -58,7 +60,7 @@ export const FormSignIn = ({ onSubmit }: Props) => {
         </div>
 
         <div className={s.containerCheckbox}>
-          <ControlledCheckbox control={control} name={'rememberMe'} />
+          <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
           <Typography as={'a'} className={s.containerTypography} variant={'body2'}>
             Forgot Password?
           </Typography>
@@ -68,8 +70,7 @@ export const FormSignIn = ({ onSubmit }: Props) => {
         </Button>
       </form>
       <Typography as={'h3'} className={s.registration} variant={'body2'}>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
-        Don't have an account?
+        Don&apos;t have an account?
       </Typography>
       <Typography as={'a'} className={s.signUp} variant={'h4'}>
         Sign Up

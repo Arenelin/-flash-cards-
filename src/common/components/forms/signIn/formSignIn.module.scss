@@ -11,14 +11,21 @@
   gap: 24px;
 }
 
+.input {
+  width: 348px;
+}
+
 .containerCheckbox {
   margin: 12px 0 60px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 }
 .containerTypography {
   margin-top: 36px;
-
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .registration {
@@ -30,4 +37,7 @@
     text-decoration: underline;
     text-decoration-skip-ink: none;
     color: var(--color-accent-500);
+    &:hover {
+      text-decoration: none;
+    }
   }

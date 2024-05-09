@@ -42,13 +42,12 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) =>
   } = props
   const genID = useId()
   const finalId = id || genID
-  const isDisabled = Boolean(disabled || errorMessage)
 
   const { IconEndOrIconToggle, baseTypeInput, inputStyle, isSearch } = useInput({
     IconActive: IconEnd,
     IconNotActive: IconEndNotActive,
     IconStart,
-    disabled: isDisabled,
+    disabled,
     onClickIconEnd,
     type,
   })

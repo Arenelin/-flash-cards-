@@ -37,7 +37,7 @@ export const useInput = (parameters: useInputParameters): useInputReturnType => 
     }
   }
   const Icon = (
-    <button disabled={disabled} onClick={onClickHandler}>
+    <button disabled={disabled} onClick={onClickHandler} type={'button'}>
       {active ? IconNotActive : IconActive}
     </button>
   )

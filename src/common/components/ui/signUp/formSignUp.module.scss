@@ -21,15 +21,9 @@
   margin: 60px 0 20px;
 }
 .signIn {
-  cursor: pointer;
   margin-top: 6px;
-  text-decoration: underline;
   color: var(--color-accent-500);
   &:hover {
     text-decoration: none;
-  }
-  &:focus {
-    outline: 2px solid var(--color-info-700);
-    outline-offset: 2px;
   }
 }

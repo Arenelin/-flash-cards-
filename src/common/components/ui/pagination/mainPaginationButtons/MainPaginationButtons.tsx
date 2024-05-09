@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { ElementRef, forwardRef } from 'react'
 
 import { PaginationProps } from '@/common/components/ui'
 import { Dots } from '@/common/components/ui/pagination/mainPaginationButtons/dots/Dots'
@@ -9,7 +9,7 @@ type Props = { paginationRange: PaginationRange } & Omit<
   PaginationProps,
   'siblingCount' | 'totalCount'
 >
-export const MainPaginationButtons = forwardRef<HTMLButtonElement & HTMLSpanElement, Props>(
+export const MainPaginationButtons = forwardRef<ElementRef<'button'> & ElementRef<'span'>, Props>(
   (props, ref) => {
     const { currentPage, onPageChange, paginationRange } = props
     const paginationButtons = paginationRange.map((page, index) => {

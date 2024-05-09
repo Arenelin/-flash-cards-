@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { ElementRef, forwardRef } from 'react'
 
 import ArrowBack from '@/assets/icons/ArrowBack'
 import ArrowForward from '@/assets/icons/ArrowForward'
@@ -17,7 +17,7 @@ export type PaginationProps = {
   totalCount: number
 }
 
-export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
+export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>((props, ref) => {
   const { currentPage, onPageChange, siblingCount = 1, totalCount } = props
 
   const {

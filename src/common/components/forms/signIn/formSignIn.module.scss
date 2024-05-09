@@ -21,7 +21,8 @@
   justify-content: space-between;
   align-items: flex-start;
 }
-.containerTypography {
+.forgotPassword {
+ cursor: pointer;
   margin-top: 36px;
   &:hover {
     text-decoration: underline;
@@ -30,10 +31,11 @@
 
 .registration {
     color: var(--color-light-900);
-  margin-bottom: 8px;
+    margin-bottom: 8px;
   }
 
   .signUp {
+    cursor: pointer;
     text-decoration: underline;
     text-decoration-skip-ink: none;
     color: var(--color-accent-500);

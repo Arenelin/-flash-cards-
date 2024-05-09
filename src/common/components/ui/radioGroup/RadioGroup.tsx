@@ -10,7 +10,7 @@ export type Option = {
   value: string
 }
 
-type RadioGroupProps = {
+export type RadioGroupProps = {
   options: Option[]
 } & ComponentPropsWithoutRef<typeof RadioGroupRadix.Root>
 
@@ -23,23 +23,12 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, Ra
         {options.map((radio: Option, index: number) => {
           return (
             <div className={s.containerItem} key={index}>
-              <RadioGroupRadix.Item
-                className={s.radioGroupItem}
-                id={radio.value}
-                value={radio.value}
-              >
+              <RadioGroupRadix.Item className={s.item} id={radio.value} value={radio.value}>
                 <RadioGroupRadix.Indicator className={s.radioGroupIndicator} />
               </RadioGroupRadix.Item>
-              {Boolean(radio.label) && (
-                <Typography
-                  as={'label'}
-                  className={s.label}
-                  htmlFor={radio.value}
-                  variant={'body2'}
-                >
-                  {radio.label}
-                </Typography>
-              )}
+              <Typography as={'label'} className={s.label} htmlFor={radio.value} variant={'body2'}>
+                {radio.label}
+              </Typography>
             </div>
           )
         })}

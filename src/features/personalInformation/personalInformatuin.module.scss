@@ -1,0 +1,71 @@
+.card {
+  width: 420px;
+  height: 348px;
+}
+
+.classTitle {
+  margin: 32px auto 28px;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userAvatar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6px;
+
+  & div {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+.nameBlock {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-l);
+  color: var(--color-light-100);
+}
+
+.edit {
+  width: 16px;
+  height: 16px;
+}
+
+.email {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  color: var(--color-dark-100);
+}
+
+.input {
+  margin-bottom: 25px;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 122px;
+  height: 36px;
+  margin-top: 15px;
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
+
+  background-color: var(--color-dark-300);
+  border-radius: 4px;
+}

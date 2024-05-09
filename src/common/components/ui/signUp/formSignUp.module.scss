@@ -1,8 +1,13 @@
 .card {
   padding: 35px 35px 35px 25px;
+
 }
 .form {
   margin: 28px 0 20px;
+  &:focus-visible{
+    outline: 2px solid var(--color-info-700);
+    outline-offset: 2px;
+  }
 }
 .containerInput {
   display: flex;
@@ -16,11 +21,15 @@
   margin: 60px 0 20px;
 }
 .signIn {
+  cursor: pointer;
   margin-top: 6px;
   text-decoration: underline;
-  cursor: pointer;
   color: var(--color-accent-500);
   &:hover {
     text-decoration: none;
+  }
+  &:focus {
+    outline: 2px solid var(--color-info-700);
+    outline-offset: 2px;
   }
 }

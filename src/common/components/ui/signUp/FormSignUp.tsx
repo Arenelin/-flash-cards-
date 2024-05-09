@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { EyeOffOutline, EyeOutline } from '@/assets/icons'
@@ -43,6 +44,7 @@ const registrationSchema = z
 export type SignUp = z.infer<typeof registrationSchema>
 export const FormSignUp = ({ onSubmit }: Props) => {
   const { control, handleSubmit } = useForm<SignUp>({ resolver: zodResolver(registrationSchema) })
+  const formId = useId()
 
   return (
     <>
@@ -52,7 +54,7 @@ export const FormSignUp = ({ onSubmit }: Props) => {
         <Typography as={'h1'} variant={'h1'}>
           Sign Up
         </Typography>
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={s.form} id={formId} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.containerInput}>
             <ControlledInput
               className={s.input}
@@ -83,7 +85,7 @@ export const FormSignUp = ({ onSubmit }: Props) => {
               type={InputType.password}
             />
           </div>
-          <Button as={'button'} className={s.button} fullWidth type={'submit'}>
+          <Button as={'button'} className={s.button} form={formId} fullWidth type={'submit'}>
             Sign Up
           </Button>
         </form>

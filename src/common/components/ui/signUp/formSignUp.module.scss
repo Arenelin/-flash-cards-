@@ -1,0 +1,26 @@
+.card {
+  padding: 35px 35px 35px 25px;
+}
+.form {
+  margin: 28px 0 20px;
+}
+.containerInput {
+  display: flex;
+  flex-direction: column;
+  gap:24px;
+}
+.input {
+  width: 348px;
+}
+.button {
+  margin: 60px 0 20px;
+}
+.signIn {
+  margin-top: 6px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--color-accent-500);
+  &:hover {
+    text-decoration: none;
+  }
+}

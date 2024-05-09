@@ -44,6 +44,9 @@ importers:
       react-hook-form:
         specifier: ^7.51.4
         version: 7.51.4(react@18.2.0)
+      remeda:
+        specifier: ^1.61.0
+        version: 1.61.0
       zod:
         specifier: ^3.23.6
         version: 3.23.6
@@ -4333,6 +4336,9 @@ packages:
 
   rehype-slug@6.0.0:
     resolution: {integrity: sha512-lWyvf/jwu+oS5+hL5eClVd3hNdmwM1kAC0BUvEGD19pajQMIzcNUd/k9GsfQ+FfECvX+JE+e9/btsKH0EjJT6A==}
+
+  remeda@1.61.0:
+    resolution: {integrity: sha512-caKfSz9rDeSKBQQnlJnVW3mbVdFgxgGWQKq1XlFokqjf+hQD5gxutLGTTY2A/x24UxVyJe9gH5fAkFI63ULw4A==}
 
   require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
@@ -10040,6 +10046,8 @@ snapshots:
       hast-util-heading-rank: 3.0.0
       hast-util-to-string: 3.0.0
       unist-util-visit: 5.0.0
+
+  remeda@1.61.0: {}
 
   require-from-string@2.0.2: {}
 

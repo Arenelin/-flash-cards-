@@ -7,7 +7,7 @@ import { PaginationRange } from '@/common/components/ui/pagination/usePagination
 
 type Props = { paginationRange: PaginationRange } & Omit<
   PaginationProps,
-  'siblingCount' | 'totalPageCount'
+  'siblingCount' | 'totalCount'
 >
 export const MainPaginationButtons = forwardRef<HTMLButtonElement & HTMLSpanElement, Props>(
   (props, ref) => {

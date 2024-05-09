@@ -17,33 +17,11 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof Pagination>
 
-export const Default = {
+export const PaginationDemo = {
   render: () => {
     const [page, setPage] = useState(1)
-    const TOTAL_PAGE_COUNT = 42
+    const TOTAL_COUNT = 2000
 
-    return (
-      <Pagination currentPage={page} onPageChange={setPage} totalPageCount={TOTAL_PAGE_COUNT} />
-    )
-  },
-} satisfies Story
-export const DefaultWithTwoPages = {
-  render: () => {
-    const [page, setPage] = useState(1)
-    const TOTAL_PAGE_COUNT = 2
-
-    return (
-      <Pagination currentPage={page} onPageChange={setPage} totalPageCount={TOTAL_PAGE_COUNT} />
-    )
-  },
-} satisfies Story
-export const DefaultWithOnePages = {
-  render: () => {
-    const [page, setPage] = useState(1)
-    const TOTAL_PAGE_COUNT = 1
-
-    return (
-      <Pagination currentPage={page} onPageChange={setPage} totalPageCount={TOTAL_PAGE_COUNT} />
-    )
+    return <Pagination currentPage={page} onPageChange={setPage} totalCount={TOTAL_COUNT} />
   },
 } satisfies Story

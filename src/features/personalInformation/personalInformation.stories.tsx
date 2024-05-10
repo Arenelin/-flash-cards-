@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { PersonalInformation } from '@/features/personalInformation/PersonalInformation'
+import { FormData, PersonalInformation } from '@/features/personalInformation/PersonalInformation'
 
 const meta = {
   argTypes: {},
@@ -14,8 +14,8 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof PersonalInformation>
-const onSubmit = (data: string) => {
-  alert(data)
+const onSubmit = (data: FormData) => {
+  alert(data.nickName)
 }
 
 export const PersonalInformationDemo = {
@@ -23,6 +23,6 @@ export const PersonalInformationDemo = {
     email: 'free@samuraijs.com',
     imgSrc: 'https://i.pinimg.com/736x/6e/2f/88/6e2f886a234cefdb5b680763dbc53b4b.jpg',
     name: 'Unknown woman',
-    nickNameChange: onSubmit,
+    onSubmit: onSubmit,
   },
 } satisfies Story

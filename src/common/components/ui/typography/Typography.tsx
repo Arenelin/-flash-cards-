@@ -46,7 +46,7 @@ function TypographyPolymorph<T extends ElementType = 'p'>(
   )
 }
 
-export const Typography = forwardRef(TypographyPolymorph) as <T extends ElementType = 'button'>(
+export const Typography = forwardRef(TypographyPolymorph) as <T extends ElementType = 'p'>(
   props: {
     ref?: ForwardedRef<ElementRef<T>>
   } & Omit<ComponentPropsWithoutRef<T>, keyof TextProps<T>> &

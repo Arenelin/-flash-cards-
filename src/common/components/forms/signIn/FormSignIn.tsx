@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 
 import EyeOffOutline from '@/assets/icons/EyeOffOutline'
 import EyeOutline from '@/assets/icons/EyeOutline'
+import { emailSchema, passwordSchema } from '@/common/components/forms/zodSchema'
 import { Button, Card, InputType, Typography } from '@/common/components/ui'
 import { ControlledCheckbox } from '@/common/components/ui/controlled/controlled-checkbox/Controlled-checkbox'
 import { ControlledInput } from '@/common/components/ui/controlled/controlled-input/Controlled-input'
@@ -14,18 +15,10 @@ import s from './formSignIn.module.scss'
 type Props = {
   onSubmit: (data: SignIn) => void
 }
-const passwordValidationRegex = /^(?=.*[A-Z]).+$/
+
 const loginSchema = z.object({
-  email: z
-    .string()
-    .min(1, { message: 'This field has to be filled.' })
-    .email('This is not a valid email.'),
-  password: z
-    .string()
-    .min(5, { message: 'Password must be at least 5 characters' })
-    .refine(val => passwordValidationRegex.test(val), {
-      message: 'Password must contain one uppercase',
-    }),
+  email: emailSchema,
+  password: passwordSchema,
   rememberMe: z.boolean().optional(),
 })
 
@@ -74,7 +67,7 @@ export const FormSignIn = ({ onSubmit }: Props) => {
       <Typography as={'h2'} className={s.registration} variant={'body2'}>
         Don&apos;t have an account?
       </Typography>
-      <Typography as={'a'} className={s.signUp} href={'#'} variant={'h4'}>
+      <Typography as={'a'} className={s.signUp} href={'#'} variant={'link3'}>
         Sign Up
       </Typography>
     </Card>

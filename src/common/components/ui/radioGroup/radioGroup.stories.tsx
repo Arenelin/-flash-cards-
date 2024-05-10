@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 // eslint-disable-next-line import/namespace
-import { Option, RadioGroup } from './RadioGroup'
+import { OptionRadio, RadioGroup } from './RadioGroup'
 
 const meta = {
   component: RadioGroup,
@@ -14,7 +14,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof RadioGroup>
 
-const options: Option[] = [
+const options: OptionRadio[] = [
   { label: 'Redux', value: 'Redux' },
   { label: 'Redux Toolkit', value: 'Redux Toolkit' },
   { label: 'RTK Query', value: 'RTC Query' },

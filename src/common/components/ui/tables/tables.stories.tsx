@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { TableComponents } from '@/common/components/ui/tables/Tables'
 import { Grade } from '@/common/components/ui/tables/grade/Grade'
+import { SortFilter } from '@/common/components/ui/tables/sortFilter/SotrFilter'
 import { Tools } from '@/common/components/ui/tables/tools/Tools'
 
 const meta = {
@@ -15,10 +16,17 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof TableComponents.Table>
+const sort = () => {
+  alert('Sort!')
+}
+const testCallBack = () => {
+  alert('Test')
+}
 
 export const Tables = {
   render: () => {
-    const header = ['Name', 'Cards', 'Last Updated', 'Created by', 'Grade', '']
+    // eslint-disable-next-line react/jsx-key
+    const header = ['Name', 'Cards', <SortFilter onSort={sort} />, 'Created by', 'Grade', '']
     const headCells = header.map((headCell, index) => {
       return <TableComponents.Th key={index}>{headCell}</TableComponents.Th>
     })
@@ -38,7 +46,7 @@ export const Tables = {
               <Grade currentGrade={2} />{' '}
             </TableComponents.Td>
             <TableComponents.Td>
-              <Tools canUseTool />
+              <Tools onDelete={testCallBack} onEdit={testCallBack} onPlay={testCallBack} />
             </TableComponents.Td>
           </TableComponents.Tr>
           <TableComponents.Tr>
@@ -50,7 +58,12 @@ export const Tables = {
               <Grade currentGrade={4} />
             </TableComponents.Td>
             <TableComponents.Td>
-              <Tools canUseTool />
+              <Tools
+                canUseTool={false}
+                onDelete={testCallBack}
+                onEdit={testCallBack}
+                onPlay={testCallBack}
+              />
             </TableComponents.Td>
           </TableComponents.Tr>
           <TableComponents.Tr>
@@ -62,7 +75,7 @@ export const Tables = {
               <Grade currentGrade={1} />
             </TableComponents.Td>
             <TableComponents.Td>
-              <Tools canUseTool />
+              <Tools onDelete={testCallBack} onEdit={testCallBack} onPlay={testCallBack} />
             </TableComponents.Td>
           </TableComponents.Tr>
         </TableComponents.Body>

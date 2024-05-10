@@ -34,7 +34,7 @@ export const PersonalInformation = ({ email, imgSrc, name, onSubmit }: Props) =>
 
   return (
     <Card className={s.card}>
-      <Typography as={'h2'} className={s.classTitle} variant={'h1'}>
+      <Typography as={'h1'} className={s.classTitle} variant={'h1'}>
         Personal Information
       </Typography>
       <form id={formId} onSubmit={handleSubmit(nickNameHandler)}>

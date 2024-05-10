@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { Option, RadioGroup } from '@/common/components/ui'
+import { RadioGroup } from '@/common/components/ui'
+import { Option } from '@/common/types'
 
 const meta = {
   component: RadioGroup,

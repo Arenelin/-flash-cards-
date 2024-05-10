@@ -1,0 +1,5 @@
+export * from '@/features/forms/forgotPassword/FormForgotPassword'
+export * from '@/features/forms/newPasswordForm/NewPasswordForm'
+export * from '@/features/forms/personalInformation/PersonalInformation'
+export * from '@/features/forms/signIn/FormSignIn'
+export * from '@/features/forms/signUp/FormSignUp'

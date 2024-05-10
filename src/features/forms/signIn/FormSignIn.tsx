@@ -3,11 +3,11 @@ import { useForm } from 'react-hook-form'
 
 import EyeOffOutline from '@/assets/icons/EyeOffOutline'
 import EyeOutline from '@/assets/icons/EyeOutline'
-import { FormForgotPassword } from '@/common/components/forms'
-import { emailSchema, passwordSchema } from '@/common/components/forms/zodSchema'
 import { Button, Card, InputType, Typography } from '@/common/components/ui'
 import { ControlledCheckbox } from '@/common/components/ui/controlled/controlled-checkbox/Controlled-checkbox'
 import { ControlledInput } from '@/common/components/ui/controlled/controlled-input/Controlled-input'
+import { emailSchema, passwordSchema } from '@/common/utils/zodSchema'
+import { FormForgotPassword } from '@/features/forms'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 

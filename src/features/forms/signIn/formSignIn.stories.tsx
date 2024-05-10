@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { FormSignIn, SignIn } from '@/common/components/forms/signIn/FormSignIn'
+import { FormSignIn, SignIn } from '@/features/forms'
 
 const meta = {
   argTypes: {},

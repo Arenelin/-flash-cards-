@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 
-import { Option } from '@/common/components/ui/'
 import { PaginationProps } from '@/common/components/ui/pagination/Pagination'
+import { Option } from '@/common/types'
 
 // original code: https://www.freecodecamp.org/news/build-a-custom-pagination-component-in-react/
 

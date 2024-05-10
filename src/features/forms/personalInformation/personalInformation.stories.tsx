@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { FormData, PersonalInformation } from '@/features/personalInformation/PersonalInformation'
+import { FormData, PersonalInformation } from '@/features/forms'
 
 const meta = {
   argTypes: {},

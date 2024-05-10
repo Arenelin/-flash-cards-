@@ -1,7 +1,7 @@
 import { CheckEmail } from '@/assets/icons'
 import { Button, Card, Typography } from '@/common/components/ui'
 
-import s from '@/common/components/forms/forgotPassword/formForgotPassword.module.scss'
+import s from '@/features/forms/forgotPassword/formForgotPassword.module.scss'
 
 type PropsType = {
   email: string

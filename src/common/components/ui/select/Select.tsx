@@ -2,15 +2,12 @@ import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'rea
 
 import Icon from '@/assets/icons/ArrowDown'
 import { Typography } from '@/common/components/ui'
+import { Option } from '@/common/types'
 import * as SelectRadix from '@radix-ui/react-select'
 import classNames from 'classnames'
 
 import s from './select.module.scss'
 
-export type Option = {
-  label: string
-  value: string
-}
 type SelectProps = {
   className?: string
   label?: string

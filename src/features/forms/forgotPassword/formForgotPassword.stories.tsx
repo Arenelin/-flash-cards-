@@ -1,4 +1,4 @@
-import { FormForgotPassword } from '@/common/components/forms'
+import { FormForgotPassword } from '@/features/forms'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

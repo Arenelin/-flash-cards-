@@ -2,9 +2,9 @@ import { useId } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { EyeOffOutline, EyeOutline } from '@/assets/icons'
-import { emailSchema, passwordSchema } from '@/common/components/forms/zodSchema'
 import { Button, Card, InputType, Typography } from '@/common/components/ui'
 import { ControlledInput } from '@/common/components/ui/controlled/controlled-input/Controlled-input'
+import { emailSchema, passwordSchema } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 

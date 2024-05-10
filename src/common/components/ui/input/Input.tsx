@@ -84,7 +84,7 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) =>
         )}
       </div>
       {Boolean(errorMessage) && (
-        <Typography as={'span'} className={s.error}>
+        <Typography as={'span'} className={s.error} variant={'error'}>
           {errorMessage}
         </Typography>
       )}

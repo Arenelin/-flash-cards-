@@ -7,7 +7,7 @@ import classNames from 'classnames'
 
 import s from './select.module.scss'
 
-type Option = {
+export type Option = {
   label: string
   value: string
 }

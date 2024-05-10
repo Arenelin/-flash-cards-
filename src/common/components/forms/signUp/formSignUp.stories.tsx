@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { FormSignUp, SignUp } from '@/common/components/ui/signUp/FormSignUp'
+import { FormSignUp, SignUp } from '@/common/components/forms/signUp/FormSignUp'
 import { omit } from 'remeda'
 
 const meta = {

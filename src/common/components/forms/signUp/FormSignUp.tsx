@@ -2,6 +2,7 @@ import { useId } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { EyeOffOutline, EyeOutline } from '@/assets/icons'
+import { emailSchema, passwordSchema } from '@/common/components/forms/zodSchema'
 import { Button, Card, InputType, Typography } from '@/common/components/ui'
 import { ControlledInput } from '@/common/components/ui/controlled/controlled-input/Controlled-input'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,23 +13,12 @@ import s from './formSignUp.module.scss'
 type Props = {
   onSubmit: (data: SignUp) => void
 }
-export const passwordValidationRegex = /^(?=.*[A-Z]).+$/
-export const email = z
-  .string()
-  .min(1, { message: 'This field has to be filled.' })
-  .email('This is not a valid email.')
-export const password = z
-  .string()
-  .min(5, { message: 'Password must be at least 5 characters' })
-  .refine(val => passwordValidationRegex.test(val), {
-    message: 'Password must contain one uppercase',
-  })
 
 const registrationSchema = z
   .object({
-    confirmPassword: password,
-    email: email,
-    password: password,
+    confirmPassword: passwordSchema,
+    email: emailSchema,
+    password: passwordSchema,
   })
   .refine(
     values => {
@@ -82,7 +72,7 @@ export const FormSignUp = ({ onSubmit }: Props) => {
           />
         </div>
         <Button className={s.button} form={formId} fullWidth>
-          Sign Up
+          Create New Password
         </Button>
       </form>
       <Typography as={'h2'} variant={'body2'}>

@@ -8,7 +8,7 @@ import { ControlledInput } from '@/common/components/ui/controlled/controlled-in
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from './NewPasswordForm.module.scss'
+import s from './newPasswordForm.module.scss'
 
 export default {}
 type NewPasswordFormProps = {

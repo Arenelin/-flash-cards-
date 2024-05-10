@@ -9,7 +9,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Components/FormSignIn',
+  title: 'Forms/FormSignIn',
 } satisfies Meta<typeof FormSignIn>
 
 export default meta

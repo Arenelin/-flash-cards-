@@ -2,8 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-// eslint-disable-next-line import/namespace
-import { Option, RadioGroup } from './RadioGroup'
+import { Option, RadioGroup } from '@/common/components/ui'
 
 const meta = {
   component: RadioGroup,

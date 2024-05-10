@@ -1,8 +1,9 @@
-import { useId } from 'react'
+import { useId, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import EyeOffOutline from '@/assets/icons/EyeOffOutline'
 import EyeOutline from '@/assets/icons/EyeOutline'
+import { FormForgotPassword } from '@/common/components/forms'
 import { Button, Card, InputType, Typography } from '@/common/components/ui'
 import { ControlledCheckbox } from '@/common/components/ui/controlled/controlled-checkbox/Controlled-checkbox'
 import { ControlledInput } from '@/common/components/ui/controlled/controlled-input/Controlled-input'
@@ -34,6 +35,12 @@ export const FormSignIn = ({ onSubmit }: Props) => {
   const { control, handleSubmit } = useForm<SignIn>({ resolver: zodResolver(loginSchema) })
   const formId = useId()
 
+  const [isForgotPassword, setIsForgotPassword] = useState(false)
+  const forgotPasswordHandler = () => {
+    // TODO add forgot password logic
+    setIsForgotPassword(true)
+  }
+
   return (
     <Card className={s.card}>
       <Typography as={'h1'} variant={'h1'}>
@@ -60,10 +67,14 @@ export const FormSignIn = ({ onSubmit }: Props) => {
             type={InputType.password}
           />
         </div>
-
         <div className={s.containerCheckbox}>
           <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
-          <Typography as={'a'} className={s.forgotPassword} href={'#'} variant={'link1'}>
+          <Typography
+            as={'button'}
+            className={s.forgotPassword}
+            onClick={forgotPasswordHandler}
+            variant={'link1'}
+          >
             Forgot Password?
           </Typography>
         </div>
@@ -77,6 +88,10 @@ export const FormSignIn = ({ onSubmit }: Props) => {
       <Typography as={'a'} className={s.signUp} href={'#'} variant={'h4'}>
         Sign Up
       </Typography>
+      {isForgotPassword && (
+        // TODO give necessary email from form
+        <FormForgotPassword email={'example@mail.com'} setIsForgotPassword={setIsForgotPassword} />
+      )}
     </Card>
   )
 }

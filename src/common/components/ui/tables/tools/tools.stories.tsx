@@ -8,7 +8,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Components/Tables/TableWidgets/Tools',
+  title: 'Tables/Tools',
 } satisfies Meta<typeof Tools>
 
 export default meta

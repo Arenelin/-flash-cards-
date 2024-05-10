@@ -8,7 +8,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Components/Tables/TableWidgets/SortFilter',
+  title: 'Tables/SortFilter',
 } satisfies Meta<typeof SortFilter>
 
 export default meta

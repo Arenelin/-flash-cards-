@@ -8,7 +8,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Components/Tables/TableWidgets/Grade',
+  title: 'Tables/Grade',
 } satisfies Meta<typeof Grade>
 
 export default meta

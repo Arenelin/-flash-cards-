@@ -49,6 +49,7 @@
   right: 12px;
   &:focus-visible {
     outline: var(--color-light-100);
+
   }
 }
 
@@ -109,7 +110,8 @@
     background: var(--color-dark-700);
   }
 
-  &:focus {
+  &:focus-visible {
+    outline: none;
     border: 2px solid var(--color-info-700);
     & ~ .iconStart,
     & ~ .search,
@@ -124,13 +126,6 @@
   &:active::placeholder {
     color: var(--color-light-100);
   }
-
-  // TODO Нужен ли здесь focus-visible,или достаточно focus,
-  //  При текстовом инпуте добавляется подсветка браузерная которая портит стили
-  //&:focus-visible {
-  //  outline: 2px solid var(--color-info-700);
-  //  outline-offset: 2px;
-  //}
 
   &:disabled {
     border: 1px solid var(--color-dark-300);
@@ -151,9 +146,6 @@
     color: var(--color-dark-100);
   }
 
-  &.error::placeholder {
-    color: var(--color-danger-300);
-  }
 }
 
 .label {
@@ -172,6 +164,8 @@
 .error {
   color: var(--color-danger-300);
   border-color: var(--color-danger-300);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-regular);
+  &:focus-visible {
+    border: 1px solid var(--color-danger-300);
+    outline: 2px solid var(--color-info-700);
+  }
 }

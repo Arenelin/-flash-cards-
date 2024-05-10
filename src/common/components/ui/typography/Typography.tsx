@@ -26,6 +26,7 @@ export type TextProps<T extends ElementType> = {
     | 'h4'
     | 'link1'
     | 'link2'
+    | 'link3'
     | 'overline'
     | 'subtitle1'
     | 'subtitle2'

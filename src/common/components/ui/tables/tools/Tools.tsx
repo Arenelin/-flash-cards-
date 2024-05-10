@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Edit2Outline, PlayCircleOutline, TrashOutline } from '@/assets/icons'
 import classNames from 'classnames'
@@ -6,22 +6,26 @@ import classNames from 'classnames'
 import s from './tools.module.scss'
 
 type ToolsProps = {
-  canUseTool: boolean
+  canUseTool?: boolean
+  onDelete?: () => void
+  onEdit?: () => void
+  onPlay?: () => void
 } & ComponentPropsWithoutRef<'div'>
 export const Tools = forwardRef<ElementRef<'div'>, ToolsProps>(
-  ({ canUseTool, className, id, ...rest }, ref) => {
-    const genID = useId()
-    const finalId = id || genID
-    const baseClassNames = {
-      container: classNames(s.container, className),
-      icon: s.iconc,
-    }
-
+  ({ canUseTool = true, className, onDelete, onEdit, onPlay, ...rest }, ref) => {
     return (
-      <div className={baseClassNames.container} id={finalId} ref={ref} {...rest}>
-        {canUseTool && <PlayCircleOutline className={baseClassNames.icon} />}
-        <Edit2Outline className={baseClassNames.icon} />
-        <TrashOutline className={baseClassNames.icon} />
+      <div className={classNames(s.container, className)} ref={ref} {...rest}>
+        {canUseTool && (
+          <button className={s.button} onClick={onPlay}>
+            <PlayCircleOutline className={s.icon} />
+          </button>
+        )}
+        <button className={s.button} onClick={onEdit}>
+          <Edit2Outline className={s.icon} />
+        </button>
+        <button className={s.button} onClick={onDelete}>
+          <TrashOutline className={s.icon} />
+        </button>
       </div>
     )
   }

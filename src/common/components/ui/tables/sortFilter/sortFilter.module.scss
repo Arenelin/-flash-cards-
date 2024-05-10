@@ -1,15 +1,6 @@
-.container {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
-.icon {
-  width: 16px;
-  height: 16px;
-  color: var(--color-light-100);
-}
 .button {
   cursor: pointer;
+
   outline: none;
   border: none;
   padding: 0;
@@ -20,8 +11,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
+
   &:focus-visible {
     border: 2px solid var(--color-info-700);
     outline: none;
   }
+}
+.icon {
+  width: 12px;
+  height: 12px;
 }

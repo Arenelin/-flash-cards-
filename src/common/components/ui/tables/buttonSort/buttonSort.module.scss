@@ -14,8 +14,8 @@
   gap: 5px;
 
   &:focus-visible {
-    border: 2px solid var(--color-info-700);
-    outline: none;
+    outline: 2px solid var(--color-info-700);
+    outline-offset: 2px;
   }
 }
 .icon {

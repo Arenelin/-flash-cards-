@@ -9,9 +9,11 @@
 
 .th {
   padding: 6px 24px;
-  width: 201px;
-  height: 36px;
   background: var(--color-dark-500);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-l);
 }
 
 .td {
@@ -19,4 +21,9 @@
   padding: 6px 24px;
   width: 201px;
   height: 36px;
+
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-l);
 }

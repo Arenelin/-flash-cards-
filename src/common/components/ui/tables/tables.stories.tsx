@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { useState } from 'react'
+
 import { TableComponents } from '@/common/components/ui/tables/Tables'
+import { ButtonSort } from '@/common/components/ui/tables/buttonSort/ButtonSort'
 import { Grade } from '@/common/components/ui/tables/grade/Grade'
-import { SortFilter } from '@/common/components/ui/tables/sortFilter/SotrFilter'
 import { Tools } from '@/common/components/ui/tables/tools/Tools'
 
 const meta = {
@@ -16,17 +18,27 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof TableComponents.Table>
-const sort = () => {
-  alert('Sort!')
-}
+
 const testCallBack = () => {
-  alert('Test')
+  alert('Test Tools')
 }
 
 export const Tables = {
   render: () => {
-    // eslint-disable-next-line react/jsx-key
-    const header = ['Name', 'Cards', <SortFilter onSort={sort} />, 'Created by', 'Grade', '']
+    const [sort, setSort] = useState<boolean>(false)
+    const onClick = () => {
+      setSort(sort => !sort)
+      alert('Logic sort')
+    }
+
+    const header = [
+      'Name',
+      'Cards',
+      <ButtonSort key={'Last Updated'} onClick={onClick} sort={sort} text={'Last Updated'} />,
+      'Created by',
+      'Grade',
+      '',
+    ]
     const headCells = header.map((headCell, index) => {
       return <TableComponents.Th key={index}>{headCell}</TableComponents.Th>
     })

@@ -1,4 +1,4 @@
-import { FormForgotPassword } from '@/features/forms'
+import { ForgotPassword, FormForgotPassword } from '@/features/forms'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
@@ -13,12 +13,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof FormForgotPassword>
 
+const onSubmit = (data: ForgotPassword) => {
+  alert(data.email)
+}
+
 export const FormForgotPasswordDefault = {
-  render() {
-    return (
-      <div style={{ height: '500px', position: 'relative', width: '100%' }}>
-        <FormForgotPassword email={'example@mail.com'} setIsForgotPassword={() => {}} />
-      </div>
-    )
+  args: {
+    onSubmit: onSubmit,
   },
 } satisfies Story

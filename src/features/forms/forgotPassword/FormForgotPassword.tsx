@@ -1,26 +1,74 @@
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+
 import { CheckEmail } from '@/assets/icons'
-import { Button, Card, Typography } from '@/common/components/ui'
+import { Button, Card, InputType, Typography } from '@/common/components/ui'
+import { ControlledInput } from '@/common/components/ui/controlled/controlled-input/Controlled-input'
+import { emailSchema } from '@/common/utils/zodSchema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 
 import s from '@/features/forms/forgotPassword/formForgotPassword.module.scss'
 
-type PropsType = {
-  email: string
-  setIsForgotPassword: (isForgotPassword: boolean) => void
+type Props = {
+  className?: string
+  onSubmit: (data: ForgotPassword) => void
 }
 
-export const FormForgotPassword = ({ email, setIsForgotPassword }: PropsType) => {
+const schema = z.object({ email: emailSchema })
+
+export type ForgotPassword = z.infer<typeof schema>
+export const FormForgotPassword = ({ className, onSubmit }: Props) => {
+  const { control, handleSubmit } = useForm<ForgotPassword>({ resolver: zodResolver(schema) })
+  const [stepOne, setStepOne] = useState(true)
+  const [email, setEmail] = useState('')
+
+  const stepOneHandler = (data: ForgotPassword) => {
+    onSubmit(data)
+    setEmail(data.email)
+    setStepOne(false)
+  }
+
   return (
-    <Card className={s.card}>
-      <Typography as={'h1'} className={s.title} variant={'h1'}>
-        Check Email
-      </Typography>
-      <CheckEmail className={s.checkEmail} />
-      <Typography className={s.information} variant={'body2'}>
-        {`We’ve sent an Email with instructions to ${email}`}
-      </Typography>
-      <Button fullWidth onClick={() => setIsForgotPassword(false)}>
-        Back to Sign In
-      </Button>
+    <Card className={className}>
+      {stepOne ? (
+        <form className={s.stepOne} onSubmit={handleSubmit(stepOneHandler)}>
+          <Typography as={'h1'} className={s.title} variant={'h1'}>
+            Forgot your password?
+          </Typography>
+          <ControlledInput
+            autoFocus
+            control={control}
+            label={'Email'}
+            name={'email'}
+            placeholder={'email'}
+            type={InputType.text}
+          />
+          <Typography className={s.text1} variant={'body2'}>
+            Enter your email address and we will send you further instructions
+          </Typography>
+          <Button fullWidth>Send Instructions</Button>
+          <Typography className={s.text2} variant={'body2'}>
+            Did you remember your password?
+          </Typography>
+          <Typography as={'a'} className={s.link1} href={'#'}>
+            Try logging in
+          </Typography>
+        </form>
+      ) : (
+        <div className={s.stepTwo}>
+          <Typography as={'h1'} className={s.title} variant={'h1'}>
+            Check Email
+          </Typography>
+          <CheckEmail className={s.checkEmail} />
+          <Typography className={s.text3} variant={'body2'}>
+            {`We’ve sent an Email with instructions to ${email}`}
+          </Typography>
+          <Button as={'a'} fullWidth href={'#'}>
+            Back to Sign In
+          </Button>
+        </div>
+      )}
     </Card>
   )
 }

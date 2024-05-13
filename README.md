@@ -1,4 +1,4 @@
-<div align="center"> # Flashcard learning app </div>
+# <div align="center"> Flashcard learning app </div>
 
 
 ## Application: 

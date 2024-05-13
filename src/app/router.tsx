@@ -47,13 +47,21 @@ const publicRoutes: RouteObject[] = [
     ),
     path: path.signUp,
   },
+  {
+    element: (
+      <Page style={{ backgroundColor: 'red' }}>
+        <div>Error</div>
+      </Page>
+    ),
+    path: '*',
+  },
 ]
 
-const privateRoutes = [{ element: <div>desks</div>, path: '/desks' }]
+const privateRoutes = [{ element: <div>desks</div>, path: '/' }]
 const PrivateRouter = () => {
   const isAuthenticated = false
 
-  return isAuthenticated ? <Outlet /> : <Navigate to={'/signIn'} />
+  return isAuthenticated ? <Outlet /> : <Navigate to={path.signIn} />
 }
 
 const router = createBrowserRouter([

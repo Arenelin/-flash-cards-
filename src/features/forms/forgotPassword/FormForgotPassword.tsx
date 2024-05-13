@@ -38,6 +38,7 @@ export const FormForgotPassword = ({ className, onSubmit }: Props) => {
           </Typography>
           <ControlledInput
             autoFocus
+            className={s.input}
             control={control}
             label={'Email'}
             name={'email'}
@@ -51,7 +52,7 @@ export const FormForgotPassword = ({ className, onSubmit }: Props) => {
           <Typography className={s.text2} variant={'body2'}>
             Did you remember your password?
           </Typography>
-          <Typography as={'a'} className={s.link1} href={'#'}>
+          <Typography as={'a'} href={'signIn'} variant={'link3'}>
             Try logging in
           </Typography>
         </form>
@@ -64,7 +65,7 @@ export const FormForgotPassword = ({ className, onSubmit }: Props) => {
           <Typography className={s.text3} variant={'body2'}>
             {`We’ve sent an Email with instructions to ${email}`}
           </Typography>
-          <Button as={'a'} fullWidth href={'#'}>
+          <Button as={'a'} fullWidth href={'signIn'}>
             Back to Sign In
           </Button>
         </div>

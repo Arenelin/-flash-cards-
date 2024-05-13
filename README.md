@@ -1,4 +1,4 @@
-# Flashcard learning app
+<div align="center"> # Flashcard learning app </div>
 
 
 ## Application: 

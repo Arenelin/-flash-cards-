@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { FormData, PersonalInformation } from '@/features/forms'
+import { FormData, PersonalInformation } from './PersonalInformation'
 
 const meta = {
   argTypes: {},
@@ -9,7 +9,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Forms/PersonalInformation',
+  title: 'Profile/PersonalInformation',
 } satisfies Meta<typeof PersonalInformation>
 
 export default meta

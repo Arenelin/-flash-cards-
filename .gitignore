@@ -25,3 +25,4 @@ watchers.xml
 *.sw?
 
 *storybook.log
+/storybook-static

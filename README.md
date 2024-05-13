@@ -1,11 +1,11 @@
 # Flashcard learning app
 
 
-##Application: 
+## Application: 
 
 https://flash-cards-kappa-two.vercel.app/
 
 
-##Components: 
+## Components: 
 
 https://storybook-flash-cards-project.vercel.app/

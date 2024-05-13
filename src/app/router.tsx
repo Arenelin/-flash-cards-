@@ -15,10 +15,10 @@ import { FormSignUp } from '../features/forms/signUp/FormSignUp'
 
 const onSubmit = () => console.log('rout')
 
-enum path {
-  forgotPassword = 'forgot-password',
-  signIn = 'signIn',
-  signUp = 'signUp',
+export enum path {
+  forgotPassword = '/forgot-password',
+  signIn = '/signIn',
+  signUp = '/signUp',
 }
 
 const publicRoutes: RouteObject[] = [
@@ -53,7 +53,7 @@ const privateRoutes = [{ element: <div>desks</div>, path: '/desks' }]
 const PrivateRouter = () => {
   const isAuthenticated = false
 
-  return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
+  return isAuthenticated ? <Outlet /> : <Navigate to={'/signIn'} />
 }
 
 const router = createBrowserRouter([

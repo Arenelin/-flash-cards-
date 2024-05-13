@@ -54,7 +54,7 @@ export type DecksResponse = {
   userId: string
 }
 export type CreateDecksArgs = {
-  cover: string
+  cover?: string
   isPrivate?: boolean
   name: string
 }

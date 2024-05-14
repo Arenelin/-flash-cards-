@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { FormSignIn, SignIn } from '@/features/forms'
+import { FormSignIn, SignIn } from './FormSignIn'
 
 const meta = {
   argTypes: {},
@@ -9,7 +9,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Forms/FormSignIn',
+  title: 'Auth/FormSignIn',
 } satisfies Meta<typeof FormSignIn>
 
 export default meta

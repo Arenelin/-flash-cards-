@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { FormSignUp, SignUp } from '@/features/forms'
 import { omit } from 'remeda'
+
+import { FormSignUp, SignUp } from './FormSignUp'
 
 const meta = {
   component: FormSignUp,
@@ -9,7 +10,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Forms/FormSignUp',
+  title: 'Auth/FormSignUp',
 } satisfies Meta<typeof FormSignUp>
 
 export default meta

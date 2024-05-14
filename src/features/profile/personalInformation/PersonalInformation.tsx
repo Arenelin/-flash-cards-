@@ -7,7 +7,7 @@ import { ControlledInput } from '@/common/components/ui/controlled/controlled-in
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from '@/features/forms/personalInformation/personalInformatuin.module.scss'
+import s from '@/features/profile/personalInformation/personalInformatuin.module.scss'
 
 export type Props = {
   email: string

@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import { Page } from '@/common/components/ui/page/Page'
-import { FormForgotPassword, FormSignIn, FormSignUp } from '@/features/forms'
+import { FormForgotPassword, FormSignIn, FormSignUp } from '@/features/auth'
 const onSubmit = () => console.log('rout')
 
 export enum path {

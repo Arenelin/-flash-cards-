@@ -10,7 +10,7 @@ import { emailSchema } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from '@/features/forms/forgotPassword/formForgotPassword.module.scss'
+import s from '@/features/auth/forgotPassword/formForgotPassword.module.scss'
 
 type Props = {
   className?: string

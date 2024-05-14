@@ -1,4 +1,3 @@
-// @ts-ignore
 import {
   Navigate,
   Outlet,
@@ -8,11 +7,7 @@ import {
 } from 'react-router-dom'
 
 import { Page } from '@/common/components/ui/page/Page'
-
-import { FormForgotPassword } from '../features/forms/forgotPassword/FormForgotPassword'
-import { FormSignIn } from '../features/forms/signIn/FormSignIn'
-import { FormSignUp } from '../features/forms/signUp/FormSignUp'
-
+import { FormForgotPassword, FormSignIn, FormSignUp } from '@/features/forms'
 const onSubmit = () => console.log('rout')
 
 export enum path {

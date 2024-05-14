@@ -2,7 +2,7 @@ import { useId } from 'react'
 import { useForm } from 'react-hook-form'
 import { NavLink } from 'react-router-dom'
 
-import { path } from '@/app/router'
+import { path } from '@/app/Router'
 import { EyeOffOutline, EyeOutline } from '@/assets/icons'
 import { Button, Card, InputType, Typography } from '@/common/components/ui'
 import { ControlledInput } from '@/common/components/ui/controlled/controlled-input/Controlled-input'

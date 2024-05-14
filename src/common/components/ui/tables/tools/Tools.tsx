@@ -15,17 +15,20 @@ export const Tools = forwardRef<ElementRef<'div'>, ToolsProps>(
   ({ canUseTool = true, className, onDelete, onEdit, onPlay, ...rest }, ref) => {
     return (
       <div className={classNames(s.container, className)} ref={ref} {...rest}>
+        <button className={s.button} onClick={onPlay}>
+          <PlayCircleOutline className={s.icon} />
+        </button>
+
         {canUseTool && (
-          <button className={s.button} onClick={onPlay}>
-            <PlayCircleOutline className={s.icon} />
-          </button>
+          <>
+            <button className={s.button} onClick={onEdit}>
+              <Edit2Outline className={s.icon} />
+            </button>
+            <button className={s.button} onClick={onDelete}>
+              <TrashOutline className={s.icon} />
+            </button>
+          </>
         )}
-        <button className={s.button} onClick={onEdit}>
-          <Edit2Outline className={s.icon} />
-        </button>
-        <button className={s.button} onClick={onDelete}>
-          <TrashOutline className={s.icon} />
-        </button>
       </div>
     )
   }

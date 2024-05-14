@@ -1,6 +1,8 @@
 import { useId } from 'react'
 import { useForm } from 'react-hook-form'
+import { Link, NavLink } from 'react-router-dom'
 
+import { path } from '@/app/Router'
 import EyeOffOutline from '@/assets/icons/EyeOffOutline'
 import EyeOutline from '@/assets/icons/EyeOutline'
 import { Button, Card, InputType, Typography } from '@/common/components/ui'
@@ -55,7 +57,12 @@ export const FormSignIn = ({ onSubmit }: Props) => {
         </div>
         <div className={s.containerCheckbox}>
           <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
-          <Typography as={'a'} className={s.forgotPassword} href={'#'} variant={'link1'}>
+          <Typography
+            as={NavLink}
+            className={s.forgotPassword}
+            to={path.forgotPassword}
+            variant={'link1'}
+          >
             Forgot Password?
           </Typography>
         </div>
@@ -66,7 +73,7 @@ export const FormSignIn = ({ onSubmit }: Props) => {
       <Typography as={'h2'} className={s.registration} variant={'body2'}>
         Don&apos;t have an account?
       </Typography>
-      <Typography as={'a'} className={s.signUp} href={'#'} variant={'link3'}>
+      <Typography as={Link} className={s.signUp} to={path.signUp} variant={'link3'}>
         Sign Up
       </Typography>
     </Card>

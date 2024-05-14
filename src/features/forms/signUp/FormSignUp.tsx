@@ -1,6 +1,8 @@
 import { useId } from 'react'
 import { useForm } from 'react-hook-form'
+import { NavLink } from 'react-router-dom'
 
+import { path } from '@/app/Router'
 import { EyeOffOutline, EyeOutline } from '@/assets/icons'
 import { Button, Card, InputType, Typography } from '@/common/components/ui'
 import { ControlledInput } from '@/common/components/ui/controlled/controlled-input/Controlled-input'
@@ -78,7 +80,7 @@ export const FormSignUp = ({ onSubmit }: Props) => {
       <Typography as={'h2'} variant={'body2'}>
         Already have an account?
       </Typography>
-      <Typography as={'a'} className={s.signIn} href={'#'} variant={'link3'}>
+      <Typography as={NavLink} className={s.signIn} to={path.signIn} variant={'link3'}>
         Sign In
       </Typography>
     </Card>

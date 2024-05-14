@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { NavLink } from 'react-router-dom'
 
+import { path } from '@/app/Router'
 import { CheckEmail } from '@/assets/icons'
 import { Button, Card, InputType, Typography } from '@/common/components/ui'
 import { ControlledInput } from '@/common/components/ui/controlled/controlled-input/Controlled-input'
@@ -38,6 +40,7 @@ export const FormForgotPassword = ({ className, onSubmit }: Props) => {
           </Typography>
           <ControlledInput
             autoFocus
+            className={s.input}
             control={control}
             label={'Email'}
             name={'email'}
@@ -51,7 +54,7 @@ export const FormForgotPassword = ({ className, onSubmit }: Props) => {
           <Typography className={s.text2} variant={'body2'}>
             Did you remember your password?
           </Typography>
-          <Typography as={'a'} className={s.link1} href={'#'}>
+          <Typography as={NavLink} to={path.signIn} variant={'link3'}>
             Try logging in
           </Typography>
         </form>
@@ -64,7 +67,7 @@ export const FormForgotPassword = ({ className, onSubmit }: Props) => {
           <Typography className={s.text3} variant={'body2'}>
             {`We’ve sent an Email with instructions to ${email}`}
           </Typography>
-          <Button as={'a'} fullWidth href={'#'}>
+          <Button as={NavLink} fullWidth to={path.signIn}>
             Back to Sign In
           </Button>
         </div>

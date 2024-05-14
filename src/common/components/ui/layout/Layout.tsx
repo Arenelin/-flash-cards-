@@ -14,3 +14,5 @@ export const Layout = forwardRef<ElementRef<'body'>, LayoutProps>((props, ref) =
     </body>
   )
 })
+
+Layout.displayName = 'Layout'

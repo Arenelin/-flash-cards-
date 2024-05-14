@@ -15,3 +15,4 @@ export const Page = forwardRef<ElementRef<'section'>, PageProps>((props, ref) =>
     <section className={classNames(s.container, className)} ref={ref} style={styles} {...rest} />
   )
 })
+Page.displayName = 'Page'

@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { Error404 } from '@/assets/icons'
+import Error404 from '@/assets/Error404.png'
 import { Button, Typography } from '@/common/components/ui'
 import classNames from 'classnames'
 
@@ -12,7 +12,7 @@ export const Error = forwardRef<ElementRef<'div'>, ErrorProps>((props, ref) => {
 
   return (
     <div className={classNames(s.container, className)} {...rest} ref={ref}>
-      <Error404 className={classNames(s.icon, className)} />
+      <img alt={'Error'} height={'190px'} src={Error404} width={'450px'} />
       <Typography as={'h2'} variant={'body1'}>
         Sorry! Page not found!
       </Typography>
@@ -22,3 +22,5 @@ export const Error = forwardRef<ElementRef<'div'>, ErrorProps>((props, ref) => {
     </div>
   )
 })
+
+Error.displayName = 'Error'

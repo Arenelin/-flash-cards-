@@ -3,12 +3,11 @@ import { ElementRef, forwardRef } from 'react'
 import ArrowBack from '@/assets/icons/ArrowBack'
 import ArrowForward from '@/assets/icons/ArrowForward'
 import { Select, Typography } from '@/common/components/ui'
-import { ButtonArrow } from '@/common/components/ui/pagination/buttonArrow/ButtonArrow'
-import { MainPaginationButtons } from '@/common/components/ui/pagination/mainPaginationButtons/MainPaginationButtons'
+import { usePagination } from '@/common/components/ui/pagination/lib/usePagination'
+import { ButtonArrow } from '@/common/components/ui/pagination/ui/buttonArrow/ButtonArrow'
+import { MainPaginationButtons } from '@/common/components/ui/pagination/ui/mainPaginationButtons/MainPaginationButtons'
 
 import s from './pagination.module.scss'
-
-import { usePagination } from './usePagination'
 
 export type PaginationProps = {
   currentPage: number

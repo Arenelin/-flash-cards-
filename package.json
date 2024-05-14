@@ -4,14 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3000 --open",
+    "start": "vite --port 3000 --open",
     "build": "tsc && vite build",
     "lint": "eslint src --ext .jsx,.js,.tsx,.ts  --no-error-on-unmatched-pattern --fix && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input",
     "preview": "vite preview",
     "format": "prettier --write src",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "rename-icons": "node scripts/rename-icons.cjs",
+    "rename-icons": "node scripts/renameIcons.cjs",
     "generate-icons": "pnpm run rename-icons && npx @svgr/cli --out-dir src/assets/icons --jsx-runtime 'automatic' --typescript --ref --memo --icon --replace-attr-values '#000=currentColor' src/assets/icons && pnpm run format && pnpm run lint"
   },
   "dependencies": {

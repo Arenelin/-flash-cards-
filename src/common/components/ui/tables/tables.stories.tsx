@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 import { TableComponents } from '@/common/components/ui/tables/Tables'
-import { ButtonSort } from '@/common/components/ui/tables/buttonSort/ButtonSort'
-import { Grade } from '@/common/components/ui/tables/grade/Grade'
-import { Tools } from '@/common/components/ui/tables/tools/Tools'
+import { ButtonSort } from '@/common/components/ui/tables/ui/buttonSort/ButtonSort'
+import { Grade } from '@/common/components/ui/tables/ui/grade/Grade'
+import { Tools } from '@/common/components/ui/tables/ui/tools/Tools'
 
 const meta = {
   component: TableComponents.Table,

@@ -1,5 +1,5 @@
 // import { useCreateDecksMutation, useGetDecksQuery } from '@/features/desks/api/decks-api'
-import { useGetDecksQuery } from '@/features/desks/api/decks-api'
+import { useGetDecksQuery } from '@/features/desks/api/decksApi'
 
 export function DecksPage() {
   // const { data, error, isError, isLoading } = useGetDecksQuery()

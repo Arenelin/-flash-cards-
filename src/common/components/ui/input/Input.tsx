@@ -1,11 +1,10 @@
 import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef, useId } from 'react'
 
 import { Typography } from '@/common/components/ui'
+import { useInput } from '@/common/components/ui/input/lib/useInput'
 import classNames from 'classnames'
 
 import s from './input.module.scss'
-
-import { useInput } from './useInput'
 // This component represents an input field with various props such as type, value, label, icon, error message,
 // and event handlers. It uses a custom hook called useInput to handle input text events and state management.
 export enum InputType {

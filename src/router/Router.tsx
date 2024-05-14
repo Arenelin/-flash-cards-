@@ -6,15 +6,10 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { path } from '@/common/enums'
 import { FormForgotPassword, FormSignIn, FormSignUp } from '@/features/auth'
 import { Page } from '@/router/ui/page/Page'
 const onSubmit = () => {}
-
-export enum path {
-  forgotPassword = '/forgot-password',
-  signIn = '/signIn',
-  signUp = '/signUp',
-}
 
 const publicRoutes: RouteObject[] = [
   {

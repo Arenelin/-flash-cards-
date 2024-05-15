@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import s from '@/common/components/ui/tables/ui/tools/tools.module.scss'
 
 type ToolsProps = {
-  canUseTool?: boolean
+  canUseTool: boolean
   onDelete?: () => void
   onEdit?: () => void
   onPlay?: () => void

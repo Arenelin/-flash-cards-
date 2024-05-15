@@ -30,7 +30,6 @@ export const ToolsAll = {
 export const ToolsPartial = {
   args: {
     canUseTool: false,
-    onDelete: testCallBack,
-    onEdit: testCallBack,
+    onPlay: testCallBack,
   },
 } satisfies Story

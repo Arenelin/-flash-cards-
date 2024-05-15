@@ -25,8 +25,12 @@ const publicRoutes: RouteObject[] = [
     path: path.signUp,
   },
   {
-    element: <PageError />,
+    errorElement: <PageError />,
     path: path.error,
+  },
+  {
+    element: <PageError />,
+    path: '/*',
   },
 ]
 

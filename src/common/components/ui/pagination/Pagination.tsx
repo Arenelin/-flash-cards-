@@ -11,45 +11,54 @@ import s from './pagination.module.scss'
 
 export type PaginationProps = {
   currentPage: number
+  itemsPerPage: string
   onPageChange: (page: number) => void
+  pageSizeChange: (pageSize: string) => void
   siblingCount?: number
   totalCount: number
 }
 
-export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>((props, ref) => {
-  const { currentPage, onPageChange, siblingCount = 1, totalCount } = props
+export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
+  ({ currentPage, itemsPerPage, onPageChange, pageSizeChange, siblingCount, totalCount }, ref) => {
+    const {
+      isFirstPage,
+      isLastPage,
+      onNextPage,
+      onPageSizeChange,
+      onPreviousPage,
+      options,
+      pageSize,
+      paginationRange,
+    } = usePagination({
+      currentPage,
+      itemsPerPage,
+      onPageChange,
+      pageSizeChange,
+      siblingCount,
+      totalCount,
+    })
 
-  const {
-    isFirstPage,
-    isLastPage,
-    onNextPage,
-    onPageSizeChange,
-    onPreviousPage,
-    options,
-    pageSize,
-    paginationRange,
-  } = usePagination({ currentPage, onPageChange, siblingCount, totalCount })
-
-  return (
-    <div className={s.container} ref={ref}>
-      <ButtonArrow disabled={isFirstPage} onClick={onPreviousPage}>
-        <ArrowBack />
-      </ButtonArrow>
-      <MainPaginationButtons
-        currentPage={currentPage}
-        onPageChange={onPageChange}
-        paginationRange={paginationRange}
-      />
-      <ButtonArrow disabled={isLastPage} onClick={onNextPage}>
-        <ArrowForward />
-      </ButtonArrow>
-      <div className={s.selectBlock}>
-        <Typography variant={'body2'}>Show&nbsp;</Typography>
-        <Select onValueChange={onPageSizeChange} options={options} small value={pageSize} />
-        <Typography variant={'body2'}>&nbsp;&nbsp;&nbsp;&nbsp;on the page</Typography>
+    return (
+      <div className={s.container} ref={ref}>
+        <ButtonArrow disabled={isFirstPage} onClick={onPreviousPage}>
+          <ArrowBack />
+        </ButtonArrow>
+        <MainPaginationButtons
+          currentPage={currentPage}
+          onPageChange={onPageChange}
+          paginationRange={paginationRange}
+        />
+        <ButtonArrow disabled={isLastPage} onClick={onNextPage}>
+          <ArrowForward />
+        </ButtonArrow>
+        <div className={s.selectBlock}>
+          <Typography variant={'body2'}>Show</Typography>
+          <Select onValueChange={onPageSizeChange} options={options} small value={pageSize} />
+          <Typography variant={'body2'}>on the page</Typography>
+        </div>
       </div>
-    </div>
-  )
-})
+    )
+  }
+)
 
 Pagination.displayName = 'Pagination'

@@ -7,7 +7,7 @@ import { PageButton } from '@/common/components/ui/pagination/ui/pageButton/Page
 
 type Props = { paginationRange: PaginationRange } & Omit<
   PaginationProps,
-  'siblingCount' | 'totalCount'
+  'itemsPerPage' | 'pageSizeChange' | 'siblingCount' | 'totalCount'
 >
 export const MainPaginationButtons = forwardRef<ElementRef<'button'> & ElementRef<'span'>, Props>(
   (props, ref) => {

@@ -8,6 +8,7 @@ import {
 
 import { path } from '@/common/enums'
 import { FormForgotPassword, FormSignIn, FormSignUp } from '@/features/auth'
+import { Decks } from '@/features/desks/Decks'
 import { Page } from '@/router/ui/page/Page'
 const onSubmit = () => {}
 
@@ -28,7 +29,6 @@ const publicRoutes: RouteObject[] = [
     ),
     path: path.signIn,
   },
-
   {
     element: (
       <Page>
@@ -36,6 +36,14 @@ const publicRoutes: RouteObject[] = [
       </Page>
     ),
     path: path.signUp,
+  },
+  {
+    element: (
+      <Page>
+        <Decks />
+      </Page>
+    ),
+    path: path.decks,
   },
   {
     element: (

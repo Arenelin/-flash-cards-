@@ -22,6 +22,14 @@ export const PaginationDemo = {
     const [page, setPage] = useState(1)
     const TOTAL_COUNT = 2000
 
-    return <Pagination currentPage={page} onPageChange={setPage} totalCount={TOTAL_COUNT} />
+    return (
+      <Pagination
+        currentPage={page}
+        itemsPerPage={'10'}
+        onPageChange={setPage}
+        pageSizeChange={() => {}}
+        totalCount={TOTAL_COUNT}
+      />
+    )
   },
 } satisfies Story

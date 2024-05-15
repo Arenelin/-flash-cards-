@@ -1,7 +1,7 @@
 import { Search } from '@/assets/icons'
 import { Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components/ui'
 import { Preloader } from '@/common/components/ui/preloader/Preloader'
-import { ErrorResponse } from '@/common/types'
+import { ErrorResponse, GetDecksResponse } from '@/common/types'
 import { useDecks } from '@/features/desks/lib/useDecks'
 
 import s from './decks.module.scss'
@@ -9,8 +9,6 @@ import s from './decks.module.scss'
 export function Decks() {
   const {
     currentPageHandler,
-    error,
-    isLoading,
     pageSizeHandler,
     searchChangeHandle,
     searchParams,
@@ -18,23 +16,26 @@ export function Decks() {
     sliderValue,
     tabsChangeHandler,
     tabsOptions,
+    ...rest
   } = useDecks()
 
-  if (isLoading) {
+  if (rest.isLoading) {
     return <Preloader />
   }
 
-  if (error) {
-    const err = error as ErrorResponse
+  if (rest.error) {
+    const error = rest.error as ErrorResponse
 
     return (
       <div className={s.error}>
-        {err.data.errorMessages.map(e => {
+        {error.data.errorMessages.map(e => {
           return <p key={e.field}>{`at query parameter " ${e.field} " error: " ${e.message} "`}</p>
         })}
       </div>
     )
   }
+
+  const data = rest.data as GetDecksResponse
 
   return (
     <div>
@@ -59,11 +60,12 @@ export function Decks() {
       <div>Here is Alina`s Table component with Deck[] props</div>
       <div className={s.paginationsettings}>
         <Pagination
-          currentPage={Number(searchParams.get('currentPage')) || 1}
-          itemsPerPage={searchParams.get('itemsPerPage') || '10'}
+          currentPage={data.pagination.currentPage}
+          itemsPerPage={data.pagination.itemsPerPage.toString()}
           onPageChange={currentPageHandler}
           pageSizeChange={pageSizeHandler}
-          totalCount={2000} //TODO add totalCount from get-request
+          totalCount={2000} //TODO add totalItems from get-request.
+          // totalCount={data.pagination.totalItems}
         />
       </div>
     </div>

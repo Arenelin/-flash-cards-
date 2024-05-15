@@ -60,7 +60,7 @@ export const useDecks = () => {
   }
 
   // const { data, error, isLoading } = useGetDecksQuery({
-  const { error, isLoading } = useGetDecksQuery({
+  const { data, error, isLoading } = useGetDecksQuery({
     authorId: searchParams.get('authorId') || undefined, // пока нет реального айди выкидывает ошибку
     currentPage: Number(searchParams.get('currentPage')) || 1,
     itemsPerPage: Number(searchParams.get('itemsPerPage')) || 10,
@@ -72,6 +72,7 @@ export const useDecks = () => {
 
   return {
     currentPageHandler,
+    data,
     error,
     isLoading,
     pageSizeHandler,

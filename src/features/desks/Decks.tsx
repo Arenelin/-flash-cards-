@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
+import { Search } from '@/assets/icons'
 import { Input, InputType, Pagination, Slider, Tab, Tabs, Typography } from '@/common/components/ui'
 import { Preloader } from '@/common/components/ui/preloader/Preloader'
 import { ErrorResponse } from '@/common/types'
@@ -97,6 +98,7 @@ export function Decks() {
       </Typography>
       <div className={s.settingsBlock}>
         <Input
+          iconStart={<Search />}
           label={'Search'}
           onChange={e => handleSearchChange(e.currentTarget.value)}
           type={InputType.search}

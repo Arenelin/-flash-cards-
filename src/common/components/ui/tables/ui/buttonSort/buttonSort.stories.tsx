@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { useState } from 'react'
-
 import { ButtonSort } from '@/common/components/ui/tables/ui/buttonSort/ButtonSort'
 
 const meta = {
@@ -16,32 +14,22 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof ButtonSort>
 
-type ButtonLogicStory = {
-  onClick: () => void
-  sort: boolean
-}
-const logicStoryButtonSort = (): ButtonLogicStory => {
-  const [sort, setSort] = useState<boolean>(false)
-  const onClick = () => {
-    setSort(sort => !sort)
-    alert('Logic sort')
-  }
-
-  return { onClick, sort }
-}
-
 export const SortUpdated = {
   render: () => {
-    const { onClick, sort } = logicStoryButtonSort()
+    const onClick = () => {
+      alert('Logic sort')
+    }
 
-    return <ButtonSort onClick={onClick} sort={sort} text={'Last Updated'} />
+    return <ButtonSort onClick={onClick} text={'Last Updated'} />
   },
 } satisfies Story
 
 export const SortCreated = {
   render: () => {
-    const { onClick, sort } = logicStoryButtonSort()
+    const onClick = () => {
+      alert('Logic sort')
+    }
 
-    return <ButtonSort onClick={onClick} sort={sort} text={'Created by'} />
+    return <ButtonSort onClick={onClick} text={'Created by'} />
   },
 } satisfies Story

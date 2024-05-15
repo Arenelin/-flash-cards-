@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { LogOutOutline, PersonOutline } from '@/assets/icons'
-import logo from '@/assets/logo.png'
+import logo from '@/assets/logoStart.png'
 import { Button, Dropdown, UserAvatar } from '@/common/components/ui'
 import { DropdownSeparator } from '@/common/components/ui/dropdown/dropdownSeparator/DropdownSeparator'
 import { ToolbarItemWithIcon } from '@/common/components/ui/dropdown/toolbarItemWithIcon/ToolbarItemWithIcon'
@@ -24,7 +24,7 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
 
   return (
     <div className={s.container}>
-      <img alt={'logo'} height={'90px'} src={logo} width={'300px'} />
+      <img alt={'logo'} className={s.img} height={'36px'} src={logo} width={'160px'} />
       <header className={className} {...rest} ref={ref}>
         {isAuthorization ? (
           <Dropdown triggerChild={<UserAvatar name={mockUserData.name} src={mockUserData.img} />}>

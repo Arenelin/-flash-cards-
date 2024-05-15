@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { useState } from 'react'
-
 import { TableComponents } from '@/common/components/ui/tables/Tables'
 import { ButtonSort } from '@/common/components/ui/tables/ui/buttonSort/ButtonSort'
 import { Grade } from '@/common/components/ui/tables/ui/grade/Grade'
@@ -19,34 +17,36 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof TableComponents.Table>
 
-const testCallBack = () => {
-  alert('Test Tools')
+const testDelete = (id: string) => {
+  alert(`id: ${id} Delete`)
+}
+const testPlay = (id: string) => {
+  alert(`id: ${id} Play`)
+}
+
+const testEdit = (id: string) => {
+  alert(`id: ${id} Edit`)
 }
 
 export const Tables = {
   render: () => {
-    const [sort, setSort] = useState<boolean>(false)
     const onClick = () => {
-      setSort(sort => !sort)
       alert('Logic sort')
     }
-
-    const header = [
-      'Name',
-      'Cards',
-      <ButtonSort key={'Last Updated'} onClick={onClick} sort={sort} text={'Last Updated'} />,
-      'Created by',
-      'Grade',
-      '',
-    ]
-    const headCells = header.map((headCell, index) => {
-      return <TableComponents.Th key={index}>{headCell}</TableComponents.Th>
-    })
 
     return (
       <TableComponents.Table>
         <TableComponents.Thead>
-          <TableComponents.Tr>{headCells}</TableComponents.Tr>
+          <TableComponents.Tr>
+            <TableComponents.Th>Name</TableComponents.Th>
+            <TableComponents.Th>Cards</TableComponents.Th>
+            <TableComponents.Th>
+              <ButtonSort onClick={onClick} text={'Last Updated'} />
+            </TableComponents.Th>
+            <TableComponents.Th>Created by</TableComponents.Th>
+            <TableComponents.Th>Grade</TableComponents.Th>
+            <TableComponents.Th></TableComponents.Th>
+          </TableComponents.Tr>
         </TableComponents.Thead>
         <TableComponents.Body>
           <TableComponents.Tr>
@@ -58,7 +58,12 @@ export const Tables = {
               <Grade currentGrade={2} />{' '}
             </TableComponents.Td>
             <TableComponents.Td>
-              <Tools onDelete={testCallBack} onEdit={testCallBack} onPlay={testCallBack} />
+              <Tools
+                canUseTool
+                onDelete={() => testDelete('777')}
+                onEdit={() => testEdit('777')}
+                onPlay={() => testPlay('777')}
+              />
             </TableComponents.Td>
           </TableComponents.Tr>
           <TableComponents.Tr>
@@ -72,9 +77,9 @@ export const Tables = {
             <TableComponents.Td>
               <Tools
                 canUseTool={false}
-                onDelete={testCallBack}
-                onEdit={testCallBack}
-                onPlay={testCallBack}
+                onDelete={() => testDelete('999')}
+                onEdit={() => testEdit('999')}
+                onPlay={() => testPlay('999')}
               />
             </TableComponents.Td>
           </TableComponents.Tr>
@@ -87,7 +92,12 @@ export const Tables = {
               <Grade currentGrade={1} />
             </TableComponents.Td>
             <TableComponents.Td>
-              <Tools onDelete={testCallBack} onEdit={testCallBack} onPlay={testCallBack} />
+              <Tools
+                canUseTool
+                onDelete={() => testDelete('666')}
+                onEdit={() => testEdit('666')}
+                onPlay={() => testPlay('666')}
+              />
             </TableComponents.Td>
           </TableComponents.Tr>
         </TableComponents.Body>

@@ -7,34 +7,22 @@ import {
 } from 'react-router-dom'
 
 import { path } from '@/common/enums'
-import { FormForgotPassword, FormSignIn, FormSignUp } from '@/features/auth'
 import { Decks } from '@/features/desks/Decks'
 import { Page } from '@/router/ui/page/Page'
-const onSubmit = () => {}
+import { PageError } from '@/router/ui/pageError/pageError'
+import { PageForgotPassword, PageSignIn, PageSignUp } from '@/router/ui/pagesAuth/PagesAuth'
 
 const publicRoutes: RouteObject[] = [
   {
-    element: (
-      <Page>
-        <FormForgotPassword onSubmit={onSubmit} />
-      </Page>
-    ),
+    element: <PageForgotPassword />,
     path: path.forgotPassword,
   },
   {
-    element: (
-      <Page>
-        <FormSignIn onSubmit={onSubmit} />
-      </Page>
-    ),
+    element: <PageSignIn />,
     path: path.signIn,
   },
   {
-    element: (
-      <Page>
-        <FormSignUp onSubmit={onSubmit} />
-      </Page>
-    ),
+    element: <PageSignUp />,
     path: path.signUp,
   },
   {
@@ -46,12 +34,8 @@ const publicRoutes: RouteObject[] = [
     path: path.decks,
   },
   {
-    element: (
-      <Page style={{ backgroundColor: 'red' }}>
-        <div>Error</div>
-      </Page>
-    ),
-    path: '*',
+    element: <PageError />,
+    path: '/*',
   },
 ]
 

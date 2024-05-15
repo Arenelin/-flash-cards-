@@ -14,7 +14,7 @@ const meta = {
     layout: 'centered',
     reactRouter: reactRouterParameters({
       location: {
-        path: path.forgotPassword,
+        path: path.signUp,
       },
       routing: [
         { Component: FormSignIn as ComponentType<{}>, path: path.signIn, useStoryElement: true },

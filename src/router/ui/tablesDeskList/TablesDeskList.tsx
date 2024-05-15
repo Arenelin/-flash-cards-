@@ -1,10 +1,10 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { ButtonSort, TableComponents, Tools } from '@/common/components/ui'
-import { Items } from '@/common/types'
+import { Deck } from '@/common/types'
 
 type Props = {
-  desks: Items[]
+  desks: Deck[]
   onDelete?: (idDesk: string) => void
   onEdit?: (idDesk: string) => void
   onPlay?: (idDesk: string) => void
@@ -48,7 +48,7 @@ export const TablesDeskList = forwardRef<ElementRef<'table'>, TablesDeskListProp
         </TableComponents.Tr>
       </TableComponents.Thead>
       <TableComponents.Body>
-        {desks.map((desk: Items) => {
+        {desks.map((desk: Deck) => {
           return (
             <TableComponents.Tr key={desk.id}>
               <TableComponents.Td>{desk.name}</TableComponents.Td>

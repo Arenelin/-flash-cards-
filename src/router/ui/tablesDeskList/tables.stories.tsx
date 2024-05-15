@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Items } from '@/common/types'
+import { Deck } from '@/common/types'
 import { TablesDeskList } from '@/router/ui/tablesDeskList/TablesDeskList'
 
 const meta = {
@@ -29,7 +29,7 @@ const testEdit = (id: string) => {
   alert(`id: ${id} Edit`)
 }
 
-const items: Items[] = [
+const items: Deck[] = [
   {
     author: { id: 'd591403e-3452-438c-b4e7-a13b8e3b7066', name: 'Alex' },
     cardsCount: 25,

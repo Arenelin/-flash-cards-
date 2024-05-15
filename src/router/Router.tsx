@@ -10,7 +10,12 @@ import { path } from '@/common/enums'
 import { Decks } from '@/features/desks/Decks'
 import { Page } from '@/router/ui/page/Page'
 import { PageError } from '@/router/ui/pageError/pageError'
-import { PageForgotPassword, PageSignIn, PageSignUp } from '@/router/ui/pagesAuth/PagesAuth'
+import {
+  PageForgotPassword,
+  PageNewPassword,
+  PageSignIn,
+  PageSignUp,
+} from '@/router/ui/pagesAuth/PagesAuth'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -24,6 +29,10 @@ const publicRoutes: RouteObject[] = [
   {
     element: <PageSignUp />,
     path: path.signUp,
+  },
+  {
+    element: <PageNewPassword />,
+    path: path.newPassword,
   },
   {
     element: (

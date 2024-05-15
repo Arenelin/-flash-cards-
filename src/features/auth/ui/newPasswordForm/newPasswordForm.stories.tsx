@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { ComponentType } from 'react'
 
+import { path } from '@/common/enums'
 import { NewPassword, NewPasswordForm } from '@/features/auth'
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router'
 
@@ -12,12 +13,12 @@ const meta = {
     layout: 'centered',
     reactRouter: reactRouterParameters({
       location: {
-        path: '/newPassword',
+        path: path.newPassword,
       },
       routing: [
         {
           Component: NewPasswordForm as ComponentType<{}>,
-          path: '/newPassword',
+          path: path.newPassword,
           useStoryElement: true,
         },
       ],

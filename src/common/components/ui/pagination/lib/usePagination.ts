@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { PaginationProps } from '@/common/components/ui/pagination/Pagination'
+import { PaginationProps } from '@/common/components/ui'
 import { Option } from '@/common/types'
 
 // original code: https://www.freecodecamp.org/news/build-a-custom-pagination-component-in-react/
@@ -19,11 +19,13 @@ const range = (start: number, end: number) => {
 
 export const usePagination = ({
   currentPage,
+  itemsPerPage,
   onPageChange,
+  pageSizeChange,
   siblingCount = 1,
   totalCount,
 }: PaginationProps) => {
-  const [pageSize, onPageSizeChange] = useState('10')
+  const [pageSize, setPageSize] = useState(itemsPerPage)
 
   const options: Option[] = [
     { label: '10', value: '10' },
@@ -32,6 +34,11 @@ export const usePagination = ({
     { label: '50', value: '50' },
     { label: '100', value: '100' },
   ]
+  const onPageSizeChange = (pageSize: string) => {
+    setPageSize(pageSize)
+    pageSizeChange(pageSize)
+    onPageChange(1)
+  }
 
   const paginationRange = useMemo(() => {
     const totalPageCount = Math.ceil(totalCount / +pageSize)
@@ -41,7 +48,7 @@ export const usePagination = ({
     /*
                Case 1:
                If the number of pages is less than the page numbers we want to show in our
-               paginationComponent, we return the range [1..totalPageCount]
+               paginationComponent, we return the range [1...totalPageCount]
                     */
     if (totalPageNumbers >= totalPageCount) {
       return range(1, totalPageCount)

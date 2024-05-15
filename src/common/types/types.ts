@@ -8,7 +8,7 @@ export type Author = {
   name: string
 }
 
-export type Items = {
+export type Deck = {
   author: Author
   cardsCount: number
   cover: string
@@ -28,7 +28,7 @@ export type Pagination = {
 }
 
 export type GetDecksResponse = {
-  items: Items[]
+  items: Deck[]
   pagination: Pagination
 }
 
@@ -62,3 +62,17 @@ export type CreateDecksArgs = {
 export type UpdateDecksArgs = { id: string } & Partial<CreateDecksArgs>
 
 export type DeleteDecksArgs = { id: string }
+
+export type ErrorMessages = {
+  field: string
+  message: string
+}
+
+export type Data = {
+  errorMessages: ErrorMessages[]
+}
+
+export type ErrorResponse = {
+  data: Data
+  status: number
+}

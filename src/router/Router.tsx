@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom'
 
 import { path } from '@/common/enums'
+import { Decks } from '@/features/desks/Decks'
+import { Page } from '@/router/ui/page/Page'
 import { PageError } from '@/router/ui/pageError/pageError'
 import { PageForgotPassword, PageSignIn, PageSignUp } from '@/router/ui/pagesAuth/PagesAuth'
 
@@ -19,14 +21,17 @@ const publicRoutes: RouteObject[] = [
     element: <PageSignIn />,
     path: path.signIn,
   },
-
   {
     element: <PageSignUp />,
     path: path.signUp,
   },
   {
-    errorElement: <PageError />,
-    path: path.error,
+    element: (
+      <Page>
+        <Decks />
+      </Page>
+    ),
+    path: path.decks,
   },
   {
     element: <PageError />,

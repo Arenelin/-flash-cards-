@@ -7,6 +7,7 @@ import { DropdownSeparator } from '@/common/components/ui/dropdown/dropdownSepar
 import { ToolbarItemWithIcon } from '@/common/components/ui/dropdown/toolbarItemWithIcon/ToolbarItemWithIcon'
 import { DefaultDescription } from '@/common/components/ui/dropdown/toolbarItemWithIcon/defaultDescription/DefaultDescription'
 import { ToolbarItemWithUserData } from '@/common/components/ui/dropdown/toolbarItemWithUserData/ToolbarItemWithUserData'
+import classNames from 'classnames'
 
 import s from '@/features/header/header.module.scss'
 
@@ -23,37 +24,35 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
   }
 
   return (
-    <div className={s.container}>
+    <header className={classNames(s.container, className)} {...rest} ref={ref}>
       <img alt={'logo'} className={s.img} height={'36px'} src={logo} width={'160px'} />
-      <header className={className} {...rest} ref={ref}>
-        {isAuthorization ? (
-          <Dropdown triggerChild={<UserAvatar name={mockUserData.name} src={mockUserData.img} />}>
-            <ToolbarItemWithUserData userData={mockUserData} />
-            <DropdownSeparator />
-            <ToolbarItemWithIcon
-              icon={<PersonOutline />}
-              onSelect={() => {
-                alert('My Profile')
-              }}
-              textContent={<DefaultDescription text={'My Profile'} />}
-            />
-            <DropdownSeparator />
+      {isAuthorization ? (
+        <Dropdown triggerChild={<UserAvatar name={mockUserData.name} src={mockUserData.img} />}>
+          <ToolbarItemWithUserData userData={mockUserData} />
+          <DropdownSeparator />
+          <ToolbarItemWithIcon
+            icon={<PersonOutline />}
+            onSelect={() => {
+              alert('My Profile')
+            }}
+            textContent={<DefaultDescription text={'My Profile'} />}
+          />
+          <DropdownSeparator />
 
-            <ToolbarItemWithIcon
-              icon={<LogOutOutline />}
-              onSelect={() => {
-                alert('Sign Out')
-              }}
-              textContent={<DefaultDescription text={'Sign Out'} />}
-            />
-          </Dropdown>
-        ) : (
-          <Button as={'a'} href={'#'} variant={'secondary'}>
-            Sing In
-          </Button>
-        )}
-      </header>
-    </div>
+          <ToolbarItemWithIcon
+            icon={<LogOutOutline />}
+            onSelect={() => {
+              alert('Sign Out')
+            }}
+            textContent={<DefaultDescription text={'Sign Out'} />}
+          />
+        </Dropdown>
+      ) : (
+        <Button as={'a'} href={'#'} variant={'secondary'}>
+          Sing In
+        </Button>
+      )}
+    </header>
   )
 })
 

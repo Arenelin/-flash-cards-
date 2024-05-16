@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { UserAvatar } from '@/common/components/ui/userAvatar/UserAvatar'
 
 const meta = {
-  argTypes: {},
   component: UserAvatar,
   parameters: {
     layout: 'centered',

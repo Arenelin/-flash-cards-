@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { Pagination } from '@/common/components/ui'
 
 const meta = {
-  argTypes: {},
   component: Pagination,
   parameters: {
     layout: 'centered',

@@ -3,11 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Page } from '@/router/ui/page/Page'
 
 const meta = {
-  argTypes: {},
   component: Page,
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
   title: 'Router/Page',
 } satisfies Meta<typeof Page>

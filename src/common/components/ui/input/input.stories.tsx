@@ -12,7 +12,6 @@ import SearchOutline from '@/assets/icons/SearchOutline'
 import { Input, InputType } from './Input'
 
 const meta = {
-  argTypes: {},
   component: Input,
   parameters: {
     layout: 'centered',

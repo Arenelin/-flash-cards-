@@ -5,7 +5,6 @@ import { ElementRef, useRef } from 'react'
 import { Card } from '@/common/components/ui/card/Card'
 
 const meta = {
-  argTypes: {},
   component: Card,
   tags: ['autodocs'],
   title: 'Components/Card',

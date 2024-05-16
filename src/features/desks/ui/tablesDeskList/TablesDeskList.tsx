@@ -53,7 +53,9 @@ export const TablesDeskList = forwardRef<ElementRef<'table'>, TablesDeskListProp
             <TableComponents.Tr key={desk.id}>
               <TableComponents.Td>{desk.name}</TableComponents.Td>
               <TableComponents.Td>{desk.cardsCount}</TableComponents.Td>
+
               <TableComponents.Td>{getDateString(desk.updated)}</TableComponents.Td>
+              <TableComponents.Td>{desk.author.name}</TableComponents.Td>
               <TableComponents.Td>
                 <Tools
                   canUseTool={desk.author.id === desk.userId}

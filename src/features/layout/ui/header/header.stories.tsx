@@ -1,4 +1,4 @@
-import { Header } from '@/features/header/Header'
+import { Header } from '@/features/layout/ui/header/Header'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

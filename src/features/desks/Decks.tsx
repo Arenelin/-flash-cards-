@@ -3,6 +3,7 @@ import { Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common
 import { Preloader } from '@/common/components/ui/preloader/Preloader'
 import { ErrorResponse, GetDecksResponse } from '@/common/types'
 import { useDecks } from '@/features/desks/lib/useDecks'
+import { TablesDeskList } from '@/features/desks/ui/tablesDeskList/TablesDeskList'
 
 import s from './decks.module.scss'
 
@@ -57,7 +58,7 @@ export function Decks() {
         />
         <Slider onValueChange={setSliderValue} value={sliderValue} />
       </div>
-      <div>Here is Alina`s Table component with Deck[] props</div>
+      <TablesDeskList className={s.tables} desks={data.items} onSortLastUpdated={() => {}} />
       <div className={s.paginationsettings}>
         <Pagination
           currentPage={data.pagination.currentPage}

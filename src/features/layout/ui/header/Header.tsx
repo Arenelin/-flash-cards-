@@ -8,7 +8,7 @@ import { ToolbarItemWithIcon } from '@/common/components/ui/dropdown/toolbarItem
 import { DefaultDescription } from '@/common/components/ui/dropdown/toolbarItemWithIcon/defaultDescription/DefaultDescription'
 import { ToolbarItemWithUserData } from '@/common/components/ui/dropdown/toolbarItemWithUserData/ToolbarItemWithUserData'
 
-import s from '@/features/header/header.module.scss'
+import s from '@/features/layout/ui/header/header.module.scss'
 
 type HeaderProps = {
   isAuthorization: boolean

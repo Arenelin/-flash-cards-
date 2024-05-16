@@ -18,3 +18,8 @@
   border: 5px solid var(--color-danger-500);
   border-radius: 25px;
 }
+
+.tables {
+  width: calc(100% - 50px);
+  margin: 0 auto;
+}

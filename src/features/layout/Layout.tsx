@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { Header } from '@/features/header/Header'
+import { Header } from '@/features/layout/ui/header/Header'
 import classNames from 'classnames'
 
 import s from '@/features/layout/layout.module.scss'

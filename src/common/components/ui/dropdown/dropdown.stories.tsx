@@ -16,7 +16,6 @@ import { ToolbarItemWithUserData } from '@/common/components/ui/dropdown/toolbar
 import { UserAvatar } from '@/common/components/ui/userAvatar/UserAvatar'
 
 const meta = {
-  argTypes: {},
   component: Dropdown,
   parameters: {
     layout: 'centered',

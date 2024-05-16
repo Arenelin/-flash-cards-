@@ -4,7 +4,6 @@ import { Layout } from '@/features/layout/Layout'
 import { Page } from '@/router/ui/page/Page'
 
 const meta = {
-  argTypes: {},
   component: Layout,
   tags: ['autodocs'],
   title: 'Features/Layout',

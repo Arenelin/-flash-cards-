@@ -1,5 +1,13 @@
-import { Search } from '@/assets/icons'
-import { Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components/ui'
+import { Search, TrashOutline } from '@/assets/icons'
+import {
+  Button,
+  Input,
+  InputType,
+  Pagination,
+  Slider,
+  Tabs,
+  Typography,
+} from '@/common/components/ui'
 import { Preloader } from '@/common/components/ui/preloader/Preloader'
 import { ErrorResponse, GetDecksResponse } from '@/common/types'
 import { useDecks } from '@/features/desks/lib/useDecks'
@@ -9,6 +17,7 @@ import s from './decks.module.scss'
 
 export function Decks() {
   const {
+    clearFilterHandle,
     currentPageHandler,
     pageSizeHandler,
     searchChangeHandle,
@@ -21,7 +30,11 @@ export function Decks() {
   } = useDecks()
 
   if (rest.isLoading) {
-    return <Preloader />
+    return (
+      <div className={s.container}>
+        <Preloader />
+      </div>
+    )
   }
 
   if (rest.error) {
@@ -39,24 +52,32 @@ export function Decks() {
   const data = rest.data as GetDecksResponse
 
   return (
-    <div>
-      <Typography as={'h2'} variant={'h2'}>
-        Decks list
-      </Typography>
+    <div className={s.container}>
+      <div className={s.titleBlock}>
+        <Typography as={'h2'} variant={'h2'}>
+          Decks list{' '}
+        </Typography>
+        <Button>Add New Deck</Button>
+      </div>
+
       <div className={s.settingsBlock}>
         <Input
           iconStart={<Search />}
-          label={'Search'}
           onChange={e => searchChangeHandle(e.currentTarget.value)}
+          placeholder={'Filter by card name'}
           type={InputType.search}
           value={searchParams.get('name') || ''}
         />
         <Tabs
+          label={'Show decks cards'}
           onValueChange={tabsChangeHandler}
           tabs={tabsOptions}
           value={searchParams.get('authorId') ? 'My Cards' : 'All Cards'}
         />
-        <Slider onValueChange={setSliderValue} value={sliderValue} />
+        <Slider label={'Number of cards'} onValueChange={setSliderValue} value={sliderValue} />
+        <Button onClick={clearFilterHandle} variant={'secondary'}>
+          <TrashOutline /> Clear Filter
+        </Button>
       </div>
       <TablesDeskList className={s.tables} desks={data.items} onSortLastUpdated={() => {}} />
       <div className={s.paginationsettings}>
@@ -65,8 +86,7 @@ export function Decks() {
           itemsPerPage={data.pagination.itemsPerPage.toString()}
           onPageChange={currentPageHandler}
           pageSizeChange={pageSizeHandler}
-          totalCount={2000} //TODO add totalItems from get-request.
-          // totalCount={data.pagination.totalItems}
+          totalCount={data.pagination.totalItems}
         />
       </div>
     </div>

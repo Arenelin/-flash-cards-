@@ -1,5 +1,11 @@
 .container {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sliderContainer {
+  display: flex;
   column-gap: 10px;
   align-items: center;
 }

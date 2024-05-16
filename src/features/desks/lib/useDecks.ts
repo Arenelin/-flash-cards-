@@ -64,13 +64,23 @@ export const useDecks = () => {
     authorId: searchParams.get('authorId') || undefined, // пока нет реального айди выкидывает ошибку
     currentPage: Number(searchParams.get('currentPage')) || 1,
     itemsPerPage: Number(searchParams.get('itemsPerPage')) || 10,
-    maxCardsCount: Number(searchParams.get('maxCardsCount')) || 0,
-    minCardsCount: Number(searchParams.get('minCardsCount')) || 100,
+    maxCardsCount: Number(searchParams.get('maxCardsCount')) || 100,
+    minCardsCount: Number(searchParams.get('minCardsCount')) || 0,
     name: searchParams.get('name') || undefined,
     // orderBy?: string,
   })
 
+  const clearFilterHandle = () => {
+    setSliderValue([0, 100])
+    searchParams.delete('authorId')
+    searchParams.delete('name')
+    searchParams.delete('currentPage')
+    // searchParams.delete('orderBy')
+    setSearchParams(searchParams)
+  }
+
   return {
+    clearFilterHandle,
     currentPageHandler,
     data,
     error,

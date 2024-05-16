@@ -13,7 +13,7 @@ import {
 export const authApi = appApi.injectEndpoints({
   endpoints: builder => {
     return {
-      authToken: builder.query<undefined, void>({
+      authToken: builder.mutation<undefined, void>({
         query: () => ({
           method: 'POST',
           url: 'v2/auth/refresh-token',
@@ -29,7 +29,7 @@ export const authApi = appApi.injectEndpoints({
       getMe: builder.query<MeResponse, void>({
         query: () => 'v1/auth/me',
       }),
-      logOut: builder.query<undefined, void>({
+      logOut: builder.mutation<undefined, void>({
         query: () => ({
           method: 'POST',
           url: 'v1/auth/logout',
@@ -42,7 +42,7 @@ export const authApi = appApi.injectEndpoints({
           url: `v1/auth/reset-password/${token}`,
         }),
       }),
-      signIn: builder.query<SignInResponse, SignInArgs>({
+      signIn: builder.mutation<SignInResponse, SignInArgs>({
         query: body => ({
           body: body,
           method: 'POST',
@@ -68,12 +68,12 @@ export const authApi = appApi.injectEndpoints({
 })
 
 export const {
-  useAuthTokenQuery,
+  useAuthTokenMutation,
   useForgotPasswordQuery,
   useGetMeQuery,
-  useLogOutQuery,
+  useLogOutMutation,
   useResetPasswordTokenMutation,
-  useSignInQuery,
+  useSignInMutation,
   useSignUpMutation,
   useUpdateMeMutation,
 } = authApi

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Navigate,
   Outlet,
@@ -6,9 +7,9 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { Button } from '@/common/components/ui'
 import { path } from '@/common/enums'
-import { Decks } from '@/features/desks/Decks'
-import { Page } from '@/router/ui/page/Page'
+import { PageDecks } from '@/router/ui/pageDecks/pageDecks'
 import { PageError } from '@/router/ui/pageError/pageError'
 import {
   PageForgotPassword,
@@ -35,24 +36,33 @@ const publicRoutes: RouteObject[] = [
     path: path.newPassword,
   },
   {
-    element: (
-      <Page>
-        <Decks />
-      </Page>
-    ),
-    path: path.decks,
-  },
-  {
     element: <PageError />,
     path: '/*',
   },
 ]
 
-const privateRoutes = [{ element: <div>desks</div>, path: '/' }]
-const PrivateRouter = () => {
-  const isAuthenticated = false
+const privateRoutes = [
+  {
+    element: <PageDecks />,
+    path: path.decks,
+  },
+]
 
-  return isAuthenticated ? <Outlet /> : <Navigate to={path.signIn} />
+const PrivateRouter = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(true)
+
+  return (
+    <>
+      <Button
+        onClick={() => setIsAuthenticated(false)}
+        style={{ position: 'absolute', right: '135px', top: '75px' }}
+        variant={'primary'}
+      >
+        Hide Private Pages
+      </Button>
+      {isAuthenticated ? <Outlet /> : <Navigate to={path.signIn} />}
+    </>
+  )
 }
 
 const router = createBrowserRouter([

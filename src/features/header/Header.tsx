@@ -48,8 +48,9 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
             />
           </Dropdown>
         ) : (
-          <Button as={'a'} href={'#'} variant={'secondary'}>
-            Sing In
+          <Button as={'a'} href={'/decks'} variant={'secondary'}>
+            Decks Page
+            {/*Sing In*/}
           </Button>
         )}
       </header>

@@ -31,7 +31,7 @@ export function Decks() {
 
   if (rest.isLoading) {
     return (
-      <div className={s.container}>
+      <div className={s.preloader}>
         <Preloader />
       </div>
     )
@@ -54,8 +54,8 @@ export function Decks() {
   return (
     <div className={s.container}>
       <div className={s.titleBlock}>
-        <Typography as={'h2'} variant={'h2'}>
-          Decks list{' '}
+        <Typography as={'h1'} variant={'h1'}>
+          Decks list
         </Typography>
         <Button>Add New Deck</Button>
       </div>
@@ -80,7 +80,7 @@ export function Decks() {
         </Button>
       </div>
       <TablesDeskList className={s.tables} desks={data.items} onSortLastUpdated={() => {}} />
-      <div className={s.paginationsettings}>
+      <div className={s.paginationSettings}>
         <Pagination
           currentPage={data.pagination.currentPage}
           itemsPerPage={data.pagination.itemsPerPage.toString()}

@@ -3,6 +3,12 @@
   height: 100%;
 }
 
+.preloader {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .titleBlock {
   display: flex;
   justify-content: space-between;
@@ -11,7 +17,7 @@
 }
 
 .settingsBlock,
-.paginationsettings {
+.paginationSettings {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;

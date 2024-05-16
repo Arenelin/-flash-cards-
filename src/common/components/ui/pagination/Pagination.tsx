@@ -52,9 +52,9 @@ export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
           <ArrowForward />
         </ButtonArrow>
         <div className={s.selectBlock}>
-          <Typography variant={'body2'}>Show</Typography>
+          <Typography variant={'body2'}>Show&nbsp;</Typography>
           <Select onValueChange={onPageSizeChange} options={options} small value={pageSize} />
-          <Typography variant={'body2'}>on the page</Typography>
+          <Typography variant={'body2'}>&nbsp;&nbsp;&nbsp;on the page</Typography>
         </div>
       </div>
     )

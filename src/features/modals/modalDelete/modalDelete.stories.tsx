@@ -28,7 +28,16 @@ export const ModalDeleteCard = {
         <button onClick={() => setOpen(true)}>
           <TrashOutline />
         </button>
-        <ModalDelete onOpenChange={setOpen} open={open} text={args.text} title={args.title} />
+        <ModalDelete
+          onDelete={() => {
+            alert('Delete')
+            setOpen(false)
+          }}
+          onOpenChange={setOpen}
+          open={open}
+          text={args.text}
+          title={args.title}
+        />
       </>
     )
   },
@@ -47,7 +56,16 @@ export const ModalDeleteDeck = {
         <button onClick={() => setOpen(true)}>
           <TrashOutline />
         </button>
-        <ModalDelete onOpenChange={setOpen} open={open} text={args.text} title={args.title} />
+        <ModalDelete
+          onDelete={() => {
+            alert('Delete')
+            setOpen(false)
+          }}
+          onOpenChange={setOpen}
+          open={open}
+          text={args.text}
+          title={args.title}
+        />
       </>
     )
   },

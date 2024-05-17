@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Deck } from '@/common/types'
-import { TablesDeskList } from '@/features/desks/ui/tablesDeskList/TablesDeskList'
+import { TableDecksList } from '@/features/desks/ui/deckTables/TableDecksList'
 
 const meta = {
-  component: TablesDeskList,
+  component: TableDecksList,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   title: 'Tables/Tables',
-} satisfies Meta<typeof TablesDeskList>
+} satisfies Meta<typeof TableDecksList>
 
 export default meta
-type Story = StoryObj<typeof TablesDeskList>
+type Story = StoryObj<typeof TableDecksList>
 
 const onSortLastUpdated = () => {
   alert('sort!')
@@ -29,7 +29,7 @@ const testEdit = (id: string) => {
   alert(`id: ${id} Edit`)
 }
 
-const items: Deck[] = [
+const decks: Deck[] = [
   {
     author: { id: 'd591403e-3452-438c-b4e7-a13b8e3b7066', name: 'Alex' },
     cardsCount: 25,
@@ -65,9 +65,9 @@ const items: Deck[] = [
   },
 ]
 
-export const Tables_DeskList = {
+export const Table_Decks_List = {
   args: {
-    desks: items,
+    decks,
     onDelete: testDelete,
     onEdit: testEdit,
     onPlay: testPlay,

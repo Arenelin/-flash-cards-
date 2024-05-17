@@ -1,21 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TableComponents } from '@/common/components/ui/tables/Tables'
-import { ButtonSort } from '@/common/components/ui/tables/ui/buttonSort/ButtonSort'
-import { Grade } from '@/common/components/ui/tables/ui/grade/Grade'
-import { Tools } from '@/common/components/ui/tables/ui/tools/Tools'
+import { ButtonSort, Grade, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components/ui'
 
 const meta = {
-  component: TableComponents.Table,
+  component: Table,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   title: 'Tables/Tables',
-} satisfies Meta<typeof TableComponents.Table>
+} satisfies Meta<typeof Table>
 
 export default meta
-type Story = StoryObj<typeof TableComponents.Table>
+type Story = StoryObj<typeof Table>
 
 const testDelete = (id: string) => {
   alert(`id: ${id} Delete`)
@@ -35,73 +32,73 @@ export const Tables = {
     }
 
     return (
-      <TableComponents.Table>
-        <TableComponents.Thead>
-          <TableComponents.Tr>
-            <TableComponents.Th>Name</TableComponents.Th>
-            <TableComponents.Th>Cards</TableComponents.Th>
-            <TableComponents.Th>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Cards</Th>
+            <Th>
               <ButtonSort onClick={onClick} text={'Last Updated'} />
-            </TableComponents.Th>
-            <TableComponents.Th>Created by</TableComponents.Th>
-            <TableComponents.Th>Grade</TableComponents.Th>
-            <TableComponents.Th></TableComponents.Th>
-          </TableComponents.Tr>
-        </TableComponents.Thead>
-        <TableComponents.Body>
-          <TableComponents.Tr>
-            <TableComponents.Td>Name Cards</TableComponents.Td>
-            <TableComponents.Td>4</TableComponents.Td>
-            <TableComponents.Td>18.06.1967</TableComponents.Td>
-            <TableComponents.Td>3</TableComponents.Td>
-            <TableComponents.Td>
+            </Th>
+            <Th>Created by</Th>
+            <Th>Grade</Th>
+            <Th></Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <Tr>
+            <Td>Name Cards</Td>
+            <Td>4</Td>
+            <Td>18.06.1967</Td>
+            <Td>3</Td>
+            <Td>
               <Grade currentGrade={2} />{' '}
-            </TableComponents.Td>
-            <TableComponents.Td>
+            </Td>
+            <Td>
               <Tools
                 canUseTool
                 onDelete={() => testDelete('777')}
                 onEdit={() => testEdit('777')}
                 onPlay={() => testPlay('777')}
               />
-            </TableComponents.Td>
-          </TableComponents.Tr>
-          <TableComponents.Tr>
-            <TableComponents.Td>Name Cards</TableComponents.Td>
-            <TableComponents.Td>4</TableComponents.Td>
-            <TableComponents.Td>18.06.1967</TableComponents.Td>
-            <TableComponents.Td>3</TableComponents.Td>
-            <TableComponents.Td>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Name Cards</Td>
+            <Td>4</Td>
+            <Td>18.06.1967</Td>
+            <Td>3</Td>
+            <Td>
               <Grade currentGrade={4} />
-            </TableComponents.Td>
-            <TableComponents.Td>
+            </Td>
+            <Td>
               <Tools
                 canUseTool={false}
                 onDelete={() => testDelete('999')}
                 onEdit={() => testEdit('999')}
                 onPlay={() => testPlay('999')}
               />
-            </TableComponents.Td>
-          </TableComponents.Tr>
-          <TableComponents.Tr>
-            <TableComponents.Td>Name Cards</TableComponents.Td>
-            <TableComponents.Td>4</TableComponents.Td>
-            <TableComponents.Td>18.06.1967</TableComponents.Td>
-            <TableComponents.Td>3</TableComponents.Td>
-            <TableComponents.Td>
+            </Td>
+          </Tr>
+          <Tr>
+            <Td>Name Cards</Td>
+            <Td>4</Td>
+            <Td>18.06.1967</Td>
+            <Td>3</Td>
+            <Td>
               <Grade currentGrade={1} />
-            </TableComponents.Td>
-            <TableComponents.Td>
+            </Td>
+            <Td>
               <Tools
                 canUseTool
                 onDelete={() => testDelete('666')}
                 onEdit={() => testEdit('666')}
                 onPlay={() => testPlay('666')}
               />
-            </TableComponents.Td>
-          </TableComponents.Tr>
-        </TableComponents.Body>
-      </TableComponents.Table>
+            </Td>
+          </Tr>
+        </Tbody>
+      </Table>
     )
   },
 } satisfies Story

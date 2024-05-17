@@ -1,0 +1,35 @@
+.classTypography {
+  text-align: left;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-l);
+  line-height: var(--line-height-s);
+}
+.text {
+  font-family: 'Helvetica', sans-serif;
+  white-space: pre-line;
+}
+.container {
+  padding: 18px 24px 36px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    'instruction instruction'
+    'cancel  delete';
+  row-gap: 10px;
+}
+.container > :first-child {
+  grid-area: instruction;
+}
+
+.container > :nth-child(2) {
+  grid-area: cancel;
+  justify-self: start;
+  align-self: end;
+}
+
+.container > :last-child {
+  grid-area: delete;
+  justify-self: end;
+  align-self: end;
+}

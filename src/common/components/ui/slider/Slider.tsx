@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import s from './slider.module.scss'
 
 type SliderProps = {
-  label: string
+  label?: string
   onValueChange: (value: number[]) => void
   value: number[]
 } & ComponentPropsWithoutRef<typeof SliderRadix.Root>

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Deck } from '@/common/types'
-import { TableDecksList } from '@/features/desks/ui/deckTables/TableDecksList'
+import { TableDecksList } from '@/features/decks/ui/deckTables/TableDecksList'
 
 const meta = {
   component: TableDecksList,

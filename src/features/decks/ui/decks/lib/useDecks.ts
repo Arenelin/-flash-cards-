@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import { Tab } from '@/common/components/ui'
-import { useGetDecksQuery } from '@/features/desks/api/decksApi'
+import { useGetDecksQuery } from '@/features/decks/api/decksApi'
 
 export const useDecks = () => {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -59,7 +59,6 @@ export const useDecks = () => {
     setSearchParams(searchParams)
   }
 
-  // const { data, error, isLoading } = useGetDecksQuery({
   const { data, error, isLoading } = useGetDecksQuery({
     authorId: searchParams.get('authorId') || undefined, // пока нет реального айди выкидывает ошибку
     currentPage: Number(searchParams.get('currentPage')) || 1,

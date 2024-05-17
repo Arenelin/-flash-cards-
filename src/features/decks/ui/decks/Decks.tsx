@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom'
+
 import { Search, TrashOutline } from '@/assets/icons'
 import {
   Button,
@@ -10,10 +12,10 @@ import {
 } from '@/common/components/ui'
 import { Preloader } from '@/common/components/ui/preloader/Preloader'
 import { ErrorResponse, GetDecksResponse } from '@/common/types'
-import { useDecks } from '@/features/desks/lib/useDecks'
-import { TableDecksList } from '@/features/desks/ui/deckTables/TableDecksList'
+import { TableDecksList } from '@/features/decks/ui/deckTables/TableDecksList'
+import { useDecks } from '@/features/decks/ui/decks/lib/useDecks'
 
-import s from './decks.module.scss'
+import s from '@/features/decks/ui/decks.module.scss'
 
 export function Decks() {
   const {
@@ -28,6 +30,8 @@ export function Decks() {
     tabsOptions,
     ...rest
   } = useDecks()
+
+  const onPlay = (id: string) => <Navigate to={`decks/${id}`} />
 
   if (rest.isLoading) {
     return (
@@ -79,7 +83,12 @@ export function Decks() {
           <TrashOutline /> Clear Filter
         </Button>
       </div>
-      <TableDecksList className={s.tables} decks={data.items} onSortLastUpdated={() => {}} />
+      <TableDecksList
+        className={s.tables}
+        decks={data.items}
+        onPlay={onPlay}
+        onSortLastUpdated={() => {}}
+      />
       <div className={s.paginationSettings}>
         <Pagination
           currentPage={data.pagination.currentPage}

@@ -32,7 +32,7 @@ export type GetDecksResponse = {
   pagination: Pagination
 }
 
-export type GetDecksArgs = {
+export type GetDecks = {
   authorId?: string
   currentPage?: number
   itemsPerPage?: number
@@ -42,7 +42,23 @@ export type GetDecksArgs = {
   orderBy?: string
 }
 
+export type GetDeckById = {
+  id: string
+}
+
 export type DecksResponse = {
+  author: Author
+  cardsCount: number
+  cover: string
+  created: string
+  id: string
+  isPrivate: boolean
+  name: string
+  updated: string
+  userId: string
+}
+
+export type GetDeckByIdResponse = {
   author: Author
   cardsCount: number
   cover: string

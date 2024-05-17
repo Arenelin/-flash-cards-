@@ -1,7 +1,7 @@
 import { ComponentType } from 'react'
 
 import { path } from '@/common/enums'
-import { Decks } from '@/features/desks/Decks'
+import { Decks } from '@/features/decks/ui/decks/Decks'
 import { Meta, StoryObj } from '@storybook/react'
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router'
 

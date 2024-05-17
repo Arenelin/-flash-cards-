@@ -7,11 +7,11 @@ import { PageButton } from '@/common/components/ui/pagination/ui/pageButton/Page
 
 type Props = { paginationRange: PaginationRange } & Omit<
   PaginationProps,
-  'itemsPerPage' | 'pageSizeChange' | 'siblingCount' | 'totalCount'
+  'itemsPerPage' | 'onPageSizeChange' | 'siblingCount' | 'totalCount'
 >
 export const MainPaginationButtons = forwardRef<ElementRef<'button'> & ElementRef<'span'>, Props>(
   (props, ref) => {
-    const { currentPage, onPageChange, paginationRange } = props
+    const { currentPage, onCurrentPageChange, paginationRange } = props
     const paginationButtons = paginationRange.map((page, index) => {
       if (typeof page === 'string') {
         return <Dots key={index} ref={ref} />
@@ -21,7 +21,7 @@ export const MainPaginationButtons = forwardRef<ElementRef<'button'> & ElementRe
         <PageButton
           isSelected={currentPage === page}
           key={index}
-          onClick={() => onPageChange(page)}
+          onClick={() => onCurrentPageChange(page)}
           page={page}
           ref={ref}
         />

@@ -20,8 +20,8 @@ const range = (start: number, end: number) => {
 export const usePagination = ({
   currentPage,
   itemsPerPage,
-  onPageChange,
-  pageSizeChange,
+  onCurrentPageChange,
+  onPageSizeChange,
   siblingCount = 1,
   totalCount,
 }: PaginationProps) => {
@@ -34,10 +34,10 @@ export const usePagination = ({
     { label: '50', value: '50' },
     { label: '100', value: '100' },
   ]
-  const onPageSizeChange = (pageSize: string) => {
+  const pageSizeChangeHandler = (pageSize: string) => {
     setPageSize(pageSize)
-    pageSizeChange(pageSize)
-    onPageChange(1)
+    onPageSizeChange(pageSize)
+    onCurrentPageChange(1)
   }
 
   const paginationRange = useMemo(() => {
@@ -100,20 +100,20 @@ export const usePagination = ({
   const isLastPage = currentPage === paginationRange.at(-1)
   const isFirstPage = currentPage === 1
   const onNextPage = () => {
-    onPageChange(currentPage + 1)
+    onCurrentPageChange(currentPage + 1)
   }
   const onPreviousPage = () => {
-    onPageChange(currentPage - 1)
+    onCurrentPageChange(currentPage - 1)
   }
 
   return {
     isFirstPage,
     isLastPage,
     onNextPage,
-    onPageSizeChange,
     onPreviousPage,
     options,
     pageSize,
+    pageSizeChangeHandler,
     paginationRange,
   }
 }

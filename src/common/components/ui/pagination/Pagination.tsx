@@ -12,28 +12,31 @@ import s from './pagination.module.scss'
 export type PaginationProps = {
   currentPage: number
   itemsPerPage: string
-  onPageChange: (page: number) => void
-  pageSizeChange: (pageSize: string) => void
+  onCurrentPageChange: (page: number) => void
+  onPageSizeChange: (pageSize: string) => void
   siblingCount?: number
   totalCount: number
 }
 
 export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
-  ({ currentPage, itemsPerPage, onPageChange, pageSizeChange, siblingCount, totalCount }, ref) => {
+  (
+    { currentPage, itemsPerPage, onCurrentPageChange, onPageSizeChange, siblingCount, totalCount },
+    ref
+  ) => {
     const {
       isFirstPage,
       isLastPage,
       onNextPage,
-      onPageSizeChange,
       onPreviousPage,
       options,
       pageSize,
+      pageSizeChangeHandler,
       paginationRange,
     } = usePagination({
       currentPage,
       itemsPerPage,
-      onPageChange,
-      pageSizeChange,
+      onCurrentPageChange,
+      onPageSizeChange,
       siblingCount,
       totalCount,
     })
@@ -45,7 +48,7 @@ export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
         </ButtonArrow>
         <MainPaginationButtons
           currentPage={currentPage}
-          onPageChange={onPageChange}
+          onCurrentPageChange={onCurrentPageChange}
           paginationRange={paginationRange}
         />
         <ButtonArrow disabled={isLastPage} onClick={onNextPage}>
@@ -53,7 +56,7 @@ export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
         </ButtonArrow>
         <div className={s.selectBlock}>
           <Typography variant={'body2'}>Show&nbsp;</Typography>
-          <Select onValueChange={onPageSizeChange} options={options} small value={pageSize} />
+          <Select onValueChange={pageSizeChangeHandler} options={options} small value={pageSize} />
           <Typography variant={'body2'}>&nbsp;&nbsp;&nbsp;on the page</Typography>
         </div>
       </div>

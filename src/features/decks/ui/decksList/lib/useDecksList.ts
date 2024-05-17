@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import { Tab } from '@/common/components/ui'
 import { useGetDecksQuery } from '@/features/decks/api/decksApi'
 
-export const useDecks = () => {
+export const useDecksList = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   //input search params
   const searchChangeHandle = (value: string) => {
@@ -40,15 +39,13 @@ export const useDecks = () => {
   const min = Number(searchParams.get('minCardsCount')) || 0
   const max = Number(searchParams.get('maxCardsCount')) || 100
 
-  const [sliderValue, setSliderValue] = useState([min, max])
-
-  useEffect(() => {
-    searchParams.set('minCardsCount', sliderValue[0].toString())
-    searchParams.set('maxCardsCount', sliderValue[1].toString())
-    sliderValue[0] === 0 && searchParams.delete('minCardsCount')
-    sliderValue[1] === 100 && searchParams.delete('maxCardsCount')
+  const sliderValueHandle = (value: number[]) => {
+    searchParams.set('minCardsCount', value[0].toString())
+    searchParams.set('maxCardsCount', value[1].toString())
+    value[0] === 0 && searchParams.delete('minCardsCount')
+    value[1] === 100 && searchParams.delete('maxCardsCount')
     setSearchParams(searchParams)
-  }, [sliderValue, searchParams, setSearchParams])
+  }
   //pagination search params
   const pageSizeHandler = (itemsPerPage: string) => {
     searchParams.set('itemsPerPage', itemsPerPage)
@@ -70,7 +67,7 @@ export const useDecks = () => {
   })
 
   const clearFilterHandle = () => {
-    setSliderValue([0, 100])
+    sliderValueHandle([0, 100])
     searchParams.delete('authorId')
     searchParams.delete('name')
     searchParams.delete('currentPage')
@@ -84,11 +81,12 @@ export const useDecks = () => {
     data,
     error,
     isLoading,
+    max,
+    min,
     pageSizeHandler,
     searchChangeHandle,
     searchParams,
-    setSliderValue,
-    sliderValue,
+    sliderValueHandle,
     tabsChangeHandler,
     tabsOptions,
   }

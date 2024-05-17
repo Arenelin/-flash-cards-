@@ -25,8 +25,8 @@ export const PaginationDemo = {
       <Pagination
         currentPage={page}
         itemsPerPage={'10'}
-        onPageChange={setPage}
-        pageSizeChange={() => {}}
+        onCurrentPageChange={setPage}
+        onPageSizeChange={() => {}}
         totalCount={TOTAL_COUNT}
       />
     )

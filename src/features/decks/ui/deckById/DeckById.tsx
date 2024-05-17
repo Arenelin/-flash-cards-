@@ -56,8 +56,8 @@ export const DeckById = () => {
       <Pagination
         currentPage={Number(searchParams.get('currentPage')) ?? 1}
         itemsPerPage={searchParams.get('itemsPerPage') ?? '10'}
-        onPageChange={currentPageHandler}
-        pageSizeChange={pageSizeHandler}
+        onCurrentPageChange={currentPageHandler}
+        onPageSizeChange={pageSizeHandler}
         totalCount={2000} //TODO set current value from request
       />
     </div>

@@ -11,7 +11,7 @@ import {
 import { Preloader } from '@/common/components/ui/preloader/Preloader'
 import { ErrorResponse, GetDecksResponse } from '@/common/types'
 import { useDecks } from '@/features/desks/lib/useDecks'
-import { TablesDeskList } from '@/features/desks/ui/tablesDeskList/TablesDeskList'
+import { TableDecksList } from '@/features/desks/ui/deckTables/TableDecksList'
 
 import s from './decks.module.scss'
 
@@ -79,7 +79,7 @@ export function Decks() {
           <TrashOutline /> Clear Filter
         </Button>
       </div>
-      <TablesDeskList className={s.tables} desks={data.items} onSortLastUpdated={() => {}} />
+      <TableDecksList className={s.tables} decks={data.items} onSortLastUpdated={() => {}} />
       <div className={s.paginationSettings}>
         <Pagination
           currentPage={data.pagination.currentPage}

@@ -31,6 +31,15 @@
   margin: 0 auto;
 }
 
+.inputContainer {
+  width: calc(100% - 50px);
+  margin: 25px auto;
+}
+
+.input {
+  width: 100%;
+}
+
 .error {
   padding: 10px;
 

@@ -11,6 +11,10 @@ export default {
 export const IconsGallery = () => (
   <div className={s.blockStyle}>
     <div className={s.elementStyle}>
+      <Icons.ArrowArrowBack />
+      <p className={s.textStyle}>ArrowArrowBack</p>
+    </div>
+    <div className={s.elementStyle}>
       <Icons.ArrowBack />
       <p className={s.textStyle}>ArrowBack</p>
     </div>

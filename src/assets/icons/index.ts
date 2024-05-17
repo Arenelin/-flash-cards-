@@ -1,3 +1,4 @@
+export { default as ArrowArrowBack } from './ArrowArrowBack'
 export { default as ArrowBack } from './ArrowBack'
 export { default as ArrowDown } from './ArrowDown'
 export { default as ArrowForward } from './ArrowForward'

@@ -12,12 +12,12 @@ import {
 } from '@/common/components/ui'
 import { Preloader } from '@/common/components/ui/preloader/Preloader'
 import { ErrorResponse, GetDecksResponse } from '@/common/types'
-import { TableDecksList } from '@/features/decks/ui/deckTables/TableDecksList'
-import { useDecks } from '@/features/decks/ui/decks/lib/useDecks'
+import { useDecks } from '@/features/decks/ui/decksList/lib/useDecks'
+import { TableDecksList } from '@/features/decks/ui/decksList/ui/tableDecksList/TableDecksList'
 
 import s from '@/features/decks/ui/decks.module.scss'
 
-export function Decks() {
+export function DecksList() {
   const {
     clearFilterHandle,
     currentPageHandler,

@@ -10,36 +10,24 @@ import { MainPaginationButtons } from '@/common/components/ui/pagination/ui/main
 import s from './pagination.module.scss'
 
 export type PaginationProps = {
-  currentPage: number
-  itemsPerPage: string
   onCurrentPageChange: (page: number) => void
-  onPageSizeChange: (pageSize: string) => void
   siblingCount?: number
   totalCount: number
 }
 
 export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
-  (
-    { currentPage, itemsPerPage, onCurrentPageChange, onPageSizeChange, siblingCount, totalCount },
-    ref
-  ) => {
+  ({ onCurrentPageChange, siblingCount, totalCount }, ref) => {
     const {
+      currentPage,
       isFirstPage,
       isLastPage,
+      itemsPerPage,
+      itemsPerPageChangeHandler,
       onNextPage,
       onPreviousPage,
       options,
-      pageSize,
-      pageSizeChangeHandler,
       paginationRange,
-    } = usePagination({
-      currentPage,
-      itemsPerPage,
-      onCurrentPageChange,
-      onPageSizeChange,
-      siblingCount,
-      totalCount,
-    })
+    } = usePagination({ onCurrentPageChange, siblingCount, totalCount })
 
     return (
       <div className={s.container} ref={ref}>
@@ -56,7 +44,12 @@ export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
         </ButtonArrow>
         <div className={s.selectBlock}>
           <Typography variant={'body2'}>Show&nbsp;</Typography>
-          <Select onValueChange={pageSizeChangeHandler} options={options} small value={pageSize} />
+          <Select
+            onValueChange={itemsPerPageChangeHandler}
+            options={options}
+            small
+            value={itemsPerPage}
+          />
           <Typography variant={'body2'}>&nbsp;&nbsp;&nbsp;on the page</Typography>
         </div>
       </div>

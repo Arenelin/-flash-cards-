@@ -5,10 +5,11 @@ import { PaginationRange } from '@/common/components/ui/pagination/lib/usePagina
 import { Dots } from '@/common/components/ui/pagination/ui/dots/Dots'
 import { PageButton } from '@/common/components/ui/pagination/ui/pageButton/PageButton'
 
-type Props = { paginationRange: PaginationRange } & Omit<
-  PaginationProps,
-  'itemsPerPage' | 'onPageSizeChange' | 'siblingCount' | 'totalCount'
->
+type Props = {
+  currentPage: number
+  paginationRange: PaginationRange
+} & Pick<PaginationProps, 'onCurrentPageChange'>
+
 export const MainPaginationButtons = forwardRef<ElementRef<'button'> & ElementRef<'span'>, Props>(
   (props, ref) => {
     const { currentPage, onCurrentPageChange, paginationRange } = props

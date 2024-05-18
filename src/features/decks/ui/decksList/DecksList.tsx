@@ -97,10 +97,7 @@ export function DecksList() {
       />
       <div className={s.paginationSettings}>
         <Pagination
-          currentPage={data.pagination.currentPage}
-          itemsPerPage={data.pagination.itemsPerPage.toString()}
           onCurrentPageChange={currentPageHandler}
-          onPageSizeChange={pageSizeHandler}
           totalCount={data.pagination.totalItems}
         />
       </div>

@@ -1,6 +1,6 @@
 import { appApi } from '@/app/api/appApi'
 
-export const cardApi = appApi.injectEndpoints({
+export const cardsApi = appApi.injectEndpoints({
   endpoints: () => ({}),
   // endpoints: builder => {
   //   return {
@@ -11,4 +11,4 @@ export const cardApi = appApi.injectEndpoints({
   // },
 })
 
-export const {} = cardApi
+export const {} = cardsApi

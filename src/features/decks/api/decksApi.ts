@@ -6,6 +6,8 @@ import {
   ErrorResponse,
   GetDeckById,
   GetDeckByIdResponse,
+  GetDeckCards,
+  GetDeckCardsResponse,
   GetDecks,
   GetDecksResponse,
   UpdateDecksArgs,
@@ -36,6 +38,13 @@ export const decksApi = appApi.injectEndpoints({
           url: `v2/decks/${id}`,
         }),
       }),
+      getDeckCards: builder.query<ErrorResponse | GetDeckCardsResponse, GetDeckCards>({
+        providesTags: ['Decks'],
+        query: ({ id }) => ({
+          method: 'GET',
+          url: `v2/decks/${id}/cards`,
+        }),
+      }),
       getDecks: builder.query<ErrorResponse | GetDecksResponse, GetDecks | void>({
         providesTags: ['Decks'],
         query: args => ({
@@ -60,6 +69,7 @@ export const {
   useCreateDecksMutation,
   useDeleteDecksMutation,
   useGetDeckByIdQuery,
+  useGetDeckCardsQuery,
   useGetDecksQuery,
   useUpdateDecksMutation,
 } = decksApi

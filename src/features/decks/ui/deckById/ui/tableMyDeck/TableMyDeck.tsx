@@ -1,13 +1,13 @@
-import { GetDeckByIdResponse } from '@/common/types'
+import { ComponentPropsWithoutRef } from 'react'
 
 import s from '@/features/decks/ui/decks.module.scss'
 
-type Props = { deck: GetDeckByIdResponse }
+type Props = { deckId: string } & ComponentPropsWithoutRef<'table'>
 
-export const TableMyDeck = ({ deck }: Props) => {
+export const TableMyDeck = ({ deckId }: Props) => {
   return (
     <div className={s.container}>
-      <p>{deck.id}</p>
+      <p>{deckId}</p>
     </div>
   )
 }

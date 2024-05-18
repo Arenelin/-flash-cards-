@@ -16,10 +16,7 @@ export const DeckById = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   setSearchParams(searchParams)
-  const pageSizeHandler = (itemsPerPage: string) => {
-    searchParams.set('itemsPerPage', itemsPerPage)
-    setSearchParams(searchParams)
-  }
+
   const currentPageHandler = (currentPage: number) => {
     searchParams.set('currentPage', currentPage.toString())
     setSearchParams(searchParams)
@@ -52,12 +49,13 @@ export const DeckById = () => {
       <Button as={NavLink} to={path.decks}>
         <ArrowArrowBack /> Back to Decks List
       </Button>
-      {deckData.id === deckData.author.id ? <TableMyDeck deck={deckData} /> : <TableOtherDeck />}
+      {deckData.id === deckData.author.id ? (
+        <TableMyDeck deckId={deckData.id} />
+      ) : (
+        <TableOtherDeck deckId={deckData.id} />
+      )}
       <Pagination
-        currentPage={Number(searchParams.get('currentPage')) ?? 1}
-        itemsPerPage={searchParams.get('itemsPerPage') ?? '10'}
         onCurrentPageChange={currentPageHandler}
-        onPageSizeChange={pageSizeHandler}
         totalCount={2000} //TODO set current value from request
       />
     </div>

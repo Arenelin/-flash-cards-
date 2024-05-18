@@ -10,7 +10,7 @@ import {
 import { Button } from '@/common/components/ui'
 import { path } from '@/common/enums'
 import { DeckById } from '@/features/decks/ui/deckById/DeckById'
-import { PageDecks } from '@/router/ui/pageDecks/pageDecks'
+import { PageDecksList } from '@/router/ui/pageDecksList/pageDecksList'
 import { PageError } from '@/router/ui/pageError/pageError'
 import {
   PageForgotPassword,
@@ -44,7 +44,7 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes = [
   {
-    element: <PageDecks />,
+    element: <PageDecksList />,
     path: path.decks,
   },
   {
@@ -60,7 +60,7 @@ const PrivateRouter = () => {
     <>
       <Button
         onClick={() => setIsAuthenticated(false)}
-        style={{ position: 'absolute', right: '300px', top: '12px', zIndex: '10' }}
+        style={{ position: 'fixed', right: '300px', top: '12px', zIndex: '10' }}
         variant={'primary'}
       >
         Hide Private Pages

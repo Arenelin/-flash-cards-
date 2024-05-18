@@ -5,13 +5,14 @@ import { PaginationRange } from '@/common/components/ui/pagination/lib/usePagina
 import { Dots } from '@/common/components/ui/pagination/ui/dots/Dots'
 import { PageButton } from '@/common/components/ui/pagination/ui/pageButton/PageButton'
 
-type Props = { paginationRange: PaginationRange } & Omit<
-  PaginationProps,
-  'itemsPerPage' | 'pageSizeChange' | 'siblingCount' | 'totalCount'
->
+type Props = {
+  currentPage: number
+  paginationRange: PaginationRange
+} & Pick<PaginationProps, 'onCurrentPageChange'>
+
 export const MainPaginationButtons = forwardRef<ElementRef<'button'> & ElementRef<'span'>, Props>(
   (props, ref) => {
-    const { currentPage, onPageChange, paginationRange } = props
+    const { currentPage, onCurrentPageChange, paginationRange } = props
     const paginationButtons = paginationRange.map((page, index) => {
       if (typeof page === 'string') {
         return <Dots key={index} ref={ref} />
@@ -21,7 +22,7 @@ export const MainPaginationButtons = forwardRef<ElementRef<'button'> & ElementRe
         <PageButton
           isSelected={currentPage === page}
           key={index}
-          onClick={() => onPageChange(page)}
+          onClick={() => onCurrentPageChange(page)}
           page={page}
           ref={ref}
         />

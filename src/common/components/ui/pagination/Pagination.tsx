@@ -10,33 +10,24 @@ import { MainPaginationButtons } from '@/common/components/ui/pagination/ui/main
 import s from './pagination.module.scss'
 
 export type PaginationProps = {
-  currentPage: number
-  itemsPerPage: string
-  onPageChange: (page: number) => void
-  pageSizeChange: (pageSize: string) => void
+  onCurrentPageChange: (page: number) => void
   siblingCount?: number
   totalCount: number
 }
 
 export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
-  ({ currentPage, itemsPerPage, onPageChange, pageSizeChange, siblingCount, totalCount }, ref) => {
+  ({ onCurrentPageChange, siblingCount, totalCount }, ref) => {
     const {
+      currentPage,
       isFirstPage,
       isLastPage,
+      itemsPerPage,
+      itemsPerPageChangeHandler,
       onNextPage,
-      onPageSizeChange,
       onPreviousPage,
       options,
-      pageSize,
       paginationRange,
-    } = usePagination({
-      currentPage,
-      itemsPerPage,
-      onPageChange,
-      pageSizeChange,
-      siblingCount,
-      totalCount,
-    })
+    } = usePagination({ onCurrentPageChange, siblingCount, totalCount })
 
     return (
       <div className={s.container} ref={ref}>
@@ -45,7 +36,7 @@ export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
         </ButtonArrow>
         <MainPaginationButtons
           currentPage={currentPage}
-          onPageChange={onPageChange}
+          onCurrentPageChange={onCurrentPageChange}
           paginationRange={paginationRange}
         />
         <ButtonArrow disabled={isLastPage} onClick={onNextPage}>
@@ -53,7 +44,12 @@ export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
         </ButtonArrow>
         <div className={s.selectBlock}>
           <Typography variant={'body2'}>Show&nbsp;</Typography>
-          <Select onValueChange={onPageSizeChange} options={options} small value={pageSize} />
+          <Select
+            onValueChange={itemsPerPageChangeHandler}
+            options={options}
+            small
+            value={itemsPerPage}
+          />
           <Typography variant={'body2'}>&nbsp;&nbsp;&nbsp;on the page</Typography>
         </div>
       </div>

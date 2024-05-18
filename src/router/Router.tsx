@@ -60,7 +60,7 @@ const PrivateRouter = () => {
     <>
       <Button
         onClick={() => setIsAuthenticated(false)}
-        style={{ position: 'absolute', right: '300px', top: '12px', zIndex: '10' }}
+        style={{ position: 'fixed', right: '300px', top: '12px', zIndex: '10' }}
         variant={'primary'}
       >
         Hide Private Pages

@@ -85,8 +85,13 @@ export function DecksList() {
           onValueChange={e => sliderValueHandle(e)}
           value={[min, max]}
         />
-        <Button onClick={clearFilterHandle} variant={'secondary'}>
-          <TrashOutline /> Clear Filter
+        <Button
+          onClick={clearFilterHandle}
+          style={{ minWidth: '150px', padding: '6px' }}
+          variant={'secondary'}
+        >
+          <TrashOutline />
+          Clear Filter
         </Button>
       </div>
       <TableDecksList

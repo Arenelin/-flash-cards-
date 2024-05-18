@@ -12,24 +12,23 @@ import {
 } from '@/common/components/ui'
 import { Preloader } from '@/common/components/ui/preloader/Preloader'
 import { ErrorResponse, GetDecksResponse } from '@/common/types'
-import { TableDecksList } from '@/features/decks/ui/deckTables/TableDecksList'
-import { useDecks } from '@/features/decks/ui/decks/lib/useDecks'
+import { useDecksList } from '@/features/decks/ui/decksList/lib/useDecksList'
+import { TableDecksList } from '@/features/decks/ui/decksList/ui/tableDecksList/TableDecksList'
 
 import s from '@/features/decks/ui/decks.module.scss'
 
-export function Decks() {
+export function DecksList() {
   const {
     clearFilterHandle,
     currentPageHandler,
     pageSizeHandler,
     searchChangeHandle,
     searchParams,
-    setSliderValue,
-    sliderValue,
+    sliderValueHandle,
     tabsChangeHandler,
     tabsOptions,
     ...rest
-  } = useDecks()
+  } = useDecksList()
 
   const onPlay = (id: string) => <Navigate to={`decks/${id}`} />
 
@@ -63,24 +62,37 @@ export function Decks() {
         </Typography>
         <Button>Add New Deck</Button>
       </div>
-
       <div className={s.settingsBlock}>
-        <Input
-          iconStart={<Search />}
-          onChange={e => searchChangeHandle(e.currentTarget.value)}
-          placeholder={'Filter by card name'}
-          type={InputType.search}
-          value={searchParams.get('name') || ''}
-        />
+        <div>
+          <Input
+            iconStart={<Search />}
+            onChange={e => searchChangeHandle(e.currentTarget.value)}
+            placeholder={'Filter by card name'}
+            type={InputType.search}
+            value={searchParams.get('name') || ''}
+          />
+        </div>
         <Tabs
           label={'Show decks cards'}
           onValueChange={tabsChangeHandler}
           tabs={tabsOptions}
           value={searchParams.get('authorId') ? 'My Cards' : 'All Cards'}
         />
-        <Slider label={'Number of cards'} onValueChange={setSliderValue} value={sliderValue} />
-        <Button onClick={clearFilterHandle} variant={'secondary'}>
-          <TrashOutline /> Clear Filter
+        <Slider
+          label={'Number of cards'}
+          onValueChange={e => sliderValueHandle(e)}
+          value={[
+            Number(searchParams.get('minCardsCount')) || 0,
+            Number(searchParams.get('maxCardsCount')) || 100,
+          ]}
+        />
+        <Button
+          onClick={clearFilterHandle}
+          style={{ minWidth: '150px', padding: '6px' }}
+          variant={'secondary'}
+        >
+          <TrashOutline />
+          Clear Filter
         </Button>
       </div>
       <TableDecksList
@@ -91,10 +103,7 @@ export function Decks() {
       />
       <div className={s.paginationSettings}>
         <Pagination
-          currentPage={data.pagination.currentPage}
-          itemsPerPage={data.pagination.itemsPerPage.toString()}
-          onPageChange={currentPageHandler}
-          pageSizeChange={pageSizeHandler}
+          onCurrentPageChange={currentPageHandler}
           totalCount={data.pagination.totalItems}
         />
       </div>

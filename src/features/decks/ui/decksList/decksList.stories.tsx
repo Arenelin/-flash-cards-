@@ -1,26 +1,26 @@
 import { ComponentType } from 'react'
 
 import { path } from '@/common/enums'
-import { Decks } from '@/features/decks/ui/decks/Decks'
+import { DecksList } from '@/features/decks/ui/decksList/DecksList'
 import { Meta, StoryObj } from '@storybook/react'
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router'
 
 // now this stories don`t working. We try to understand why ;-)
 
 const meta = {
-  component: Decks,
+  component: DecksList,
   decorators: [withRouter],
   parameters: {
     reactRouter: reactRouterParameters({
       location: { path: path.decks },
-      routing: { Component: Decks as ComponentType, path: path.decks, useStoryElement: true },
+      routing: { Component: DecksList as ComponentType, path: path.decks, useStoryElement: true },
     }),
   },
   tags: ['autodocs'],
-  title: 'Features/Decks',
-} satisfies Meta<typeof Decks>
+  title: 'Features/DecksList',
+} satisfies Meta<typeof DecksList>
 
 export default meta
-type Story = StoryObj<typeof Decks>
+type Story = StoryObj<typeof DecksList>
 
-export const DecksDemo = {} satisfies Story
+export const Decks_List = {} satisfies Story

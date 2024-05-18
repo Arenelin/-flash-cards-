@@ -6,19 +6,21 @@ import classNames from 'classnames'
 import s from '@/common/components/ui/tables/ui/tools/tools.module.scss'
 
 type ToolsProps = {
-  canUseTool: boolean
+  canUsePlay?: boolean
+  canUseTool?: boolean
   onDelete?: () => void
   onEdit?: () => void
   onPlay?: () => void
 } & ComponentPropsWithoutRef<'div'>
 export const Tools = forwardRef<ElementRef<'div'>, ToolsProps>(
-  ({ canUseTool = true, className, onDelete, onEdit, onPlay, ...rest }, ref) => {
+  ({ canUsePlay = true, canUseTool = true, className, onDelete, onEdit, onPlay, ...rest }, ref) => {
     return (
       <div className={classNames(s.container, className)} ref={ref} {...rest}>
-        <button className={s.button} onClick={onPlay}>
-          <PlayCircleOutline className={s.icon} />
-        </button>
-
+        {canUsePlay && (
+          <button className={s.button} onClick={onPlay}>
+            <PlayCircleOutline className={s.icon} />
+          </button>
+        )}
         {canUseTool && (
           <>
             <button className={s.button} onClick={onEdit}>

@@ -21,8 +21,6 @@ export function DecksList() {
   const {
     clearFilterHandle,
     currentPageHandler,
-    max,
-    min,
     pageSizeHandler,
     searchChangeHandle,
     searchParams,
@@ -83,7 +81,10 @@ export function DecksList() {
         <Slider
           label={'Number of cards'}
           onValueChange={e => sliderValueHandle(e)}
-          value={[min, max]}
+          value={[
+            Number(searchParams.get('minCardsCount')) || 0,
+            Number(searchParams.get('maxCardsCount')) || 100,
+          ]}
         />
         <Button
           onClick={clearFilterHandle}

@@ -36,9 +36,6 @@ export const useDecksList = () => {
     setSearchParams(searchParams)
   }
   //slider search params
-  const min = Number(searchParams.get('minCardsCount')) || 0
-  const max = Number(searchParams.get('maxCardsCount')) || 100
-
   const sliderValueHandle = (value: number[]) => {
     searchParams.set('minCardsCount', value[0].toString())
     searchParams.set('maxCardsCount', value[1].toString())
@@ -67,11 +64,13 @@ export const useDecksList = () => {
   })
 
   const clearFilterHandle = () => {
-    sliderValueHandle([0, 100])
+    searchParams.delete('minCardsCount')
+    searchParams.delete('maxCardsCount')
     searchParams.delete('authorId')
     searchParams.delete('name')
     searchParams.delete('currentPage')
-    // searchParams.delete('orderBy')
+    searchParams.delete('itemsPerPage')
+    searchParams.delete('orderBy')
     setSearchParams(searchParams)
   }
 
@@ -81,8 +80,6 @@ export const useDecksList = () => {
     data,
     error,
     isLoading,
-    max,
-    min,
     pageSizeHandler,
     searchChangeHandle,
     searchParams,

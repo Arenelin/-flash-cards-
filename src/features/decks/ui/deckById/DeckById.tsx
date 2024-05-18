@@ -1,8 +1,8 @@
 import { NavLink, Params, useParams, useSearchParams } from 'react-router-dom'
 
 import { ArrowArrowBack } from '@/assets/icons'
-import { Button, Pagination } from '@/common/components/ui'
-import { Preloader } from '@/common/components/ui/preloader/Preloader'
+import { Button, Pagination } from '@/common/components'
+import { Preloader } from '@/common/components/preloader/Preloader'
 import { path } from '@/common/enums'
 import { ErrorResponse, GetDeckByIdResponse } from '@/common/types'
 import { useGetDeckByIdQuery } from '@/features/decks/api/decksApi'

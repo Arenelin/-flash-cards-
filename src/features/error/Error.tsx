@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import Error404 from '@/assets/error404.png'
-import { Button, Typography } from '@/common/components/ui'
+import { Button, Typography } from '@/common/components'
 import classNames from 'classnames'
 
 import s from '@/features/error/Error.module.scss'

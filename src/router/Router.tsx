@@ -7,7 +7,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { Button } from '@/common/components/ui'
+import { Button } from '@/common/components'
 import { path } from '@/common/enums'
 import { DeckById } from '@/features/decks/ui/deckById/DeckById'
 import { PageDecksList } from '@/router/ui/pageDecksList/pageDecksList'

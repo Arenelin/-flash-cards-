@@ -2,8 +2,8 @@ import { useId, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Edit2, LogOut } from '@/assets/icons'
-import { Button, Card, InputType, Typography, UserAvatar } from '@/common/components/ui'
-import { ControlledInput } from '@/common/components/ui/controlled'
+import { Button, Card, InputType, Typography, UserAvatar } from '@/common/components'
+import { ControlledInput } from '@/common/components/controlled'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 

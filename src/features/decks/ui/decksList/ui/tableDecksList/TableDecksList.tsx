@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { ButtonSort, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components/ui'
+import { ButtonSort, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
 import { Deck } from '@/common/types'
 
 type Props = {

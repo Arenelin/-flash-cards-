@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
 
-import { Tab } from '@/common/components/ui'
+import { Tab } from '@/common/components'
 import { useGetDecksQuery } from '@/features/decks/api/decksApi'
 
 export const useDecksList = () => {

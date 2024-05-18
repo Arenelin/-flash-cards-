@@ -14,8 +14,8 @@ import {
   Thead,
   Tr,
   Typography,
-} from '@/common/components/ui'
-import { Preloader } from '@/common/components/ui/preloader/Preloader'
+} from '@/common/components'
+import { Preloader } from '@/common/components/preloader/Preloader'
 import { ErrorResponse, GetDeckCardsResponse } from '@/common/types'
 import { useGetDeckCardsQuery } from '@/features/decks/api/decksApi'
 

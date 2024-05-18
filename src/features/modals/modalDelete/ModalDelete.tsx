@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { Button, Modal, Typography } from '@/common/components/ui'
+import { Button, Modal, Typography } from '@/common/components'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 
 import s from './modalDelete.module.scss'

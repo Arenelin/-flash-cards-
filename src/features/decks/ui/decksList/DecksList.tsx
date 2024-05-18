@@ -1,16 +1,8 @@
 import { Navigate } from 'react-router-dom'
 
 import { Search, TrashOutline } from '@/assets/icons'
-import {
-  Button,
-  Input,
-  InputType,
-  Pagination,
-  Slider,
-  Tabs,
-  Typography,
-} from '@/common/components/ui'
-import { Preloader } from '@/common/components/ui/preloader/Preloader'
+import { Button, Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components'
+import { Preloader } from '@/common/components/preloader/Preloader'
 import { ErrorResponse, GetDecksResponse } from '@/common/types'
 import { useDecksList } from '@/features/decks/ui/decksList/lib/useDecksList'
 import { TableDecksList } from '@/features/decks/ui/decksList/ui/tableDecksList/TableDecksList'

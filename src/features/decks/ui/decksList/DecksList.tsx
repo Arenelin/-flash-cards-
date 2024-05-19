@@ -94,10 +94,7 @@ export function DecksList() {
         onSortLastUpdated={() => {}}
       />
       <div className={s.paginationSettings}>
-        <Pagination
-          onCurrentPageChange={currentPageHandler}
-          totalCount={data.pagination.totalItems}
-        />
+        <Pagination totalCount={data.pagination.totalItems} />
       </div>
     </div>
   )

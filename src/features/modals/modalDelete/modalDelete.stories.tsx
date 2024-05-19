@@ -24,7 +24,7 @@ export const ModalDeleteCard = {
     const [open, setOpen] = useState(false)
 
     return (
-      <>
+      <div style={{ backgroundColor: 'black', padding: '100px' }}>
         <button onClick={() => setOpen(true)}>
           <TrashOutline />
         </button>
@@ -38,7 +38,7 @@ export const ModalDeleteCard = {
           text={args.text}
           title={args.title}
         />
-      </>
+      </div>
     )
   },
 } satisfies Story
@@ -52,7 +52,7 @@ export const ModalDeleteDeck = {
     const [open, setOpen] = useState(false)
 
     return (
-      <>
+      <div style={{ backgroundColor: 'black', padding: '100px' }}>
         <button onClick={() => setOpen(true)}>
           <TrashOutline />
         </button>
@@ -66,7 +66,7 @@ export const ModalDeleteDeck = {
           text={args.text}
           title={args.title}
         />
-      </>
+      </div>
     )
   },
 } satisfies Story

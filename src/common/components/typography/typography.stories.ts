@@ -33,13 +33,18 @@ type Story = StoryObj<typeof Typography>
 export const H1 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'h1',
+  },
+  parameters: {
+    backgroundColor: 'black',
   },
 } satisfies Story
 
 export const H2 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'h2',
   },
 } satisfies Story
@@ -47,6 +52,7 @@ export const H2 = {
 export const H3 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'h3',
   },
 } satisfies Story
@@ -54,6 +60,7 @@ export const H3 = {
 export const H4 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'h4',
   },
 } satisfies Story
@@ -61,6 +68,7 @@ export const H4 = {
 export const Body1 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'body1',
   },
 } satisfies Story
@@ -68,6 +76,7 @@ export const Body1 = {
 export const Subtitle1 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'subtitle1',
   },
 } satisfies Story
@@ -75,6 +84,7 @@ export const Subtitle1 = {
 export const Body2 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'body2',
   },
 } satisfies Story
@@ -82,6 +92,7 @@ export const Body2 = {
 export const Subtitle2 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'subtitle2',
   },
 } satisfies Story
@@ -89,6 +100,7 @@ export const Subtitle2 = {
 export const Caption = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'caption',
   },
 } satisfies Story
@@ -96,6 +108,7 @@ export const Caption = {
 export const Overline = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'overline',
   },
 } satisfies Story
@@ -103,6 +116,7 @@ export const Overline = {
 export const Link1 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'link1',
   },
 } satisfies Story
@@ -110,6 +124,7 @@ export const Link1 = {
 export const Link2 = {
   args: {
     children: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
+    style: { backgroundColor: 'black', padding: '20px' },
     variant: 'link2',
   },
 } satisfies Story

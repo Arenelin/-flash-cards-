@@ -19,6 +19,10 @@ export const SliderOwn = {
   render() {
     const [value, setValue] = useState([0, 100])
 
-    return <Slider onValueChange={setValue} value={value} />
+    return (
+      <div style={{ backgroundColor: '#c3c1c7', padding: '200px' }}>
+        <Slider onValueChange={setValue} value={value} />
+      </div>
+    )
   },
 } satisfies Story

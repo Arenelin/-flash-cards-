@@ -59,7 +59,7 @@ export function DecksList() {
           <Input
             iconStart={<Search />}
             onChange={e => searchChangeHandle(e.currentTarget.value)}
-            placeholder={'Filter by card name'}
+            placeholder={'Filter by cards name'}
             type={InputType.search}
             value={searchParams.get('name') || ''}
           />

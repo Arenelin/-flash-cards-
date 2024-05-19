@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { Button } from '@/common/components/ui'
-import { ModalAddEditForm } from '@/features/modalAddEditForm/ModalNewDeck'
+import { Button } from '@/common/components'
+import { ModalAddEditForm } from '@/features/modals/modalAddEditForm/ModalAddEditForm'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
@@ -15,7 +15,10 @@ type Story = StoryObj<typeof ModalAddEditForm>
 
 export const ModalNewCard = {
   args: {
-    onSubmit: data => alert(`${data.name} ${data.private}: data`),
+    onSubmit: data => {
+      console.log(data.file)
+      alert(`${data.name} ${data.private} ${data.file?.name}: data `)
+    },
     title: 'Add New Deck',
   },
   render: args => {

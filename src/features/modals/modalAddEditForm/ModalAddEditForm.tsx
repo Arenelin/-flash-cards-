@@ -1,9 +1,9 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { Button, InputType, Modal } from '@/common/components/ui'
-import { ControlledCheckbox, ControlledInput } from '@/common/components/ui/controlled'
-import { ControlledInputFile } from '@/features/modalAddEditForm/ControlledInputFile'
+import { Button, InputType, Modal } from '@/common/components'
+import { ControlledCheckbox, ControlledInput } from '@/common/components/controlled'
+import { ControlledInputFile } from '@/features/modals/modalAddEditForm/ControlledInputFile'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { z } from 'zod'
@@ -17,8 +17,15 @@ type ModalProps = {
   title: string
 } & Omit<ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'onOpenChange' | 'open'>
 
+const schemaFile = z
+  .instanceof(File)
+  .refine(file => file.size < 1000000, {
+    message: 'Your resume must be less than 1MB.',
+  })
+  .optional()
+
 const newDeckSchema = z.object({
-  file: z.string().optional(),
+  file: schemaFile,
   name: z.string().min(1).max(50),
   private: z.boolean().optional(),
 })

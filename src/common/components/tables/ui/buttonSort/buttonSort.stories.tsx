@@ -20,7 +20,11 @@ export const SortUpdated = {
       alert('Logic sort')
     }
 
-    return <ButtonSort onClick={onClick} text={'Last Updated'} />
+    return (
+      <div style={{ backgroundColor: 'black', padding: '100px' }}>
+        <ButtonSort onClick={onClick} text={'Last Updated'} />
+      </div>
+    )
   },
 } satisfies Story
 
@@ -30,6 +34,10 @@ export const SortCreated = {
       alert('Logic sort')
     }
 
-    return <ButtonSort onClick={onClick} text={'Created by'} />
+    return (
+      <div style={{ backgroundColor: 'black', padding: '100px' }}>
+        <ButtonSort onClick={onClick} text={'Created by'} />
+      </div>
+    )
   },
 } satisfies Story

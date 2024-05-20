@@ -41,6 +41,21 @@
   width: 100%;
 }
 
+.emptyCardsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: flex-start;
+}
+
+.emptyText {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  align-self: center;
+}
+
 .error {
   padding: 10px;
 

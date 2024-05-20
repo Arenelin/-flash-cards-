@@ -9,7 +9,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Tables/Tables',
+  title: 'Tables/TablesDecksList',
 } satisfies Meta<typeof TableDecksList>
 
 export default meta
@@ -66,11 +66,17 @@ const decks: Deck[] = [
 ]
 
 export const Table_Decks_List = {
-  args: {
-    decks,
-    onDelete: testDelete,
-    onEdit: testEdit,
-    onPlay: testPlay,
-    onSortLastUpdated: onSortLastUpdated,
+  render() {
+    return (
+      <div style={{ backgroundColor: 'gray', padding: '100px' }}>
+        <TableDecksList
+          decks={decks}
+          onDelete={testDelete}
+          onEdit={testEdit}
+          onPlay={testPlay}
+          onSortLastUpdated={onSortLastUpdated}
+        />
+      </div>
+    )
   },
 } satisfies Story

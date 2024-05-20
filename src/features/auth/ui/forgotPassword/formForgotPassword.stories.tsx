@@ -23,7 +23,7 @@ const onSubmit = (data: ForgotPassword) => {
 export const FormForgotPasswordDefault = {
   render() {
     return (
-      <div style={{ margin: '100px auto', width: '40%' }}>
+      <div style={{ margin: '100px auto', width: '50%' }}>
         <p style={{ color: '#bea6ff', margin: '100px auto', textAlign: 'justify' }}>
           &nbsp;&nbsp;&nbsp;Ссылки &nbsp;&nbsp;<b style={{ color: '#704ecc' }}>Try logging in</b>
           &nbsp;&nbsp; и &nbsp;&nbsp; <b style={{ color: '#704ecc' }}>Back to Sing In</b> выдают

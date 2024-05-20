@@ -8,6 +8,7 @@ import { ControlledInput } from '@/common/components/controlled'
 import { path } from '@/common/enums'
 import { emailSchema } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import classNames from 'classnames'
 import { z } from 'zod'
 
 import s from '@/features/auth/ui/forgotPassword/formForgotPassword.module.scss'
@@ -32,7 +33,7 @@ export const FormForgotPassword = ({ className, onSubmit }: Props) => {
   }
 
   return (
-    <Card className={className}>
+    <Card className={classNames(s.block, className)}>
       {stepOne ? (
         <form className={s.stepOne} onSubmit={handleSubmit(stepOneHandler)}>
           <Typography as={'h1'} className={s.title} variant={'h1'}>

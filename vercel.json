@@ -1,4 +1,4 @@
 { "rewrites": [
-  { "source": "/storybook/(.*)", "destination": "/storybook/" },
+  { "source": "/storybook-deploy/(.*)", "destination": "/storybook-deploy/" },
   { "source": "/(.*)", "destination": "/" }
 ] }

@@ -23,15 +23,15 @@ const onSubmit = (data: ForgotPassword) => {
 export const FormForgotPasswordDefault = {
   render() {
     return (
-      <div style={{ margin: '100px auto', width: '50%' }}>
-        <p style={{ color: '#bea6ff', margin: '100px auto', textAlign: 'justify' }}>
+      <>
+        <p style={{ color: '#bea6ff', margin: '100px auto', textAlign: 'justify', width: '40%' }}>
           &nbsp;&nbsp;&nbsp;Ссылки &nbsp;&nbsp;<b style={{ color: '#704ecc' }}>Try logging in</b>
           &nbsp;&nbsp; и &nbsp;&nbsp; <b style={{ color: '#704ecc' }}>Back to Sing In</b> выдают
           ошибку, т.к. установленный в Storybook аддон для подключения роутера конфликтует с логикой
           внутри компоненты. В приложении компонента корректно переходит по этим ссылкам.
         </p>
         <FormForgotPassword onSubmit={onSubmit} />
-      </div>
+      </>
     )
   },
 } satisfies Story

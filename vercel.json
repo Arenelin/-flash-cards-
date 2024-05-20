@@ -1,4 +1,4 @@
 { "rewrites": [
-  { "source": "/storybook/(.)", "destination": "/storybook/$1" },
+  { "source": "/storybook/(.*)", "destination": "/storybook/" },
   { "source": "/(.*)", "destination": "/" }
 ] }

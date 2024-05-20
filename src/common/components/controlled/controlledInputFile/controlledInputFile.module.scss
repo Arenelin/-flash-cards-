@@ -3,8 +3,11 @@
 }
 
 .label {
-  text-align: center;
   width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
 }
 
 .img {

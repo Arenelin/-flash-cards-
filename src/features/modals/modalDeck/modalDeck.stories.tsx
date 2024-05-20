@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
 import { Button } from '@/common/components'
-import { ModalDeck } from '@/features/modals/modalEditForm/ModalDeck'
+import { ModalDeck } from '@/features/modals/modalDeck/ModalDeck'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
   component: ModalDeck,
   tags: ['autodocs'],
-  title: 'Modal/ModalEditCard',
+  title: 'Modal/ModalDeck',
 } satisfies Meta<typeof ModalDeck>
 
 export default meta
@@ -21,7 +21,6 @@ export const ModalEditCard = {
       private: true,
     },
     onSubmit: data => {
-      console.log(data.cover)
       alert(`${data.name} ${data.private} ${data.cover}: data `)
     },
     title: 'Edit Deck',

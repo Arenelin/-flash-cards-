@@ -3,7 +3,8 @@ import { useForm } from 'react-hook-form'
 
 import { Button, InputType, Modal } from '@/common/components'
 import { ControlledCheckbox, ControlledInput } from '@/common/components/controlled'
-import { ControlledInputFile } from '@/features/modals/ui/ControlledInputFile'
+import { ControlledInputFile } from '@/common/components/controlled/controlledInputFile/ControlledInputFile'
+import { schemaFile } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { z } from 'zod'
@@ -23,14 +24,6 @@ type ModalProps = {
   open: boolean
   title: string
 } & Omit<ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'onOpenChange' | 'open'>
-
-const schemaFile = z
-  .instanceof(File)
-  .refine(file => file.size < 1000000, {
-    message: 'Your image must be less than 1 MB.',
-  })
-  .nullish()
-  .optional()
 
 const newDeckSchema = z.object({
   cover: z.union([schemaFile, z.string()]),

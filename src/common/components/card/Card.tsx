@@ -23,7 +23,7 @@ function CardPolymorph<T extends ElementType = 'div'>(
 ) {
   const { as: Component = 'div', className, id, ...rest } = props
 
-  return <Component className={classNames(s.container, className)} {...rest} ref={ref}></Component>
+  return <Component className={classNames(s.container, className)} {...rest} ref={ref} />
 }
 
 export const Card = forwardRef(CardPolymorph) as <T extends ElementType = 'button'>(

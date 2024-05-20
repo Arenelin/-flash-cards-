@@ -1,5 +1,5 @@
 .card {
-  padding: 35px 35px 25px 35px;
+  padding: 35px 35px 25px;
   width: 100%;
   max-width: 420px;
 }
@@ -9,17 +9,19 @@
   margin: 28px 0 20px;
   display: flex;
   flex-direction: column;
+  max-width: 348px;
 }
 
 .containerInput {
   width: 100%;
   display: grid;
   gap: 24px;
+  max-width: 348px;
 }
-
 .input {
   min-width: 348px;
   width: 100%;
+  max-width: 348px;
 }
 
 .containerCheckbox {

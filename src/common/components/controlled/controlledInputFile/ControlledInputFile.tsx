@@ -10,20 +10,19 @@ import {
 import { FieldValues, UseControllerProps, useController } from 'react-hook-form'
 
 import { ImageOutline, TrashOutline } from '@/assets/icons'
-import imgNot from '@/assets/notImgInDeck.jpeg'
 import { Typography } from '@/common/components'
 import { Button } from '@/common/components/button/Button'
 
 import s from './controlledInputFile.module.scss'
 
-type ControlledInputFileProps<T extends FieldValues> = Omit<
+type ControlledInputFileProps<T extends FieldValues> = { defaultDeckImage: string } & Omit<
   ComponentPropsWithoutRef<'input'>,
   'name' | 'onBlur' | 'onChange' | 'value'
 > &
   UseControllerProps<T>
 
 export const ControlledInputFile = <T extends FieldValues>(props: ControlledInputFileProps<T>) => {
-  const { control, id, name, ...rest } = props
+  const { control, defaultDeckImage, id, name, ...rest } = props
   const [preview, setPreview] = useState<null | string>(null)
   const ref = useRef<ElementRef<'label'> | null>(null)
   const idInput = useId()
@@ -54,7 +53,7 @@ export const ControlledInputFile = <T extends FieldValues>(props: ControlledInpu
     setPreview(null)
   }
 
-  const displayImage = preview || value || imgNot
+  const displayImage = preview || value || defaultDeckImage
 
   return (
     <div className={s.container}>

@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
 import { useForm } from 'react-hook-form'
 
+import defaultDeckImage from '@/assets/defaultDeckImage.jpeg'
 import { Button, InputType, Modal } from '@/common/components'
 import { ControlledCheckbox, ControlledInput } from '@/common/components/controlled'
 import { ControlledInputFile } from '@/common/components/controlled/controlledInputFile/ControlledInputFile'
@@ -61,7 +62,11 @@ export const ModalDeck = forwardRef<ElementRef<typeof DialogPrimitive.Content>, 
             placeholder={'Name'}
             type={InputType.text}
           />
-          <ControlledInputFile control={control} name={'cover'} />
+          <ControlledInputFile
+            control={control}
+            defaultDeckImage={defaultDeckImage}
+            name={'cover'}
+          />
           <ControlledCheckbox control={control} label={'Private pack'} name={'private'} />
           <div className={s.containerButton}>
             <Button onClick={() => onOpenChange(false)} type={'button'} variant={'secondary'}>

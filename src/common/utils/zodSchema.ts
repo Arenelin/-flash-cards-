@@ -11,3 +11,11 @@ export const passwordSchema = z
   .refine(val => passwordValidationRegex.test(val), {
     message: 'Password must contain one uppercase',
   })
+
+export const schemaFile = z
+  .instanceof(File)
+  .refine(file => file.size < 1000000, {
+    message: 'Your image must be less than 1 MB.',
+  })
+  .nullish()
+  .optional()

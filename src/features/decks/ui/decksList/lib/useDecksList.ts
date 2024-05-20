@@ -64,14 +64,7 @@ export const useDecksList = () => {
   })
 
   const clearFilterHandle = () => {
-    searchParams.delete('minCardsCount')
-    searchParams.delete('maxCardsCount')
-    searchParams.delete('authorId')
-    searchParams.delete('name')
-    searchParams.delete('currentPage')
-    searchParams.delete('itemsPerPage')
-    searchParams.delete('orderBy')
-    setSearchParams(searchParams)
+    setSearchParams({})
   }
 
   return {

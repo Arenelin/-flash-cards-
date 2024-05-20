@@ -1,7 +1,4 @@
-import { ComponentType } from 'react'
-
-import { path } from '@/common/enums'
-import { ForgotPassword, FormForgotPassword, FormSignIn, FormSignUp } from '@/features/auth'
+import { ForgotPassword, FormForgotPassword } from '@/features/auth'
 import { Meta, StoryObj } from '@storybook/react'
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router'
 
@@ -10,20 +7,7 @@ const meta = {
   decorators: [withRouter],
   parameters: {
     layout: 'centered',
-    reactRouter: reactRouterParameters({
-      location: {
-        path: path.forgotPassword,
-      },
-      routing: [
-        { Component: FormSignIn as ComponentType<{}>, path: path.signIn, useStoryElement: true },
-        { Component: FormSignUp as ComponentType<{}>, path: path.signUp, useStoryElement: true },
-        {
-          Component: FormForgotPassword as ComponentType<{}>,
-          path: path.forgotPassword,
-          useStoryElement: true,
-        },
-      ],
-    }),
+    reactRouter: reactRouterParameters({}),
   },
   tags: ['autodocs'],
   title: 'Auth/ForgotPassword',
@@ -33,11 +17,21 @@ export default meta
 type Story = StoryObj<typeof FormForgotPassword>
 
 const onSubmit = (data: ForgotPassword) => {
-  alert(data.email)
+  alert(`получен email, на который надо послать инструкции по смене пароля:     ${data.email}`)
 }
 
 export const FormForgotPasswordDefault = {
-  args: {
-    onSubmit: onSubmit,
+  render() {
+    return (
+      <div style={{ margin: '100px auto', width: '40%' }}>
+        <p style={{ color: '#bea6ff', margin: '100px auto', textAlign: 'justify' }}>
+          &nbsp;&nbsp;&nbsp;Ссылки &nbsp;&nbsp;<b style={{ color: '#704ecc' }}>Try logging in</b>
+          &nbsp;&nbsp; и &nbsp;&nbsp; <b style={{ color: '#704ecc' }}>Back to Sing In</b> выдают
+          ошибку, т.к. установленный в Storybook аддон для подключения роутера конфликтует с логикой
+          внутри компоненты. В приложении компонента корректно переходит по этим ссылкам.
+        </p>
+        <FormForgotPassword onSubmit={onSubmit} />
+      </div>
+    )
   },
 } satisfies Story

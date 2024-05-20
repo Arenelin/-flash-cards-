@@ -24,6 +24,7 @@ export const ToolsAll = {
     onDelete: testCallBack,
     onEdit: testCallBack,
     onPlay: testCallBack,
+    style: { backgroundColor: 'black', padding: '100px' },
   },
 } satisfies Story
 
@@ -31,5 +32,6 @@ export const ToolsPartial = {
   args: {
     canUseTool: false,
     onPlay: testCallBack,
+    style: { backgroundColor: 'black', padding: '100px' },
   },
 } satisfies Story

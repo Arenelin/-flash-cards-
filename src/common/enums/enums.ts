@@ -6,3 +6,7 @@ export enum path {
   signIn = '/signIn',
   signUp = '/signUp',
 }
+
+// dynamic path
+
+export const decksById = (id: string) => `${path.decks}/${id}`

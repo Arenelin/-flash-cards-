@@ -1,4 +1,4 @@
-import { NavLink, Params, useParams, useSearchParams } from 'react-router-dom'
+import { NavLink, Params, useParams } from 'react-router-dom'
 
 import { ArrowArrowBack } from '@/assets/icons'
 import { Button, Pagination } from '@/common/components'
@@ -13,14 +13,7 @@ import s from '@/features/decks/ui/decks.module.scss'
 
 export const DeckById = () => {
   const params: Readonly<Params<string>> = useParams()
-  const [searchParams, setSearchParams] = useSearchParams()
 
-  setSearchParams(searchParams)
-
-  const currentPageHandler = (currentPage: number) => {
-    searchParams.set('currentPage', currentPage.toString())
-    setSearchParams(searchParams)
-  }
   const { data, error, isLoading } = useGetDeckByIdQuery({ id: params.id ?? '' })
 
   if (isLoading) {
@@ -54,10 +47,7 @@ export const DeckById = () => {
       ) : (
         <TableOtherDeck deckId={deckData.id} />
       )}
-      <Pagination
-        onCurrentPageChange={currentPageHandler}
-        totalCount={2000} //TODO set current value from request
-      />
+      <Pagination totalCount={2000} /> {/* TODO set current value from request*/}
     </div>
   )
 }

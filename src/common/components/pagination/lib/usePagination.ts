@@ -16,11 +16,7 @@ const range = (start: number, end: number) => {
   return Array.from({ length }, (_, index) => index + start)
 }
 
-export const usePagination = ({
-  onCurrentPageChange,
-  siblingCount = 1,
-  totalCount,
-}: PaginationProps) => {
+export const usePagination = ({ siblingCount = 1, totalCount }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams()
   const itemsPerPage = searchParams.get('itemsPerPage') || '10'
   const currentPage: number = Number(searchParams.get('currentPage')) || 1
@@ -35,6 +31,10 @@ export const usePagination = ({
     searchParams.set('itemsPerPage', itemsPerPage)
     searchParams.delete('currentPage')
     itemsPerPage === '10' && searchParams.delete('itemsPerPage')
+    setSearchParams(searchParams)
+  }
+  const onCurrentPageChange = (page: number) => {
+    searchParams.set('currentPage', page.toString())
     setSearchParams(searchParams)
   }
 
@@ -104,6 +104,7 @@ export const usePagination = ({
     isLastPage,
     itemsPerPage,
     itemsPerPageChangeHandler,
+    onCurrentPageChange,
     onNextPage,
     onPreviousPage,
     options,

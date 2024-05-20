@@ -16,7 +16,7 @@ export const Error = forwardRef<ElementRef<'div'>, ErrorProps>((props, ref) => {
       <Typography as={'h2'} variant={'body1'}>
         Sorry! Page not found!
       </Typography>
-      <Button as={'a'} href={'#'}>
+      <Button as={'a'} href={'/'}>
         Back to home page
       </Button>
     </div>

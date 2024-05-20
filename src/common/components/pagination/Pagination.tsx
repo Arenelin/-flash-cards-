@@ -10,24 +10,24 @@ import { MainPaginationButtons } from '@/common/components/pagination/ui/mainPag
 import s from './pagination.module.scss'
 
 export type PaginationProps = {
-  onCurrentPageChange: (page: number) => void
   siblingCount?: number
   totalCount: number
 }
 
 export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(
-  ({ onCurrentPageChange, siblingCount, totalCount }, ref) => {
+  ({ siblingCount, totalCount }, ref) => {
     const {
       currentPage,
       isFirstPage,
       isLastPage,
       itemsPerPage,
       itemsPerPageChangeHandler,
+      onCurrentPageChange,
       onNextPage,
       onPreviousPage,
       options,
       paginationRange,
-    } = usePagination({ onCurrentPageChange, siblingCount, totalCount })
+    } = usePagination({ siblingCount, totalCount })
 
     return (
       <div className={s.container} ref={ref}>

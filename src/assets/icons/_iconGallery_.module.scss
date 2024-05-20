@@ -1,7 +1,17 @@
+.main {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10%;
+
+  width: 98%;
+  margin-left: 10%;
+}
+
 .blockStyle {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 35%;
 }
 
 .elementStyle {

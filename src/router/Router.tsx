@@ -37,6 +37,10 @@ const publicRoutes: RouteObject[] = [
     path: path.newPassword,
   },
   {
+    element: <Navigate to={path.signIn} />,
+    path: '/',
+  },
+  {
     element: <PageError />,
     path: '/*',
   },
@@ -79,5 +83,5 @@ const router = createBrowserRouter([
 ])
 
 export function Router() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router}></RouterProvider>
 }

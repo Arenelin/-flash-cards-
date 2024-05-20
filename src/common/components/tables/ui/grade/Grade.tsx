@@ -1,10 +1,10 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
 
 import { Star, StarOutline } from '@/assets/icons'
+import { GradeScale } from '@/common/types'
 import classNames from 'classnames'
 
 import s from './grade.module.scss'
-type GradeScale = 0 | 1 | 2 | 3 | 4 | 5
 
 type GradeProps = {
   currentGrade: GradeScale

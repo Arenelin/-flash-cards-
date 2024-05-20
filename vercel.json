@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/storybook-flash-cards-project/(.*)",
-      "destination": "/storybook-flash-cards-project/"
-    },
-    {
       "source": "/(.*)",
       "destination": "/"
     }

@@ -1,0 +1,31 @@
+.file {
+  display: none;
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.img {
+  object-fit: cover;
+  object-position: 50% 50%;
+  max-height: 160px;
+  max-width: 480px;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: grid;
+  flex-direction: column;
+  gap: 24px;
+}
+.containerButton {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}

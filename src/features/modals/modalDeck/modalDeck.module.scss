@@ -1,0 +1,17 @@
+.container {
+  padding: 24px 24px 34px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input {
+  width: 100%;
+  max-width: 484px;
+}
+
+.containerButton {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}

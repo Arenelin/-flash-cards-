@@ -3,6 +3,8 @@ export type Author = {
   id: string
   name: string
 }
+//Todo Cover возможно поправить File | null  или string | null
+
 export type Deck = {
   author: Author
   cardsCount: number

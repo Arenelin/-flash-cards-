@@ -1,14 +1,14 @@
 {
   "redirects": [
     {
-      "source": "/storybook",
-      "destination": "/storybook/"
+      "source": "/storybook-flash-cards-project",
+      "destination": "/storybook-flash-cards-project/"
     }
   ],
   "rewrites": [
     {
-      "source": "/storybook",
-      "destination": "/storybook"
+      "source": "/storybook-flash-cards-project",
+      "destination": "/storybook-flash-cards-project"
     },
     {
       "source": "/(.*)",

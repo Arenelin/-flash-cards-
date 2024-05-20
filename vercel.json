@@ -1,10 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "/storybook-flash-cards-project",
-      "destination": "/storybook-flash-cards-project/"
-    }
-  ],
   "rewrites": [
     {
       "source": "/storybook-flash-cards-project",
@@ -14,8 +8,5 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ],
-  "github": {
-    "silent": true
-  }
+  ]
 }

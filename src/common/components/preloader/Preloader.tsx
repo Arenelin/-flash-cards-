@@ -4,11 +4,11 @@ type PreloaderPropsType = {
   style?: { [key: string]: string }
 }
 const setting = {
-  color: 'white',
+  color: '#8c61ff',
   fontSize: '50px',
   fontStyle: 'italic',
   fontWeight: '900',
-  height: '100%',
+  lineHeight: '2',
   margin: '0 auto',
   width: '50vw',
 }

@@ -1,4 +1,21 @@
-{ "rewrites": [
-  { "source": "/storybook-deploy/(.*)", "destination": "/storybook-deploy/" },
-  { "source": "/(.*)", "destination": "/" }
-] }
+{
+  "redirects": [
+    {
+      "source": "/storybook",
+      "destination": "/storybook/"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/storybook",
+      "destination": "/storybook"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "github": {
+    "silent": true
+  }
+}

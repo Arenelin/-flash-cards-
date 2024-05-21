@@ -1,4 +1,4 @@
-import { FormForgotPassword, FormSignIn, FormSignUp, NewPasswordForm } from '@/features/auth'
+import { FormForgotPassword, FormSignIn, NewPasswordForm } from '@/features/auth'
 import { Page } from '@/router/ui/page/Page'
 const onSubmit = () => {}
 
@@ -14,14 +14,6 @@ export const PageSignIn = () => {
   return (
     <Page>
       <FormSignIn onSubmit={onSubmit} />
-    </Page>
-  )
-}
-
-export const PageSignUp = () => {
-  return (
-    <Page>
-      <FormSignUp onSubmit={onSubmit} />
     </Page>
   )
 }

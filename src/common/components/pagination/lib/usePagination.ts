@@ -35,6 +35,7 @@ export const usePagination = ({ siblingCount = 1, totalCount }: PaginationProps)
   }
   const onCurrentPageChange = (page: number) => {
     searchParams.set('currentPage', page.toString())
+    page === 1 && searchParams.delete('currentPage')
     setSearchParams(searchParams)
   }
 

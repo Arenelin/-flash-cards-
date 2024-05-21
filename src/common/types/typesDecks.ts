@@ -71,11 +71,11 @@ export type ErrorMessages = {
   field: string
   message: string
 }
-export type Data = {
+export type ErrorData = {
   errorMessages: ErrorMessages[]
 }
 export type ErrorResponse = {
-  data: Data
+  data: ErrorData
   status: number
 }
 
@@ -107,4 +107,9 @@ export type Card = {
 export type GetDeckCardsResponse = {
   items: Card[]
   pagination: Pagination
+}
+
+export type GetDecksMinMaxCardsResponse = {
+  max: number
+  min: number
 }

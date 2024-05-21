@@ -9,6 +9,7 @@ import {
   GetDeckCards,
   GetDeckCardsResponse,
   GetDecks,
+  GetDecksMinMaxCardsResponse,
   GetDecksResponse,
   UpdateDecksArgs,
 } from '@/common/types'
@@ -17,7 +18,7 @@ export const decksApi = appApi.injectEndpoints({
   endpoints: builder => {
     return {
       createDecks: builder.mutation<DecksResponse, CreateDecksArgs>({
-        invalidatesTags: ['Decks'],
+        invalidatesTags: ['Decks', 'DecksMinMaxCards'],
         query: args => ({
           body: args,
           method: 'POST',
@@ -25,7 +26,7 @@ export const decksApi = appApi.injectEndpoints({
         }),
       }),
       deleteDecks: builder.mutation<Omit<DecksResponse, 'author'>, DeleteDecksArgs>({
-        invalidatesTags: ['Decks'],
+        invalidatesTags: ['Decks', 'DecksMinMaxCards'],
         query: ({ id }) => ({
           method: 'DELETE',
           url: `v1/decks/${id}`,
@@ -53,8 +54,15 @@ export const decksApi = appApi.injectEndpoints({
           url: `v2/decks`,
         }),
       }),
+      getDecksMinMaxCards: builder.query<ErrorResponse | GetDecksMinMaxCardsResponse, void>({
+        providesTags: ['DecksMinMaxCards'],
+        query: () => ({
+          method: 'GET',
+          url: `v2/decks/min-max-cards`,
+        }),
+      }),
       updateDecks: builder.mutation<DecksResponse, UpdateDecksArgs>({
-        invalidatesTags: ['Decks'],
+        invalidatesTags: ['Decks', 'DecksMinMaxCards'],
         query: ({ id, ...body }) => ({
           body,
           method: 'PATCH',
@@ -70,6 +78,7 @@ export const {
   useDeleteDecksMutation,
   useGetDeckByIdQuery,
   useGetDeckCardsQuery,
+  useGetDecksMinMaxCardsQuery,
   useGetDecksQuery,
   useUpdateDecksMutation,
 } = decksApi

@@ -22,17 +22,27 @@ export type SignInResponse = {
   refreshToken: string
 }
 export type SignUpArgs = {
-  name: string
+  name?: string
   password: string
-  sendConfirmationEmail: boolean
+  sendConfirmationEmail?: boolean
 } & ForgotPasswordArgs
+
 export type SignUpResponse = MeResponse
+
 export type ForgotPasswordArgs = {
   email: string
-  html: string
-  subject: string
+  html?: string
+  subject?: string
 }
 export type ResetPasswordTokenArgs = {
   password: string
   token: string
+}
+
+export type DataSignUp = {
+  errorMessages: Array<string>
+}
+export type ErrorResponseSignUp = {
+  data: DataSignUp
+  status: number
 }

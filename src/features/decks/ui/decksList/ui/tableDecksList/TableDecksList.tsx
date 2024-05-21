@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { ButtonSort, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
+import { ContainerName } from '@/common/components/tables/ui/containerName/ContainerName'
 import { Deck } from '@/common/types'
 
 type Props = {
@@ -51,7 +52,9 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
         {decks.map((deck: Deck) => {
           return (
             <Tr key={deck.id}>
-              <Td>{deck.name}</Td>
+              <Td>
+                <ContainerName data={deck} link={'#'} />
+              </Td>
               <Td>{deck.cardsCount}</Td>
               <Td>{getDateString(deck.updated)}</Td>
               <Td>{deck.author.name}</Td>

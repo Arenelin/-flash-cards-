@@ -12,7 +12,7 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof ModalDeck>
-export const ModalEditCard = {
+export const ModalEditDeck = {
   args: {
     data: {
       cover:
@@ -44,7 +44,7 @@ export const ModalEditCard = {
   },
 } satisfies Story
 
-export const ModalNewCard = {
+export const ModalNewDeck = {
   args: {
     onSubmit: data => {
       alert(`${data.name} ${data.private} ${data.cover}: data `)

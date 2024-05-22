@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
+import { ToastNotification } from '@/common/components/toastNotification/ToastNotification'
 import { Header } from '@/features/layout/ui/header/Header'
 import classNames from 'classnames'
 
@@ -13,6 +14,7 @@ export const Layout = forwardRef<ElementRef<'body'>, LayoutProps>((props, ref) =
   return (
     <body className={classNames(s.container, className)} ref={ref} {...rest}>
       <Header isAuthorization={false} />
+      <ToastNotification />
       <main className={s.main}>{children}</main>
     </body>
   )

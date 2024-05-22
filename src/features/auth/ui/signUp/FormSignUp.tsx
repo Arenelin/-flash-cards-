@@ -6,7 +6,7 @@ import { EyeOffOutline, EyeOutline } from '@/assets/icons'
 import { Button, Card, InputType, Typography } from '@/common/components'
 import { ControlledInput } from '@/common/components/controlled'
 import { path } from '@/common/enums'
-import { emailSchema, passwordSchema } from '@/common/utils/zodSchema'
+import { emailSchema, passwordSchema, text } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -20,6 +20,7 @@ const registrationSchema = z
   .object({
     confirmPassword: passwordSchema,
     email: emailSchema,
+    name: text,
     password: passwordSchema,
   })
   .refine(
@@ -44,6 +45,14 @@ export const FormSignUp = ({ onSubmit }: Props) => {
       </Typography>
       <form className={s.form} id={formId} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.containerInput}>
+          <ControlledInput
+            className={s.input}
+            control={control}
+            label={'Name'}
+            name={'name'}
+            placeholder={'name'}
+            type={InputType.text}
+          />
           <ControlledInput
             className={s.input}
             control={control}
@@ -74,7 +83,7 @@ export const FormSignUp = ({ onSubmit }: Props) => {
           />
         </div>
         <Button className={s.button} form={formId} fullWidth>
-          Create New Password
+          SignUp
         </Button>
       </form>
       <Typography as={'h2'} variant={'body2'}>

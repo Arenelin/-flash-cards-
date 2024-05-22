@@ -67,7 +67,7 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
               <Td>{deck.author.name}</Td>
               <Td>
                 <Tools
-                  canUseTool={deck.author.id === deck.userId}
+                  canUseTool={deck.author.id === deck?.userId}
                   onDelete={() => onDeleteHandler(deck.id)}
                   onEdit={() => onEditHandler(deck.id)}
                   onPlay={() => onPlayHandler(deck.id)}

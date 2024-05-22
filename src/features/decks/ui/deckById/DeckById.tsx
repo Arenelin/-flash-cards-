@@ -45,10 +45,10 @@ export const DeckById = () => {
   }
 
   return (
-    <div>
-      <Button as={NavLink} to={path.decks}>
+    <div className={s.main}>
+      <Typography as={NavLink} className={s.back} to={path.decks}>
         <ArrowArrowBack /> Back to Decks List
-      </Button>
+      </Typography>
       <div className={s.container}>
         {!cards.items.length ? (
           <div className={s.emptyCardsBlock}>
@@ -66,7 +66,7 @@ export const DeckById = () => {
         ) : (
           <div className={s.container}>
             <div className={s.titleBlock}>
-              <div>
+              <div className={s.nameBlock}>
                 <Typography as={'h1'} variant={'h1'}>
                   {deck.name}
                 </Typography>
@@ -88,7 +88,7 @@ export const DeckById = () => {
           </div>
         )}
       </div>
-      <Pagination totalCount={deck.cardsCount} /> {/* TODO set current value from request*/}
+      <Pagination totalCount={deck.cardsCount} />
     </div>
   )
 }

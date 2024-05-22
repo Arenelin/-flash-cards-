@@ -50,7 +50,7 @@ export function DecksList() {
   }
 
   return (
-    <div className={s.container}>
+    <div className={s.main}>
       <div className={s.titleBlock}>
         <Typography as={'h1'} variant={'h1'}>
           Decks list

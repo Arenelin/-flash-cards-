@@ -9,9 +9,9 @@ import classNames from 'classnames'
 
 import s from '@/features/layout/layout.module.scss'
 
-type LayoutProps = ComponentPropsWithoutRef<'body'>
+type LayoutProps = ComponentPropsWithoutRef<'div'>
 
-export const Layout = forwardRef<ElementRef<'body'>, LayoutProps>((props, ref) => {
+export const Layout = forwardRef<ElementRef<'div'>, LayoutProps>((props, ref) => {
   const { children, className, ...rest } = props
 
   const { data, isError, isLoading } = useGetMeQuery()

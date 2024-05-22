@@ -12,23 +12,20 @@ import classNames from 'classnames'
 import s from '@/features/layout/ui/header/header.module.scss'
 
 type HeaderProps = {
+  avatar: string
+  email: string
   isAuthorization: boolean
+  name: string
 } & ComponentPropsWithoutRef<'header'>
 export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref) => {
-  const { className, isAuthorization = true, ...rest } = props
-  //Данные сервера
-  const mockUserData = {
-    email: 'moroznaya2002@gmail.com',
-    img: 'https://alex-artyukhin.ru/wp-content/uploads/2020/05/aleksej-kremnev2.jpg',
-    name: 'User',
-  }
+  const { avatar, className, email, isAuthorization, name, ...rest } = props
 
   return (
     <header className={classNames(s.container, className)} {...rest} ref={ref}>
       <img alt={'logo'} className={s.img} height={'36px'} src={logo} width={'160px'} />
       {isAuthorization ? (
-        <Dropdown triggerChild={<UserAvatar name={mockUserData.name} src={mockUserData.img} />}>
-          <ToolbarItemWithUserData userData={mockUserData} />
+        <Dropdown triggerChild={<UserAvatar name={name} src={avatar} />}>
+          <ToolbarItemWithUserData userData={{ avatar, email, name }} />
           <DropdownSeparator />
           <ToolbarItemWithIcon
             icon={<PersonOutline />}
@@ -49,8 +46,7 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
         </Dropdown>
       ) : (
         <Button as={'a'} href={'/decks'} variant={'secondary'}>
-          Decks Page
-          {/*Sing In*/}
+          Sing In
         </Button>
       )}
     </header>

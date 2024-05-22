@@ -10,5 +10,5 @@ export const appApi = createApi({
   }),
   endpoints: () => ({}),
   reducerPath: 'appApi',
-  tagTypes: ['Auth', 'Card', 'Decks', 'DecksMinMaxCards'],
+  tagTypes: ['Auth', 'Card', 'Decks', 'DecksMinMaxCards', 'Me'],
 })

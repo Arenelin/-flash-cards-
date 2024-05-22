@@ -19,6 +19,7 @@ export const authApi = appApi.injectEndpoints({
           url: 'v2/auth/refresh-token',
         }),
       }),
+
       forgotPassword: builder.query<undefined, ForgotPasswordArgs>({
         query: body => ({
           body: body,
@@ -26,15 +27,19 @@ export const authApi = appApi.injectEndpoints({
           url: 'v1/auth/recover-password',
         }),
       }),
+
       getMe: builder.query<MeResponse, void>({
+        providesTags: ['Me'],
         query: () => 'v1/auth/me',
       }),
+
       logOut: builder.mutation<undefined, void>({
         query: () => ({
           method: 'POST',
           url: 'v1/auth/logout',
         }),
       }),
+
       resetPasswordToken: builder.mutation<undefined, ResetPasswordTokenArgs>({
         query: ({ token, ...body }) => ({
           method: 'POST',
@@ -42,6 +47,7 @@ export const authApi = appApi.injectEndpoints({
           url: `v1/auth/reset-password/${token}`,
         }),
       }),
+
       signIn: builder.mutation<SignInResponse, SignInArgs>({
         query: body => ({
           body: body,
@@ -49,6 +55,7 @@ export const authApi = appApi.injectEndpoints({
           url: 'v1/auth/login',
         }),
       }),
+
       signUp: builder.mutation<SignUpResponse, SignUpArgs>({
         query: body => ({
           body: body,
@@ -56,6 +63,7 @@ export const authApi = appApi.injectEndpoints({
           url: 'v1/auth/sign-up',
         }),
       }),
+
       updateMe: builder.mutation<MeResponse, MeArgs>({
         query: body => ({
           body: body,

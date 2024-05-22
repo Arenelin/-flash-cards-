@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { Navigate } from 'react-router-dom'
 
 import { LogOutOutline, PersonOutline } from '@/assets/icons'
 import logo from '@/assets/logoStart.png'
@@ -7,6 +8,7 @@ import { DropdownSeparator } from '@/common/components/dropdown/dropdownSeparato
 import { ToolbarItemWithIcon } from '@/common/components/dropdown/toolbarItemWithIcon/ToolbarItemWithIcon'
 import { DefaultDescription } from '@/common/components/dropdown/toolbarItemWithIcon/defaultDescription/DefaultDescription'
 import { ToolbarItemWithUserData } from '@/common/components/dropdown/toolbarItemWithUserData/ToolbarItemWithUserData'
+import { useLogOutMutation } from '@/features/auth/api/authApi'
 import classNames from 'classnames'
 
 import s from '@/features/layout/ui/header/header.module.scss'
@@ -19,6 +21,7 @@ type HeaderProps = {
 } & ComponentPropsWithoutRef<'header'>
 export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref) => {
   const { avatar, className, email, isAuthorization, name, ...rest } = props
+  const [logOut] = useLogOutMutation()
 
   return (
     <header className={classNames(s.container, className)} {...rest} ref={ref}>
@@ -31,9 +34,7 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
           <DropdownSeparator />
           <ToolbarItemWithIcon
             icon={<PersonOutline />}
-            onSelect={() => {
-              alert('My Profile')
-            }}
+            onSelect={() => <Navigate to={'/profile'} />}
             textContent={<DefaultDescription text={'My Profile'} />}
           />
           <DropdownSeparator />
@@ -41,7 +42,7 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
           <ToolbarItemWithIcon
             icon={<LogOutOutline />}
             onSelect={() => {
-              alert('Sign Out')
+              logOut()
             }}
             textContent={<DefaultDescription text={'Sign Out'} />}
           />

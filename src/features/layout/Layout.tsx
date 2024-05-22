@@ -17,13 +17,17 @@ export const Layout = forwardRef<ElementRef<'body'>, LayoutProps>((props, ref) =
   const { data, isError, isLoading } = useGetMeQuery()
 
   if (isLoading) {
-    return <Preloader />
+    return (
+      <div className={s.preloader}>
+        <Preloader />
+      </div>
+    )
   }
 
   const meData = data as MeResponse
 
   return (
-    <body className={classNames(s.container, className)} ref={ref} {...rest}>
+    <div className={classNames(s.container, className)} ref={ref} {...rest}>
       <Header
         avatar={meData?.avatar || ''}
         email={meData?.email || ''}
@@ -32,7 +36,7 @@ export const Layout = forwardRef<ElementRef<'body'>, LayoutProps>((props, ref) =
       />
       <ToastNotification />
       <main className={s.main}>{children}</main>
-    </body>
+    </div>
   )
 })
 

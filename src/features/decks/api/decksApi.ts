@@ -33,17 +33,17 @@ export const decksApi = appApi.injectEndpoints({
         }),
       }),
 
-      getDeckById: builder.query<Deck | ErrorResponse, GetDeckById>({
+      getDeckById: builder.query<ErrorResponse | Omit<Deck, 'author'>, GetDeckById>({
         providesTags: ['Decks'],
         query: ({ id }) => ({
-          url: `v2/decks/${id}`,
+          url: `v1/decks/${id}`,
         }),
       }),
 
       getDeckCards: builder.query<ErrorResponse | GetDeckCardsResponse, GetDeckCards>({
         providesTags: ['Decks'],
         query: ({ id }) => ({
-          url: `v2/decks/${id}/cards`,
+          url: `v1/decks/${id}/cards`,
         }),
       }),
 
@@ -62,7 +62,7 @@ export const decksApi = appApi.injectEndpoints({
         }),
       }),
 
-      updateDeck: builder.mutation<Deck, UpdateDecksArgs>({
+      updateDeck: builder.mutation<Omit<Deck, 'author'>, UpdateDecksArgs>({
         invalidatesTags: ['Decks', 'DecksMinMaxCards'],
         query: ({ id, ...body }) => ({
           body,

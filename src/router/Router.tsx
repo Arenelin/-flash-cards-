@@ -11,8 +11,9 @@ import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { DeckById } from '@/features/decks/ui/deckById/DeckById'
 import { PageDecksList } from '@/router/ui/pageDecksList/pageDecksList'
 import { PageError } from '@/router/ui/pageError/pageError'
+import { PageSignIn } from '@/router/ui/pagesAuth/PageSignIn'
 import { PageSignUp } from '@/router/ui/pagesAuth/PageSignUp'
-import { PageForgotPassword, PageNewPassword, PageSignIn } from '@/router/ui/pagesAuth/PagesAuth'
+import { PageForgotPassword, PageNewPassword } from '@/router/ui/pagesAuth/PagesAuth'
 
 const publicRoutes: RouteObject[] = [
   {

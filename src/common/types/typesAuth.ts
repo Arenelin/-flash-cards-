@@ -48,7 +48,7 @@ export type MeError = {
 export type DataSignUp = {
   errorMessages: Array<string>
 }
-export type ErrorResponseSignUp = {
+export type SignErrorResponse = {
   data: DataSignUp
   status: number
 }

@@ -1,4 +1,4 @@
-import { Card } from '@/common/types/typesCards'
+import { Card } from '@/common/types'
 
 export type Author = {
   id: string
@@ -49,11 +49,6 @@ export type CreateDecksArgs = {
 export type UpdateDecksArgs = { id: string } & Partial<CreateDecksArgs>
 export type DeleteDecksArgs = { id: string }
 
-export type ErrorMessages = {
-  field: string
-  message: string
-}
-
 export type GetDeckCards = {
   answer?: string
   currentPage?: number
@@ -71,6 +66,11 @@ export type GetDeckCardsResponse = {
 export type GetDecksMinMaxCardsResponse = {
   max: number
   min: number
+}
+
+export type ErrorMessages = {
+  field: string
+  message: string
 }
 
 export type ErrorData = {

@@ -1,6 +1,6 @@
 import { Params, useParams, useSearchParams } from 'react-router-dom'
 
-import { GetDeckByIdResponse, GetDeckCardsResponse } from '@/common/types'
+import { Deck, GetDeckCardsResponse } from '@/common/types'
 import { useGetDeckByIdQuery, useGetDeckCardsQuery } from '@/features/decks/api/decksApi'
 
 export const useCardsList = () => {
@@ -13,8 +13,7 @@ export const useCardsList = () => {
     isLoading: isLoadingDeck,
   } = useGetDeckByIdQuery({ id: params.id ?? '' })
 
-  console.log(params.id)
-  const deck = deckData as GetDeckByIdResponse
+  const deck = deckData as Omit<Deck, 'author'>
   const isMy = deck.userId === deck.author.id
 
   const {

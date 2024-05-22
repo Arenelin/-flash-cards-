@@ -1,7 +1,9 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
+import defaultDeckImage from '@/assets/defaultDeckImage.jpeg'
 import { ButtonSort, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
-import { ContainerName } from '@/common/components/tables/ui/containerName/ContainerName'
+import { ContainerImageText } from '@/common/components/tables/ui/containerImgText/ContainerImageText'
+import { path } from '@/common/enums'
 import { Deck } from '@/common/types'
 
 type Props = {
@@ -53,7 +55,12 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
           return (
             <Tr key={deck.id}>
               <Td>
-                <ContainerName data={deck} link={'#'} />
+                <ContainerImageText
+                  defaultImg={defaultDeckImage}
+                  img={deck.cover}
+                  link={`${path.decks}/${deck.id}`}
+                  text={deck.name}
+                />
               </Td>
               <Td>{deck.cardsCount}</Td>
               <Td>{getDateString(deck.updated)}</Td>

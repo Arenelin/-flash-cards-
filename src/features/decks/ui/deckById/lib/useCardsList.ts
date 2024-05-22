@@ -13,6 +13,7 @@ export const useCardsList = () => {
     isLoading: isLoadingDeck,
   } = useGetDeckByIdQuery({ id: params.id ?? '' })
 
+  console.log(params.id)
   const deck = deckData as GetDeckByIdResponse
   const isMy = deck.userId === deck.author.id
 

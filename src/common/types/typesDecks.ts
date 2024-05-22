@@ -1,4 +1,6 @@
 //Deck
+import { Card } from '@/common/types/typesCards'
+
 export type Author = {
   id: string
   name: string
@@ -86,22 +88,6 @@ export type GetDeckCards = {
   itemsPerPage?: number
   orderBy?: string
   question?: string
-}
-
-export type Card = {
-  answer: string
-  answerImg: string
-  answerVideo: string
-  created: string
-  deckId: string
-  grade: number
-  id: string
-  question: string
-  questionImg: string
-  questionVideo: string
-  shots: number
-  updated: string
-  userId: string
 }
 
 export type GetDeckCardsResponse = {

@@ -28,14 +28,16 @@ const testEdit = (id: string) => {
 const cards: Card[] = [
   {
     answer: 'answer',
-    answerImg: 'IMAGE',
+    answerImg:
+      'https://staging-it-incubator.s3.eu-central-1.amazonaws.com/flashcards/Image/8d66f974-9fbe-4679-a3cb-1d42250b28a2_image.webp',
     answerVideo: '',
     created: '2024-05-15T03:41:42.488Z',
     deckId: '896a4f1f-bb5b-4ba4-8fb3-39b6cf6a7b5c',
     grade: 3,
     id: '896a4f1f-bb5b-4ba4-8fb3-39b6cf6a7b5c',
     question: 'question',
-    questionImg: 'IMAGE',
+    questionImg:
+      'https://staging-it-incubator.s3.eu-central-1.amazonaws.com/flashcards/Image/8d66f974-9fbe-4679-a3cb-1d42250b28a2_image.webp',
     questionVideo: '',
     shots: 5,
     updated: '2024-05-15T03:41:42.488Z',
@@ -43,14 +45,15 @@ const cards: Card[] = [
   },
   {
     answer: 'answer',
-    answerImg: 'IMAGE',
+    answerImg: null,
     answerVideo: '',
     created: '2024-05-15T03:41:42.488Z',
     deckId: '896a4f1f-bb5b-4ba4-8fb3-39b6cf6a7b5c',
     grade: 5,
     id: '896a4f1f-bb5b-4ba4-8fb3-39b6cf6a7b5c',
     question: 'question',
-    questionImg: 'IMAGE',
+    questionImg:
+      'https://staging-it-incubator.s3.eu-central-1.amazonaws.com/flashcards/Image/8d66f974-9fbe-4679-a3cb-1d42250b28a2_image.webp',
     questionVideo: '',
     shots: 5,
     updated: '2024-05-15T03:41:42.488Z',
@@ -58,14 +61,14 @@ const cards: Card[] = [
   },
   {
     answer: 'answer',
-    answerImg: 'IMAGE',
+    answerImg: null,
     answerVideo: '',
     created: '2024-05-15T03:41:42.488Z',
     deckId: '896a4f1f-bb5b-4ba4-8fb3-39b6cf6a7b5c',
     grade: 0,
     id: '896a4f1f-bb5b-4ba4-8fb3-39b6cf6a7b5c',
     question: 'question',
-    questionImg: 'IMAGE',
+    questionImg: null,
     questionVideo: '',
     shots: 5,
     updated: '2024-05-15T03:41:42.488Z',

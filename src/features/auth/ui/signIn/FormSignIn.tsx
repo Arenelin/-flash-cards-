@@ -29,10 +29,10 @@ export const FormSignIn = ({ onSubmit }: Props) => {
   const { control, handleSubmit } = useForm<SignIn>({ resolver: zodResolver(loginSchema) })
   const formId = useId()
 
-  const { data: meData } = useGetMeQuery()
+  const { isError } = useGetMeQuery()
 
-  if (meData?.id) {
-    return <Navigate to={path.decks} />
+  if (!isError) {
+    return <Navigate to={'/decks'} />
   }
 
   return (

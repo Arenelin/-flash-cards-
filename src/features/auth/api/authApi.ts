@@ -2,6 +2,7 @@ import { appApi } from '@/app/api/appApi'
 import {
   ForgotPasswordArgs,
   MeArgs,
+  MeError,
   MeResponse,
   ResetPasswordTokenArgs,
   SignInArgs,
@@ -28,7 +29,7 @@ export const authApi = appApi.injectEndpoints({
         }),
       }),
 
-      getMe: builder.query<MeResponse, void>({
+      getMe: builder.query<MeError | MeResponse, void>({
         providesTags: ['Me'],
         query: () => 'v1/auth/me',
       }),
@@ -49,6 +50,17 @@ export const authApi = appApi.injectEndpoints({
       }),
 
       signIn: builder.mutation<SignInResponse, SignInArgs>({
+        invalidatesTags: ['Me'],
+        async onQueryStarted(_, { queryFulfilled }) {
+          const { data } = await queryFulfilled
+
+          if (!data) {
+            return
+          }
+
+          localStorage.setItem('accessToken', data.accessToken)
+          localStorage.setItem('refreshToken', data.refreshToken)
+        },
         query: body => ({
           body: body,
           method: 'POST',

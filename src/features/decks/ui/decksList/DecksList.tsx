@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 import { Search, TrashOutline } from '@/assets/icons'
 import { Button, Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
+import { path } from '@/common/enums'
 import { useDecksList } from '@/features/decks/ui/decksList/lib/useDecksList'
 import { TableDecksList } from '@/features/decks/ui/decksList/ui/tableDecksList/TableDecksList'
 
@@ -16,6 +17,7 @@ export function DecksList() {
     decksIsLoading,
     maxCardsCount,
     minCardsCount,
+    notAuthenticated,
     searchChangeHandle,
     searchParams,
     sliderValueHandle,
@@ -24,6 +26,10 @@ export function DecksList() {
   } = useDecksList()
 
   const onPlay = (id: string) => <Navigate to={`decks/${id}`} />
+
+  if (notAuthenticated) {
+    return <Navigate to={path.signIn} />
+  }
 
   if (decksIsLoading) {
     return (

@@ -15,7 +15,7 @@ export type MeArgs = {
 export type SignInArgs = {
   email: string
   password: string
-  rememberMe: boolean
+  rememberMe?: boolean
 }
 export type SignInResponse = {
   accessToken: string
@@ -35,4 +35,10 @@ export type ForgotPasswordArgs = {
 export type ResetPasswordTokenArgs = {
   password: string
   token: string
+}
+export type MeError = {
+  message: string
+  path: string
+  statusCode: number
+  timestamp: string
 }

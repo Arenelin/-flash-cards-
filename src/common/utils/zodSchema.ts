@@ -7,10 +7,10 @@ export const emailSchema = z
   .email('This is not a valid email.')
 export const passwordSchema = z
   .string()
-  .min(5, { message: 'Password must be at least 5 characters' })
-  .refine(val => passwordValidationRegex.test(val), {
-    message: 'Password must contain one uppercase',
-  })
+  .min(4, { message: 'Password must be at least 4 characters' })
+// .refine(val => passwordValidationRegex.test(val), {
+//   message: 'Password must contain one uppercase',
+// })
 
 export const schemaFile = z
   .instanceof(File)

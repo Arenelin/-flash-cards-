@@ -36,8 +36,12 @@ const publicRoutes: RouteObject[] = [
     path: path.newPassword,
   },
   {
-    element: <Navigate to={path.signIn} />,
+    element: <PageSignIn />,
     path: '/',
+  },
+  {
+    element: <PageError />,
+    path: '/error',
   },
   {
     element: <PageError />,
@@ -57,9 +61,9 @@ const privateRoutes = [
 ]
 
 const PrivateRouter = () => {
-  const { data: meData } = useGetMeQuery()
+  const { isError } = useGetMeQuery()
 
-  return <>{meData?.id ? <Outlet /> : <Navigate to={path.signIn} />}</>
+  return <>{isError ? <Navigate to={path.signIn} /> : <Outlet />}</>
 }
 
 const router = createBrowserRouter([

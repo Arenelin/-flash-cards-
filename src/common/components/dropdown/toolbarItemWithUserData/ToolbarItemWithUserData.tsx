@@ -7,9 +7,9 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import s from './toolbarItemUserData.module.scss'
 
 type UserData = {
-  avatar: string
-  email: string
-  name: string
+  avatar?: string
+  email?: string
+  name?: string
 }
 type Props = {
   onSelect?: () => void

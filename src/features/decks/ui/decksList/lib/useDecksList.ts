@@ -1,7 +1,12 @@
 import { useSearchParams } from 'react-router-dom'
 
 import { Tab } from '@/common/components'
-import { ErrorResponse, GetDecksMinMaxCardsResponse, GetDecksResponse } from '@/common/types'
+import {
+  ErrorResponse,
+  GetDecksMinMaxCardsResponse,
+  GetDecksResponse,
+  MeResponse,
+} from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/features/decks/api/decksApi'
 
@@ -11,7 +16,7 @@ export const useDecksList = () => {
   const clearFilterHandle = () => {
     setSearchParams({})
   }
-  const { data: meData } = useGetMeQuery()
+  const { data: meData, isError: notAuthenticated } = useGetMeQuery()
 
   const {
     data: getDecksMinMaxCardsData,
@@ -47,7 +52,7 @@ export const useDecksList = () => {
 
   const tabsChangeHandler = (value: string) => {
     if (value === 'My Cards') {
-      searchParams.set('authorId', meData?.id || '')
+      searchParams.set('authorId', (meData as MeResponse)?.id || '')
     } else {
       searchParams.delete('authorId')
     }
@@ -96,6 +101,7 @@ export const useDecksList = () => {
     decksIsLoading,
     maxCardsCount,
     minCardsCount,
+    notAuthenticated,
     searchChangeHandle,
     searchParams,
     sliderValueHandle,

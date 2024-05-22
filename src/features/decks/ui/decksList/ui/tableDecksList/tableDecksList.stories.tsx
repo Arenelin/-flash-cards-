@@ -2,9 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { Deck } from '@/common/types'
 import { TableDecksList } from '@/features/decks/ui/decksList/ui/tableDecksList/TableDecksList'
+import { withRouter } from 'storybook-addon-remix-react-router'
 
 const meta = {
   component: TableDecksList,
+  decorators: [withRouter],
   parameters: {
     layout: 'centered',
   },
@@ -37,7 +39,7 @@ const decks: Deck[] = [
     created: '2023-08-24T20:48:19.685Z',
     id: '896a4f1f-bb5b-4ba4-8fb3-39b6cf6a7b5c',
     isPrivate: false,
-    name: 'JS',
+    name: 'JSJS   JSJSJSJSJSJSJSJSJSJSJS',
     updated: '2024-05-15T03:41:42.488Z',
     userId: 'a6fa6aad-7d35-46a5-ad86-99587f537623',
   },

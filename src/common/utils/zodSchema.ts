@@ -8,9 +8,7 @@ export const emailSchema = z
 export const passwordSchema = z
   .string()
   .min(4, { message: 'Password must be at least 4 characters' })
-// .refine(val => passwordValidationRegex.test(val), {
-//   message: 'Password must contain one uppercase',
-// })
+  .max(30, { message: 'The field must not contain more than 30 characters' })
 
 export const schemaFile = z
   .instanceof(File)
@@ -19,3 +17,8 @@ export const schemaFile = z
   })
   .nullish()
   .optional()
+
+export const text = z
+  .string()
+  .min(3, { message: 'The field must contain more than 3 character' })
+  .max(30, { message: 'The field must not contain more than 30 characters' })

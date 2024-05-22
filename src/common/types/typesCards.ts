@@ -1,15 +1,15 @@
 export type GetCardsById = { id: string }
 
-export type GetCardsByIdResponse = {
+export type Card = {
   answer: string
-  answerImg: string
+  answerImg: null | string
   answerVideo: string
   created: string
   deckId: string
   grade: number
   id: string
   question: string
-  questionImg: string
+  questionImg: null | string
   questionVideo: string
   shots: number
   updated: string

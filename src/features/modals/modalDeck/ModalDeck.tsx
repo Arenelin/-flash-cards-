@@ -5,7 +5,7 @@ import defaultDeckImage from '@/assets/defaultDeckImage.jpeg'
 import { Button, InputType, Modal } from '@/common/components'
 import { ControlledCheckbox, ControlledInput } from '@/common/components/controlled'
 import { ControlledInputFile } from '@/common/components/controlled/controlledInputFile/ControlledInputFile'
-import { schemaFile } from '@/common/utils/zodSchema'
+import { schemaFile, text } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { z } from 'zod'
@@ -28,7 +28,7 @@ type ModalProps = {
 
 const newDeckSchema = z.object({
   cover: z.union([schemaFile, z.string()]),
-  name: z.string().min(1).max(50),
+  name: text,
   private: z.boolean().optional(),
 })
 

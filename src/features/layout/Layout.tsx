@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Preloader } from '@/common/components/preloader/Preloader'
+import { ToastNotification } from '@/common/components/toastNotification/ToastNotification'
 import { MeResponse } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { Header } from '@/features/layout/ui/header/Header'
@@ -29,6 +30,7 @@ export const Layout = forwardRef<ElementRef<'body'>, LayoutProps>((props, ref) =
         isAuthorization={!isError}
         name={meData?.name || ''}
       />
+      <ToastNotification />
       <main className={s.main}>{children}</main>
     </body>
   )

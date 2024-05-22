@@ -1,6 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { ButtonSort, Grade, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
+import { ContainerImageText } from '@/common/components/tables/ui/containerImgText/ContainerImageText'
 import { Card, GradeScale } from '@/common/types'
 
 type Props = {
@@ -47,14 +48,10 @@ export const TableCardsList = forwardRef<ElementRef<'table'>, TableDecksListProp
           return (
             <Tr key={card.id}>
               <Td>
-                <div>
-                  {card.questionImg} {card.question}
-                </div>
+                <ContainerImageText img={card.questionImg} text={card.question} />
               </Td>
               <Td>
-                <div>
-                  {card.answerImg} {card.answer}
-                </div>
+                <ContainerImageText img={card.answerImg} text={card.answer} />
               </Td>
               <Td>{getDateString(card.updated)}</Td>
               <Td>

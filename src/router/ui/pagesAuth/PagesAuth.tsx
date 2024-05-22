@@ -1,12 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-import {
-  FormForgotPassword,
-  FormSignIn,
-  FormSignUp,
-  NewPasswordForm,
-  SignIn,
-} from '@/features/auth'
+import { FormForgotPassword, FormSignIn, NewPasswordForm, SignIn } from '@/features/auth'
 import { useSignInMutation } from '@/features/auth/api/authApi'
 import { Page } from '@/router/ui/page/Page'
 
@@ -36,14 +30,6 @@ export const PageSignIn = () => {
   return (
     <Page>
       <FormSignIn onSubmit={onSubmitSignIn} />
-    </Page>
-  )
-}
-
-export const PageSignUp = () => {
-  return (
-    <Page>
-      <FormSignUp onSubmit={onSubmit} />
     </Page>
   )
 }

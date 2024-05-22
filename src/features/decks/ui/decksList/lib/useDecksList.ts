@@ -18,7 +18,7 @@ export const useDecksList = () => {
   } = useGetDecksMinMaxCardsQuery()
 
   const minCardsCount = (getDecksMinMaxCardsData as GetDecksMinMaxCardsResponse)?.min || 0
-  const maxCardsCount = (getDecksMinMaxCardsData as GetDecksMinMaxCardsResponse)?.max || 61
+  const maxCardsCount = (getDecksMinMaxCardsData as GetDecksMinMaxCardsResponse)?.max || 100
 
   //input search params
   const searchChangeHandle = (value: string) => {
@@ -42,6 +42,7 @@ export const useDecksList = () => {
       value: 'All Cards',
     },
   ]
+
   const tabsChangeHandler = (value: string) => {
     if (value === 'My Cards') {
       searchParams.set('authorId', 'My Cards') //TODO add id from me-request
@@ -58,29 +59,23 @@ export const useDecksList = () => {
     value[1] === maxCardsCount && searchParams.delete('maxCardsCount')
     setSearchParams(searchParams)
   }
-  //pagination search params
-  // const pageSizeHandler = (itemsPerPage: string) => {
-  //   searchParams.set('itemsPerPage', itemsPerPage)
-  //   setSearchParams(searchParams)
-  // }
-  // const currentPageHandler = (currentPage: number) => {
-  //   searchParams.set('currentPage', currentPage.toString())
-  //   setSearchParams(searchParams)
-  // }
 
   const {
     data: getDecksData,
     error: getDecksError,
     isLoading: getDecksIsLoading,
-  } = useGetDecksQuery({
-    authorId: searchParams.get('authorId') || undefined, // пока нет реального айди выкидывает ошибку
-    currentPage: Number(searchParams.get('currentPage')) || 1,
-    itemsPerPage: Number(searchParams.get('itemsPerPage')) || 10,
-    maxCardsCount: Number(searchParams.get('maxCardsCount')) || maxCardsCount,
-    minCardsCount: Number(searchParams.get('minCardsCount')) || minCardsCount,
-    name: searchParams.get('name') || undefined,
-    // orderBy?: string,
-  })
+  } = useGetDecksQuery(
+    {
+      authorId: searchParams.get('authorId') || undefined, // пока нет реального айди выкидывает ошибку
+      currentPage: Number(searchParams.get('currentPage')) || 1,
+      itemsPerPage: Number(searchParams.get('itemsPerPage')) || 10,
+      maxCardsCount: Number(searchParams.get('maxCardsCount')) || maxCardsCount,
+      minCardsCount: Number(searchParams.get('minCardsCount')) || minCardsCount,
+      name: searchParams.get('name') || undefined,
+      // orderBy?: string,
+    },
+    { skip: getDecksMinMaxCardsIsLoading }
+  )
 
   const decksData = getDecksData as GetDecksResponse
 
@@ -89,6 +84,7 @@ export const useDecksList = () => {
     ...((getDecksError as ErrorResponse)?.data.errorMessages || []),
   ]
   const decksError = totalError.length ? totalError : null
+
   const decksIsLoading = getDecksMinMaxCardsIsLoading || getDecksIsLoading
 
   return {

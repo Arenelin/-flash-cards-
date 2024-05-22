@@ -68,7 +68,7 @@ export function DecksList() {
           value={searchParams.get('authorId') ? 'My Cards' : 'All Cards'}
         />
         <Slider
-          label={'Number of cards'}
+          label={'Number of cards in deck'}
           max={maxCardsCount}
           min={minCardsCount}
           onValueChange={e => sliderValueHandle(e)}

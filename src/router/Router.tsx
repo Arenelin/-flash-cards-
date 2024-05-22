@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Navigate,
   Outlet,
@@ -7,8 +6,8 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { Button } from '@/common/components'
 import { path } from '@/common/enums'
+import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { DeckById } from '@/features/decks/ui/deckById/DeckById'
 import { PageDecksList } from '@/router/ui/pageDecksList/pageDecksList'
 import { PageError } from '@/router/ui/pageError/pageError'
@@ -58,20 +57,9 @@ const privateRoutes = [
 ]
 
 const PrivateRouter = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
+  const { data: meData } = useGetMeQuery()
 
-  return (
-    <>
-      <Button
-        onClick={() => setIsAuthenticated(false)}
-        style={{ position: 'fixed', right: '300px', top: '12px', zIndex: '10' }}
-        variant={'primary'}
-      >
-        Hide Private Pages
-      </Button>
-      {isAuthenticated ? <Outlet /> : <Navigate to={path.signIn} />}
-    </>
-  )
+  return <>{meData?.id ? <Outlet /> : <Navigate to={path.signIn} />}</>
 }
 
 const router = createBrowserRouter([

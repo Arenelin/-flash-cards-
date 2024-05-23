@@ -52,7 +52,6 @@ export type DecksResponse = {
   userId: string
 }
 export type GetDeckByIdResponse = {
-  author: Author
   cardsCount: number
   cover: string
   created: string
@@ -62,6 +61,7 @@ export type GetDeckByIdResponse = {
   updated: string
   userId: string
 }
+
 export type CreateDecksArgs = {
   cover?: string
   isPrivate?: boolean

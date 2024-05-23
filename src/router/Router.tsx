@@ -9,7 +9,7 @@ import {
 
 import { Button } from '@/common/components'
 import { path } from '@/common/enums'
-import { DeckById } from '@/features/decks/ui/deckById/DeckById'
+import { PageDeckById } from '@/router/ui/pageDeckById/PageDeckById'
 import { PageDecksList } from '@/router/ui/pageDecksList/pageDecksList'
 import { PageError } from '@/router/ui/pageError/pageError'
 import { PageSignUp } from '@/router/ui/pagesAuth/PageSignUp'
@@ -48,7 +48,7 @@ const privateRoutes = [
     path: path.decks,
   },
   {
-    element: <DeckById />,
+    element: <PageDeckById />,
     path: `${path.decks}/:id`,
   },
 ]

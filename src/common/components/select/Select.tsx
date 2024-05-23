@@ -40,11 +40,11 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
     <Typography as={'label'} className={baseclassNames.typography} variant={'body2'}>
       {label}
       <SelectRadix.Root onValueChange={onValueChange} value={value} {...rest}>
-        <SelectRadix.Trigger asChild className={baseclassNames.trigger} ref={ref}>
-          <button>
-            <SelectRadix.Value placeholder={placeholder} />
+        <SelectRadix.Trigger className={baseclassNames.trigger} ref={ref}>
+          <SelectRadix.Value placeholder={placeholder} />
+          <SelectRadix.Icon asChild className={'SelectIcon'}>
             <Icon className={baseclassNames.icon} name={'arrow'} />
-          </button>
+          </SelectRadix.Icon>
         </SelectRadix.Trigger>
         <SelectRadix.Portal>
           <SelectRadix.Content className={s.content} position={'popper'}>

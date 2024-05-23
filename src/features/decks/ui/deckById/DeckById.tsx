@@ -45,7 +45,7 @@ export const DeckById = () => {
   }
 
   return (
-    <div>
+    <div className={s.containerAllContent}>
       <Button as={NavLink} to={path.decks}>
         <ArrowArrowBack /> Back to Decks List
       </Button>
@@ -74,6 +74,7 @@ export const DeckById = () => {
               </div>
               {isMy ? <Button>Add New Card</Button> : <Button>Learn to deck</Button>}
             </div>
+            {deck?.cover && <img alt={'Image Deck'} className={s.img} src={deck?.cover} />}
             <div className={s.inputContainer}>
               <Input
                 className={s.input}
@@ -92,7 +93,9 @@ export const DeckById = () => {
           </div>
         )}
       </div>
-      <Pagination totalCount={deck?.cardsCount} /> {/* TODO set current value from request*/}
+      <div className={s.paginationSettings}>
+        <Pagination totalCount={deck?.cardsCount} /> {/* TODO set current value from request*/}
+      </div>
     </div>
   )
 }

@@ -17,8 +17,6 @@ export const useCardsList = () => {
 
   const isMy = deck?.userId === deck?.id
 
-  console.log(params?.id === deck?.id)
-
   const {
     data: cardsData,
     error: cardsError,

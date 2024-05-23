@@ -15,9 +15,9 @@ export function DecksList() {
     decksData,
     decksError,
     decksIsLoading,
+    isAuthorization,
     maxCardsCount,
     minCardsCount,
-    notAuthenticated,
     searchChangeHandle,
     searchParams,
     sliderValueHandle,
@@ -25,9 +25,9 @@ export function DecksList() {
     tabsOptions,
   } = useDecksList()
 
-  const onPlay = (id: string) => <Navigate to={`decks/${id}`} />
+  const onPlay = (id: string) => <Navigate to={`${path.decks}/${id}`} />
 
-  if (notAuthenticated) {
+  if (!isAuthorization) {
     return <Navigate to={path.signIn} />
   }
 
@@ -94,7 +94,7 @@ export function DecksList() {
       </div>
       <TableDecksList
         className={s.tables}
-        decks={decksData.items}
+        decks={decksData?.items}
         onPlay={onPlay}
         onSortLastUpdated={() => {}}
       />

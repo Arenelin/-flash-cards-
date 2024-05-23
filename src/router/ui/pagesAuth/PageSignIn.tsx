@@ -1,3 +1,4 @@
+// import { Navigate } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -11,7 +12,6 @@ import { Page } from '@/router/ui/page/Page'
 export const PageSignIn = () => {
   const [signIn, signInResult] = useSignInMutation()
   const navigate = useNavigate()
-
   const onSubmitSignIn = (formData: SignIn) => {
     signIn(formData).unwrap()
   }
@@ -21,15 +21,13 @@ export const PageSignIn = () => {
   }
   if (signInResult.error) {
     const error = signInResult.error as SignErrorResponse
-    const Error = error.data.errorMessages.reduce((acc, error) => {
+    const Error = error.data?.errorMessages.reduce((acc, error) => {
       return acc + String(error)
     }, '')
 
     toast.error(Error ?? 'You are not login')
   }
-
   if (signInResult.isSuccess) {
-    toast.success('You are login successfully.')
     navigate(path.decks)
   }
 

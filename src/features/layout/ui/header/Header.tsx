@@ -8,6 +8,7 @@ import { DropdownSeparator } from '@/common/components/dropdown/dropdownSeparato
 import { ToolbarItemWithIcon } from '@/common/components/dropdown/toolbarItemWithIcon/ToolbarItemWithIcon'
 import { DefaultDescription } from '@/common/components/dropdown/toolbarItemWithIcon/defaultDescription/DefaultDescription'
 import { ToolbarItemWithUserData } from '@/common/components/dropdown/toolbarItemWithUserData/ToolbarItemWithUserData'
+import { path } from '@/common/enums'
 import { useLogOutMutation } from '@/features/auth/api/authApi'
 import classNames from 'classnames'
 
@@ -25,7 +26,7 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
 
   return (
     <header className={classNames(s.container, className)} {...rest} ref={ref}>
-      <Typography as={'a'} href={'/decks'}>
+      <Typography as={'a'} href={path.decks}>
         <img alt={'logo'} className={s.img} height={'36px'} src={logo} width={'160px'} />
       </Typography>
       {isAuthorization ? (
@@ -34,21 +35,19 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
           <DropdownSeparator />
           <ToolbarItemWithIcon
             icon={<PersonOutline />}
-            onSelect={() => <Navigate to={'/profile'} />}
+            onSelect={() => <Navigate to={path.profile} />}
             textContent={<DefaultDescription text={'My Profile'} />}
           />
           <DropdownSeparator />
 
           <ToolbarItemWithIcon
             icon={<LogOutOutline />}
-            onSelect={() => {
-              logOut()
-            }}
+            onSelect={logOut}
             textContent={<DefaultDescription text={'Sign Out'} />}
           />
         </Dropdown>
       ) : (
-        <Button as={'a'} href={'/singIn'} variant={'secondary'}>
+        <Button as={'a'} href={path.signIn} variant={'secondary'}>
           Sing In
         </Button>
       )}

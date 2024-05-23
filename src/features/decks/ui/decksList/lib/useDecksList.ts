@@ -6,6 +6,7 @@ import {
   GetDecksMinMaxCardsResponse,
   GetDecksResponse,
   MeResponse,
+  // SignErrorResponse,
 } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/features/decks/api/decksApi'
@@ -16,7 +17,9 @@ export const useDecksList = () => {
   const clearFilterHandle = () => {
     setSearchParams({})
   }
-  const { data: meData, isError: notAuthenticated } = useGetMeQuery()
+  const result = useGetMeQuery()
+
+  const isAuthorization = result.isSuccess
 
   const {
     data: getDecksMinMaxCardsData,
@@ -52,7 +55,7 @@ export const useDecksList = () => {
 
   const tabsChangeHandler = (value: string) => {
     if (value === 'My Cards') {
-      searchParams.set('authorId', (meData as MeResponse)?.id || '')
+      searchParams.set('authorId', (result?.data as MeResponse)?.id || '')
     } else {
       searchParams.delete('authorId')
     }
@@ -99,9 +102,9 @@ export const useDecksList = () => {
     decksData,
     decksError,
     decksIsLoading,
+    isAuthorization,
     maxCardsCount,
     minCardsCount,
-    notAuthenticated,
     searchChangeHandle,
     searchParams,
     sliderValueHandle,

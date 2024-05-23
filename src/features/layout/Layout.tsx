@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { ToastNotification } from '@/common/components/toastNotification/ToastNotification'
-import { MeResponse } from '@/common/types'
+import { MeResponse, SignErrorResponse } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { Header } from '@/features/layout/ui/header/Header'
 import classNames from 'classnames'
@@ -14,7 +14,7 @@ type LayoutProps = ComponentPropsWithoutRef<'div'>
 export const Layout = forwardRef<ElementRef<'div'>, LayoutProps>((props, ref) => {
   const { children, className, ...rest } = props
 
-  const { data, isError, isLoading } = useGetMeQuery()
+  const { data, error, isLoading } = useGetMeQuery()
 
   if (isLoading) {
     return (
@@ -31,7 +31,7 @@ export const Layout = forwardRef<ElementRef<'div'>, LayoutProps>((props, ref) =>
       <Header
         avatar={meData?.avatar || ''}
         email={meData?.email || ''}
-        isAuthorization={!isError}
+        isAuthorization={(error as SignErrorResponse)?.status !== 401}
         name={meData?.name || ''}
       />
       <ToastNotification />

@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify'
+
 import { appApi } from '@/app/api/appApi'
 import {
   ForgotPasswordArgs,
@@ -35,6 +37,12 @@ export const authApi = appApi.injectEndpoints({
       }),
 
       logOut: builder.mutation<undefined, void>({
+        invalidatesTags: ['Me'],
+        async onQueryStarted() {
+          localStorage.removeItem('accessToken')
+          localStorage.removeItem('refreshToken')
+          toast.success('You are logout successfully.', { autoClose: 1000 })
+        },
         query: () => ({
           method: 'POST',
           url: 'v1/auth/logout',
@@ -60,6 +68,7 @@ export const authApi = appApi.injectEndpoints({
 
           localStorage.setItem('accessToken', data.accessToken)
           localStorage.setItem('refreshToken', data.refreshToken)
+          toast.success('You are login successfully.', { autoClose: 1000 })
         },
         query: body => ({
           body: body,

@@ -1,1 +1,1 @@
-export * from './enums'
+export * from '@/common/enums/path'

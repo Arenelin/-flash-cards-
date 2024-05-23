@@ -7,22 +7,28 @@ import {
 } from 'react-router-dom'
 
 import { path } from '@/common/enums'
+import { MeResponse } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { DeckById } from '@/features/decks/ui/deckById/DeckById'
-import { PageDecksList } from '@/router/ui/pageDecksList/pageDecksList'
-import { PageError } from '@/router/ui/pageError/pageError'
+import { DecksList } from '@/features/decks/ui/decksList/DecksList'
+import { Error } from '@/features/error/Error'
+import { PageProfile } from '@/router/ui/pageProfile/pageProfile'
 import { PageSignIn } from '@/router/ui/pagesAuth/PageSignIn'
 import { PageSignUp } from '@/router/ui/pagesAuth/PageSignUp'
 import { PageForgotPassword, PageNewPassword } from '@/router/ui/pagesAuth/PagesAuth'
 
 const publicRoutes: RouteObject[] = [
   {
-    element: <PageForgotPassword />,
-    path: path.forgotPassword,
+    element: <Navigate to={path.signIn} />,
+    path: path.base,
   },
   {
     element: <PageSignIn />,
     path: path.signIn,
+  },
+  {
+    element: <PageForgotPassword />,
+    path: path.forgotPassword,
   },
   {
     element: <PageSignUp />,
@@ -33,44 +39,50 @@ const publicRoutes: RouteObject[] = [
     path: path.newPassword,
   },
   {
-    element: <PageSignIn />,
-    path: '/',
+    element: <Error />,
+    path: path.error,
   },
   {
-    element: <PageError />,
-    path: '/error',
-  },
-  {
-    element: <PageError />,
+    element: <Navigate to={path.error} />,
     path: '/*',
   },
 ]
 
-const privateRoutes = [
+const privateRoutes: RouteObject[] = [
   {
-    element: <PageDecksList />,
+    element: <DecksList />,
     path: path.decks,
   },
   {
     element: <DeckById />,
     path: `${path.decks}/:id`,
   },
+  {
+    element: <PageProfile />,
+    path: path.profile,
+  },
 ]
 
 const PrivateRouter = () => {
-  const { isError } = useGetMeQuery()
+  const { data } = useGetMeQuery()
 
-  return <>{isError ? <Navigate to={path.signIn} /> : <Outlet />}</>
+  return (data as MeResponse)?.id ? <Outlet /> : <Navigate to={path.signIn} />
 }
 
 const router = createBrowserRouter([
   {
-    children: privateRoutes,
-    element: <PrivateRouter />,
+    children: [
+      {
+        children: privateRoutes,
+        element: <PrivateRouter />,
+      },
+      ...publicRoutes,
+    ],
+    element: <Outlet />,
+    path: path.base,
   },
-  ...publicRoutes,
 ])
 
 export function Router() {
-  return <RouterProvider router={router}></RouterProvider>
+  return <RouterProvider router={router} />
 }

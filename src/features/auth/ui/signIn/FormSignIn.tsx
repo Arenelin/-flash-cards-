@@ -29,10 +29,10 @@ export const FormSignIn = ({ onSubmit }: Props) => {
   const { control, handleSubmit } = useForm<SignIn>({ resolver: zodResolver(loginSchema) })
   const formId = useId()
 
-  const { isError } = useGetMeQuery()
+  const result = useGetMeQuery()
 
-  if (!isError) {
-    return <Navigate to={'/decks'} />
+  if (result.isSuccess) {
+    return <Navigate to={path.decks} />
   }
 
   return (
@@ -43,6 +43,7 @@ export const FormSignIn = ({ onSubmit }: Props) => {
       <form className={s.form} id={formId} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.containerInput}>
           <ControlledInput
+            autoFocus
             className={s.input}
             control={control}
             label={'Email'}

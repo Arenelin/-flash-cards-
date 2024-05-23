@@ -11,17 +11,19 @@ export const useCardsList = () => {
     data: deckData,
     error: deckError,
     isLoading: isLoadingDeck,
-  } = useGetDeckByIdQuery({ id: params.id ?? '' })
+  } = useGetDeckByIdQuery({ id: params?.id ?? '' })
 
-  console.log(params.id)
   const deck = deckData as GetDeckByIdResponse
-  const isMy = deck.userId === deck.author.id
+
+  const isMy = deck?.userId === deck?.id
+
+  console.log(params?.id === deck?.id)
 
   const {
     data: cardsData,
     error: cardsError,
     isLoading: isLoadingCards,
-  } = useGetDeckCardsQuery({ id: deck.id })
+  } = useGetDeckCardsQuery({ id: params?.id ?? '' })
 
   const cards = cardsData as GetDeckCardsResponse
   const searchChangeHandle = (value: string) => {

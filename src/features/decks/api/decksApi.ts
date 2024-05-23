@@ -35,14 +35,14 @@ export const decksApi = appApi.injectEndpoints({
         providesTags: ['Decks'],
         query: ({ id }) => ({
           method: 'GET',
-          url: `v2/decks/${id}`,
+          url: `v1/decks/${id}`,
         }),
       }),
       getDeckCards: builder.query<ErrorResponse | GetDeckCardsResponse, GetDeckCards>({
         providesTags: ['Decks'],
         query: ({ id }) => ({
           method: 'GET',
-          url: `v2/decks/${id}/cards`,
+          url: `v1/decks/${id}/cards`,
         }),
       }),
       getDecks: builder.query<ErrorResponse | GetDecksResponse, GetDecks | void>({

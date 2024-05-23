@@ -37,7 +37,7 @@ export const DeckById = () => {
 
     return (
       <div className={s.error}>
-        {err.data.errorMessages.map(e => {
+        {err?.data?.errorMessages?.map(e => {
           return <p key={e.field}>{`at query parameter " ${e.field} " error: " ${e.message} "`}</p>
         })}
       </div>
@@ -50,10 +50,10 @@ export const DeckById = () => {
         <ArrowArrowBack /> Back to Decks List
       </Button>
       <div className={s.container}>
-        {!cards.items.length ? (
+        {!cards?.items?.length ? (
           <div className={s.emptyCardsBlock}>
             <Typography as={'h1'} variant={'h1'}>
-              {deck.name}
+              {deck?.name}
             </Typography>
             <div className={s.emptyText}>
               <Typography as={'p'} variant={'body1'}>
@@ -68,7 +68,7 @@ export const DeckById = () => {
             <div className={s.titleBlock}>
               <div>
                 <Typography as={'h1'} variant={'h1'}>
-                  {deck.name}
+                  {deck?.name}
                 </Typography>
                 {isMy && <Dropdown triggerChild={<MoreVerticalOutline />} />}
               </div>
@@ -84,11 +84,15 @@ export const DeckById = () => {
                 value={searchParams.get('name') || ''}
               />
             </div>
-            <TableCardsList cards={cards.items} isMy={isMy} onSortLastUpdated={onSortLastUpdated} />
+            <TableCardsList
+              cards={cards?.items}
+              isMy={isMy}
+              onSortLastUpdated={onSortLastUpdated}
+            />
           </div>
         )}
       </div>
-      <Pagination totalCount={deck.cardsCount} /> {/* TODO set current value from request*/}
+      <Pagination totalCount={deck?.cardsCount} /> {/* TODO set current value from request*/}
     </div>
   )
 }

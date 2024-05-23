@@ -4,7 +4,8 @@ import defaultDeckImage from '@/assets/defaultDeckImage.jpeg'
 import { ButtonSort, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
 import { ContainerImageText } from '@/common/components/tables/ui/containerImgText/ContainerImageText'
 import { path } from '@/common/enums'
-import { Deck } from '@/common/types'
+import { Deck, MeResponse } from '@/common/types'
+import { useGetMeQuery } from '@/features/auth/api/authApi'
 
 type Props = {
   decks: Deck[]
@@ -17,6 +18,7 @@ type Props = {
 type TableDecksListProps = Omit<ComponentPropsWithoutRef<'table'>, keyof Props> & Props
 export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProps>((props, ref) => {
   const { decks, onDelete, onEdit, onPlay, onSortLastUpdated, ...rest } = props
+  const { data } = useGetMeQuery()
 
   const onDeleteHandler = (id: string) => {
     if (onDelete) {
@@ -67,10 +69,10 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
               <Td>{deck.author.name}</Td>
               <Td>
                 <Tools
-                  canUseTool={deck.author.id === deck?.userId}
-                  onDelete={() => onDeleteHandler(deck.id)}
-                  onEdit={() => onEditHandler(deck.id)}
-                  onPlay={() => onPlayHandler(deck.id)}
+                  canUseTool={(data as MeResponse)?.id === deck?.userId}
+                  onDelete={() => onDeleteHandler(deck?.id)}
+                  onEdit={() => onEditHandler(deck?.id)}
+                  onPlay={() => onPlayHandler(deck?.id)}
                 />
               </Td>
             </Tr>

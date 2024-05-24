@@ -1,5 +1,4 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
-import { Navigate } from 'react-router-dom'
 
 import { LogOutOutline, PersonOutline } from '@/assets/icons'
 import logo from '@/assets/logoStart.png'
@@ -10,6 +9,7 @@ import { DefaultDescription } from '@/common/components/dropdown/toolbarItemWith
 import { ToolbarItemWithUserData } from '@/common/components/dropdown/toolbarItemWithUserData/ToolbarItemWithUserData'
 import { path } from '@/common/enums'
 import { useLogOutMutation } from '@/features/auth/api/authApi'
+import { router } from '@/router/Router'
 import classNames from 'classnames'
 
 import s from '@/features/layout/ui/header/header.module.scss'
@@ -24,6 +24,10 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
   const { avatar, className, email, isAuthorization, name, ...rest } = props
   const [logOut] = useLogOutMutation()
 
+  const selectProfile = () => {
+    router.navigate(path.profile)
+  }
+
   return (
     <header className={classNames(s.container, className)} {...rest} ref={ref}>
       <Typography as={'a'} href={path.decks}>
@@ -35,7 +39,7 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
           <DropdownSeparator />
           <ToolbarItemWithIcon
             icon={<PersonOutline />}
-            onSelect={() => <Navigate to={path.profile} />}
+            onSelect={selectProfile}
             textContent={<DefaultDescription text={'My Profile'} />}
           />
           <DropdownSeparator />

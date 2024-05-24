@@ -1,22 +1,19 @@
-import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react'
+
+import { baseQueryWithRefreshToken } from './BaseQueryWithRefreshToken'
 
 export const appApi = createApi({
-  baseQuery: retry(
-    fetchBaseQuery({
-      baseUrl: 'https://api.flashcards.andrii.es',
-      prepareHeaders: headers => {
-        const token = localStorage.getItem('accessToken')
-
-        if (token) {
-          headers.set('Authorization', `Bearer ${token}`)
-        }
-
-        return headers
-      },
-    }),
-    { maxRetries: 1 }
-  ),
+  baseQuery: baseQueryWithRefreshToken,
   endpoints: () => ({}),
+  // endpoints: builder => {
+  //   return {
+  //     getMe: builder.query<MeError | MeResponse, void>({
+  //       providesTags: ['Me'],
+  //       query: () => 'v1/auth/me',
+  //     }),
+  //   }
+  // },
   reducerPath: 'appApi',
   tagTypes: ['Auth', 'Card', 'Decks', 'DecksMinMaxCards', 'Me'],
 })
+// export const { useGetMeQuery } = appApi

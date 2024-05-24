@@ -69,7 +69,7 @@ const PrivateRouter = () => {
   return (data as MeResponse)?.id ? <Outlet /> : <Navigate to={path.signIn} />
 }
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     children: [
       {

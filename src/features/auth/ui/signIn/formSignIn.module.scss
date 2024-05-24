@@ -1,26 +1,29 @@
 .card {
-  padding: 35px 35px 25px;
   width: 100%;
   max-width: 420px;
+  margin: 0 auto;
+  padding: 35px 35px 25px;
 }
 
 .form {
-  width: 100%;
-  margin: 28px 0 20px;
   display: flex;
   flex-direction: column;
+
+  width: 100%;
   max-width: 348px;
+  margin: 28px 0 20px;
 }
 
 .containerInput {
-  width: 100%;
   display: grid;
   gap: 24px;
+  width: 100%;
   max-width: 348px;
 }
+
 .input {
-  min-width: 348px;
   width: 100%;
+  min-width: 348px;
   max-width: 348px;
 }
 

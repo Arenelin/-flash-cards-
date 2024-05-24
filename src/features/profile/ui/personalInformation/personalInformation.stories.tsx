@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import {
-  FormData,
   PersonalInformation,
+  ProfileFormData,
 } from '@/features/profile/ui/personalInformation/PersonalInformation'
 
 const meta = {
@@ -17,7 +17,7 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof PersonalInformation>
-const onSubmit = (data: FormData) => {
+const onSubmit = (data: ProfileFormData) => {
   alert(data.nickName)
 }
 

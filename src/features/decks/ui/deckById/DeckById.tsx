@@ -7,13 +7,17 @@ import CloseOutline from '@/assets/icons/CloseOutline'
 import { Button, Dropdown, Input, InputType, Pagination, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { path } from '@/common/enums'
+
 import { ErrorResponse, ErrorResponseCard } from '@/common/types'
 import { useCardsList } from '@/features/decks/ui/deckById/lib/useCardsList'
 import { useDeleteCardId } from '@/features/decks/ui/deckById/lib/useDeleteCardId'
+
 import { TableCardsList } from '@/features/decks/ui/deckById/ui/tableCardsList/TableCardsList'
 import { ModalDelete } from '@/features/modals/modalDelete/ModalDelete'
 
 import s from '@/features/decks/ui/decks.module.scss'
+
+import { useCardsList } from './lib/useCardsList'
 
 export const DeckById = () => {
   const [deleteModal, setDeleteModal] = useState<boolean>(false)
@@ -85,10 +89,10 @@ export const DeckById = () => {
   const contentNotCardinDeck = !cards?.items?.length && Boolean(!searchParams.get('question'))
 
   return (
-    <div className={s.containerAllContent}>
-      <Button as={NavLink} to={path.decks}>
+    <div className={s.main}>
+      <Typography as={NavLink} className={s.back} to={path.decks}>
         <ArrowArrowBack /> Back to Decks List
-      </Button>
+      </Typography>
       <div className={s.container}>
         {contentNotCardinDeck ? (
           <div className={s.emptyCardsBlock}>

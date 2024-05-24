@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { path } from '@/common/enums'
-import { ErrorResponseSignUp, SignUpArgs } from '@/common/types'
+import { SignErrorResponse, SignUpArgs } from '@/common/types'
 import { FormSignUp, SignUp } from '@/features/auth'
 import { useSignUpMutation } from '@/features/auth/api/authApi'
 import { Page } from '@/router/ui/page/Page'
@@ -13,7 +13,12 @@ export const PageSignUp = () => {
   const navigate = useNavigate()
 
   const html =
-    '<b>Hello, ##name##!</b><br/>Please confirm your email by clicking on the link below:<br/><a href="http://localhost:3000/confirm-email/##token##">Confirm email</a>. If it doesn\'t work, copy and paste the following link in your browser:<br/>http://localhost:3000/confirm-email/##token##'
+    '<b>Hello, ##name##!</b>' +
+    '<br/>Please confirm your email by clicking on the link below:<br/>' +
+    "<a href='http://localhost:3000/confirm-email/##token##'>Confirm email</a>. " +
+    "If it doesn't work, copy and paste the following link in your browser:" +
+    '<br/>http://localhost:3000/confirm-email/##token##'
+
   const onSubmit = (data: SignUp) => {
     const registrationData: SignUpArgs = {
       email: data.email,
@@ -31,7 +36,7 @@ export const PageSignUp = () => {
   }
 
   if (signUpResult.error) {
-    const error = signUpResult.error as ErrorResponseSignUp
+    const error = signUpResult.error as SignErrorResponse
     const Error = error.data.errorMessages.reduce((acc, error) => {
       return acc + String(error)
     }, '')

@@ -1,12 +1,19 @@
 .container {
-  width: 36px;
-  height: 36px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .img {
-  width: 100%;
-  height: 100%;
-
+  width: 36px;
+  height: 36px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.name {
+  margin: 0;
+  text-decoration: dashed;
+  text-decoration-line: underline;
+  text-underline-position: under;
 }

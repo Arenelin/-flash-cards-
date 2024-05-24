@@ -1,7 +1,10 @@
+import { toast } from 'react-toastify'
+
 import { appApi } from '@/app/api/appApi'
 import {
   ForgotPasswordArgs,
   MeArgs,
+  MeError,
   MeResponse,
   ResetPasswordTokenArgs,
   SignInArgs,
@@ -19,6 +22,7 @@ export const authApi = appApi.injectEndpoints({
           url: 'v2/auth/refresh-token',
         }),
       }),
+
       forgotPassword: builder.query<undefined, ForgotPasswordArgs>({
         query: body => ({
           body: body,
@@ -26,15 +30,25 @@ export const authApi = appApi.injectEndpoints({
           url: 'v1/auth/recover-password',
         }),
       }),
-      getMe: builder.query<MeResponse, void>({
+
+      getMe: builder.query<MeError | MeResponse, void>({
+        providesTags: ['Me'],
         query: () => 'v1/auth/me',
       }),
+
       logOut: builder.mutation<undefined, void>({
+        invalidatesTags: ['Me'],
+        async onQueryStarted() {
+          localStorage.removeItem('accessToken')
+          localStorage.removeItem('refreshToken')
+          toast.success('You are logout successfully.', { autoClose: 1000 })
+        },
         query: () => ({
           method: 'POST',
           url: 'v1/auth/logout',
         }),
       }),
+
       resetPasswordToken: builder.mutation<undefined, ResetPasswordTokenArgs>({
         query: ({ token, ...body }) => ({
           method: 'POST',
@@ -42,13 +56,27 @@ export const authApi = appApi.injectEndpoints({
           url: `v1/auth/reset-password/${token}`,
         }),
       }),
+
       signIn: builder.mutation<SignInResponse, SignInArgs>({
+        invalidatesTags: ['Me'],
+        async onQueryStarted(_, { queryFulfilled }) {
+          const { data } = await queryFulfilled
+
+          if (!data) {
+            return
+          }
+
+          localStorage.setItem('accessToken', data.accessToken)
+          localStorage.setItem('refreshToken', data.refreshToken)
+          toast.success('You are login successfully.', { autoClose: 1000 })
+        },
         query: body => ({
           body: body,
           method: 'POST',
           url: 'v1/auth/login',
         }),
       }),
+
       signUp: builder.mutation<SignUpResponse, SignUpArgs>({
         query: body => ({
           body: body,
@@ -56,6 +84,7 @@ export const authApi = appApi.injectEndpoints({
           url: 'v1/auth/sign-up',
         }),
       }),
+
       updateMe: builder.mutation<MeResponse, MeArgs>({
         query: body => ({
           body: body,

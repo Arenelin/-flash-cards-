@@ -1,5 +1,3 @@
-export type GetCardsById = { id: string }
-
 export type Card = {
   answer: string
   answerImg: null | string
@@ -27,3 +25,6 @@ export type ErrorResponseCard = {
   data: ErrorData
   status: number
 }
+
+export type GetCardsById = { id: string }
+

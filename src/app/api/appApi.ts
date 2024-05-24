@@ -1,14 +1,43 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+// import {
+//   ErrorResponse,
+//   GetDecks,
+//   GetDecksMinMaxCardsResponse,
+//   GetDecksResponse,
+// } from '@/common/types'
+import { createApi } from '@reduxjs/toolkit/query/react'
+
+import { baseQueryWithRefreshToken } from './BaseQueryWithRefreshToken'
 
 export const appApi = createApi({
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.flashcards.andrii.es',
-    credentials: 'include',
-    prepareHeaders: headers => {
-      headers.append('x-auth-skip', 'true')
-    },
-  }),
+  baseQuery: baseQueryWithRefreshToken,
   endpoints: () => ({}),
+  // endpoints: builder => {
+  //   return {
+  //         getMe: builder.query<MeError | MeResponse, void>({
+  //           providesTags: ['Me'],
+  //           query: () => 'v1/auth/me',
+  //       }),
+  //     getDecks: builder.query<ErrorResponse | GetDecksResponse, GetDecks | void>({
+  //       providesTags: ['Decks'],
+  //       query: args => ({
+  //         params: args ?? undefined,
+  //         url: `v2/decks`,
+  //       }),
+  //     }),
+  //
+  //     getDecksMinMaxCards: builder.query<ErrorResponse | GetDecksMinMaxCardsResponse, void>({
+  //       providesTags: ['DecksMinMaxCards'],
+  //       query: () => ({
+  //         url: `v2/decks/min-max-cards`,
+  //       }),
+  //     }),
+  //   }
+  // },
   reducerPath: 'appApi',
-  tagTypes: ['Decks', 'Card', 'Auth'],
+  tagTypes: ['Auth', 'Card', 'Decks', 'DecksMinMaxCards', 'Me'],
 })
+// export const {
+//   useGetMeQuery,
+//   useGetDecksMinMaxCardsQuery,
+//   useGetDecksQuery,
+// } = appApi

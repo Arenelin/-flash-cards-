@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
 import { Deck } from '@/common/types'
 import { TableDecksList } from '@/features/decks/ui/decksList/ui/tableDecksList/TableDecksList'
 import { withRouter } from 'storybook-addon-remix-react-router'
@@ -17,9 +18,6 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof TableDecksList>
 
-const onSortLastUpdated = () => {
-  alert('sort!')
-}
 const testDelete = (id: string) => {
   alert(`id: ${id} Delete`)
 }
@@ -69,6 +67,8 @@ const decks: Deck[] = [
 
 export const Table_Decks_List = {
   render() {
+    const { onSort, sort } = useStoryButtonSort()
+
     return (
       <div style={{ backgroundColor: 'gray', padding: '100px' }}>
         <TableDecksList
@@ -76,7 +76,8 @@ export const Table_Decks_List = {
           onDelete={testDelete}
           onEdit={testEdit}
           onPlay={testPlay}
-          onSortLastUpdated={onSortLastUpdated}
+          onSort={onSort}
+          sort={sort}
         />
       </div>
     )

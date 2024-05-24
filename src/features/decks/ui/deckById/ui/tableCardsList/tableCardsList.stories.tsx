@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
 import { Card } from '@/common/types'
 import { TableCardsList } from '@/features/decks/ui/deckById/ui/tableCardsList/TableCardsList'
 
@@ -15,11 +16,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof TableCardsList>
 
-const onSortLastUpdated = () => {
-  alert('sort!')
-}
-const testDelete = (id: string) => {
-  alert(`id: ${id} Delete`)
+const testDelete = (idCard: string, question: string) => {
+  alert(`id: ${idCard} Delete ${question}`)
 }
 const testEdit = (id: string) => {
   alert(`id: ${id} Edit`)
@@ -78,6 +76,8 @@ const cards: Card[] = [
 
 export const Table_Cards_List_My = {
   render() {
+    const { onSort, sort } = useStoryButtonSort()
+
     return (
       <div style={{ backgroundColor: 'gray', padding: '100px' }}>
         <TableCardsList
@@ -85,7 +85,8 @@ export const Table_Cards_List_My = {
           isMy
           onDelete={testDelete}
           onEdit={testEdit}
-          onSortLastUpdated={onSortLastUpdated}
+          onSort={onSort}
+          sort={sort}
         />
       </div>
     )
@@ -94,6 +95,8 @@ export const Table_Cards_List_My = {
 
 export const Table_Cards_List = {
   render() {
+    const { onSort, sort } = useStoryButtonSort()
+
     return (
       <div style={{ backgroundColor: 'gray', padding: '100px' }}>
         <TableCardsList
@@ -101,7 +104,8 @@ export const Table_Cards_List = {
           isMy={false}
           onDelete={testDelete}
           onEdit={testEdit}
-          onSortLastUpdated={onSortLastUpdated}
+          onSort={onSort}
+          sort={sort}
         />
       </div>
     )

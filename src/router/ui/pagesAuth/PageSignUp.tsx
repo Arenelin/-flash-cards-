@@ -28,7 +28,7 @@ export const PageSignUp = () => {
       sendConfirmationEmail: true,
     }
 
-    signUp(registrationData).unwrap()
+    signUp(registrationData)
   }
 
   if (signUpResult.isLoading) {

@@ -1,18 +1,26 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { ArrowArrowBack, MoreVerticalOutline, Search } from '@/assets/icons'
 import CloseOutline from '@/assets/icons/CloseOutline'
 import { Button, Dropdown, Input, InputType, Pagination, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { path } from '@/common/enums'
-import { ErrorResponse } from '@/common/types'
+
+import { ErrorResponse, ErrorResponseCard } from '@/common/types'
+import { useCardsList } from '@/features/decks/ui/deckById/lib/useCardsList'
+import { useDeleteCardId } from '@/features/decks/ui/deckById/lib/useDeleteCardId'
+
 import { TableCardsList } from '@/features/decks/ui/deckById/ui/tableCardsList/TableCardsList'
+import { ModalDelete } from '@/features/modals/modalDelete/ModalDelete'
 
 import s from '@/features/decks/ui/decks.module.scss'
 
 import { useCardsList } from './lib/useCardsList'
 
 export const DeckById = () => {
+  const [deleteModal, setDeleteModal] = useState<boolean>(false)
   const {
     cards,
     cardsError,
@@ -28,7 +36,16 @@ export const DeckById = () => {
     sort,
   } = useCardsList()
 
-  if (isLoadingDeck || isLoadingCards) {
+  const {
+    dataTableDelete,
+    errorDelete,
+    isLoadingDelete,
+    isSuccessError,
+    requestDeletion,
+    setDataTableDelete,
+  } = useDeleteCardId()
+
+  if (isLoadingDeck || isLoadingCards || isLoadingDelete) {
     return (
       <div className={s.preloader}>
         <Preloader />
@@ -36,16 +53,36 @@ export const DeckById = () => {
     )
   }
 
-  if (deckError || cardsError) {
-    const err = (deckError as ErrorResponse) && (cardsError as ErrorResponse)
+  if (deckError || cardsError || errorDelete) {
+    if (deckError) {
+      const errDeck: ErrorResponse = deckError as ErrorResponse
+      const Error = errDeck.data.errorMessages.reduce((acc, error) => {
+        return acc + String(error)
+      }, '')
 
-    return (
-      <div className={s.error}>
-        {err?.data?.errorMessages?.map(e => {
-          return <p key={e.field}>{`at query parameter " ${e.field} " error: " ${e.message} "`}</p>
-        })}
-      </div>
-    )
+      toast.error(Error ?? 'Registration failed')
+    }
+
+    if (cardsError) {
+      const error = cardsError as ErrorResponseCard
+
+      toast.error(error.data.message ?? 'Registration failed')
+    }
+
+    if (errorDelete) {
+      const error = errorDelete as ErrorResponseCard
+
+      toast.error(error.data.message ?? 'Registration failed')
+      setDeleteModal(false)
+    }
+  }
+
+  if (isSuccessError) {
+    toast.success('Card Delete')
+  }
+  const onDelete = (idCard: string, question: string) => {
+    setDeleteModal(true)
+    setDataTableDelete({ id: idCard, title: question })
   }
 
   const contentSearch = Boolean(searchParams.get('question')) && !cards?.items?.length
@@ -95,7 +132,13 @@ export const DeckById = () => {
                 value={searchParams.get('question') || ''}
               />
             </div>
-            <TableCardsList cards={cards?.items} isMy={isMy} onSort={onSortHandler} sort={sort} />
+            <TableCardsList
+              cards={cards?.items}
+              isMy={isMy}
+              onDelete={onDelete}
+              onSort={onSortHandler}
+              sort={sort}
+            />
             {contentSearch && (
               <Typography className={s.emptySearch} variant={'body1'}>
                 Unfortunately, your search returned no results. Try changing the request.
@@ -107,6 +150,13 @@ export const DeckById = () => {
       <div className={s.paginationSettings}>
         <Pagination totalCount={cards?.pagination.totalItems} />{' '}
       </div>
+      <ModalDelete
+        onDelete={requestDeletion}
+        onOpenChange={setDeleteModal}
+        open={deleteModal}
+        text={`Do you really want to remove ${dataTableDelete?.title}?\n` + `Card will be deleted.`}
+        title={'Delete Card'}
+      />
     </div>
   )
 }

@@ -6,7 +6,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog'
 import s from './modalDelete.module.scss'
 
 type ModalDeleteProps = {
-  onDelete: () => void
+  onDelete?: () => void
   onOpenChange: (open: boolean) => void
   open: boolean
   text: string

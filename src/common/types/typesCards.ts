@@ -14,4 +14,17 @@ export type Card = {
   userId: string
 }
 
+type ErrorData = {
+  message: string
+  path: string
+  statusCode: number
+  timestamp: string
+}
+
+export type ErrorResponseCard = {
+  data: ErrorData
+  status: number
+}
+
 export type GetCardsById = { id: string }
+

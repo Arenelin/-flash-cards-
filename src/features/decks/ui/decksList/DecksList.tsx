@@ -97,7 +97,8 @@ export function DecksList() {
         className={s.tables}
         decks={decksData?.items}
         onPlay={onPlay}
-        onSortLastUpdated={() => {}}
+        onSort={() => {}}
+        sort={'asc'}
       />
       <div className={s.paginationSettings}>
         <Pagination totalCount={decksData?.pagination.totalItems} />

@@ -7,7 +7,7 @@ import { Card, GradeScale } from '@/common/types'
 type Props = {
   cards: Card[]
   isMy: boolean
-  onDelete?: (idCard: string) => void
+  onDelete?: (idCard: string, question: string) => void
   onEdit?: (idCard: string) => void
   onSort: (sort: 'asc' | 'desc', text: string) => void
   sort: 'asc' | 'desc'
@@ -17,9 +17,9 @@ type TableDecksListProps = ComponentPropsWithoutRef<'table'> & Props
 export const TableCardsList = forwardRef<ElementRef<'table'>, TableDecksListProps>((props, ref) => {
   const { cards, isMy, onDelete, onEdit, onSort, sort, ...rest } = props
 
-  const onDeleteHandler = (id: string) => {
+  const onDeleteHandler = (id: string, question: string) => {
     if (onDelete) {
-      onDelete(id)
+      onDelete(id, question)
     }
   }
   const onEditHandler = (id: string) => {
@@ -62,7 +62,7 @@ export const TableCardsList = forwardRef<ElementRef<'table'>, TableDecksListProp
                 <Td>
                   <Tools
                     canUsePlay={false}
-                    onDelete={() => onDeleteHandler(card.id)}
+                    onDelete={() => onDeleteHandler(card.id, card.question)}
                     onEdit={() => onEditHandler(card.id)}
                   />
                 </Td>

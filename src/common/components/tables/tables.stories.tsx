@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { ButtonSort, Grade, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
+import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
 
 const meta = {
   component: Table,
@@ -27,9 +28,7 @@ const testEdit = (id: string) => {
 
 export const Tables = {
   render: () => {
-    const onClick = () => {
-      alert('Logic sort')
-    }
+    const { onSort, sort } = useStoryButtonSort()
 
     return (
       <div style={{ backgroundColor: 'gray', padding: '100px' }}>
@@ -39,7 +38,7 @@ export const Tables = {
               <Th>Name</Th>
               <Th>Cards</Th>
               <Th>
-                <ButtonSort onClick={onClick} text={'Last Updated'} />
+                <ButtonSort onSort={onSort} sort={sort} text={'Last Updated'} />
               </Th>
               <Th>Created by</Th>
               <Th>Grade</Th>

@@ -42,7 +42,8 @@ export const decksApi = appApi.injectEndpoints({
 
       getDeckCards: builder.query<ErrorResponse | GetDeckCardsResponse, GetDeckCards>({
         providesTags: ['Decks'],
-        query: ({ id }) => ({
+        query: ({ id, ...params }) => ({
+          params: params,
           url: `v1/decks/${id}/cards`,
         }),
       }),

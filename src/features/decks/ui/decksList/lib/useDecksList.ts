@@ -6,7 +6,6 @@ import {
   GetDecksMinMaxCardsResponse,
   GetDecksResponse,
   MeResponse,
-  // SignErrorResponse,
 } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/features/decks/api/decksApi'

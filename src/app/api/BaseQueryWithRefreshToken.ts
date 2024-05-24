@@ -22,7 +22,7 @@ export const baseQuery =
       }
     },
   })
-//   { maxRetries: 1 }
+//   ,{ maxRetries: 1 }
 // )
 
 export const baseQueryWithRefreshToken: BaseQueryFn<

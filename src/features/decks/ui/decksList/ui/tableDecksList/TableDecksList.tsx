@@ -11,12 +11,13 @@ type Props = {
   onDelete?: (idDeck: string) => void
   onEdit?: (idDeck: string) => void
   onPlay?: (idDeck: string) => void
-  onSortLastUpdated: () => void
+  onSort: (sort: 'asc' | 'desc', text: string) => void
+  sort: 'asc' | 'desc'
 }
 
 type TableDecksListProps = Omit<ComponentPropsWithoutRef<'table'>, keyof Props> & Props
 export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProps>((props, ref) => {
-  const { decks, onDelete, onEdit, onPlay, onSortLastUpdated, ...rest } = props
+  const { decks, onDelete, onEdit, onPlay, onSort, sort, ...rest } = props
 
   const onDeleteHandler = (id: string) => {
     if (onDelete) {
@@ -44,7 +45,7 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
           <Th>Name</Th>
           <Th>Cards</Th>
           <Th>
-            <ButtonSort onClick={onSortLastUpdated} text={'Last Updated'} />
+            <ButtonSort onSort={onSort} sort={sort} text={'Last Updated'} />
           </Th>
           <Th>Created by</Th>
           <Th></Th>

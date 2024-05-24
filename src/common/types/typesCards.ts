@@ -15,3 +15,15 @@ export type Card = {
   updated: string
   userId: string
 }
+
+type ErrorData = {
+  message: string
+  path: string
+  statusCode: number
+  timestamp: string
+}
+
+export type ErrorResponseCard = {
+  data: ErrorData
+  status: number
+}

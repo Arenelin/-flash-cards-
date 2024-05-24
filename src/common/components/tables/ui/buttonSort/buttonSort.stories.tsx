@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { ButtonSort } from '@/common/components/tables/ui/buttonSort/ButtonSort'
+import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
 
 const meta = {
   component: ButtonSort,
@@ -16,13 +17,11 @@ type Story = StoryObj<typeof ButtonSort>
 
 export const SortUpdated = {
   render: () => {
-    const onClick = () => {
-      alert('Logic sort')
-    }
+    const { onSort, sort } = useStoryButtonSort()
 
     return (
       <div style={{ backgroundColor: 'black', padding: '100px' }}>
-        <ButtonSort onClick={onClick} text={'Last Updated'} />
+        <ButtonSort onSort={onSort} sort={sort} text={'Last Updated'} />
       </div>
     )
   },
@@ -30,13 +29,11 @@ export const SortUpdated = {
 
 export const SortCreated = {
   render: () => {
-    const onClick = () => {
-      alert('Logic sort')
-    }
+    const { onSort, sort } = useStoryButtonSort()
 
     return (
       <div style={{ backgroundColor: 'black', padding: '100px' }}>
-        <ButtonSort onClick={onClick} text={'Created by'} />
+        <ButtonSort onSort={onSort} sort={sort} text={'Created by'} />
       </div>
     )
   },

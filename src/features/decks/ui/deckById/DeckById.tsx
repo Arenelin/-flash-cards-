@@ -7,17 +7,13 @@ import CloseOutline from '@/assets/icons/CloseOutline'
 import { Button, Dropdown, Input, InputType, Pagination, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { path } from '@/common/enums'
-
 import { ErrorResponse, ErrorResponseCard } from '@/common/types'
 import { useCardsList } from '@/features/decks/ui/deckById/lib/useCardsList'
 import { useDeleteCardId } from '@/features/decks/ui/deckById/lib/useDeleteCardId'
-
 import { TableCardsList } from '@/features/decks/ui/deckById/ui/tableCardsList/TableCardsList'
 import { ModalDelete } from '@/features/modals/modalDelete/ModalDelete'
 
 import s from '@/features/decks/ui/decks.module.scss'
-
-import { useCardsList } from './lib/useCardsList'
 
 export const DeckById = () => {
   const [deleteModal, setDeleteModal] = useState<boolean>(false)

@@ -18,10 +18,8 @@ type Props = {
 
 type TableDecksListProps = Omit<ComponentPropsWithoutRef<'table'>, keyof Props> & Props
 export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProps>((props, ref) => {
-
   const { decks, onDelete, onEdit, onPlay, onSort, sort, ...rest } = props
   const { data } = useGetMeQuery()
-
 
   const onDeleteHandler = (id: string) => {
     if (onDelete) {

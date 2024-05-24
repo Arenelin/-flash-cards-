@@ -27,4 +27,3 @@ export type ErrorResponseCard = {
 }
 
 export type GetCardsById = { id: string }
-

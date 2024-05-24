@@ -75,6 +75,7 @@ export const DeckById = () => {
 
   if (isSuccessError) {
     toast.success('Card Delete')
+    setDeleteModal(false)
   }
   const onDelete = (idCard: string, question: string) => {
     setDeleteModal(true)

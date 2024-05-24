@@ -15,7 +15,7 @@ export type MeArgs = {
 export type SignInArgs = {
   email: string
   password: string
-  rememberMe: boolean
+  rememberMe?: boolean
 }
 export type SignInResponse = {
   accessToken: string
@@ -38,11 +38,17 @@ export type ResetPasswordTokenArgs = {
   password: string
   token: string
 }
+export type MeError = {
+  message: string
+  path: string
+  statusCode: number
+  timestamp: string
+}
 
 export type DataSignUp = {
   errorMessages: Array<string>
 }
-export type ErrorResponseSignUp = {
+export type SignErrorResponse = {
   data: DataSignUp
   status: number
 }

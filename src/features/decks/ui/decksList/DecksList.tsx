@@ -3,28 +3,36 @@ import { Navigate } from 'react-router-dom'
 import { Search, TrashOutline } from '@/assets/icons'
 import { Button, Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
-import { ErrorResponse, GetDecksResponse } from '@/common/types'
-import { useDecksList } from '@/features/decks/ui/decksList/lib/useDecksList'
-import { TableDecksList } from '@/features/decks/ui/decksList/ui/tableDecksList/TableDecksList'
+import { path } from '@/common/enums'
 
-import s from '@/features/decks/ui/decks.module.scss'
+import s from '../decks.module.scss'
+
+import { useDecksList } from './lib/useDecksList'
+import { TableDecksList } from './ui/tableDecksList/TableDecksList'
 
 export function DecksList() {
   const {
     clearFilterHandle,
-    currentPageHandler,
-    pageSizeHandler,
+    decksData,
+    decksError,
+    decksIsLoading,
+    isAuthorization,
+    maxCardsCount,
+    minCardsCount,
     searchChangeHandle,
     searchParams,
     sliderValueHandle,
     tabsChangeHandler,
     tabsOptions,
-    ...rest
   } = useDecksList()
 
-  const onPlay = (id: string) => <Navigate to={`decks/${id}`} />
+  const onPlay = (id: string) => <Navigate to={`${path.decks}/${id}`} />
 
-  if (rest.isLoading) {
+  if (!isAuthorization) {
+    return <Navigate to={path.signIn} />
+  }
+
+  if (decksIsLoading) {
     return (
       <div className={s.preloader}>
         <Preloader />
@@ -32,22 +40,18 @@ export function DecksList() {
     )
   }
 
-  if (rest.error) {
-    const error = rest.error as ErrorResponse
-
+  if (decksError) {
     return (
       <div className={s.error}>
-        {error.data.errorMessages.map(e => {
-          return <p key={e.field}>{`at query parameter " ${e.field} " error: " ${e.message} "`}</p>
-        })}
+        {decksError.map(e => (
+          <p key={e.field}>{`at query parameter " ${e.field} " error: " ${e.message} "`}</p>
+        ))}
       </div>
     )
   }
 
-  const data = rest.data as GetDecksResponse
-
   return (
-    <div className={s.container}>
+    <div className={s.main}>
       <div className={s.titleBlock}>
         <Typography as={'h1'} variant={'h1'}>
           Decks list
@@ -71,11 +75,13 @@ export function DecksList() {
           value={searchParams.get('authorId') ? 'My Cards' : 'All Cards'}
         />
         <Slider
-          label={'Number of cards'}
+          label={'Number of cards in deck'}
+          max={maxCardsCount}
+          min={minCardsCount}
           onValueChange={e => sliderValueHandle(e)}
           value={[
-            Number(searchParams.get('minCardsCount')) || 0,
-            Number(searchParams.get('maxCardsCount')) || 100,
+            Number(searchParams.get('minCardsCount')) || minCardsCount,
+            Number(searchParams.get('maxCardsCount')) || maxCardsCount,
           ]}
         />
         <Button
@@ -89,12 +95,12 @@ export function DecksList() {
       </div>
       <TableDecksList
         className={s.tables}
-        decks={data.items}
+        decks={decksData?.items}
         onPlay={onPlay}
         onSortLastUpdated={() => {}}
       />
       <div className={s.paginationSettings}>
-        <Pagination totalCount={data.pagination.totalItems} />
+        <Pagination totalCount={decksData?.pagination.totalItems} />
       </div>
     </div>
   )

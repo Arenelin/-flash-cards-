@@ -8,9 +8,9 @@ const setting = {
   fontSize: '50px',
   fontStyle: 'italic',
   fontWeight: '900',
+  height: '50vh',
   lineHeight: '2',
-  margin: '0 auto',
-  width: '50vw',
+  margin: '70px auto 0',
 }
 
 export const Preloader = ({ style }: PreloaderPropsType) => {

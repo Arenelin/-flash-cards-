@@ -1,5 +1,4 @@
-//Deck
-import { Card } from '@/common/types/typesCards'
+import { Card } from '@/common/types'
 
 export type Author = {
   id: string
@@ -18,6 +17,7 @@ export type Deck = {
   updated: string
   userId: string
 }
+
 export type Pagination = {
   currentPage: number
   itemsPerPage: number
@@ -40,27 +40,6 @@ export type GetDecks = {
 export type GetDeckById = {
   id: string
 }
-export type DecksResponse = {
-  author: Author
-  cardsCount: number
-  cover: string
-  created: string
-  id: string
-  isPrivate: boolean
-  name: string
-  updated: string
-  userId: string
-}
-export type GetDeckByIdResponse = {
-  cardsCount: number
-  cover: string
-  created: string
-  id: string
-  isPrivate: boolean
-  name: string
-  updated: string
-  userId: string
-}
 
 export type CreateDecksArgs = {
   cover?: string
@@ -69,17 +48,6 @@ export type CreateDecksArgs = {
 }
 export type UpdateDecksArgs = { id: string } & Partial<CreateDecksArgs>
 export type DeleteDecksArgs = { id: string }
-export type ErrorMessages = {
-  field: string
-  message: string
-}
-export type Data = {
-  errorMessages: ErrorMessages[]
-}
-export type ErrorResponse = {
-  data: Data
-  status: number
-}
 
 export type GetDeckCards = {
   answer?: string
@@ -93,4 +61,22 @@ export type GetDeckCards = {
 export type GetDeckCardsResponse = {
   items: Card[]
   pagination: Pagination
+}
+
+export type GetDecksMinMaxCardsResponse = {
+  max: number
+  min: number
+}
+
+export type ErrorMessages = {
+  field: string
+  message: string
+}
+
+export type ErrorData = {
+  errorMessages: ErrorMessages[]
+}
+export type ErrorResponse = {
+  data: ErrorData
+  status: number
 }

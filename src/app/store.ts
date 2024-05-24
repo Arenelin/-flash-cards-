@@ -1,6 +1,7 @@
-import { appApi } from '@/app/api/appApi'
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
+
+import { appApi } from './api/appApi'
 
 export const store = configureStore({
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(appApi.middleware),

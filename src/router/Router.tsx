@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Navigate,
   Outlet,
@@ -7,22 +6,30 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { Button } from '@/common/components'
 import { path } from '@/common/enums'
-import { PageDeckById } from '@/router/ui/pageDeckById/PageDeckById'
-import { PageDecksList } from '@/router/ui/pageDecksList/pageDecksList'
-import { PageError } from '@/router/ui/pageError/pageError'
+import { MeResponse } from '@/common/types'
+import { useGetMeQuery } from '@/features/auth/api/authApi'
+import { DeckById } from '@/features/decks/ui/deckById/DeckById'
+import { DecksList } from '@/features/decks/ui/decksList/DecksList'
+import { Error } from '@/features/error/Error'
+import { Layout } from '@/features/layout/Layout'
+import { PageProfile } from '@/router/ui/pageProfile/pageProfile'
+import { PageSignIn } from '@/router/ui/pagesAuth/PageSignIn'
 import { PageSignUp } from '@/router/ui/pagesAuth/PageSignUp'
-import { PageForgotPassword, PageNewPassword, PageSignIn } from '@/router/ui/pagesAuth/PagesAuth'
+import { PageForgotPassword, PageNewPassword } from '@/router/ui/pagesAuth/PagesAuth'
 
 const publicRoutes: RouteObject[] = [
   {
-    element: <PageForgotPassword />,
-    path: path.forgotPassword,
+    element: <Navigate to={path.signIn} />,
+    path: path.base,
   },
   {
     element: <PageSignIn />,
     path: path.signIn,
+  },
+  {
+    element: <PageForgotPassword />,
+    path: path.forgotPassword,
   },
   {
     element: <PageSignUp />,
@@ -33,51 +40,50 @@ const publicRoutes: RouteObject[] = [
     path: path.newPassword,
   },
   {
-    element: <Navigate to={path.signIn} />,
-    path: '/',
+    element: <Error />,
+    path: path.error,
   },
   {
-    element: <PageError />,
+    element: <Navigate to={path.error} />,
     path: '/*',
   },
 ]
 
-const privateRoutes = [
+const privateRoutes: RouteObject[] = [
   {
-    element: <PageDecksList />,
+    element: <DecksList />,
     path: path.decks,
   },
   {
-    element: <PageDeckById />,
+    element: <DeckById />,
     path: `${path.decks}/:id`,
+  },
+  {
+    element: <PageProfile />,
+    path: path.profile,
   },
 ]
 
 const PrivateRouter = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
+  const { data } = useGetMeQuery()
 
-  return (
-    <>
-      <Button
-        onClick={() => setIsAuthenticated(false)}
-        style={{ position: 'fixed', right: '300px', top: '12px', zIndex: '10' }}
-        variant={'primary'}
-      >
-        Hide Private Pages
-      </Button>
-      {isAuthenticated ? <Outlet /> : <Navigate to={path.signIn} />}
-    </>
-  )
+  return (data as MeResponse)?.id ? <Outlet /> : <Navigate to={path.signIn} />
 }
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
-    children: privateRoutes,
-    element: <PrivateRouter />,
+    children: [
+      {
+        children: privateRoutes,
+        element: <PrivateRouter />,
+      },
+      ...publicRoutes,
+    ],
+    element: <Layout />,
+    path: path.base,
   },
-  ...publicRoutes,
 ])
 
 export function Router() {
-  return <RouterProvider router={router}></RouterProvider>
+  return <RouterProvider router={router} />
 }

@@ -3,13 +3,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 135px;
-  width: 100%;
+
+  width: 1204px;
   height: 100%;
+  margin: 0 auto;
+  padding: 0 135px;
 }
 
 .main {
   width: 100%;
   height: calc(100% - 200px);
   margin-top: 60px;
+}
+
+.preloader {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

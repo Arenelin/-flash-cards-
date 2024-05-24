@@ -13,21 +13,21 @@ export type Props = {
   email: string
   imgSrc?: string
   name: string
-  onSubmit: (data: FormData) => void
+  onSubmit: (data: ProfileFormData) => void
 }
 
 const loginSchema = z.object({
   nickName: z.string(),
 })
 
-export type FormData = z.infer<typeof loginSchema>
+export type ProfileFormData = z.infer<typeof loginSchema>
 
 export const PersonalInformation = ({ email, imgSrc, name, onSubmit }: Props) => {
   const [isEdit, setIsEdit] = useState(false)
-  const { control, handleSubmit } = useForm<FormData>({ resolver: zodResolver(loginSchema) })
+  const { control, handleSubmit } = useForm<ProfileFormData>({ resolver: zodResolver(loginSchema) })
   const formId = useId()
 
-  const nickNameHandler = (data: FormData) => {
+  const nickNameHandler = (data: ProfileFormData) => {
     onSubmit(data)
     setIsEdit(!isEdit)
   }

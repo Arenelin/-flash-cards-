@@ -1,10 +1,34 @@
 import { useSearchParams } from 'react-router-dom'
 
 import { Tab } from '@/common/components'
-import { useGetDecksQuery } from '@/features/decks/api/decksApi'
+import {
+  ErrorResponse,
+  GetDecksMinMaxCardsResponse,
+  GetDecksResponse,
+  MeResponse,
+} from '@/common/types'
+import { useGetMeQuery } from '@/features/auth/api/authApi'
+import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/features/decks/api/decksApi'
 
 export const useDecksList = () => {
   const [searchParams, setSearchParams] = useSearchParams()
+
+  const clearFilterHandle = () => {
+    setSearchParams({})
+  }
+  const result = useGetMeQuery()
+
+  const isAuthorization = result.isSuccess
+
+  const {
+    data: getDecksMinMaxCardsData,
+    error: getDecksMinMaxCardsError,
+    isLoading: getDecksMinMaxCardsIsLoading,
+  } = useGetDecksMinMaxCardsQuery()
+
+  const minCardsCount = (getDecksMinMaxCardsData as GetDecksMinMaxCardsResponse)?.min || 0
+  const maxCardsCount = (getDecksMinMaxCardsData as GetDecksMinMaxCardsResponse)?.max || 100
+
   //input search params
   const searchChangeHandle = (value: string) => {
     if (value.length) {
@@ -27,9 +51,10 @@ export const useDecksList = () => {
       value: 'All Cards',
     },
   ]
+
   const tabsChangeHandler = (value: string) => {
     if (value === 'My Cards') {
-      searchParams.set('authorId', 'My Cards') //TODO add id from me-request
+      searchParams.set('authorId', (result?.data as MeResponse)?.id || '')
     } else {
       searchParams.delete('authorId')
     }
@@ -39,41 +64,46 @@ export const useDecksList = () => {
   const sliderValueHandle = (value: number[]) => {
     searchParams.set('minCardsCount', value[0].toString())
     searchParams.set('maxCardsCount', value[1].toString())
-    value[0] === 0 && searchParams.delete('minCardsCount')
-    value[1] === 100 && searchParams.delete('maxCardsCount')
-    setSearchParams(searchParams)
-  }
-  //pagination search params
-  const pageSizeHandler = (itemsPerPage: string) => {
-    searchParams.set('itemsPerPage', itemsPerPage)
-    setSearchParams(searchParams)
-  }
-  const currentPageHandler = (currentPage: number) => {
-    searchParams.set('currentPage', currentPage.toString())
+    value[0] === minCardsCount && searchParams.delete('minCardsCount')
+    value[1] === maxCardsCount && searchParams.delete('maxCardsCount')
     setSearchParams(searchParams)
   }
 
-  const { data, error, isLoading } = useGetDecksQuery({
-    authorId: searchParams.get('authorId') || undefined, // пока нет реального айди выкидывает ошибку
-    currentPage: Number(searchParams.get('currentPage')) || 1,
-    itemsPerPage: Number(searchParams.get('itemsPerPage')) || 10,
-    maxCardsCount: Number(searchParams.get('maxCardsCount')) || 100,
-    minCardsCount: Number(searchParams.get('minCardsCount')) || 0,
-    name: searchParams.get('name') || undefined,
-    // orderBy?: string,
-  })
+  const {
+    data: getDecksData,
+    error: getDecksError,
+    isLoading: getDecksIsLoading,
+  } = useGetDecksQuery(
+    {
+      authorId: searchParams.get('authorId') || undefined, // пока нет реального айди выкидывает ошибку
+      currentPage: Number(searchParams.get('currentPage')) || 1,
+      itemsPerPage: Number(searchParams.get('itemsPerPage')) || 10,
+      maxCardsCount: Number(searchParams.get('maxCardsCount')) || maxCardsCount,
+      minCardsCount: Number(searchParams.get('minCardsCount')) || minCardsCount,
+      name: searchParams.get('name') || undefined,
+      // orderBy?: string,
+    },
+    { skip: getDecksMinMaxCardsIsLoading }
+  )
 
-  const clearFilterHandle = () => {
-    setSearchParams({})
-  }
+  const decksData = getDecksData as GetDecksResponse
+
+  const totalError = [
+    ...((getDecksMinMaxCardsError as ErrorResponse)?.data.errorMessages || []),
+    ...((getDecksError as ErrorResponse)?.data.errorMessages || []),
+  ]
+  const decksError = totalError.length ? totalError : null
+
+  const decksIsLoading = getDecksMinMaxCardsIsLoading || getDecksIsLoading
 
   return {
     clearFilterHandle,
-    currentPageHandler,
-    data,
-    error,
-    isLoading,
-    pageSizeHandler,
+    decksData,
+    decksError,
+    decksIsLoading,
+    isAuthorization,
+    maxCardsCount,
+    minCardsCount,
     searchChangeHandle,
     searchParams,
     sliderValueHandle,

@@ -12,6 +12,7 @@ import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { DeckById } from '@/features/decks/ui/deckById/DeckById'
 import { DecksList } from '@/features/decks/ui/decksList/DecksList'
 import { Error } from '@/features/error/Error'
+import { Layout } from '@/features/layout/Layout'
 import { PageProfile } from '@/router/ui/pageProfile/pageProfile'
 import { PageSignIn } from '@/router/ui/pagesAuth/PageSignIn'
 import { PageSignUp } from '@/router/ui/pagesAuth/PageSignUp'
@@ -78,7 +79,7 @@ export const router = createBrowserRouter([
       },
       ...publicRoutes,
     ],
-    element: <Outlet />,
+    element: <Layout />,
     path: path.base,
   },
 ])

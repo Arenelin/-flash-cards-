@@ -1,13 +1,13 @@
 import { path } from '@/common/enums'
+import { SignInResponse } from '@/common/types'
 import { router } from '@/router/Router'
-import { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query'
+import { BaseQueryFn, FetchArgs, FetchBaseQueryError, retry } from '@reduxjs/toolkit/query'
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Mutex } from 'async-mutex'
 
 const mutex = new Mutex()
 
-export const baseQuery =
-  // retry(
+export const baseQuery = retry(
   fetchBaseQuery({
     baseUrl: 'https://api.flashcards.andrii.es',
     prepareHeaders: headers => {
@@ -21,9 +21,9 @@ export const baseQuery =
         headers.set('Authorization', `Bearer ${token}`)
       }
     },
-  })
-//   ,{ maxRetries: 1 }
-// )
+  }),
+  { maxRetries: 1 }
+)
 
 export const baseQueryWithRefreshToken: BaseQueryFn<
   FetchArgs | string,
@@ -39,7 +39,7 @@ export const baseQueryWithRefreshToken: BaseQueryFn<
 
       try {
         const refreshToken = localStorage.getItem('refreshToken')
-        const refreshResult = (await baseQuery(
+        const refreshResult = await baseQuery(
           {
             headers: {
               Authorization: `Bearer ${refreshToken}`,
@@ -49,11 +49,11 @@ export const baseQueryWithRefreshToken: BaseQueryFn<
           },
           api,
           extraOptions
-        )) as any
+        )
 
         if (refreshResult.data) {
-          localStorage.setItem('accessToken', refreshResult.data.accessToken)
-          localStorage.setItem('refreshToken', refreshResult.data.refreshToken)
+          localStorage.setItem('accessToken', (refreshResult.data as SignInResponse).accessToken)
+          localStorage.setItem('refreshToken', (refreshResult.data as SignInResponse).refreshToken)
           result = await baseQuery(args, api, extraOptions)
         } else {
           router.navigate(path.signIn)

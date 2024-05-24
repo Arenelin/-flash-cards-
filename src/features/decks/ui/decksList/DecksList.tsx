@@ -4,10 +4,11 @@ import { Search, TrashOutline } from '@/assets/icons'
 import { Button, Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { path } from '@/common/enums'
-import { useDecksList } from '@/features/decks/ui/decksList/lib/useDecksList'
-import { TableDecksList } from '@/features/decks/ui/decksList/ui/tableDecksList/TableDecksList'
 
-import s from '@/features/decks/ui/decks.module.scss'
+import s from '../decks.module.scss'
+
+import { useDecksList } from './lib/useDecksList'
+import { TableDecksList } from './ui/tableDecksList/TableDecksList'
 
 export function DecksList() {
   const {
@@ -99,7 +100,7 @@ export function DecksList() {
         onSortLastUpdated={() => {}}
       />
       <div className={s.paginationSettings}>
-        <Pagination totalCount={decksData.pagination.totalItems} />
+        <Pagination totalCount={decksData?.pagination.totalItems} />
       </div>
     </div>
   )

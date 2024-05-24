@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { Outlet } from 'react-router-dom'
 
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { ToastNotification } from '@/common/components/toastNotification/ToastNotification'
@@ -14,7 +15,7 @@ type LayoutProps = ComponentPropsWithoutRef<'div'>
 export const Layout = forwardRef<ElementRef<'div'>, LayoutProps>((props, ref) => {
   const { children, className, ...rest } = props
 
-  const { data, error, isLoading } = useGetMeQuery()
+  const { data, error, isError, isLoading } = useGetMeQuery()
 
   if (isLoading) {
     return (
@@ -25,6 +26,7 @@ export const Layout = forwardRef<ElementRef<'div'>, LayoutProps>((props, ref) =>
   }
 
   const meData = data as MeResponse
+  const isAuth = !isError
 
   return (
     <div className={classNames(s.container, className)} ref={ref} {...rest}>
@@ -35,7 +37,9 @@ export const Layout = forwardRef<ElementRef<'div'>, LayoutProps>((props, ref) =>
         name={meData?.name || ''}
       />
       <ToastNotification />
-      <main className={s.main}>{children}</main>
+      <main className={s.main}>
+        <Outlet context={{ isAuth }} />
+      </main>
     </div>
   )
 })

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -16,7 +15,6 @@ import { ModalDelete } from '@/features/modals/modalDelete/ModalDelete'
 import s from '@/features/decks/ui/decks.module.scss'
 
 export const DeckById = () => {
-  const [deleteModal, setDeleteModal] = useState<boolean>(false)
   const {
     cards,
     cardsError,
@@ -34,14 +32,14 @@ export const DeckById = () => {
 
   const {
     dataTableDelete,
-    errorDelete,
-    isLoadingDelete,
-    isSuccessError,
+    deleteModal,
+    isLoadingError,
     requestDeletion,
     setDataTableDelete,
+    setDeleteModal,
   } = useDeleteCardId()
 
-  if (isLoadingDeck || isLoadingCards || isLoadingDelete) {
+  if (isLoadingDeck || isLoadingCards || isLoadingError) {
     return (
       <div className={s.preloader}>
         <Preloader />
@@ -49,7 +47,7 @@ export const DeckById = () => {
     )
   }
 
-  if (deckError || cardsError || errorDelete) {
+  if (deckError || cardsError) {
     if (deckError) {
       const errDeck: ErrorResponse = deckError as ErrorResponse
       const Error = errDeck.data.errorMessages.reduce((acc, error) => {
@@ -64,26 +62,15 @@ export const DeckById = () => {
 
       toast.error(error.data.message ?? 'Registration failed')
     }
-
-    if (errorDelete) {
-      const error = errorDelete as ErrorResponseCard
-
-      toast.error(error.data.message ?? 'Registration failed')
-      setDeleteModal(false)
-    }
   }
 
-  if (isSuccessError) {
-    toast.success('Card Delete')
-    setDeleteModal(false)
-  }
   const onDelete = (idCard: string, question: string) => {
     setDeleteModal(true)
     setDataTableDelete({ id: idCard, title: question })
   }
 
   const contentSearch = Boolean(searchParams.get('question')) && !cards?.items?.length
-  const contentNotCardinDeck = !cards?.items?.length && Boolean(!searchParams.get('question'))
+  const contentNotCardInDeck = !cards?.items?.length && Boolean(!searchParams.get('question'))
 
   return (
     <div className={s.main}>
@@ -91,7 +78,7 @@ export const DeckById = () => {
         <ArrowArrowBack /> Back to Decks List
       </Typography>
       <div className={s.container}>
-        {contentNotCardinDeck ? (
+        {contentNotCardInDeck ? (
           <div className={s.emptyCardsBlock}>
             <Typography as={'h1'} variant={'h1'}>
               {deck?.name}

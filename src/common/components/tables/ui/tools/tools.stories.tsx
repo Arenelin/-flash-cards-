@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Tools } from '@/common/components/tables/ui/tools/Tools'
+import { withRouter } from 'storybook-addon-remix-react-router'
 
 const meta = {
   component: Tools,
+  decorators: [withRouter],
   parameters: {
     layout: 'centered',
   },
@@ -14,16 +16,16 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof Tools>
 
-const testCallBack = () => {
-  alert('Test')
+const testCallBack = (id: string) => {
+  alert(`Test ${id}`)
 }
 
 export const ToolsAll = {
   args: {
     canUseTool: true,
+    id: 'sdfgvbhnjmhgfds',
     onDelete: testCallBack,
     onEdit: testCallBack,
-    onPlay: testCallBack,
     style: { backgroundColor: 'black', padding: '100px' },
   },
 } satisfies Story
@@ -31,7 +33,7 @@ export const ToolsAll = {
 export const ToolsPartial = {
   args: {
     canUseTool: false,
-    onPlay: testCallBack,
+    id: 'sdfgvbhnjmhgfds',
     style: { backgroundColor: 'black', padding: '100px' },
   },
 } satisfies Story

@@ -39,13 +39,10 @@ const publicRoutes: RouteObject[] = [
     element: <PageNewPassword />,
     path: path.newPassword,
   },
+
   {
     element: <Error />,
-    path: path.error,
-  },
-  {
-    element: <Navigate to={path.error} />,
-    path: '/*',
+    path: '*',
   },
 ]
 

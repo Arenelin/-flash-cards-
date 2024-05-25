@@ -21,9 +21,6 @@ type Story = StoryObj<typeof TableDecksList>
 const testDelete = (id: string) => {
   alert(`id: ${id} Delete`)
 }
-const testPlay = (id: string) => {
-  alert(`id: ${id} Play`)
-}
 
 const testEdit = (id: string) => {
   alert(`id: ${id} Edit`)
@@ -75,7 +72,6 @@ export const Table_Decks_List = {
           decks={decks}
           onDelete={testDelete}
           onEdit={testEdit}
-          onPlay={testPlay}
           onSort={onSort}
           sort={sort}
         />

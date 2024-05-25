@@ -5,7 +5,7 @@ import { ContainerImageText } from '@/common/components/tables/ui/containerImgTe
 import { Card, GradeScale } from '@/common/types'
 
 type Props = {
-  cards: Card[]
+  cards?: Card[]
   isMy: boolean
   onDelete?: (idCard: string, question: string) => void
   onEdit?: (idCard: string) => void
@@ -45,7 +45,7 @@ export const TableCardsList = forwardRef<ElementRef<'table'>, TableDecksListProp
         </Tr>
       </Thead>
       <Tbody>
-        {cards.map(card => {
+        {cards?.map(card => {
           return (
             <Tr key={card.id}>
               <Td>
@@ -62,8 +62,9 @@ export const TableCardsList = forwardRef<ElementRef<'table'>, TableDecksListProp
                 <Td>
                   <Tools
                     canUsePlay={false}
-                    onDelete={() => onDeleteHandler(card.id, card.question)}
-                    onEdit={() => onEditHandler(card.id)}
+                    id={card.id}
+                    onDelete={id => onDeleteHandler(id, card.question)}
+                    onEdit={onEditHandler}
                   />
                 </Td>
               )}

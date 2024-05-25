@@ -4,7 +4,6 @@ import { appApi } from '@/app/api/appApi'
 import {
   ForgotPasswordArgs,
   MeArgs,
-  MeError,
   MeResponse,
   ResetPasswordTokenArgs,
   SignInArgs,
@@ -31,7 +30,7 @@ export const authApi = appApi.injectEndpoints({
         }),
       }),
 
-      getMe: builder.query<MeError | MeResponse, void>({
+      getMe: builder.query<MeResponse, void>({
         providesTags: ['Me'],
         query: () => 'v1/auth/me',
       }),

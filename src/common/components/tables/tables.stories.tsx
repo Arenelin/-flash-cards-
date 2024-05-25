@@ -2,9 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { ButtonSort, Grade, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
 import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
+import { withRouter } from 'storybook-addon-remix-react-router'
 
 const meta = {
   component: Table,
+  decorators: [withRouter],
   parameters: {
     layout: 'centered',
   },
@@ -17,9 +19,6 @@ type Story = StoryObj<typeof Table>
 
 const testDelete = (id: string) => {
   alert(`id: ${id} Delete`)
-}
-const testPlay = (id: string) => {
-  alert(`id: ${id} Play`)
 }
 
 const testEdit = (id: string) => {
@@ -55,12 +54,7 @@ export const Tables = {
                 <Grade currentGrade={2} />{' '}
               </Td>
               <Td>
-                <Tools
-                  canUseTool
-                  onDelete={() => testDelete('777')}
-                  onEdit={() => testEdit('777')}
-                  onPlay={() => testPlay('777')}
-                />
+                <Tools canUseTool id={'scdfghjhgfds'} onDelete={testDelete} onEdit={testEdit} />
               </Td>
             </Tr>
             <Tr>
@@ -74,9 +68,9 @@ export const Tables = {
               <Td>
                 <Tools
                   canUseTool={false}
-                  onDelete={() => testDelete('999')}
-                  onEdit={() => testEdit('999')}
-                  onPlay={() => testPlay('999')}
+                  id={'asxcdfvbghnjmk'}
+                  onDelete={testDelete}
+                  onEdit={testEdit}
                 />
               </Td>
             </Tr>
@@ -89,12 +83,7 @@ export const Tables = {
                 <Grade currentGrade={1} />
               </Td>
               <Td>
-                <Tools
-                  canUseTool
-                  onDelete={() => testDelete('666')}
-                  onEdit={() => testEdit('666')}
-                  onPlay={() => testPlay('666')}
-                />
+                <Tools canUseTool id={'axscdvfcgvhbjn'} onDelete={testDelete} onEdit={testEdit} />
               </Td>
             </Tr>
           </Tbody>

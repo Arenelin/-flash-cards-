@@ -16,7 +16,7 @@ const range = (start: number, end: number) => {
   return Array.from({ length }, (_, index) => index + start)
 }
 
-export const usePagination = ({ siblingCount = 1, totalCount }: PaginationProps) => {
+export const usePagination = ({ siblingCount = 1, totalCount = 0 }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams()
   const itemsPerPage = searchParams.get('itemsPerPage') || '10'
   const currentPage: number = Number(searchParams.get('currentPage')) || 1

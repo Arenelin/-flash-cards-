@@ -3,7 +3,6 @@ import {
   CreateDecksArgs,
   Deck,
   DeleteDecksArgs,
-  ErrorResponse,
   GetDeckById,
   GetDeckCards,
   GetDeckCardsResponse,
@@ -33,22 +32,22 @@ export const decksApi = appApi.injectEndpoints({
         }),
       }),
 
-      getDeckById: builder.query<ErrorResponse | Omit<Deck, 'author'>, GetDeckById>({
-        providesTags: ['Decks'],
+      getDeckById: builder.query<Omit<Deck, 'author'>, GetDeckById>({
+        providesTags: ['Deck'],
         query: ({ id }) => ({
           url: `v1/decks/${id}`,
         }),
       }),
 
-      getDeckCards: builder.query<ErrorResponse | GetDeckCardsResponse, GetDeckCards>({
-        providesTags: ['Decks'],
+      getDeckCards: builder.query<GetDeckCardsResponse, GetDeckCards>({
+        providesTags: ['Cards'],
         query: ({ id, ...params }) => ({
           params: params,
           url: `v1/decks/${id}/cards`,
         }),
       }),
 
-      getDecks: builder.query<ErrorResponse | GetDecksResponse, GetDecks | void>({
+      getDecks: builder.query<GetDecksResponse, GetDecks>({
         providesTags: ['Decks'],
         query: args => ({
           params: args ?? undefined,
@@ -56,7 +55,7 @@ export const decksApi = appApi.injectEndpoints({
         }),
       }),
 
-      getDecksMinMaxCards: builder.query<ErrorResponse | GetDecksMinMaxCardsResponse, void>({
+      getDecksMinMaxCards: builder.query<GetDecksMinMaxCardsResponse, void>({
         providesTags: ['DecksMinMaxCards'],
         query: () => ({
           url: `v2/decks/min-max-cards`,

@@ -7,10 +7,10 @@ import { path } from '@/common/enums'
 import { Deck } from '@/common/types'
 
 type Props = {
+  currentUserId?: string
   decks: Deck[]
   onDelete?: (idDeck: string) => void
   onEdit?: (idDeck: string) => void
-  onPlay?: (idDeck: string) => void
   onSort: (sort: 'asc' | 'desc', text: string) => void
   sort: 'asc' | 'desc'
   userId?: string
@@ -18,18 +18,16 @@ type Props = {
 
 type TableDecksListProps = Omit<ComponentPropsWithoutRef<'table'>, keyof Props> & Props
 export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProps>((props, ref) => {
-  const { decks, onDelete, onEdit, onPlay, onSort, sort, userId, ...rest } = props
+
+  const { currentUserId, decks, onDelete, onEdit, onSort, sort, ...rest } = props
+
 
   const onDeleteHandler = (id: string) => {
     if (onDelete) {
       onDelete(id)
     }
   }
-  const onPlayHandler = (id: string) => {
-    if (onPlay) {
-      onPlay(id)
-    }
-  }
+
   const onEditHandler = (id: string) => {
     if (onEdit) {
       onEdit(id)
@@ -53,7 +51,7 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
         </Tr>
       </Thead>
       <Tbody>
-        {decks.map((deck: Deck) => {
+        {decks?.map((deck: Deck) => {
           return (
             <Tr key={deck.id}>
               <Td>
@@ -69,10 +67,13 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
               <Td>{deck.author.name}</Td>
               <Td>
                 <Tools
-                  canUseTool={userId === deck?.userId}
-                  onDelete={() => onDeleteHandler(deck?.id)}
-                  onEdit={() => onEditHandler(deck?.id)}
-                  onPlay={() => onPlayHandler(deck?.id)}
+
+                  canUseTool={currentUserId === deck?.userId}
+                  id={deck.id}
+                  onDelete={onDeleteHandler}
+                  onEdit={onEditHandler}
+
+
                 />
               </Td>
             </Tr>

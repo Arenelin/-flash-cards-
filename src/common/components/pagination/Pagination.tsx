@@ -11,7 +11,7 @@ import s from './pagination.module.scss'
 
 export type PaginationProps = {
   siblingCount?: number
-  totalCount: number
+  totalCount?: number
 }
 
 export const Pagination = forwardRef<ElementRef<'div'>, PaginationProps>(

@@ -24,14 +24,12 @@ export const ButtonSort = forwardRef<ElementRef<'button'>, SortFilterProps>((pro
   }
 
   return (
-    <>
-      <button className={s.button} onClick={onSortHandler} {...rest} ref={ref}>
-        <Typography as={'span'} variant={'subtitle2'}>
-          {text}
-        </Typography>
-        {sort === 'asc' ? <ArrowUp className={s.icon} /> : <ArrowDown className={s.icon} />}
-      </button>
-    </>
+    <button className={s.button} onClick={onSortHandler} {...rest} ref={ref}>
+      <Typography as={'span'} variant={'subtitle2'}>
+        {text}
+      </Typography>
+      {sort === 'asc' ? <ArrowUp className={s.icon} /> : <ArrowDown className={s.icon} />}
+    </button>
   )
 })
 

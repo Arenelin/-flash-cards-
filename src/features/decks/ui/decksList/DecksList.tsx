@@ -1,9 +1,6 @@
-import { Navigate } from 'react-router-dom'
-
 import { Search, TrashOutline } from '@/assets/icons'
 import { Button, Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
-import { path } from '@/common/enums'
 
 import s from '../decks.module.scss'
 
@@ -13,10 +10,10 @@ import { TableDecksList } from './ui/tableDecksList/TableDecksList'
 export function DecksList() {
   const {
     clearFilterHandle,
+    currentUserId,
     decksData,
     decksError,
     decksIsLoading,
-    isAuthorization,
     maxCardsCount,
     minCardsCount,
     searchChangeHandle,
@@ -26,12 +23,6 @@ export function DecksList() {
     tabsOptions,
     userId,
   } = useDecksList()
-
-  const onPlay = (id: string) => <Navigate to={`${path.decks}/${id}`} />
-
-  if (!isAuthorization) {
-    return <Navigate to={path.signIn} />
-  }
 
   if (decksIsLoading) {
     return (
@@ -96,8 +87,8 @@ export function DecksList() {
       </div>
       <TableDecksList
         className={s.tables}
+        currentUserId={currentUserId}
         decks={decksData?.items}
-        onPlay={onPlay}
         onSort={() => {}}
         sort={'asc'}
         userId={userId}

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Params, useParams, useSearchParams } from 'react-router-dom'
 
 import { useDebounce } from '@/common/hooks/useDebounce'
-import { Deck, GetDeckCardsResponse, MeResponse } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { useGetDeckByIdQuery, useGetDeckCardsQuery } from '@/features/decks/api/decksApi'
 
@@ -12,7 +11,7 @@ export const useCardsList = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const debouncedSearch = useDebounce(searchParams, 500)
 
-  const { data } = useGetMeQuery()
+  const { data: me } = useGetMeQuery()
 
   const {
     data: deckData,
@@ -20,9 +19,9 @@ export const useCardsList = () => {
     isLoading: isLoadingDeck,
   } = useGetDeckByIdQuery({ id: params?.id ?? '' })
 
-  const deck = deckData as Deck
+  const deck = deckData
 
-  const isMy = (data as MeResponse)?.id === deck?.userId
+  const isMy = me?.id === deck?.userId
   const onSortHandler = (sort: 'asc' | 'desc', name: string) => {
     searchParams.delete(name)
 
@@ -69,7 +68,7 @@ export const useCardsList = () => {
     question: debouncedSearch.get('question') || undefined,
   })
 
-  const cards = cardsData as GetDeckCardsResponse
+  const cards = cardsData
 
   return {
     cards,

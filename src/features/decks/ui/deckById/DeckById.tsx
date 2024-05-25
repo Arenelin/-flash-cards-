@@ -102,11 +102,11 @@ export const DeckById = () => {
                 {isMy && <Dropdown triggerChild={<MoreVerticalOutline />} />}
               </div>
               {isMy ? (
-                <Button as={'a'} href={dynamicPathCardsInDeck(deck.id)}>
+                <Button as={'a'} href={dynamicPathCardsInDeck('')}>
                   Add New Card
                 </Button>
               ) : (
-                <Button as={'a'} href={dynamicPathLearnCardInDeck(deck.id)}>
+                <Button as={'a'} href={dynamicPathLearnCardInDeck('')}>
                   Learn to deck
                 </Button>
               )}

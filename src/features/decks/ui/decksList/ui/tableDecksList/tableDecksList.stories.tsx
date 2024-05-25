@@ -70,12 +70,12 @@ export const Table_Decks_List = {
     return (
       <div>
         <TableDecksList
+          currentUserId={userId}
           decks={decks}
           onDelete={testDelete}
           onEdit={testEdit}
           onSort={onSort}
           sort={sort}
-          userId={userId}
         />
       </div>
     )

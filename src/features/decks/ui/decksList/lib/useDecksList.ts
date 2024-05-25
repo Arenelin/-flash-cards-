@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
 
 import { Tab } from '@/common/components'
-import { ErrorResponse, GetDecksMinMaxCardsResponse, GetDecksResponse } from '@/common/types'
+import { ErrorResponse, GetDecksMinMaxCardsResponse } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/features/decks/api/decksApi'
 
@@ -79,7 +79,7 @@ export const useDecksList = () => {
     { skip: getDecksMinMaxCardsIsLoading }
   )
 
-  const decksData = getDecksData as GetDecksResponse
+  const decksData = getDecksData
 
   const totalError = [
     ...((getDecksMinMaxCardsError as ErrorResponse)?.data.errorMessages || []),
@@ -102,6 +102,5 @@ export const useDecksList = () => {
     sliderValueHandle,
     tabsChangeHandler,
     tabsOptions,
-    userId: result.data?.id,
   }
 }

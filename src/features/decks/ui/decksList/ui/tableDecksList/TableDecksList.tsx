@@ -8,19 +8,16 @@ import { Deck } from '@/common/types'
 
 type Props = {
   currentUserId?: string
-  decks: Deck[]
+  decks?: Deck[]
   onDelete?: (idDeck: string) => void
   onEdit?: (idDeck: string) => void
   onSort: (sort: 'asc' | 'desc', text: string) => void
   sort: 'asc' | 'desc'
-  userId?: string
 }
 
 type TableDecksListProps = Omit<ComponentPropsWithoutRef<'table'>, keyof Props> & Props
 export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProps>((props, ref) => {
-
   const { currentUserId, decks, onDelete, onEdit, onSort, sort, ...rest } = props
-
 
   const onDeleteHandler = (id: string) => {
     if (onDelete) {
@@ -53,27 +50,24 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
       <Tbody>
         {decks?.map((deck: Deck) => {
           return (
-            <Tr key={deck.id}>
+            <Tr key={deck?.id}>
               <Td>
                 <ContainerImageText
                   defaultImg={defaultDeckImage}
-                  img={deck.cover}
-                  link={`${path.decks}/${deck.id}`}
-                  text={deck.name}
+                  img={deck?.cover}
+                  link={`${path.decks}/${deck?.id}`}
+                  text={deck?.name}
                 />
               </Td>
-              <Td>{deck.cardsCount}</Td>
-              <Td>{getDateString(deck.updated)}</Td>
-              <Td>{deck.author.name}</Td>
+              <Td>{deck?.cardsCount}</Td>
+              <Td>{getDateString(deck?.updated)}</Td>
+              <Td>{deck?.author?.name}</Td>
               <Td>
                 <Tools
-
                   canUseTool={currentUserId === deck?.userId}
-                  id={deck.id}
+                  id={deck?.id}
                   onDelete={onDeleteHandler}
                   onEdit={onEditHandler}
-
-
                 />
               </Td>
             </Tr>

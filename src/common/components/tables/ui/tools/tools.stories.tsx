@@ -41,7 +41,7 @@ export const ToolsPartial = {
 export const ToolsEditor = {
   args: {
     canUsePlay: false,
-    onPlay: testCallBack,
+    id: 'sdfgvbhnjmhgfds',
     style: { backgroundColor: 'black', padding: '100px' },
   },
 } satisfies Story

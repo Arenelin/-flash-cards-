@@ -21,7 +21,6 @@ export function DecksList() {
     sliderValueHandle,
     tabsChangeHandler,
     tabsOptions,
-    userId,
   } = useDecksList()
 
   if (decksIsLoading) {
@@ -35,7 +34,7 @@ export function DecksList() {
   if (decksError) {
     return (
       <div className={s.error}>
-        {decksError.map(e => (
+        {decksError?.map(e => (
           <p key={e.field}>{`at query parameter " ${e.field} " error: " ${e.message} "`}</p>
         ))}
       </div>
@@ -91,10 +90,9 @@ export function DecksList() {
         decks={decksData?.items}
         onSort={() => {}}
         sort={'asc'}
-        userId={userId}
       />
       <div className={s.paginationSettings}>
-        <Pagination totalCount={decksData?.pagination.totalItems} />
+        <Pagination totalCount={decksData?.pagination?.totalItems} />
       </div>
     </div>
   )

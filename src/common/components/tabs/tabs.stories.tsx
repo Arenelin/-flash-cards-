@@ -24,7 +24,7 @@ export const Default = {
     const [value, setValue] = useState('myCards')
 
     return (
-      <div style={{ backgroundColor: '#c3c1c7', padding: '200px' }}>
+      <div>
         <Tabs onValueChange={setValue} tabs={tabs} value={value} />
         <p style={{ marginTop: '20px' }}>changed value: {value}</p>
       </div>

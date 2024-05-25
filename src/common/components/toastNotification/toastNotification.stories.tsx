@@ -7,7 +7,6 @@ import { ToastNotification } from '@/common/components/toastNotification/ToastNo
 
 const meta = {
   component: ToastNotification,
-  tags: ['autodocs'],
   title: 'Components/ToastNotification',
 } satisfies Meta<typeof ToastNotification>
 
@@ -19,10 +18,10 @@ export const NotificationSuccess = {
     const notify = () => toast.success('This is a toast notification !')
 
     return (
-      <>
+      <div>
         <Button onClick={notify}>Success</Button>
         <ToastNotification />
-      </>
+      </div>
     )
   },
 } satisfies Story
@@ -32,10 +31,10 @@ export const NotificationError = {
     const notify = () => toast.error('This is a toast notification !')
 
     return (
-      <>
+      <div style={{ height: '15vh' }}>
         <Button onClick={notify}>Error</Button>
         <ToastNotification />
-      </>
+      </div>
     )
   },
 } satisfies Story

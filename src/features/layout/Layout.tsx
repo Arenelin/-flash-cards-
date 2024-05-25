@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { ToastNotification } from '@/common/components/toastNotification/ToastNotification'
 import { MeResponse, SignErrorResponse } from '@/common/types'
-import { useGetMeQuery } from '@/features/auth/api/authApi'
+import { useGetMeQuery, useLogOutMutation } from '@/features/auth/api/authApi'
 import { Header } from '@/features/layout/ui/header/Header'
 import classNames from 'classnames'
 
@@ -16,6 +16,7 @@ export const Layout = forwardRef<ElementRef<'div'>, LayoutProps>((props, ref) =>
   const { children, className, ...rest } = props
 
   const { data, error, isError, isLoading } = useGetMeQuery()
+  const [logOut] = useLogOutMutation()
 
   if (isLoading) {
     return (
@@ -34,6 +35,7 @@ export const Layout = forwardRef<ElementRef<'div'>, LayoutProps>((props, ref) =>
         avatar={meData?.avatar || ''}
         email={meData?.email || ''}
         isAuthorization={(error as SignErrorResponse)?.status !== 401}
+        logOut={logOut}
         name={meData?.name || ''}
       />
       <ToastNotification />

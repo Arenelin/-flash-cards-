@@ -37,3 +37,11 @@ export const ToolsPartial = {
     style: { backgroundColor: 'black', padding: '100px' },
   },
 } satisfies Story
+
+export const ToolsEditor = {
+  args: {
+    canUsePlay: false,
+    onPlay: testCallBack,
+    style: { backgroundColor: 'black', padding: '100px' },
+  },
+} satisfies Story

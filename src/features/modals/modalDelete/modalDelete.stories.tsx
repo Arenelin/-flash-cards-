@@ -25,7 +25,7 @@ export const ModalDeleteCard = {
 
     return (
       <div style={{ backgroundColor: 'black', padding: '100px' }}>
-        <button onClick={() => setOpen(true)}>
+        <button onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
           <TrashOutline />
         </button>
         <ModalDelete
@@ -53,7 +53,7 @@ export const ModalDeleteDeck = {
 
     return (
       <div style={{ backgroundColor: 'black', padding: '100px' }}>
-        <button onClick={() => setOpen(true)}>
+        <button onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
           <TrashOutline />
         </button>
         <ModalDelete

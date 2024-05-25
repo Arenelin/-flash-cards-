@@ -13,11 +13,14 @@ type Props = {
   onEdit?: (idDeck: string) => void
   onSort: (sort: 'asc' | 'desc', text: string) => void
   sort: 'asc' | 'desc'
+  userId?: string
 }
 
 type TableDecksListProps = Omit<ComponentPropsWithoutRef<'table'>, keyof Props> & Props
 export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProps>((props, ref) => {
-  const { currentUserId, decks, onDelete, onEdit, onPlay, onSort, sort, ...rest } = props
+
+  const { currentUserId, decks, onDelete, onEdit, onSort, sort, ...rest } = props
+
 
   const onDeleteHandler = (id: string) => {
     if (onDelete) {
@@ -64,10 +67,13 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
               <Td>{deck.author.name}</Td>
               <Td>
                 <Tools
+
                   canUseTool={currentUserId === deck?.userId}
                   id={deck.id}
                   onDelete={onDeleteHandler}
                   onEdit={onEditHandler}
+
+
                 />
               </Td>
             </Tr>

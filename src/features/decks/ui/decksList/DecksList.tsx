@@ -21,6 +21,7 @@ export function DecksList() {
     sliderValueHandle,
     tabsChangeHandler,
     tabsOptions,
+    userId,
   } = useDecksList()
 
   if (decksIsLoading) {
@@ -90,6 +91,7 @@ export function DecksList() {
         decks={decksData?.items}
         onSort={() => {}}
         sort={'asc'}
+        userId={userId}
       />
       <div className={s.paginationSettings}>
         <Pagination totalCount={decksData?.pagination.totalItems} />

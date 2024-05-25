@@ -102,5 +102,6 @@ export const useDecksList = () => {
     sliderValueHandle,
     tabsChangeHandler,
     tabsOptions,
+    userId: result.data?.id,
   }
 }

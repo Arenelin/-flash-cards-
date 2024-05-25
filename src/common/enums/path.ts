@@ -1,5 +1,6 @@
 export enum path {
   base = '/',
+  cards = '/cards',
   decks = '/decks',
   error = '/error',
   forgotPassword = '/forgot-password',
@@ -9,11 +10,10 @@ export enum path {
   signUp = '/signUp',
 }
 
-export enum orderBy {
-  CreatedBy = 'created',
-  LastUpdated = 'updated',
-  Name = 'name',
-}
 // dynamic path
 
-export const dynamicPathDeckById = (id: string) => `${path.decks}/${id}`
+export const dynamicPathDeckById = (deckId: string) => `v1${path.decks}/${deckId}` //get & post & delete
+export const dynamicPathCardsInDeck = (deckId: string) => `v1${path.decks}/${deckId}/cards` //get & post
+export const dynamicPathLearnCardInDeck = (deckId: string) => `v1${path.decks}/${deckId}/learn` //get & post
+
+export const dynamicPathCardById = (cardId: string) => `v1${path.cards}/${cardId}` //get & post & delete

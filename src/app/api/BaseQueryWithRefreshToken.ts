@@ -1,29 +1,26 @@
 import { path } from '@/common/enums'
 import { SignInResponse } from '@/common/types'
 import { router } from '@/router/Router'
-import { BaseQueryFn, FetchArgs, FetchBaseQueryError, retry } from '@reduxjs/toolkit/query'
+import { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Mutex } from 'async-mutex'
 
 const mutex = new Mutex()
 
-export const baseQuery = retry(
-  fetchBaseQuery({
-    baseUrl: 'https://api.flashcards.andrii.es',
-    prepareHeaders: headers => {
-      const token = localStorage.getItem('accessToken')
+export const baseQuery = fetchBaseQuery({
+  baseUrl: 'https://api.flashcards.andrii.es',
+  prepareHeaders: headers => {
+    const token = localStorage.getItem('accessToken')
 
-      if (headers.get('Authorization')) {
-        return headers
-      }
+    if (headers.get('Authorization')) {
+      return headers
+    }
 
-      if (token) {
-        headers.set('Authorization', `Bearer ${token}`)
-      }
-    },
-  }),
-  { maxRetries: 1 }
-)
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`)
+    }
+  },
+})
 
 export const baseQueryWithRefreshToken: BaseQueryFn<
   FetchArgs | string,

@@ -31,7 +31,7 @@ export const Tables = {
     const { onSort, sort } = useStoryButtonSort()
 
     return (
-      <div style={{ backgroundColor: 'gray', padding: '100px' }}>
+      <div>
         <Table>
           <Thead>
             <Tr>

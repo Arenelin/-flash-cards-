@@ -25,7 +25,7 @@ export const PersonalInformationDemo = {
   args: {
     email: 'free@samuraijs.com',
     imgSrc: 'https://i.pinimg.com/736x/6e/2f/88/6e2f886a234cefdb5b680763dbc53b4b.jpg',
-    name: 'Unknown woman',
+    name: 'Emilia',
     onSubmit: onSubmit,
   },
 } satisfies Story

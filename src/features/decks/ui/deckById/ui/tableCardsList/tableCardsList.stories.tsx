@@ -79,7 +79,7 @@ export const Table_Cards_List_My = {
     const { onSort, sort } = useStoryButtonSort()
 
     return (
-      <div style={{ backgroundColor: 'gray', padding: '100px' }}>
+      <div>
         <TableCardsList
           cards={cards}
           isMy
@@ -98,7 +98,7 @@ export const Table_Cards_List = {
     const { onSort, sort } = useStoryButtonSort()
 
     return (
-      <div style={{ backgroundColor: 'gray', padding: '100px' }}>
+      <div>
         <TableCardsList
           cards={cards}
           isMy={false}

@@ -1,14 +1,13 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { LogOutOutline, PersonOutline } from '@/assets/icons'
-import logo from '@/assets/logoStart.png'
+import logo from '@/assets/logo.png'
 import { Button, Dropdown, Typography, UserAvatar } from '@/common/components'
 import { DropdownSeparator } from '@/common/components/dropdown/dropdownSeparator/DropdownSeparator'
 import { ToolbarItemWithIcon } from '@/common/components/dropdown/toolbarItemWithIcon/ToolbarItemWithIcon'
 import { DefaultDescription } from '@/common/components/dropdown/toolbarItemWithIcon/defaultDescription/DefaultDescription'
 import { ToolbarItemWithUserData } from '@/common/components/dropdown/toolbarItemWithUserData/ToolbarItemWithUserData'
 import { path } from '@/common/enums'
-import { useLogOutMutation } from '@/features/auth/api/authApi'
 import { router } from '@/router/Router'
 import classNames from 'classnames'
 
@@ -18,11 +17,11 @@ type HeaderProps = {
   avatar?: string
   email?: string
   isAuthorization: boolean
+  logOut: () => void
   name?: string
 } & ComponentPropsWithoutRef<'header'>
 export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref) => {
-  const { avatar, className, email, isAuthorization, name, ...rest } = props
-  const [logOut] = useLogOutMutation()
+  const { avatar, className, email, isAuthorization, logOut, name, ...rest } = props
 
   const selectProfile = () => {
     router.navigate(path.profile)
@@ -52,7 +51,7 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
         </Dropdown>
       ) : (
         <Button as={'a'} href={path.signIn} variant={'secondary'}>
-          Sing In
+          Sign In
         </Button>
       )}
     </header>

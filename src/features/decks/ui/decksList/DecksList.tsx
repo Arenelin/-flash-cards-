@@ -24,6 +24,7 @@ export function DecksList() {
     sliderValueHandle,
     tabsChangeHandler,
     tabsOptions,
+    userId,
   } = useDecksList()
 
   const onPlay = (id: string) => <Navigate to={`${path.decks}/${id}`} />
@@ -99,6 +100,7 @@ export function DecksList() {
         onPlay={onPlay}
         onSort={() => {}}
         sort={'asc'}
+        userId={userId}
       />
       <div className={s.paginationSettings}>
         <Pagination totalCount={decksData?.pagination.totalItems} />

@@ -68,9 +68,10 @@ const decks: Deck[] = [
 export const Table_Decks_List = {
   render() {
     const { onSort, sort } = useStoryButtonSort()
+    const userId = 'a6fa6add-7d35-46a5-ad86-995874537623'
 
     return (
-      <div style={{ backgroundColor: 'gray', padding: '100px' }}>
+      <div>
         <TableDecksList
           decks={decks}
           onDelete={testDelete}
@@ -78,6 +79,7 @@ export const Table_Decks_List = {
           onPlay={testPlay}
           onSort={onSort}
           sort={sort}
+          userId={userId}
         />
       </div>
     )

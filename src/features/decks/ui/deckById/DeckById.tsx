@@ -6,7 +6,7 @@ import { ArrowArrowBack, MoreVerticalOutline, Search } from '@/assets/icons'
 import CloseOutline from '@/assets/icons/CloseOutline'
 import { Button, Dropdown, Input, InputType, Pagination, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
-import { path } from '@/common/enums'
+import { dynamicPathCardsInDeck, dynamicPathLearnCardInDeck, path } from '@/common/enums'
 import { ErrorResponse, ErrorResponseCard } from '@/common/types'
 import { useCardsList } from '@/features/decks/ui/deckById/lib/useCardsList'
 import { useDeleteCardId } from '@/features/decks/ui/deckById/lib/useDeleteCardId'
@@ -114,7 +114,15 @@ export const DeckById = () => {
                 </Typography>
                 {isMy && <Dropdown triggerChild={<MoreVerticalOutline />} />}
               </div>
-              {isMy ? <Button>Add New Card</Button> : <Button>Learn to deck</Button>}
+              {isMy ? (
+                <Button as={'a'} href={dynamicPathCardsInDeck(deck.id)}>
+                  Add New Card
+                </Button>
+              ) : (
+                <Button as={'a'} href={dynamicPathLearnCardInDeck(deck.id)}>
+                  Learn to deck
+                </Button>
+              )}
             </div>
             {deck?.cover && <img alt={'Image Deck'} className={s.img} src={deck?.cover} />}
             <div className={s.inputContainer}>

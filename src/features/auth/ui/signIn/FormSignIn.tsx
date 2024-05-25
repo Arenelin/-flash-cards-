@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, NavLink, Navigate } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import EyeOffOutline from '@/assets/icons/EyeOffOutline'
 import EyeOutline from '@/assets/icons/EyeOutline'
@@ -8,7 +8,6 @@ import { Button, Card, InputType, Typography } from '@/common/components'
 import { ControlledCheckbox, ControlledInput } from '@/common/components/controlled'
 import { path } from '@/common/enums'
 import { emailSchema, passwordSchema } from '@/common/utils/zodSchema'
-import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -28,12 +27,6 @@ export type SignIn = z.infer<typeof loginSchema>
 export const FormSignIn = ({ onSubmit }: Props) => {
   const { control, handleSubmit } = useForm<SignIn>({ resolver: zodResolver(loginSchema) })
   const formId = useId()
-
-  const result = useGetMeQuery()
-
-  if (result.isSuccess) {
-    return <Navigate to={path.decks} />
-  }
 
   return (
     <Card className={s.card}>

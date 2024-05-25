@@ -12,7 +12,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Profile/PersonalInformation',
+  title: 'Features/Profile',
 } satisfies Meta<typeof PersonalInformation>
 
 export default meta

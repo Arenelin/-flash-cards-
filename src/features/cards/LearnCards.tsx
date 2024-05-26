@@ -1,6 +1,9 @@
 import { ElementRef, forwardRef, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
+import { ArrowArrowBack } from '@/assets/icons'
 import { Button, Card, RadioGroup, Typography } from '@/common/components'
+import { path } from '@/common/enums'
 import { CardItem, Deck, GradeScale, Option } from '@/common/types'
 
 import s from './learnCards.module.scss'
@@ -30,50 +33,55 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
   }
 
   return (
-    <Card className={s.container} ref={ref}>
-      <Typography as={'h1'} variant={'h1'}>
-        Learn {deckData?.name}
+    <>
+      <Typography as={NavLink} className={s.back} to={path.decks}>
+        <ArrowArrowBack /> Back to Decks List
       </Typography>
-      <div className={s.questionBlock}>
-        <Typography as={'p'} className={s.question} variant={'body1'}>
-          <b>Question:</b> {cardData?.question}
+      <Card className={s.container} ref={ref}>
+        <Typography as={'h1'} variant={'h1'}>
+          Learn {deckData?.name}
         </Typography>
-        {cardData?.questionImg && <img src={cardData?.questionImg} />}
-        <Typography as={'p'} variant={'caption'}>
-          Количество попыток ответить на вопрос: {cardData?.shots}
-        </Typography>
-      </div>
-      <div className={s.answerRateBlock}>
-        {!showAnswer ? (
-          <Button fullWidth onClick={() => setShowAnswer(true)}>
-            Show Answer
-          </Button>
-        ) : (
-          <>
-            <div className={s.answerBlock}>
-              <Typography as={'p'} className={s.answer} variant={'body1'}>
-                <b>Answer:</b> {cardData?.answer}
-              </Typography>
-              {cardData?.answerImg && <img src={cardData?.answerImg} />}
-              {cardData?.answerVideo && <video src={cardData?.answerVideo} />}
-            </div>
-            <div className={s.rateBlock}>
-              <Typography as={'h3'} variant={'h3'}>
-                <b>Rate yourself:</b>
-              </Typography>
-              <RadioGroup
-                onValueChange={value => setRate(+value as GradeScale)}
-                options={answerRate}
-                value={rate.toString()}
-              />
-              <Button disabled={rate === 0} fullWidth onClick={onClickHandler}>
-                Next Question
-              </Button>
-            </div>
-          </>
-        )}
-      </div>
-    </Card>
+        <div className={s.questionBlock}>
+          <Typography as={'p'} className={s.question} variant={'body1'}>
+            <b>Question:</b> {cardData?.question}
+          </Typography>
+          {cardData?.questionImg && <img src={cardData?.questionImg} />}
+          <Typography as={'p'} variant={'caption'}>
+            Количество попыток ответить на вопрос: {cardData?.shots}
+          </Typography>
+        </div>
+        <div className={s.answerRateBlock}>
+          {!showAnswer ? (
+            <Button fullWidth onClick={() => setShowAnswer(true)}>
+              Show Answer
+            </Button>
+          ) : (
+            <>
+              <div className={s.answerBlock}>
+                <Typography as={'p'} className={s.answer} variant={'body1'}>
+                  <b>Answer:</b> {cardData?.answer}
+                </Typography>
+                {cardData?.answerImg && <img src={cardData?.answerImg} />}
+                {cardData?.answerVideo && <video src={cardData?.answerVideo} />}
+              </div>
+              <div className={s.rateBlock}>
+                <Typography as={'h3'} variant={'h3'}>
+                  <b>Rate yourself:</b>
+                </Typography>
+                <RadioGroup
+                  onValueChange={value => setRate(+value as GradeScale)}
+                  options={answerRate}
+                  value={rate.toString()}
+                />
+                <Button disabled={rate === 0} fullWidth onClick={onClickHandler}>
+                  Next Question
+                </Button>
+              </div>
+            </>
+          )}
+        </div>
+      </Card>
+    </>
   )
 })
 

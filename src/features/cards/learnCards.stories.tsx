@@ -1,9 +1,11 @@
 import { CardItem, Deck, GradeScale } from '@/common/types'
 import { LearnCards } from '@/features/cards/LearnCards'
 import { Meta, StoryObj } from '@storybook/react'
+import { withRouter } from 'storybook-addon-remix-react-router'
 
 const meta = {
   component: LearnCards,
+  decorators: [withRouter],
   tags: ['autodocs'],
   title: 'Features/LearnCards',
 } satisfies Meta<typeof LearnCards>

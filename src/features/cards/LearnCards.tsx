@@ -1,20 +1,19 @@
 import { ElementRef, forwardRef, useState } from 'react'
-import { Params, useParams } from 'react-router-dom'
 
 import { Button, Card, RadioGroup, Typography } from '@/common/components'
-import { Preloader } from '@/common/components/preloader/Preloader'
-import { GradeScale, Option } from '@/common/types'
-import { useGetCardForLearnQuery, useSaveGradeOfCardMutation } from '@/features/cards/api/cardsApi'
-import { useGetDeckByIdQuery } from '@/features/decks/api/decksApi'
+import { CardItem, Deck, GradeScale, Option } from '@/common/types'
 
-import s from './cardByIdLearn.module.scss'
+import s from './learnCards.module.scss'
 
-export const CardByIdLearn = forwardRef<ElementRef<'div'>, {}>((_, ref) => {
-  const params: Readonly<Params<string>> = useParams()
-  const id = params?.id || ''
-  const { data: cardData, isLoading: isLoadingCard } = useGetCardForLearnQuery({ id })
-  const { data: deckData, isLoading: isLoadingDeck } = useGetDeckByIdQuery({ id })
-  const [saveGradeOfCard, { data: newCardData }] = useSaveGradeOfCardMutation()
+type Props = {
+  cardData?: CardItem
+  deckData?: Omit<Deck, 'author'>
+  onSubmit: (grade: GradeScale) => void
+}
+
+export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
+  const { cardData, deckData, onSubmit } = props
+
   const [showAnswer, setShowAnswer] = useState(false)
   const [rate, setRate] = useState<GradeScale>(0)
   const answerRate: Option[] = [
@@ -26,29 +25,21 @@ export const CardByIdLearn = forwardRef<ElementRef<'div'>, {}>((_, ref) => {
   ]
   const onClickHandler = () => {
     setShowAnswer(false)
-    saveGradeOfCard({ cardId: cardData?.id || '', grade: rate, id })
-  }
-
-  if (isLoadingCard || isLoadingDeck) {
-    return (
-      <div className={s.preloader}>
-        <Preloader />
-      </div>
-    )
+    onSubmit(rate)
   }
 
   return (
-    <Card ref={ref}>
+    <Card className={s.container} ref={ref}>
       <Typography as={'h1'} variant={'h1'}>
         Learn {deckData?.name}
       </Typography>
       <div className={s.questionBlock}>
-        <Typography as={'h3'} variant={'h3'}>
+        <Typography as={'p'} className={s.question} variant={'body1'}>
           <b>Question:</b> {cardData?.question}
         </Typography>
         {cardData?.questionImg && <img src={cardData?.questionImg} />}
-        <Typography as={'p'} variant={'body1'}>
-          <b>Количество попыток ответить на вопрос:</b> {cardData?.shots}
+        <Typography as={'p'} variant={'caption'}>
+          Количество попыток ответить на вопрос: {cardData?.shots}
         </Typography>
       </div>
       <div className={s.answerRateBlock}>
@@ -59,7 +50,7 @@ export const CardByIdLearn = forwardRef<ElementRef<'div'>, {}>((_, ref) => {
         ) : (
           <>
             <div className={s.answerBlock}>
-              <Typography as={'h3'} variant={'h3'}>
+              <Typography as={'p'} className={s.answer} variant={'body1'}>
                 <b>Answer:</b> {cardData?.answer}
               </Typography>
               {cardData?.answerImg && <img src={cardData?.answerImg} />}
@@ -85,4 +76,4 @@ export const CardByIdLearn = forwardRef<ElementRef<'div'>, {}>((_, ref) => {
   )
 })
 
-CardByIdLearn.displayName = 'CardByIdLearn'
+LearnCards.displayName = 'LearnCards'

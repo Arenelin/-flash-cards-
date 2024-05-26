@@ -2,10 +2,10 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { ButtonSort, Grade, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
 import { ContainerImageText } from '@/common/components/tables/ui/containerImgText/ContainerImageText'
-import { Card, GradeScale } from '@/common/types'
+import { CardItem, GradeScale } from '@/common/types'
 
 type Props = {
-  cards?: Card[]
+  cards?: CardItem[]
   isMy: boolean
   onDelete?: (idCard: string, question: string) => void
   onEdit?: (idCard: string) => void

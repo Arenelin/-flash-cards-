@@ -1,5 +1,5 @@
 import { appApi } from '@/app/api/appApi'
-import { Card, GetCardsById } from '@/common/types'
+import { CardItem, GetCardsById } from '@/common/types'
 
 export const cardsApi = appApi.injectEndpoints({
   endpoints: builder => {
@@ -12,17 +12,20 @@ export const cardsApi = appApi.injectEndpoints({
         }),
       }),
 
-      getCardForLearn: builder.query<Card, { id: string }>({
+      getCardForLearn: builder.query<CardItem, { id: string }>({
         providesTags: ['CardForLearn'],
         query: ({ id }) => ({
           url: `v1/decks/${id}/learn`,
         }),
       }),
-      saveGradeOfCard: builder.mutation<Card, { cardId: string; grade: number; id: string }>({
-        query: ({ cardId, grade, id }) => ({
+      saveGradeOfCard: builder.mutation<
+        CardItem,
+        { cardId: string; deckId: string; grade: number }
+      >({
+        query: ({ cardId, deckId, grade }) => ({
           method: 'POST',
           params: { cardId, grade },
-          url: `v1/decks/${id}/learn`,
+          url: `v1/decks/${deckId}/learn`,
         }),
       }),
     }

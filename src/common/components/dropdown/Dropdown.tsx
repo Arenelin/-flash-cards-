@@ -5,17 +5,16 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import s from './dropdown.module.scss'
 
 type Props = {
-  modal?: boolean
-  triggerChild: ReactNode
+  trigger: ReactNode
 } & ComponentPropsWithoutRef<typeof DropdownMenu.Root>
 
 export const Dropdown = forwardRef<ElementRef<typeof DropdownMenu.Root>, Props>((props, ref) => {
-  const { children, modal = false, triggerChild } = props
+  const { children, modal = false, trigger, ...rest } = props
 
   return (
-    <DropdownMenu.Root modal={modal}>
-      <DropdownMenu.Trigger asChild className={s.trigger} ref={ref}>
-        <button className={s.triggerButton}>{triggerChild}</button>
+    <DropdownMenu.Root {...rest}>
+      <DropdownMenu.Trigger className={s.trigger} ref={ref}>
+        {trigger}
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>

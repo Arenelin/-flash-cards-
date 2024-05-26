@@ -1,5 +1,5 @@
 import { appApi } from '@/app/api/appApi'
-import { CardItem, GetCardsById } from '@/common/types'
+import { CardItem, GetCardsById, NextCard } from '@/common/types'
 
 export const cardsApi = appApi.injectEndpoints({
   endpoints: builder => {
@@ -18,13 +18,10 @@ export const cardsApi = appApi.injectEndpoints({
           url: `v1/decks/${id}/learn`,
         }),
       }),
-      saveGradeOfCard: builder.mutation<
-        CardItem,
-        { cardId: string; deckId: string; grade: number }
-      >({
+      saveGradeOfCard: builder.mutation<CardItem, NextCard>({
         query: ({ cardId, deckId, grade }) => ({
+          body: { cardId, grade },
           method: 'POST',
-          params: { cardId, grade },
           url: `v1/decks/${deckId}/learn`,
         }),
       }),

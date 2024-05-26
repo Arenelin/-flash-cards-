@@ -14,6 +14,12 @@ export type CardItem = {
   userId: string
 }
 
+export type NextCard = {
+  cardId: string
+  deckId: string
+  grade: number
+}
+
 type ErrorData = {
   message: string
   path: string

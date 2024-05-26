@@ -8,7 +8,7 @@ import s from './learnCards.module.scss'
 type Props = {
   cardData?: CardItem
   deckData?: Omit<Deck, 'author'>
-  onSubmit: (grade: GradeScale) => void
+  onSubmit: (cardId: string, grade: GradeScale) => void
 }
 
 export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
@@ -25,7 +25,7 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
   ]
   const onClickHandler = () => {
     setShowAnswer(false)
-    onSubmit(rate)
+    onSubmit(cardData?.id || '', rate)
     setRate(0)
   }
 

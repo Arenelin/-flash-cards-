@@ -11,8 +11,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof LearnCards>
 
-const onSubmit = (grade: GradeScale) => {
-  alert(`Получена оценка по данной карточке для передачи на сервер:  ${grade}`)
+const onSubmit = (cardId: string, grade: GradeScale) => {
+  alert(`Получена оценка по данной карточке для передачи на сервер:  ${grade}\n
+  id карточки: ${cardId}`)
 }
 const cardData: CardItem = {
   answer: 'Tomorrow',
@@ -21,7 +22,7 @@ const cardData: CardItem = {
   created: '',
   deckId: '',
   grade: 3,
-  id: '',
+  id: 'd591403e-3452-438c-b4e7-a13b8e3b7066',
   question: 'When to work?',
   questionImg:
     'https://staging-it-incubator.s3.eu-central-1.amazonaws.com/flashcards/Image/d0f80403-d36f-440d-a30d-795f69386a9d_Screenshot 2023-07-27 112732.png',

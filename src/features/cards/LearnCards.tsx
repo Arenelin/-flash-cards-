@@ -26,6 +26,7 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
   const onClickHandler = () => {
     setShowAnswer(false)
     onSubmit(rate)
+    setRate(0)
   }
 
   return (
@@ -65,7 +66,7 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
                 options={answerRate}
                 value={rate.toString()}
               />
-              <Button fullWidth onClick={onClickHandler}>
+              <Button disabled={rate === 0} fullWidth onClick={onClickHandler}>
                 Next Question
               </Button>
             </div>

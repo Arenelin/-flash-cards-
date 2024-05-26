@@ -1,12 +1,8 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { LogOutOutline, PersonOutline } from '@/assets/icons'
 import logo from '@/assets/logo.png'
-import { Button, Dropdown, Typography, UserAvatar } from '@/common/components'
-import { DropdownItem } from '@/common/components/dropdown/dropdownItem/DropdownItem'
-import { DefaultDescription } from '@/common/components/dropdown/dropdownItem/defaultDescription/DefaultDescription'
-import { DropdownSeparator } from '@/common/components/dropdown/dropdownSeparator/DropdownSeparator'
-import { ToolbarItemWithUserData } from '@/common/components/dropdown/toolbarItemWithUserData/ToolbarItemWithUserData'
+import { Button, Typography } from '@/common/components'
+import UserDropdown from '@/common/components/dropdown/userDropdown/UserDropdown'
 import { path } from '@/common/enums'
 import { router } from '@/router/Router'
 import classNames from 'classnames'
@@ -33,22 +29,13 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
         <img alt={'logo'} className={s.img} height={'36px'} src={logo} width={'160px'} />
       </Typography>
       {isAuthorization ? (
-        <Dropdown trigger={<UserAvatar name={name} src={avatar} />}>
-          <ToolbarItemWithUserData userData={{ avatar, email, name }} />
-          <DropdownSeparator />
-          <DropdownItem
-            icon={<PersonOutline />}
-            onSelect={selectProfile}
-            textContent={<DefaultDescription text={'My Profile'} />}
-          />
-          <DropdownSeparator />
-
-          <DropdownItem
-            icon={<LogOutOutline />}
-            onSelect={logOut}
-            textContent={<DefaultDescription text={'Sign Out'} />}
-          />
-        </Dropdown>
+        <UserDropdown
+          email={email}
+          img={avatar}
+          name={name}
+          onSelectLogOut={logOut}
+          onSelectProfile={selectProfile}
+        />
       ) : (
         <Button as={'a'} href={path.signIn} variant={'secondary'}>
           Sign In

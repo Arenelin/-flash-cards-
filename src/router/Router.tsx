@@ -8,6 +8,7 @@ import {
 
 import { path } from '@/common/enums'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
+import { CardByIdLearn } from '@/features/cards/CardByIdLearn'
 import { DeckById } from '@/features/decks/ui/deckById/DeckById'
 import { DecksList } from '@/features/decks/ui/decksList/DecksList'
 import { Error } from '@/features/error/Error'
@@ -49,6 +50,10 @@ const privateRoutes: RouteObject[] = [
   {
     element: <DeckById />,
     path: `${path.decks}/:id`,
+  },
+  {
+    element: <CardByIdLearn />,
+    path: `${path.deck}/:id/learn`,
   },
   {
     element: <PageProfile />,

@@ -1,11 +1,11 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { ArrowArrowBack, MoreVerticalOutline, Search } from '@/assets/icons'
 import CloseOutline from '@/assets/icons/CloseOutline'
 import { Button, Dropdown, Input, InputType, Pagination, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
-import { dynamicPathCardsInDeck, dynamicPathLearnCardInDeck, path } from '@/common/enums'
+import { path } from '@/common/enums'
 import { ErrorResponse, ErrorResponseCard } from '@/common/types'
 import { useCardsList } from '@/features/decks/ui/deckById/lib/useCardsList'
 import { useDeleteCardId } from '@/features/decks/ui/deckById/lib/useDeleteCardId'
@@ -102,11 +102,9 @@ export const DeckById = () => {
                 {isMy && <Dropdown triggerChild={<MoreVerticalOutline />} />}
               </div>
               {isMy ? (
-                <Button as={'a'} href={dynamicPathCardsInDeck('')}>
-                  Add New Card
-                </Button>
+                <Button> Add New Card </Button>
               ) : (
-                <Button as={'a'} href={dynamicPathLearnCardInDeck('')}>
+                <Button as={Link} to={`/deck/${deck?.id || ''}/learn`}>
                   Learn to deck
                 </Button>
               )}

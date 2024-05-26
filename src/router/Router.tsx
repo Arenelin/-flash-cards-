@@ -20,6 +20,10 @@ import { PageForgotPassword, PageNewPassword } from '@/router/ui/pagesAuth/Pages
 
 const publicRoutes: RouteObject[] = [
   {
+    element: <Navigate to={path.decks} />,
+    path: path.base,
+  },
+  {
     element: <PageSignIn />,
     path: path.signIn,
   },

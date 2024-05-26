@@ -9,7 +9,7 @@ import { useGetDeckByIdQuery } from '@/features/decks/api/decksApi'
 
 import s from './cardByIdLearn.module.scss'
 
-export const CardByIdLearn = forwardRef<ElementRef<'div'>, undefined>((_, ref) => {
+export const CardByIdLearn = forwardRef<ElementRef<'div'>, {}>((_, ref) => {
   const params: Readonly<Params<string>> = useParams()
   const id = params?.id || ''
   const { data: cardData, isLoading: isLoadingCard } = useGetCardForLearnQuery({ id })

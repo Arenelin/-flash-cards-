@@ -14,9 +14,10 @@ import { DecksList } from '@/features/decks/ui/decksList/DecksList'
 import { Error } from '@/features/error/Error'
 import { Layout } from '@/features/layout/Layout'
 import { PageProfile } from '@/router/ui/pageProfile/pageProfile'
+import { PageNewPassword } from '@/router/ui/pagesAuth/PageNewPassword'
 import { PageSignIn } from '@/router/ui/pagesAuth/PageSignIn'
 import { PageSignUp } from '@/router/ui/pagesAuth/PageSignUp'
-import { PageForgotPassword, PageNewPassword } from '@/router/ui/pagesAuth/PagesAuth'
+import { PageForgotPassword } from '@/router/ui/pagesAuth/PagesForgotPassword'
 
 const publicRoutes: RouteObject[] = [
   {

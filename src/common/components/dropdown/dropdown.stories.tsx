@@ -1,19 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import {
-  Edit2Outline,
-  LogOutOutline,
-  MoreVerticalOutline,
-  PersonOutline,
-  PlayCircleOutline,
-  TrashOutline,
-} from '@/assets/icons'
 import { Dropdown } from '@/common/components/dropdown/Dropdown'
-import { DropdownSeparator } from '@/common/components/dropdown/dropdownSeparator/DropdownSeparator'
-import { ToolbarItemWithIcon } from '@/common/components/dropdown/toolbarItemWithIcon/ToolbarItemWithIcon'
-import { DefaultDescription } from '@/common/components/dropdown/toolbarItemWithIcon/defaultDescription/DefaultDescription'
-import { ToolbarItemWithUserData } from '@/common/components/dropdown/toolbarItemWithUserData/ToolbarItemWithUserData'
-import { UserAvatar } from '@/common/components/userAvatar/UserAvatar'
+import { SettingsDropdown } from '@/common/components/dropdown/settingsDropdown/SettingsDropdown'
+import UserDropdown from '@/common/components/dropdown/userDropdown/UserDropdown'
 
 const meta = {
   component: Dropdown,
@@ -36,26 +25,7 @@ export const WithUserDataWithAvatar = {
     }
 
     return (
-      <Dropdown triggerChild={<UserAvatar name={mockUserData.name} src={mockUserData.img} />}>
-        <ToolbarItemWithUserData userData={mockUserData} />
-        <DropdownSeparator />
-        <ToolbarItemWithIcon
-          icon={<PersonOutline />}
-          onSelect={() => {
-            alert('My Profile')
-          }}
-          textContent={<DefaultDescription text={'My Profile'} />}
-        />
-        <DropdownSeparator />
-
-        <ToolbarItemWithIcon
-          icon={<LogOutOutline />}
-          onSelect={() => {
-            alert('Sign Out')
-          }}
-          textContent={<DefaultDescription text={'Sign Out'} />}
-        />
-      </Dropdown>
+      <UserDropdown email={mockUserData.email} img={mockUserData.img} name={mockUserData.name} />
     )
   },
 } satisfies Story
@@ -68,60 +38,13 @@ export const WithUserDataWithoutAvatar = {
     }
 
     return (
-      <Dropdown triggerChild={<UserAvatar name={mockUserData.name} />}>
-        <ToolbarItemWithUserData userData={mockUserData} />
-        <DropdownSeparator />
-        <ToolbarItemWithIcon
-          icon={<PersonOutline />}
-          onSelect={() => {
-            alert('My Profile')
-          }}
-          textContent={<DefaultDescription text={'My Profile'} />}
-        />
-        <DropdownSeparator />
-
-        <ToolbarItemWithIcon
-          icon={<LogOutOutline />}
-          onSelect={() => {
-            alert('Sign Out')
-          }}
-          textContent={<DefaultDescription text={'Sign Out'} />}
-        />
-      </Dropdown>
+      <UserDropdown email={mockUserData.email} img={mockUserData.img} name={mockUserData.name} />
     )
   },
 } satisfies Story
 
 export const WithSettings = {
   render: () => {
-    return (
-      <Dropdown triggerChild={<MoreVerticalOutline />}>
-        <ToolbarItemWithIcon
-          icon={<PlayCircleOutline />}
-          onSelect={() => {
-            alert('Learn')
-          }}
-          textContent={<DefaultDescription text={'Learn'} />}
-        />
-        <DropdownSeparator />
-
-        <ToolbarItemWithIcon
-          icon={<Edit2Outline />}
-          onSelect={() => {
-            alert('Edit')
-          }}
-          textContent={<DefaultDescription text={'Edit'} />}
-        />
-        <DropdownSeparator />
-
-        <ToolbarItemWithIcon
-          icon={<TrashOutline />}
-          onSelect={() => {
-            alert('Delete')
-          }}
-          textContent={<DefaultDescription text={'Delete'} />}
-        />
-      </Dropdown>
-    )
+    return <SettingsDropdown />
   },
 } satisfies Story

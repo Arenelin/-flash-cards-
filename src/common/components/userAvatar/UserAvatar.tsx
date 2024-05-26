@@ -11,7 +11,6 @@ export const UserAvatar = forwardRef<HTMLDivElement, Props>(({ name = '', src },
 
   return (
     <div className={s.container} ref={ref}>
-      <p className={s.name}>{name}</p>
       <img alt={'User photo'} className={s.img} src={imgSrc} />
     </div>
   )

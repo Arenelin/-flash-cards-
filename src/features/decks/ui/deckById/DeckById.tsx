@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { ArrowArrowBack, MoreVerticalOutline, Search } from '@/assets/icons'
+import { ArrowArrowBack, Search } from '@/assets/icons'
 import CloseOutline from '@/assets/icons/CloseOutline'
-import { Button, Dropdown, Input, InputType, Pagination, Typography } from '@/common/components'
+import { Button, Input, InputType, Pagination, Typography } from '@/common/components'
+import { SettingsDropdown } from '@/common/components/dropdown/settingsDropdown/SettingsDropdown'
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { dynamicPathCardsInDeck, dynamicPathLearnCardInDeck, path } from '@/common/enums'
 import { ErrorResponse, ErrorResponseCard } from '@/common/types'
@@ -99,7 +100,7 @@ export const DeckById = () => {
                 <Typography as={'h1'} variant={'h1'}>
                   {deck?.name}
                 </Typography>
-                {isMy && <Dropdown trigger={<MoreVerticalOutline />} />}
+                {isMy && <SettingsDropdown />}
               </div>
               {isMy ? (
                 <Button as={'a'} href={dynamicPathCardsInDeck('')}>

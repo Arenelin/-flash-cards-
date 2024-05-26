@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.name {
+  border-bottom: 2px dashed var(--color-light-100);
+}

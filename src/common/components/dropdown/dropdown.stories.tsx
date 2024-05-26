@@ -21,7 +21,7 @@ export const WithUserDataWithAvatar = {
     const mockUserData = {
       email: 'moroznaya2002@gmail.com',
       img: 'https://alex-artyukhin.ru/wp-content/uploads/2020/05/aleksej-kremnev2.jpg',
-      name: 'Arenelin',
+      name: 'Nikita',
     }
 
     return (
@@ -34,7 +34,7 @@ export const WithUserDataWithoutAvatar = {
     const mockUserData = {
       email: 'moroznaya2002@gmail.com',
       img: '',
-      name: 'Arenelin',
+      name: 'Nikita',
     }
 
     return (

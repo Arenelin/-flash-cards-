@@ -4,19 +4,9 @@
   outline: none;
 }
 
-.triggerButton {
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin: 0;
-  padding: 0;
-}
-
 .DropdownMenuContent {
   position: absolute;
+  z-index: 10;
   top: 10px;
   right: -23.5px;
   transform-origin: var(--radix-dropdown-menu-content-transform-origin);

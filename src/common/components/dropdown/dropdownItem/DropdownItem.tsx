@@ -7,7 +7,7 @@ import s from './dropdownItem.module.scss'
 
 type Props = ComponentPropsWithoutRef<typeof DropdownMenu.Item>
 export const DropdownItem = forwardRef<ElementRef<typeof DropdownMenu.Item>, Props>(
-  ({ className, onSelect, ...rest }, ref) => {
+  ({ className, ...rest }, ref) => {
     return (
       <DropdownMenu.Item
         className={classNames(s.DropdownMenuItem, className)}

@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Edit2Outline, MoreVerticalOutline, PlayCircleOutline, TrashOutline } from '@/assets/icons'
 import { Dropdown } from '@/common/components/dropdown/Dropdown'
-import { DropdownItem } from '@/common/components/dropdown/dropdownItem/DropdownItem'
-import { DefaultDescription } from '@/common/components/dropdown/dropdownItem/defaultDescription/DefaultDescription'
-import { DropdownSeparator } from '@/common/components/dropdown/dropdownSeparator/DropdownSeparator'
+import { SettingsDropdown } from '@/common/components/dropdown/settingsDropdown/SettingsDropdown'
 import UserDropdown from '@/common/components/dropdown/userDropdown/UserDropdown'
 
 const meta = {
@@ -48,25 +45,6 @@ export const WithUserDataWithoutAvatar = {
 
 export const WithSettings = {
   render: () => {
-    return (
-      <Dropdown trigger={<MoreVerticalOutline />}>
-        <DropdownItem onSelect={() => alert('Learn')}>
-          <PlayCircleOutline />
-          <DefaultDescription text={'Learn'} />
-        </DropdownItem>
-
-        <DropdownSeparator />
-        <DropdownItem onSelect={() => alert('Edit')}>
-          <Edit2Outline />
-          <DefaultDescription text={'Edit'} />
-        </DropdownItem>
-
-        <DropdownSeparator />
-        <DropdownItem onSelect={() => alert('Delete')}>
-          <TrashOutline />
-          <DefaultDescription text={'Delete'} />
-        </DropdownItem>
-      </Dropdown>
-    )
+    return <SettingsDropdown />
   },
 } satisfies Story

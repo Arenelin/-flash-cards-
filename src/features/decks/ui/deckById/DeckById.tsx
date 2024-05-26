@@ -99,7 +99,7 @@ export const DeckById = () => {
                 <Typography as={'h1'} variant={'h1'}>
                   {deck?.name}
                 </Typography>
-                {isMy && <Dropdown triggerChild={<MoreVerticalOutline />} />}
+                {isMy && <Dropdown trigger={<MoreVerticalOutline />} />}
               </div>
               {isMy ? (
                 <Button as={'a'} href={dynamicPathCardsInDeck('')}>

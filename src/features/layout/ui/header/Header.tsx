@@ -3,9 +3,9 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 import { LogOutOutline, PersonOutline } from '@/assets/icons'
 import logo from '@/assets/logo.png'
 import { Button, Dropdown, Typography, UserAvatar } from '@/common/components'
+import { DropdownItem } from '@/common/components/dropdown/dropdownItem/DropdownItem'
+import { DefaultDescription } from '@/common/components/dropdown/dropdownItem/defaultDescription/DefaultDescription'
 import { DropdownSeparator } from '@/common/components/dropdown/dropdownSeparator/DropdownSeparator'
-import { ToolbarItemWithIcon } from '@/common/components/dropdown/toolbarItemWithIcon/ToolbarItemWithIcon'
-import { DefaultDescription } from '@/common/components/dropdown/toolbarItemWithIcon/defaultDescription/DefaultDescription'
 import { ToolbarItemWithUserData } from '@/common/components/dropdown/toolbarItemWithUserData/ToolbarItemWithUserData'
 import { path } from '@/common/enums'
 import { router } from '@/router/Router'
@@ -33,17 +33,17 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
         <img alt={'logo'} className={s.img} height={'36px'} src={logo} width={'160px'} />
       </Typography>
       {isAuthorization ? (
-        <Dropdown triggerChild={<UserAvatar name={name} src={avatar} />}>
+        <Dropdown trigger={<UserAvatar name={name} src={avatar} />}>
           <ToolbarItemWithUserData userData={{ avatar, email, name }} />
           <DropdownSeparator />
-          <ToolbarItemWithIcon
+          <DropdownItem
             icon={<PersonOutline />}
             onSelect={selectProfile}
             textContent={<DefaultDescription text={'My Profile'} />}
           />
           <DropdownSeparator />
 
-          <ToolbarItemWithIcon
+          <DropdownItem
             icon={<LogOutOutline />}
             onSelect={logOut}
             textContent={<DefaultDescription text={'Sign Out'} />}

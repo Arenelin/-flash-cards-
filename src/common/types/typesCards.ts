@@ -1,4 +1,4 @@
-export type Card = {
+export type CardItem = {
   answer: string
   answerImg: null | string
   answerVideo: string
@@ -12,6 +12,12 @@ export type Card = {
   shots: number
   updated: string
   userId: string
+}
+
+export type NextCard = {
+  cardId: string
+  deckId: string
+  grade: number
 }
 
 type ErrorData = {

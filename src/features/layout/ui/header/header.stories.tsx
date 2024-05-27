@@ -19,10 +19,11 @@ export const HeaderLogin = {
     return (
       <>
         <p style={{ color: '#bea6ff', margin: '100px auto', textAlign: 'justify', width: '40%' }}>
-          &nbsp;&nbsp;&nbsp;Ссылки на <b style={{ color: '#704ecc' }}>логотипе</b> и&nbsp;
-          <b style={{ color: '#704ecc' }}>My profile</b> выдают ошибку, т.к. установленный в
-          Storybook аддон для подключения роутера конфликтует с логикой внутри компоненты. В
-          приложении компонента корректно переходит по этим ссылкам.
+          &nbsp;&nbsp;&nbsp;Ссылки на <b style={{ color: '#704ecc' }}>логотипе</b>,{' '}
+          <b style={{ color: '#704ecc' }}>My profile</b> и&nbsp;
+          <b style={{ color: '#704ecc' }}>Sign In</b> выдают ошибку, т.к. установленный в Storybook
+          аддон для подключения роутера конфликтует с логикой внутри компоненты. В приложении
+          компонента корректно переходит по этим ссылкам.
         </p>
         <Header
           avatar={'https://i.pinimg.com/736x/6e/2f/88/6e2f886a234cefdb5b680763dbc53b4b.jpg'}

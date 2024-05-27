@@ -1,7 +1,7 @@
 import { MeResponse } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 
-import { PersonalInformation, ProfileFormData } from './ui/personalInformation/PersonalInformation'
+import { PersonalInformation, ProfileFormData } from './ui/PersonalInformation'
 
 export const Profile = () => {
   const { data: meData } = useGetMeQuery()

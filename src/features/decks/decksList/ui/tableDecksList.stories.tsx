@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
 import { Deck } from '@/common/types'
-import { TableDecksList } from '@/features/decks/ui/decksList/ui/tableDecksList/TableDecksList'
+import { TableDecksList } from '@/features/decks/decksList/ui/TableDecksList'
 import { withRouter } from 'storybook-addon-remix-react-router'
 
 const meta = {

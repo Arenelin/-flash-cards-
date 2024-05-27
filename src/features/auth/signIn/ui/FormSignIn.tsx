@@ -11,7 +11,7 @@ import { emailSchema, passwordSchema } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from '@/features/auth/ui/signIn/ui/formSignIn.module.scss'
+import s from '@/features/auth/signIn/ui/formSignIn.module.scss'
 
 type Props = {
   onSubmit: (data: SignIn) => void

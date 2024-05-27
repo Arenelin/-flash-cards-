@@ -5,7 +5,7 @@ import { Preloader } from '@/common/components/preloader/Preloader'
 import s from '../decks.module.scss'
 
 import { useDecksList } from './lib/useDecksList'
-import { TableDecksList } from './ui/tableDecksList/TableDecksList'
+import { TableDecksList } from './ui/TableDecksList'
 
 export function DecksList() {
   const {

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
 import { CardItem } from '@/common/types'
-import { TableCardsList } from '@/features/decks/ui/deckById/ui/tableCardsList/TableCardsList'
+import { TableCardsList } from '@/features/decks/deckById/ui/TableCardsList'
 
 const meta = {
   component: TableCardsList,

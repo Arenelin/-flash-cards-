@@ -8,7 +8,7 @@ import { passwordSchema } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from '@/features/auth/ui/newPasswordForm/ui/newPasswordForm.module.scss'
+import s from '@/features/auth/newPasswordForm/ui/newPasswordForm.module.scss'
 
 export default {}
 type NewPasswordFormProps = {

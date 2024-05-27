@@ -33,7 +33,7 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
   }
 
   return (
-    <>
+    <div className={s.main}>
       <Typography as={NavLink} className={s.back} to={path.decks}>
         <ArrowArrowBack /> Back to Decks List
       </Typography>
@@ -45,7 +45,7 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
           <Typography as={'p'} className={s.question} variant={'body1'}>
             <b>Question:</b> {cardData?.question}
           </Typography>
-          {cardData?.questionImg && <img src={cardData?.questionImg} />}
+          {cardData?.questionImg && <img alt={'cardImage'} src={cardData?.questionImg} />}
           <Typography as={'p'} variant={'caption'}>
             Количество попыток ответить на вопрос: {cardData?.shots}
           </Typography>
@@ -61,7 +61,7 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
                 <Typography as={'p'} className={s.answer} variant={'body1'}>
                   <b>Answer:</b> {cardData?.answer}
                 </Typography>
-                {cardData?.answerImg && <img src={cardData?.answerImg} />}
+                {cardData?.answerImg && <img alt={'cardImage'} src={cardData?.answerImg} />}
                 {cardData?.answerVideo && <video src={cardData?.answerVideo} />}
               </div>
               <div className={s.rateBlock}>
@@ -81,7 +81,7 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
           )}
         </div>
       </Card>
-    </>
+    </div>
   )
 })
 

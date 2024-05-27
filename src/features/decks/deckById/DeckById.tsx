@@ -8,12 +8,12 @@ import { SettingsDropdown } from '@/common/components/dropdown/settingsDropdown/
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { path } from '@/common/enums'
 import { ErrorResponse, ErrorResponseCard } from '@/common/types'
-import { useCardsList } from '@/features/decks/ui/deckById/lib/useCardsList'
-import { useDeleteCardId } from '@/features/decks/ui/deckById/lib/useDeleteCardId'
-import { TableCardsList } from '@/features/decks/ui/deckById/ui/tableCardsList/TableCardsList'
+import { useCardsList } from '@/features/decks/deckById/lib/useCardsList'
+import { useDeleteCardId } from '@/features/decks/deckById/lib/useDeleteCardId'
+import { TableCardsList } from '@/features/decks/deckById/ui/TableCardsList'
 import { ModalDelete } from '@/features/modals/modalDelete/ModalDelete'
 
-import s from '@/features/decks/ui/decks.module.scss'
+import s from '@/features/decks/decks.module.scss'
 
 export const DeckById = () => {
   const {

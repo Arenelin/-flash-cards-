@@ -1,12 +1,10 @@
+import { Page } from '@/common/components/page/Page'
 import { MeResponse } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
-import {
-  PersonalInformation,
-  ProfileFormData,
-} from '@/features/profile/ui/personalInformation/PersonalInformation'
-import { Page } from '@/router/ui/page/Page'
 
-export const PageProfile = () => {
+import { PersonalInformation, ProfileFormData } from './ui/personalInformation/PersonalInformation'
+
+export const Profile = () => {
   const { data: meData } = useGetMeQuery()
 
   const data = meData as MeResponse

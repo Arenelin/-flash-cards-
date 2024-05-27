@@ -8,16 +8,16 @@ import {
 
 import { path } from '@/common/enums'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
+import { PageNewPassword } from '@/features/auth/ui/pagesAuth/PageNewPassword'
+import { PageSignIn } from '@/features/auth/ui/pagesAuth/PageSignIn'
+import { PageSignUp } from '@/features/auth/ui/pagesAuth/PageSignUp'
+import { PageForgotPassword } from '@/features/auth/ui/pagesAuth/PagesForgotPassword'
+import { LearnCardsPage } from '@/features/cards/LearnCardsPage'
 import { DeckById } from '@/features/decks/ui/deckById/DeckById'
 import { DecksList } from '@/features/decks/ui/decksList/DecksList'
 import { Error } from '@/features/error/Error'
 import { Layout } from '@/features/layout/Layout'
-import { LearnCardsPage } from '@/router/ui/learnCardsPage/LearnCardsPage'
-import { PageProfile } from '@/router/ui/pageProfile/pageProfile'
-import { PageNewPassword } from '@/router/ui/pagesAuth/PageNewPassword'
-import { PageSignIn } from '@/router/ui/pagesAuth/PageSignIn'
-import { PageSignUp } from '@/router/ui/pagesAuth/PageSignUp'
-import { PageForgotPassword } from '@/router/ui/pagesAuth/PagesForgotPassword'
+import { Profile } from '@/features/profile/Profile'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -61,7 +61,7 @@ const privateRoutes: RouteObject[] = [
     path: `${path.decks}/:id/learn`,
   },
   {
-    element: <PageProfile />,
+    element: <Profile />,
     path: path.profile,
   },
 ]

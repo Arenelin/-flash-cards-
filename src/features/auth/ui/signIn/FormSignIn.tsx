@@ -66,7 +66,7 @@ export const FormSignIn = ({ onSubmit }: Props) => {
             Forgot Password?
           </Typography>
         </div>
-        <Button form={formId} fullWidth type={'submit'}>
+        <Button form={formId} fullWidth>
           Sign In
         </Button>
       </form>

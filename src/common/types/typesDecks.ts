@@ -1,4 +1,4 @@
-import { Card } from '@/common/types'
+import { CardItem } from '@/common/types'
 
 export type Author = {
   id: string
@@ -59,7 +59,7 @@ export type GetDeckCards = {
 }
 
 export type GetDeckCardsResponse = {
-  items: Card[]
+  items: CardItem[]
   pagination: Pagination
 }
 

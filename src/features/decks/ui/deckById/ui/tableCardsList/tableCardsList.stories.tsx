@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
-import { Card } from '@/common/types'
+import { CardItem } from '@/common/types'
 import { TableCardsList } from '@/features/decks/ui/deckById/ui/tableCardsList/TableCardsList'
 
 const meta = {
@@ -23,7 +23,7 @@ const testEdit = (id: string) => {
   alert(`id: ${id} Edit`)
 }
 
-const cards: Card[] = [
+const cards: CardItem[] = [
   {
     answer: 'answer',
     answerImg:

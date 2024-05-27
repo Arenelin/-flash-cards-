@@ -92,7 +92,7 @@ export function DecksList() {
         sort={'asc'}
       />
       <div className={s.paginationSettings}>
-        <Pagination totalCount={decksData?.pagination?.totalItems} />
+        <Pagination totalCount={decksData?.pagination?.totalItems || 1} />
       </div>
     </div>
   )

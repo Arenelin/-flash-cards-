@@ -1,13 +1,16 @@
 import { useId, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import { Edit2, LogOut } from '@/assets/icons'
 import { Button, Card, InputType, Typography, UserAvatar } from '@/common/components'
 import { ControlledInput } from '@/common/components/controlled'
+import { ControlledInputFile } from '@/common/components/controlled/controlledInputFile/ControlledInputFile'
+import { schemaFile, text } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from '@/features/profile/ui/personalInformatuin.module.scss'
+import s from './personalInformatuin.module.scss'
 
 export type Props = {
   email: string
@@ -16,16 +19,20 @@ export type Props = {
   onSubmit: (data: ProfileFormData) => void
 }
 
-const loginSchema = z.object({
-  nickName: z.string(),
+const profileSchema = z.object({
+  avatar: z.union([schemaFile, z.string()]),
+  name: text,
 })
 
-export type ProfileFormData = z.infer<typeof loginSchema>
+export type ProfileFormData = z.infer<typeof profileSchema>
 
 export const PersonalInformation = ({ email, imgSrc, name, onSubmit }: Props) => {
   const [isEdit, setIsEdit] = useState(false)
-  const { control, handleSubmit } = useForm<ProfileFormData>({ resolver: zodResolver(loginSchema) })
+  const { control, handleSubmit } = useForm<ProfileFormData>({
+    resolver: zodResolver(profileSchema),
+  })
   const formId = useId()
+  const navigate = useNavigate()
 
   const nickNameHandler = (data: ProfileFormData) => {
     onSubmit(data)
@@ -38,12 +45,11 @@ export const PersonalInformation = ({ email, imgSrc, name, onSubmit }: Props) =>
         Personal Information
       </Typography>
       <form id={formId} onSubmit={handleSubmit(nickNameHandler)}>
-        <div className={s.userAvatar}>
-          {/*TODO make userAvatar editable*/}
-          <UserAvatar name={name} src={imgSrc} />
-        </div>
         {!isEdit ? (
           <div className={s.infoBlock}>
+            <div className={s.userAvatar}>
+              <UserAvatar name={name} src={imgSrc} />
+            </div>
             <div className={s.nameBlock}>
               <Typography as={'h2'} variant={'h1'}>
                 {name}
@@ -57,24 +63,40 @@ export const PersonalInformation = ({ email, imgSrc, name, onSubmit }: Props) =>
                 <Edit2 />
               </Typography>
             </div>
-
-            <Typography as={'span'} className={s.email} variant={'body2'}>
+            <Typography as={'span'} className={s.email} variant={'body1'}>
               {email}
             </Typography>
-            <Typography as={'button'} className={s.logout}>
-              <LogOut /> &nbsp;&nbsp; Logout
-              {/*TODO logout logic*/}
-            </Typography>
+            <Button
+              fullWidth
+              onClick={e => {
+                e.preventDefault()
+                navigate(-1)
+              }}
+              variant={'secondary'}
+            >
+              <LogOut /> Back
+            </Button>
           </div>
         ) : (
-          <div>
+          <div className={s.settingBlock}>
+            <Typography as={'span'} className={s.email} variant={'body1'}>
+              avatar
+            </Typography>
+            <div className={s.changeAvatar}>
+              <ControlledInputFile
+                control={control}
+                defaultDeckImage={imgSrc || ''}
+                name={'avatar'}
+              />
+            </div>
+
             <ControlledInput
               autoFocus
               className={s.input}
               control={control}
+              defaultValue={name}
               label={'NickName'}
-              name={'nickName'}
-              placeholder={name}
+              name={'name'}
               type={InputType.text}
             />
             <Button className={s.saveButton} fullWidth>
@@ -86,3 +108,5 @@ export const PersonalInformation = ({ email, imgSrc, name, onSubmit }: Props) =>
     </Card>
   )
 }
+
+PersonalInformation.displayName = 'PersonalInformation'

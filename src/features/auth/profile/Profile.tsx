@@ -1,22 +1,19 @@
-import { MeResponse } from '@/common/types'
-import { useGetMeQuery } from '@/features/auth/api/authApi'
-
+import { useGetMeQuery, useUpdateMeMutation } from '../api/authApi'
 import { PersonalInformation, ProfileFormData } from './ui/PersonalInformation'
 
 export const Profile = () => {
   const { data: meData } = useGetMeQuery()
+  const [updateProfile] = useUpdateMeMutation()
 
-  const data = meData as MeResponse
   const onSubmitProfile = (formData: ProfileFormData) => {
-    // signIn(formData).unwrap()
-    alert(formData)
+    updateProfile(formData)
   }
 
   return (
     <PersonalInformation
-      email={data.email}
-      imgSrc={data.avatar}
-      name={data.name}
+      email={meData?.email || ''}
+      imgSrc={meData?.avatar}
+      name={meData?.name || ''}
       onSubmit={onSubmitProfile}
     />
   )

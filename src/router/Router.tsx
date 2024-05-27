@@ -10,6 +10,7 @@ import { path } from '@/common/enums'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { PageForgotPassword } from '@/features/auth/forgotPassword/PagesForgotPassword'
 import { PageNewPassword } from '@/features/auth/newPasswordForm/PageNewPassword'
+import { Profile } from '@/features/auth/profile/Profile'
 import { PageSignIn } from '@/features/auth/signIn/PageSignIn'
 import { PageSignUp } from '@/features/auth/signUp/PageSignUp'
 import { LearnCardsPage } from '@/features/cards/LearnCardsPage'
@@ -17,7 +18,6 @@ import { DeckById } from '@/features/decks/deckById/DeckById'
 import { DecksList } from '@/features/decks/decksList/DecksList'
 import { Error } from '@/features/error/Error'
 import { Layout } from '@/features/layout/Layout'
-import { Profile } from '@/features/profile/Profile'
 
 const publicRoutes: RouteObject[] = [
   {

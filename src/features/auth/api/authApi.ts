@@ -3,7 +3,6 @@ import { toast } from 'react-toastify'
 import { appApi } from '@/app/api/appApi'
 import {
   ForgotPasswordArgs,
-  MeArgs,
   MeResponse,
   ResetPasswordTokenArgs,
   SignInArgs,
@@ -11,6 +10,7 @@ import {
   SignUpArgs,
   SignUpResponse,
 } from '@/common/types'
+import { ProfileFormData } from '@/features/auth/profile/ui/PersonalInformation'
 
 export const authApi = appApi.injectEndpoints({
   endpoints: builder => {
@@ -84,12 +84,26 @@ export const authApi = appApi.injectEndpoints({
         }),
       }),
 
-      updateMe: builder.mutation<MeResponse, MeArgs>({
-        query: body => ({
-          body: body,
-          method: 'PATCH',
-          url: 'v1/auth/me',
-        }),
+      updateMe: builder.mutation<MeResponse, ProfileFormData>({
+        invalidatesTags: ['Me'],
+        query: ({ avatar, name }) => {
+          const formData = new FormData()
+
+          if (name) {
+            formData.append('name', name)
+          }
+          if (avatar) {
+            formData.append('avatar', avatar)
+          } else if (avatar === null) {
+            formData.append('avatar', '')
+          }
+
+          return {
+            body: formData,
+            method: 'PATCH',
+            url: 'v1/auth/me',
+          }
+        },
       }),
     }
   },

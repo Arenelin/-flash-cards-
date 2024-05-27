@@ -105,7 +105,7 @@ export const DeckById = () => {
               {isMy ? (
                 <Button> Add New Card </Button>
               ) : (
-                <Button as={Link} to={`/deck/${deck?.id || ''}/learn`}>
+                <Button as={Link} to={`/decks/${deck?.id || ''}/learn`}>
                   Learn to deck
                 </Button>
               )}

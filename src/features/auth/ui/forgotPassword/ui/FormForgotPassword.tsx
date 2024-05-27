@@ -11,7 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import classNames from 'classnames'
 import { z } from 'zod'
 
-import s from '@/features/auth/ui/forgotPassword/formForgotPassword.module.scss'
+import s from '@/features/auth/ui/forgotPassword/ui/formForgotPassword.module.scss'
 
 type Props = {
   className?: string

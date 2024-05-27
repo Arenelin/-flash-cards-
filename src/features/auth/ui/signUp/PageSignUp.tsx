@@ -6,7 +6,6 @@ import { path } from '@/common/enums'
 import { SignErrorResponse, SignUpArgs } from '@/common/types'
 import { FormSignUp, SignUp } from '@/features/auth'
 import { useSignUpMutation } from '@/features/auth/api/authApi'
-import { Page } from '@/router/ui/page/Page'
 
 export const PageSignUp = () => {
   const [signUp, signUpResult] = useSignUpMutation()
@@ -49,9 +48,5 @@ export const PageSignUp = () => {
     navigate(path.signIn)
   }
 
-  return (
-    <Page>
-      <FormSignUp onSubmit={onSubmit} />
-    </Page>
-  )
+  return <FormSignUp onSubmit={onSubmit} />
 }

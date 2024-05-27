@@ -6,7 +6,6 @@ import { path } from '@/common/enums'
 import { SignErrorResponse } from '@/common/types'
 import { FormSignIn, SignIn } from '@/features/auth'
 import { useGetMeQuery, useSignInMutation } from '@/features/auth/api/authApi'
-import { Page } from '@/router/ui/page/Page'
 
 export const PageSignIn = () => {
   const [signIn, signInResult] = useSignInMutation()
@@ -36,9 +35,5 @@ export const PageSignIn = () => {
     navigate(path.decks)
   }
 
-  return (
-    <Page>
-      <FormSignIn onSubmit={onSubmitSignIn} />
-    </Page>
-  )
+  return <FormSignIn onSubmit={onSubmitSignIn} />
 }

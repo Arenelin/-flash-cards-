@@ -3,12 +3,11 @@ import { Params, useParams } from 'react-router-dom'
 
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { GradeScale } from '@/common/types'
-import { LearnCards } from '@/features/cards/LearnCards'
 import { useGetCardForLearnQuery, useSaveGradeOfCardMutation } from '@/features/cards/api/cardsApi'
+import { LearnCards } from '@/features/cards/ui/LearnCards'
 import { useGetDeckByIdQuery } from '@/features/decks/api/decksApi'
-import { Page } from '@/router/ui/page/Page'
 
-import s from '@/features/cards/learnCards.module.scss'
+import s from '@/features/cards/ui/learnCards.module.scss'
 
 export const LearnCardsPage = () => {
   const params: Readonly<Params<string>> = useParams()
@@ -40,11 +39,7 @@ export const LearnCardsPage = () => {
     )
   }
 
-  return (
-    <Page>
-      <LearnCards cardData={cardData} deckData={deckData} onSubmit={nextCardHandler} />
-    </Page>
-  )
+  return <LearnCards cardData={cardData} deckData={deckData} onSubmit={nextCardHandler} />
 }
 
 LearnCardsPage.displayName = 'CardByIdLearnPage'

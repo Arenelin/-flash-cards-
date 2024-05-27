@@ -1,5 +1,5 @@
 import { CardItem, Deck, GradeScale } from '@/common/types'
-import { LearnCards } from '@/features/cards/LearnCards'
+import { LearnCards } from '@/features/cards/ui/LearnCards'
 import { Meta, StoryObj } from '@storybook/react'
 import { withRouter } from 'storybook-addon-remix-react-router'
 

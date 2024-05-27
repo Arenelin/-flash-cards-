@@ -6,7 +6,7 @@ import { Button, Card, RadioGroup, Typography } from '@/common/components'
 import { path } from '@/common/enums'
 import { CardItem, Deck, GradeScale, Option } from '@/common/types'
 
-import s from './learnCards.module.scss'
+import s from '@/features/cards/ui/learnCards.module.scss'
 
 type Props = {
   cardData?: CardItem

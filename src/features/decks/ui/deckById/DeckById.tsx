@@ -139,7 +139,7 @@ export const DeckById = () => {
         )}
       </div>
       <div className={s.paginationSettings}>
-        <Pagination totalCount={cards?.pagination.totalItems} />{' '}
+        <Pagination totalCount={cards?.pagination.totalItems || 1} />{' '}
       </div>
       <ModalDelete
         onDelete={requestDeletion}

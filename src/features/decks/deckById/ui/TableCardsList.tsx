@@ -2,13 +2,14 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { ButtonSort, Grade, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
 import { ContainerImageText } from '@/common/components/tables/ui/containerImgText/ContainerImageText'
-import { CardItem, GradeScale } from '@/common/types'
+import { Card, GradeScale } from '@/common/types'
 
+export type CardById = Pick<Card, 'answer' | 'answerImg' | 'id' | 'question' | 'questionImg'>
 type Props = {
-  cards?: CardItem[]
+  cards?: Card[]
   isMy: boolean
   onDelete?: (idCard: string, question: string) => void
-  onEdit?: (idCard: string) => void
+  onEdit?: (args: CardById) => void
   onSort: (sort: 'asc' | 'desc', text: string) => void
   sort: 'asc' | 'desc'
 }
@@ -22,9 +23,9 @@ export const TableCardsList = forwardRef<ElementRef<'table'>, TableDecksListProp
       onDelete(id, question)
     }
   }
-  const onEditHandler = (id: string) => {
+  const onEditHandler = (args: CardById) => {
     if (onEdit) {
-      onEdit(id)
+      onEdit(args)
     }
   }
   const getDateString = (date: Date | string, locales: string = 'ru-RU') => {
@@ -64,7 +65,15 @@ export const TableCardsList = forwardRef<ElementRef<'table'>, TableDecksListProp
                     canUsePlay={false}
                     id={card.id}
                     onDelete={id => onDeleteHandler(id, card.question)}
-                    onEdit={onEditHandler}
+                    onEdit={(idCard: string) =>
+                      onEditHandler({
+                        answer: card.answer,
+                        answerImg: card.answerImg,
+                        id: idCard,
+                        question: card.question,
+                        questionImg: card.questionImg,
+                      })
+                    }
                   />
                 </Td>
               )}

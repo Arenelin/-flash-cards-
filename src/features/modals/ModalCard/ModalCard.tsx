@@ -49,6 +49,7 @@ export const ModalCard = forwardRef<ElementRef<typeof DialogPrimitive.Content>, 
         setValueSelect(startValue)
       } else {
         reset()
+        setValueSelect('Text')
       }
     }, [reset, defaultValues, open])
 
@@ -70,6 +71,7 @@ export const ModalCard = forwardRef<ElementRef<typeof DialogPrimitive.Content>, 
       }
 
       onSubmit(data)
+
       onOpenChange(false)
       reset()
       setValueSelect('Text')

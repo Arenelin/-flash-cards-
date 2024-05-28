@@ -1,6 +1,5 @@
 import { appApi } from '@/app/api/appApi'
-import { CardId, CardUpdateArgs, CardUpdateCreateResponse } from '@/common/types'
-import { Card, NextCard } from '@/common/types'
+import { Card, CardId, CardUpdateArgs, CardUpdateCreateResponse, NextCard } from '@/common/types'
 export const cardsApi = appApi.injectEndpoints({
   endpoints: builder => {
     return {

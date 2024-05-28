@@ -14,3 +14,5 @@ export const DefaultDescription = (props: Props) => {
     </Typography>
   )
 }
+
+DefaultDescription.displayName = 'DefaultDescription'

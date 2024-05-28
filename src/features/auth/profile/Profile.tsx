@@ -1,5 +1,6 @@
+import { PersonalInformation, ProfileFormData } from '@/features/auth'
+
 import { useGetMeQuery, useUpdateMeMutation } from '../api/authApi'
-import { PersonalInformation, ProfileFormData } from './ui/PersonalInformation'
 
 export const Profile = () => {
   const { data: meData } = useGetMeQuery()
@@ -18,3 +19,5 @@ export const Profile = () => {
     />
   )
 }
+
+Profile.displayName = 'Profile'

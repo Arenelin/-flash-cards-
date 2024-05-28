@@ -151,3 +151,5 @@ export const DeckById = () => {
     </div>
   )
 }
+
+DeckById.displayName = 'DeckById'

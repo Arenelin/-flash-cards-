@@ -6,7 +6,7 @@ import { Edit2, LogOut } from '@/assets/icons'
 import { Button, Card, InputType, Typography, UserAvatar } from '@/common/components'
 import { ControlledInput } from '@/common/components/controlled'
 import { ControlledInputFile } from '@/common/components/controlled/controlledInputFile/ControlledInputFile'
-import { schemaFile } from '@/common/utils/zodSchema'
+import { schemaFile, text } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -21,11 +21,7 @@ export type Props = {
 
 const profileSchema = z.object({
   avatar: z.union([schemaFile, z.string()]),
-  name: z
-    .string()
-    .min(3, { message: 'The field must contain more than 3 character' })
-    .max(30, { message: 'The field must not contain more than 30 characters' })
-    .optional(),
+  name: text.optional(),
 })
 
 export type ProfileFormData = z.infer<typeof profileSchema>

@@ -50,3 +50,5 @@ export const PageSignUp = () => {
 
   return <FormSignUp onSubmit={onSubmit} />
 }
+
+PageSignUp.displayName = 'PageSignUp'

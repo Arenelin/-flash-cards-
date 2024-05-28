@@ -79,3 +79,5 @@ export const FormSignIn = ({ onSubmit }: Props) => {
     </Card>
   )
 }
+
+FormSignIn.displayName = 'FormSignIn'

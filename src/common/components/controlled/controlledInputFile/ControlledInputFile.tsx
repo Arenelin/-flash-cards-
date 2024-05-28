@@ -15,7 +15,7 @@ import { Button } from '@/common/components/button/Button'
 
 import s from './controlledInputFile.module.scss'
 
-type ControlledInputFileProps<T extends FieldValues> = { defaultDeckImage: string } & Omit<
+type ControlledInputFileProps<T extends FieldValues> = { defaultDeckImage?: string } & Omit<
   ComponentPropsWithoutRef<'input'>,
   'name' | 'onBlur' | 'onChange' | 'value'
 > &

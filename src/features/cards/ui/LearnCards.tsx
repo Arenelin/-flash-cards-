@@ -32,6 +32,19 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
     setRate(0)
   }
 
+  if (!deckData?.cardsCount) {
+    return (
+      <div className={s.main}>
+        <Typography as={NavLink} className={s.back} to={path.decks}>
+          <ArrowArrowBack /> Back to Decks List
+        </Typography>
+        <Typography as={'p'} className={s.empty} variant={'body1'}>
+          <b>Cards list is empty</b>
+        </Typography>
+      </div>
+    )
+  }
+
   return (
     <div className={s.main}>
       <Typography as={NavLink} className={s.back} to={path.decks}>

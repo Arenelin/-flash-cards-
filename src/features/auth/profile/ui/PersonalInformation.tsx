@@ -29,6 +29,10 @@ export type ProfileFormData = z.infer<typeof profileSchema>
 export const PersonalInformation = ({ email, imgSrc, name, onSubmit }: Props) => {
   const [isEdit, setIsEdit] = useState(false)
   const { control, handleSubmit } = useForm<ProfileFormData>({
+    defaultValues: {
+      avatar: imgSrc || `https://ui-avatars.com/api/?name=${name}`,
+      name: name,
+    },
     resolver: zodResolver(profileSchema),
   })
   const formId = useId()
@@ -85,7 +89,7 @@ export const PersonalInformation = ({ email, imgSrc, name, onSubmit }: Props) =>
             <div className={s.changeAvatar}>
               <ControlledInputFile
                 control={control}
-                defaultDeckImage={imgSrc || ''}
+                // defaultDeckImage={imgSrc || ''}
                 name={'avatar'}
               />
             </div>

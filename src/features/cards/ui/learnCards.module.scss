@@ -8,6 +8,13 @@
   width: 100%;
 }
 
+.empty {
+  margin-top: 200px;
+  font-size: 30px;
+  color: var(--color-accent-300);
+  text-align: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;

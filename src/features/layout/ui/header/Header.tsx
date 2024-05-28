@@ -28,6 +28,11 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
       <Typography as={'a'} href={path.decks}>
         <img alt={'logo'} className={s.img} height={'36px'} src={logo} width={'160px'} />
       </Typography>
+
+      <Typography as={'b'} className={s.title}>
+        <i>Educational Project</i>
+      </Typography>
+
       {isAuthorization ? (
         <UserDropdown
           email={email}

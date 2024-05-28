@@ -27,7 +27,7 @@ type ModalProps = {
 } & Omit<ComponentPropsWithoutRef<typeof DialogPrimitive.Root>, 'onOpenChange' | 'open'>
 
 const newDeckSchema = z.object({
-  cover: z.union([schemaFile, z.string()]),
+  cover: z.union([schemaFile, z.string(), z.null()]).optional(),
   name: text,
   private: z.boolean().optional(),
 })

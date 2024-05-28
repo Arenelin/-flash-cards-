@@ -14,7 +14,7 @@ export default meta
 type Story = StoryObj<typeof ModalDeck>
 export const ModalEditDeck = {
   args: {
-    data: {
+    defaultValues: {
       cover:
         'https://staging-it-incubator.s3.eu-central-1.amazonaws.com/flashcards/Image/d0f80403-d36f-440d-a30d-795f69386a9d_Screenshot 2023-07-27 112732.png',
       name: 'Alina',
@@ -33,7 +33,7 @@ export const ModalEditDeck = {
       <>
         <Button onClick={() => setOpen(true)}>Edit Deck</Button>
         <ModalDeck
-          data={args.data}
+          defaultValues={args.defaultValues}
           onOpenChange={setOpen}
           onSubmit={args.onSubmit}
           open={open}

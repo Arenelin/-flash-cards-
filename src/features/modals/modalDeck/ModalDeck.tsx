@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, useEffect, useId } from 'react'
 import { useForm } from 'react-hook-form'
 
 import defaultDeckImage from '@/assets/defaultDeckImage.jpeg'
@@ -18,8 +18,10 @@ type EditData = {
   private: boolean
 }
 
+type DataKey = keyof EditDeck
+
 type ModalProps = {
-  data?: EditData
+  defaultValues?: EditData
   onOpenChange: (open: boolean) => void
   onSubmit: (data: EditDeck) => void
   open: boolean
@@ -28,26 +30,46 @@ type ModalProps = {
 
 const newDeckSchema = z.object({
   cover: z.union([schemaFile, z.string(), z.null()]).optional(),
-  name: text,
+  name: text.optional(),
   private: z.boolean().optional(),
 })
 
 export type EditDeck = z.infer<typeof newDeckSchema>
 export const ModalDeck = forwardRef<ElementRef<typeof DialogPrimitive.Content>, ModalProps>(
   (props, ref) => {
-    const { data, onOpenChange, onSubmit, open, title } = props
-    const { control, handleSubmit } = useForm<EditDeck>({
-      defaultValues: {
-        cover: data?.cover,
-        name: data?.name,
-        private: data?.private,
-      },
+    const { defaultValues, onOpenChange, onSubmit, open, title } = props
+    const { control, getValues, handleSubmit, reset } = useForm<EditDeck>({
+      defaultValues: {},
       resolver: zodResolver(newDeckSchema),
     })
+
+    useEffect(() => {
+      if (defaultValues) {
+        reset(defaultValues)
+      } else {
+        reset()
+      }
+    }, [reset, defaultValues, open])
+
     const finalId = useId()
 
+    const onOpenChangeHandler = () => {
+      onOpenChange(false)
+    }
+
     const onHandleSubmit = (data: EditDeck) => {
+      if (defaultValues) {
+        const currentValues = getValues()
+
+        for (const key in defaultValues) {
+          if (defaultValues[key as DataKey] === currentValues[key as DataKey]) {
+            data[key as DataKey] = undefined
+          }
+        }
+      }
+
       onSubmit(data)
+      reset()
       onOpenChange(false)
     }
 
@@ -69,7 +91,7 @@ export const ModalDeck = forwardRef<ElementRef<typeof DialogPrimitive.Content>, 
           />
           <ControlledCheckbox control={control} label={'Private pack'} name={'private'} />
           <div className={s.containerButton}>
-            <Button onClick={() => onOpenChange(false)} type={'button'} variant={'secondary'}>
+            <Button onClick={onOpenChangeHandler} type={'button'} variant={'secondary'}>
               Cancel
             </Button>
             <Button form={finalId} variant={'primary'}>

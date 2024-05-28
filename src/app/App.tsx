@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux'
 
-import { Router } from '@/router/Router'
+import { Router } from '@/app/Router'
 
 import { store } from './store'
 

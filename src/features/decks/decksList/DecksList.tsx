@@ -2,7 +2,7 @@ import { Search, TrashOutline } from '@/assets/icons'
 import { Button, Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
 
-import s from '../decks.module.scss'
+import s from './decks.module.scss'
 
 import { useDecksList } from './lib/useDecksList'
 import { TableDecksList } from './ui/TableDecksList'

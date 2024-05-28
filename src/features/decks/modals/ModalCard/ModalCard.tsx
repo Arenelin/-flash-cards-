@@ -12,7 +12,7 @@ import { z } from 'zod'
 
 import s from './modalCard.module.scss'
 
-type EditData = {
+export type EditData = {
   answer: string
   answerImg: null | string | undefined
   question: string

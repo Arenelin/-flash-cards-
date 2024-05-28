@@ -11,9 +11,9 @@ import { ErrorResponse, ErrorResponseCard } from '@/common/types'
 import { useCardsList } from '@/features/decks/deckById/lib/useCardsList'
 import { useDeleteCardId } from '@/features/decks/deckById/lib/useDeleteCardId'
 import { TableCardsList } from '@/features/decks/deckById/ui/TableCardsList'
-import { ModalDelete } from '@/features/modals/modalDelete/ModalDelete'
+import { ModalDelete } from '@/features/decks/modals/modalDelete/ModalDelete'
 
-import s from '@/features/decks/decks.module.scss'
+import s from '@/features/decks/decksList/decks.module.scss'
 
 export const DeckById = () => {
   const {

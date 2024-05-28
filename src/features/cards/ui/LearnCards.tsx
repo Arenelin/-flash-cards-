@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom'
 import { ArrowArrowBack } from '@/assets/icons'
 import { Button, Card, RadioGroup, Typography } from '@/common/components'
 import { path } from '@/common/enums'
-import { CardItem, Deck, GradeScale, Option } from '@/common/types'
+import { Deck, GradeScale, Option } from '@/common/types'
+import { Card as CardItem } from '@/common/types'
 
 import s from '@/features/cards/ui/learnCards.module.scss'
 

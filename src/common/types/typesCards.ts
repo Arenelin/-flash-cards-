@@ -1,4 +1,6 @@
-export type CardItem = {
+import { Deck } from '@/common/types/typesDecks'
+
+export type Card = {
   answer: string
   answerImg: null | string
   answerVideo: string
@@ -13,6 +15,22 @@ export type CardItem = {
   updated: string
   userId: string
 }
+
+export type CardId = { id: string }
+
+export type CardUpdateCreateResponse = Omit<Card, 'grade'>
+
+export type CardUpdateBody = {
+  answerImg?: File | null | string
+  questionImg?: File | null | string
+} & Partial<Pick<Card, 'answer' | 'answerVideo' | 'question' | 'questionVideo'>>
+
+export type CardUpdateArgs = CardId & CardUpdateBody
+
+export type CardBodyCreate = Omit<CardUpdateBody, 'answer' | 'question'> &
+  Required<Pick<CardUpdateBody, 'answer' | 'question'>>
+
+export type CardCreateArgs = CardBodyCreate & Pick<Deck, 'id'>
 
 export type NextCard = {
   cardId: string
@@ -31,5 +49,3 @@ export type ErrorResponseCard = {
   data: ErrorData
   status: number
 }
-
-export type GetCardsById = { id: string }

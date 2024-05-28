@@ -1,5 +1,7 @@
 import { appApi } from '@/app/api/appApi'
 import {
+  CardCreateArgs,
+  CardUpdateCreateResponse,
   CreateDecksArgs,
   Deck,
   DeleteDecksArgs,
@@ -15,6 +17,28 @@ import {
 export const decksApi = appApi.injectEndpoints({
   endpoints: builder => {
     return {
+      createCard: builder.mutation<CardUpdateCreateResponse, CardCreateArgs>({
+        invalidatesTags: ['Deck', 'Cards'],
+        query: ({ answer, answerImg, id, question, questionImg }) => {
+          const formData = new FormData()
+
+          if (answer) {
+            formData.append('answer', answer)
+          }
+          if (answerImg) {
+            formData.append('answerImg', answerImg)
+          }
+          if (question) {
+            formData.append('question', question)
+          }
+          if (questionImg) {
+            formData.append('questionImg', questionImg)
+          }
+
+          return { body: formData, method: 'POST', url: `v1/decks/${id}/cards` }
+        },
+      }),
+
       createDeck: builder.mutation<Deck, CreateDecksArgs>({
         invalidatesTags: ['Decks', 'DecksMinMaxCards'],
         query: args => ({
@@ -61,7 +85,6 @@ export const decksApi = appApi.injectEndpoints({
           url: `v2/decks/min-max-cards`,
         }),
       }),
-
       updateDeck: builder.mutation<Omit<Deck, 'author'>, UpdateDecksArgs>({
         invalidatesTags: ['Decks', 'DecksMinMaxCards'],
         query: ({ id, ...body }) => ({
@@ -75,6 +98,7 @@ export const decksApi = appApi.injectEndpoints({
 })
 
 export const {
+  useCreateCardMutation,
   useCreateDeckMutation,
   useDeleteDeckMutation,
   useGetDeckByIdQuery,

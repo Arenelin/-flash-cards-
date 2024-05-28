@@ -93,8 +93,6 @@ export const DeckById = () => {
     setCreateModal(true)
   }
 
-  console.log(dataUpdateTable)
-
   const contentSearch = Boolean(searchParams.get('question')) && !cards?.items?.length
   const contentNotCardInDeck = !cards?.items?.length && Boolean(!searchParams.get('question'))
 

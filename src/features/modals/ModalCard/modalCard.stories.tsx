@@ -15,7 +15,7 @@ export default meta
 type Story = StoryObj<typeof ModalCard>
 export const ModalEditCardWithImage = {
   args: {
-    data: {
+    defaultValues: {
       answer: 'Tomorrow',
       answerImg: null,
       question: 'When to work',
@@ -35,7 +35,7 @@ export const ModalEditCardWithImage = {
       <>
         <Button onClick={() => setOpen(true)}>Edit Card</Button>
         <ModalCard
-          data={args.data}
+          defaultValues={args.defaultValues}
           onOpenChange={setOpen}
           onSubmit={args.onSubmit}
           open={open}
@@ -48,7 +48,7 @@ export const ModalEditCardWithImage = {
 
 export const ModalEditCard = {
   args: {
-    data: {
+    defaultValues: {
       answer: 'Tomorrow',
       answerImg: null,
       question: 'When to work',
@@ -67,7 +67,7 @@ export const ModalEditCard = {
       <>
         <Button onClick={() => setOpen(true)}>Edit Card</Button>
         <ModalCard
-          data={args.data}
+          defaultValues={args.defaultValues}
           onOpenChange={setOpen}
           onSubmit={args.onSubmit}
           open={open}

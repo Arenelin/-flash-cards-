@@ -2,7 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
 import { Card } from '@/common/types'
-import { TableCardsList } from '@/features/decks/ui/deckById/ui/tableCardsList/TableCardsList'
+import {
+  CardById,
+  TableCardsList,
+} from '@/features/decks/ui/deckById/ui/tableCardsList/TableCardsList'
 
 const meta = {
   component: TableCardsList,
@@ -19,8 +22,8 @@ type Story = StoryObj<typeof TableCardsList>
 const testDelete = (idCard: string, question: string) => {
   alert(`id: ${idCard} Delete ${question}`)
 }
-const testEdit = (id: string) => {
-  alert(`id: ${id} Edit`)
+const testEdit = (args: CardById) => {
+  alert(`id: ${args.id} Edit`)
 }
 
 const cards: Card[] = [

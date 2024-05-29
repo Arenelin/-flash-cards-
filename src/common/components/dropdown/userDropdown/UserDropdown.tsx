@@ -45,3 +45,5 @@ const UserDropdown = ({ email, img, name, onSelectLogOut, onSelectProfile }: Pro
 }
 
 export default UserDropdown
+
+UserDropdown.displayName = 'UserDropdown'

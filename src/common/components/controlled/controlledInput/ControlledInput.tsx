@@ -18,3 +18,5 @@ export const ControlledInput = <T extends FieldValues>(props: ControlledInputPro
 
   return <Input {...field} {...rest} errorMessage={error?.message} />
 }
+
+ControlledInput.displayName = 'ControlledInput'

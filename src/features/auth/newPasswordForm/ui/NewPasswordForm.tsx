@@ -50,3 +50,5 @@ export const NewPasswordForm = ({ onSubmit }: NewPasswordFormProps) => {
     </Card>
   )
 }
+
+NewPasswordForm.displayName = 'NewPasswordForm'

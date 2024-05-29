@@ -1,10 +1,10 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
+import { router } from '@/app/Router'
 import logo from '@/assets/logo.png'
 import { Button, Typography } from '@/common/components'
 import UserDropdown from '@/common/components/dropdown/userDropdown/UserDropdown'
 import { path } from '@/common/enums'
-import { router } from '@/router/Router'
 import classNames from 'classnames'
 
 import s from '@/features/layout/ui/header/header.module.scss'

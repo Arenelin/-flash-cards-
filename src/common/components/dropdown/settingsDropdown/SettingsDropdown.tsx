@@ -31,3 +31,5 @@ export const SettingsDropdown = ({ onSelectDelete, onSelectEdit, onSelectLearn }
     </Dropdown>
   )
 }
+
+SettingsDropdown.displayName = 'SettingsDropdown'

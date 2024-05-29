@@ -97,3 +97,5 @@ export function DecksList() {
     </div>
   )
 }
+
+DecksList.displayName = 'DecksList'

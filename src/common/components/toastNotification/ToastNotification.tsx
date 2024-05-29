@@ -22,3 +22,5 @@ export const ToastNotification = () => {
     />
   )
 }
+
+ToastNotification.displayName = 'ToastNotification'

@@ -76,3 +76,5 @@ export const FormForgotPassword = ({ className, onSubmit }: Props) => {
     </Card>
   )
 }
+
+FormForgotPassword.displayName = 'FormForgotPassword'

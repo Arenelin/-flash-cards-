@@ -37,3 +37,5 @@ export const PageSignIn = () => {
 
   return <FormSignIn onSubmit={onSubmitSignIn} />
 }
+
+PageSignIn.displayName = 'PageSignIn'

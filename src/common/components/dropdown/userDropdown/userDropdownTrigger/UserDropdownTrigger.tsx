@@ -17,3 +17,5 @@ export const UserDropdownTrigger = ({ name, src }: Props) => {
     </div>
   )
 }
+
+UserDropdownTrigger.displayName = 'UserDropdownTrigger'

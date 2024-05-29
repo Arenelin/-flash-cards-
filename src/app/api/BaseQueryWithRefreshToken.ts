@@ -1,6 +1,6 @@
+import { router } from '@/app/Router'
 import { path } from '@/common/enums'
 import { SignInResponse } from '@/common/types'
-import { router } from '@/router/Router'
 import { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Mutex } from 'async-mutex'

@@ -5,3 +5,5 @@ import s from './dropdownSeparator.module.scss'
 export const DropdownSeparator = () => {
   return <DropdownMenu.Separator className={s.DropdownMenuSeparator} />
 }
+
+DropdownSeparator.displayName = 'DropdownSeparator'

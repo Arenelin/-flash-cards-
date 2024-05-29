@@ -39,3 +39,5 @@ export const ModalDelete = forwardRef<ElementRef<typeof DialogPrimitive.Content>
     )
   }
 )
+
+ModalDelete.displayName = 'ModalDelete'

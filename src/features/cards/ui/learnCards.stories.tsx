@@ -52,3 +52,22 @@ export const LearnCardsDemo = {
     onSubmit,
   },
 } satisfies Story
+
+const emptyDeckData: Omit<Deck, 'author'> = {
+  cardsCount: 0,
+  cover: '',
+  created: '',
+  id: '',
+  isPrivate: false,
+  name: 'Test Deck',
+  updated: '',
+  userId: '',
+}
+
+export const LearnCardsEmpty = {
+  args: {
+    cardData,
+    deckData: emptyDeckData,
+    onSubmit,
+  },
+} satisfies Story

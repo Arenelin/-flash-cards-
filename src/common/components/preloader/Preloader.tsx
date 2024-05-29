@@ -16,3 +16,5 @@ const setting = {
 export const Preloader = ({ style }: PreloaderPropsType) => {
   return <img alt={'LOADING...'} src={preloader} style={{ ...setting, ...style }} />
 }
+
+Preloader.displayName = 'Preloader'

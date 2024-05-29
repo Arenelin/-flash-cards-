@@ -3,29 +3,34 @@
 }
 
 .label {
-  width: 100%;
   display: flex;
-  align-items: center;
   gap: 12px;
+  align-items: center;
   justify-content: center;
+
+  width: 100%;
 }
 
 .img {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  max-height: 160px;
+
   object-fit: cover;
   object-position: 50% 50%;
-  max-height: 160px;
-  max-width: 480px;
-  width: 100%;
-  height: 100%;
 }
 
 .container {
   display: grid;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
 }
+
 .containerButton {
   display: flex;
-  justify-content: space-between;
   gap: 24px;
+  justify-content: space-between;
+  width: 100%;
 }

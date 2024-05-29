@@ -4,10 +4,10 @@ import {
   RouteObject,
   RouterProvider,
   createBrowserRouter,
+  useOutletContext,
 } from 'react-router-dom'
 
 import { path } from '@/common/enums'
-import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { PageForgotPassword } from '@/features/auth/forgotPassword/PagesForgotPassword'
 import { PageNewPassword } from '@/features/auth/newPasswordForm/PageNewPassword'
 import { Profile } from '@/features/auth/profile/Profile'
@@ -21,8 +21,8 @@ import { Layout } from '@/features/layout/Layout'
 
 const publicRoutes: RouteObject[] = [
   {
-    element: <Navigate to={path.decks} />,
-    path: path.base,
+    element: <PageNewPassword />,
+    path: `${path.newPassword}/:token`,
   },
   {
     element: <PageSignIn />,
@@ -37,17 +37,16 @@ const publicRoutes: RouteObject[] = [
     path: path.signUp,
   },
   {
-    element: <PageNewPassword />,
-    path: path.newPassword,
-  },
-
-  {
     element: <Error />,
     path: '*',
   },
 ]
 
 const privateRoutes: RouteObject[] = [
+  {
+    element: <Navigate to={path.decks} />,
+    path: path.base,
+  },
   {
     element: <DecksList />,
     path: path.decks,
@@ -67,9 +66,10 @@ const privateRoutes: RouteObject[] = [
 ]
 
 const PrivateRouter = () => {
-  const { data } = useGetMeQuery()
+  debugger
+  const { isAuth } = useOutletContext<{ isAuth: boolean }>()
 
-  return data?.id ? <Outlet /> : <Navigate to={path.signIn} />
+  return isAuth ? <Outlet /> : <Navigate to={path.base} />
 }
 
 export const router = createBrowserRouter([

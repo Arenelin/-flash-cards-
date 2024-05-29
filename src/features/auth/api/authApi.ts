@@ -22,9 +22,10 @@ export const authApi = appApi.injectEndpoints({
         }),
       }),
 
-      forgotPassword: builder.query<undefined, ForgotPasswordArgs>({
+      forgotPassword: builder.mutation<undefined, ForgotPasswordArgs>({
+        // invalidatesTags: ['Me'],
         query: body => ({
-          body: body,
+          body,
           method: 'POST',
           url: 'v1/auth/recover-password',
         }),
@@ -111,7 +112,7 @@ export const authApi = appApi.injectEndpoints({
 
 export const {
   useAuthTokenMutation,
-  useForgotPasswordQuery,
+  useForgotPasswordMutation,
   useGetMeQuery,
   useLogOutMutation,
   useResetPasswordTokenMutation,

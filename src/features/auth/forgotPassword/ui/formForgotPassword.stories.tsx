@@ -1,4 +1,4 @@
-import { ForgotPassword, FormForgotPassword } from '@/features/auth'
+import { FormForgotPassword } from '@/features/auth'
 import { Meta, StoryObj } from '@storybook/react'
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router'
 
@@ -16,8 +16,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof FormForgotPassword>
 
-const onSubmit = (data: ForgotPassword) => {
-  alert(`получен email, на который надо послать инструкции по смене пароля:     ${data.email}`)
+const onSubmit = (email: string) => {
+  alert(`получен email, на который надо послать инструкции по смене пароля:     ${email}`)
 }
 
 export const FormForgotPasswordDefault = {

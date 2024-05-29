@@ -15,7 +15,7 @@ import s from './formForgotPassword.module.scss'
 
 type Props = {
   className?: string
-  onSubmit: (data: ForgotPassword) => void
+  onSubmit: (email: string) => void
 }
 
 const schema = z.object({ email: emailSchema })
@@ -27,7 +27,7 @@ export const FormForgotPassword = ({ className, onSubmit }: Props) => {
   const [email, setEmail] = useState('')
 
   const stepOneHandler = (data: ForgotPassword) => {
-    onSubmit(data)
+    onSubmit(data.email)
     setEmail(data.email)
     setStepOne(false)
   }

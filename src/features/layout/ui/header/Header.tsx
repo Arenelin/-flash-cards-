@@ -1,5 +1,3 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
-
 import { router } from '@/app/Router'
 import logo from '@/assets/logo.png'
 import { Button, Typography } from '@/common/components'
@@ -9,23 +7,23 @@ import classNames from 'classnames'
 
 import s from '@/features/layout/ui/header/header.module.scss'
 
-type HeaderProps = {
+export type HeaderProps = {
   avatar?: string
   email?: string
-  isAuthorization: boolean
+  isAuth: boolean
   logOut: () => void
   name?: string
-} & ComponentPropsWithoutRef<'header'>
-export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref) => {
-  const { avatar, className, email, isAuthorization, logOut, name, ...rest } = props
+}
+export const Header = (props: HeaderProps) => {
+  const { avatar, email, isAuth, logOut, name, ...rest } = props
 
   const selectProfile = () => {
     router.navigate(path.profile)
   }
 
   return (
-    <header className={classNames(s.container, className)} {...rest} ref={ref}>
-      <Typography as={'a'} href={path.decks}>
+    <header className={classNames(s.container)} {...rest}>
+      <Typography as={'a'} href={path.base}>
         <img alt={'logo'} className={s.img} height={'36px'} src={logo} width={'160px'} />
       </Typography>
 
@@ -33,7 +31,7 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
         <i>Educational Project</i>
       </Typography>
 
-      {isAuthorization ? (
+      {isAuth ? (
         <UserDropdown
           email={email}
           img={avatar}
@@ -48,6 +46,6 @@ export const Header = forwardRef<ElementRef<'header'>, HeaderProps>((props, ref)
       )}
     </header>
   )
-})
+}
 
 Header.displayName = 'Header'

@@ -6,6 +6,7 @@ import CloseOutline from '@/assets/icons/CloseOutline'
 import { Button, Input, InputType, Pagination, Typography } from '@/common/components'
 import { SettingsDropdown } from '@/common/components/dropdown/settingsDropdown/SettingsDropdown'
 import { Preloader } from '@/common/components/preloader/Preloader'
+import { columnsCards } from '@/common/consts'
 import { path } from '@/common/enums'
 import { CardUpdateArgs, ErrorResponse, ErrorResponseCard } from '@/common/types'
 import { useCreateCardId } from '@/features/cards/lib/useCreateCardId'
@@ -28,9 +29,9 @@ export const DeckById = () => {
     isLoadingDeck,
     isMy,
     onClearClick,
-    onSortHandler,
     searchChangeHandle,
     searchParams,
+    setSort,
     sort,
   } = useCardsList()
 
@@ -148,10 +149,11 @@ export const DeckById = () => {
             </div>
             <TableCardsList
               cards={cards?.items}
+              columnsCards={columnsCards}
               isMy={isMy}
               onDelete={onDelete}
               onEdit={onEdit}
-              onSort={onSortHandler}
+              onSort={setSort}
               sort={sort}
             />
             {contentSearch && (

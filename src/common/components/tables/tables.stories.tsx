@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { ButtonSort, Grade, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
-import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
+import { useState } from 'react'
+
+import { Grade, HeaderSort, Table, Tbody, Td, Tools, Tr } from '@/common/components'
+import { GradeScale, Sort } from '@/common/types'
 import { withRouter } from 'storybook-addon-remix-react-router'
 
 const meta = {
@@ -25,67 +27,90 @@ const testEdit = (id: string) => {
   alert(`id: ${id} Edit`)
 }
 
+const columns = [
+  {
+    key: 'name',
+    sortable: true,
+    title: 'Name',
+  },
+  {
+    key: 'cardsCount',
+    sortable: true,
+    title: 'Cards',
+  },
+  {
+    key: 'updated',
+    sortable: true,
+    title: 'Last Updated',
+  },
+  {
+    key: 'createdBy',
+    sortable: true,
+    title: 'Created by',
+  },
+  {
+    key: '',
+    sortable: false,
+    title: 'Grade',
+  },
+  {
+    key: '',
+    sortable: false,
+    title: '',
+  },
+]
+const data = [
+  {
+    cardsCount: 25,
+    created: '12.12.2023',
+    grade: 1,
+    id: '896a4f1f-bb5b-4ba4-8fb3-39b6cf6a7b5c',
+    name: 'JS',
+    updated: '01.01.2024',
+  },
+  {
+    cardsCount: 53,
+    created: '15.05.2022',
+    grade: 5,
+    id: '896a4f1f-bb5b-4ba4-8fb3-39b6cf6a7b5c',
+    name: 'React',
+    updated: '12.12.2023',
+  },
+  {
+    cardsCount: 15,
+    created: '10.12.2021',
+    grade: 4,
+    id: '896a4f1f-bb5b-4ba4-8fb3-39b6cf6a7b5c',
+    name: 'Redux',
+    updated: '15.12.2021',
+  },
+]
+
 export const Tables = {
   render: () => {
-    const { onSort, sort } = useStoryButtonSort()
+    const [sort, setSort] = useState<Sort>(null)
 
     return (
       <div>
         <Table>
-          <Thead>
-            <Tr>
-              <Th>Name</Th>
-              <Th>Cards</Th>
-              <Th>
-                <ButtonSort onSort={onSort} sort={sort} text={'Last Updated'} />
-              </Th>
-              <Th>Created by</Th>
-              <Th>Grade</Th>
-              <Th></Th>
-            </Tr>
-          </Thead>
+          <HeaderSort columns={columns} onSort={setSort} sort={sort} />
           <Tbody>
-            <Tr>
-              <Td>Name Cards</Td>
-              <Td>4</Td>
-              <Td>18.06.1967</Td>
-              <Td>3</Td>
-              <Td>
-                <Grade currentGrade={2} />{' '}
-              </Td>
-              <Td>
-                <Tools canUseTool id={'scdfghjhgfds'} onDelete={testDelete} onEdit={testEdit} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Name Cards</Td>
-              <Td>4</Td>
-              <Td>18.06.1967</Td>
-              <Td>3</Td>
-              <Td>
-                <Grade currentGrade={4} />
-              </Td>
-              <Td>
-                <Tools
-                  canUseTool={false}
-                  id={'asxcdfvbghnjmk'}
-                  onDelete={testDelete}
-                  onEdit={testEdit}
-                />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Name Cards</Td>
-              <Td>4</Td>
-              <Td>18.06.1967</Td>
-              <Td>3</Td>
-              <Td>
-                <Grade currentGrade={1} />
-              </Td>
-              <Td>
-                <Tools canUseTool id={'axscdvfcgvhbjn'} onDelete={testDelete} onEdit={testEdit} />
-              </Td>
-            </Tr>
+            {data.map(element => {
+              return (
+                <Tr key={element.id}>
+                  <Td>{element.name}</Td>
+                  <Td>{element.cardsCount}</Td>
+                  <Td>{element.updated}</Td>
+                  <Td>{element.created}</Td>
+                  <Td>
+                    <Grade currentGrade={element.grade as GradeScale} />
+                  </Td>
+                  <Td>
+                    <Tools canUseTool id={element.id} onDelete={testDelete} onEdit={testEdit} />
+                  </Td>
+                </Tr>
+              )
+            })}
           </Tbody>
         </Table>
       </div>

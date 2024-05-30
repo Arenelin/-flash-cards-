@@ -16,7 +16,6 @@ export const Dropdown = forwardRef<ElementRef<typeof DropdownMenu.Root>, Props>(
       <DropdownMenu.Trigger className={s.trigger} ref={ref}>
         {trigger}
       </DropdownMenu.Trigger>
-
       <DropdownMenu.Portal>
         <DropdownMenu.Content className={s.DropdownMenuContent}>{children}</DropdownMenu.Content>
       </DropdownMenu.Portal>

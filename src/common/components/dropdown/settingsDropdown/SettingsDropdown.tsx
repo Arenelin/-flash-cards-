@@ -1,32 +1,36 @@
+import { Link } from 'react-router-dom'
+
 import { Edit2Outline, MoreVerticalOutline, PlayCircleOutline, TrashOutline } from '@/assets/icons'
 import { Dropdown } from '@/common/components'
 import { DropdownItem } from '@/common/components/dropdown/dropdownItem/DropdownItem'
 import { DefaultDescription } from '@/common/components/dropdown/dropdownItem/defaultDescription/DefaultDescription'
 import { DropdownSeparator } from '@/common/components/dropdown/dropdownSeparator/DropdownSeparator'
 
+import s from './settingsDropdown.module.scss'
 type Props = {
+  link: string
   onSelectDelete?: () => void
   onSelectEdit?: () => void
-  onSelectLearn?: () => void
 }
-export const SettingsDropdown = ({ onSelectDelete, onSelectEdit, onSelectLearn }: Props) => {
+export const SettingsDropdown = ({ link, onSelectDelete, onSelectEdit }: Props) => {
   return (
-    <Dropdown trigger={<MoreVerticalOutline />}>
-      <DropdownItem onSelect={onSelectLearn}>
-        <PlayCircleOutline />
-        <DefaultDescription text={'Learn'} />
+    <Dropdown trigger={<MoreVerticalOutline className={s.iconMenu} />}>
+      <DropdownItem asChild>
+        <Link to={link}>
+          <PlayCircleOutline className={s.icon} />
+          <DefaultDescription className={s.description} text={'Learn'} />
+        </Link>
       </DropdownItem>
-
       <DropdownSeparator />
       <DropdownItem onSelect={onSelectEdit}>
         <Edit2Outline />
-        <DefaultDescription text={'Edit'} />
+        <DefaultDescription className={s.description} text={'Edit'} />
       </DropdownItem>
 
       <DropdownSeparator />
       <DropdownItem onSelect={onSelectDelete}>
         <TrashOutline />
-        <DefaultDescription text={'Delete'} />
+        <DefaultDescription className={s.description} text={'Delete'} />
       </DropdownItem>
     </Dropdown>
   )

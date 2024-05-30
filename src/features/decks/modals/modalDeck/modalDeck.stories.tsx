@@ -17,11 +17,11 @@ export const ModalEditDeck = {
     defaultValues: {
       cover:
         'https://staging-it-incubator.s3.eu-central-1.amazonaws.com/flashcards/Image/d0f80403-d36f-440d-a30d-795f69386a9d_Screenshot 2023-07-27 112732.png',
+      isPrivate: true,
       name: 'Alina',
-      private: true,
     },
     onSubmit: data => {
-      alert(`${data.name} ${data.private} ${data.cover}: data `)
+      alert(`${data.name} ${data.isPrivate} ${data.cover}: data `)
     },
     title: 'Edit Deck',
   },
@@ -47,7 +47,7 @@ export const ModalEditDeck = {
 export const ModalNewDeck = {
   args: {
     onSubmit: data => {
-      alert(`${data.name} ${data.private} ${data.cover}: data `)
+      alert(`${data.name} ${data.isPrivate} ${data.cover}: data `)
     },
     title: 'Add New Deck',
   },

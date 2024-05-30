@@ -45,6 +45,6 @@ export const WithUserDataWithoutAvatar = {
 
 export const WithSettings = {
   render: () => {
-    return <SettingsDropdown />
+    return <SettingsDropdown link={'#'} />
   },
 } satisfies Story

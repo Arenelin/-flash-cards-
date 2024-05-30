@@ -5,6 +5,7 @@ import defaultDeckImage from '@/assets/defaultDeckImage.jpeg'
 import { Button, InputType, Modal } from '@/common/components'
 import { ControlledCheckbox, ControlledInput } from '@/common/components/controlled'
 import { ControlledInputFile } from '@/common/components/controlled/controlledInputFile/ControlledInputFile'
+import { CreateDecksArgs } from '@/common/types'
 import { schemaFile, text } from '@/common/utils/zodSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
@@ -12,16 +13,10 @@ import { z } from 'zod'
 
 import s from './modalDeck.module.scss'
 
-type EditData = {
-  cover: null | string | undefined
-  name: string
-  private: boolean
-}
-
 type DataKey = keyof EditDeck
 
 type ModalProps = {
-  defaultValues?: EditData
+  defaultValues?: CreateDecksArgs
   onOpenChange: (open: boolean) => void
   onSubmit: (data: EditDeck) => void
   open: boolean
@@ -30,8 +25,8 @@ type ModalProps = {
 
 const newDeckSchema = z.object({
   cover: z.union([schemaFile, z.string(), z.null()]).optional(),
-  name: text.optional(),
-  private: z.boolean().optional(),
+  isPrivate: z.boolean().optional(),
+  name: text,
 })
 
 export type EditDeck = z.infer<typeof newDeckSchema>
@@ -63,7 +58,7 @@ export const ModalDeck = forwardRef<ElementRef<typeof DialogPrimitive.Content>, 
 
         for (const key in defaultValues) {
           if (defaultValues[key as DataKey] === currentValues[key as DataKey]) {
-            data[key as DataKey] = undefined
+            delete data[key as DataKey]
           }
         }
       }
@@ -89,7 +84,7 @@ export const ModalDeck = forwardRef<ElementRef<typeof DialogPrimitive.Content>, 
             defaultDeckImage={defaultDeckImage}
             name={'cover'}
           />
-          <ControlledCheckbox control={control} label={'Private pack'} name={'private'} />
+          <ControlledCheckbox control={control} label={'Private pack'} name={'isPrivate'} />
           <div className={s.containerButton}>
             <Button onClick={onOpenChangeHandler} type={'button'} variant={'secondary'}>
               Cancel

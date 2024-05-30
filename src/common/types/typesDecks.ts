@@ -4,12 +4,11 @@ export type Author = {
   id: string
   name: string
 }
-//Todo Cover возможно поправить File | null  или string | null
 
 export type Deck = {
   author: Author
   cardsCount: number
-  cover: string
+  cover: null | string
   created: string
   id: string
   isPrivate: boolean
@@ -42,11 +41,12 @@ export type GetDeckById = {
 }
 
 export type CreateDecksArgs = {
-  cover?: string
+  cover?: File | null | string
   isPrivate?: boolean
   name: string
 }
 export type UpdateDecksArgs = { id: string } & Partial<CreateDecksArgs>
+
 export type DeleteDecksArgs = { id: string }
 
 export type GetDeckCards = {

@@ -5,14 +5,14 @@ import { Table, TablesHeaderSort, Tbody, Td, Tools, Tr } from '@/common/componen
 import { ContainerImageText } from '@/common/components/tables/ui/containerImgText/ContainerImageText'
 import { columnsDecks } from '@/common/consts'
 import { path } from '@/common/enums'
-import { Column, Deck, Sort } from '@/common/types'
+import { Column, CreateDecksArgs, Deck, Sort } from '@/common/types'
 
 type Props = {
   columnsDecks: Column[]
   currentUserId?: string
   decks?: Deck[]
-  onDelete?: (idDeck: string) => void
-  onEdit?: (idDeck: string) => void
+  onDelete?: (idDeck: string, name: string) => void
+  onEdit?: (id: string, args: CreateDecksArgs) => void
   onSort: (sort: Sort) => void
   sort: Sort
 }
@@ -21,15 +21,15 @@ type TableDecksListProps = Omit<ComponentPropsWithoutRef<'table'>, keyof Props> 
 export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProps>((props, ref) => {
   const { currentUserId, decks, onDelete, onEdit, onSort, sort, ...rest } = props
 
-  const onDeleteHandler = (id: string) => {
+  const onDeleteHandler = (id: string, name: string) => {
     if (onDelete) {
-      onDelete(id)
+      onDelete(id, name)
     }
   }
 
-  const onEditHandler = (id: string) => {
+  const onEditHandler = (id: string, args: CreateDecksArgs) => {
     if (onEdit) {
-      onEdit(id)
+      onEdit(id, args)
     }
   }
   const getDateString = (date: Date | string, locales: string = 'ru-RU') => {
@@ -58,8 +58,14 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
                 <Tools
                   canUseTool={currentUserId === deck?.userId}
                   id={deck?.id}
-                  onDelete={onDeleteHandler}
-                  onEdit={onEditHandler}
+                  onDelete={(id: string) => onDeleteHandler(id, deck?.name)}
+                  onEdit={(deckId: string) =>
+                    onEditHandler(deckId, {
+                      cover: deck.cover,
+                      isPrivate: deck.isPrivate,
+                      name: deck.name,
+                    })
+                  }
                 />
               </Td>
             </Tr>

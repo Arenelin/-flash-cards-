@@ -1,36 +1,34 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
-import { ErrorResponseCard } from '@/common/types'
+import { ErrorResponseField } from '@/common/types'
 import { useDeleteCardMutation } from '@/features/cards/api/cardsApi'
 
 export const useDeleteCardId = () => {
-  const [dataTableDelete, setDataTableDelete] = useState<{ id: string; title: string }>()
-  const [deleteModal, setDeleteModal] = useState<boolean>(false)
+  const [dataDeleteCard, setDataDeleteCard] = useState<{ id: string; title: string }>()
+  const [deleteModalCard, setDeleteModalCard] = useState<boolean>(false)
 
   const [deleteCard, { isLoading: isLoadingError }] = useDeleteCardMutation()
 
-  const requestDeletion = async () => {
-    if (dataTableDelete?.id) {
-      try {
-        await deleteCard({ id: dataTableDelete?.id }).unwrap()
-        toast.success('Card Delete')
-      } catch (e) {
-        const error = e as ErrorResponseCard
+  const requestDeleteCard = async (id: string) => {
+    try {
+      await deleteCard({ id }).unwrap()
+      toast.success('Card Delete')
+    } catch (e) {
+      const error = e as ErrorResponseField
 
-        toast.error(error.data.message ?? 'Delete Card failed')
-      } finally {
-        setDeleteModal(false)
-      }
+      toast.error(error.data.message ?? 'Delete Card failed')
+    } finally {
+      setDeleteModalCard(false)
     }
   }
 
   return {
-    dataTableDelete,
-    deleteModal,
+    dataDeleteCard,
+    deleteModalCard,
     isLoadingError,
-    requestDeletion,
-    setDataTableDelete,
-    setDeleteModal,
+    requestDeleteCard,
+    setDataDeleteCard,
+    setDeleteModalCard,
   }
 }

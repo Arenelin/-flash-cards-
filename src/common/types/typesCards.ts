@@ -38,14 +38,14 @@ export type NextCard = {
   grade: number
 }
 
-type ErrorData = {
+export type ErrorsField = {
   message: string
   path: string
   statusCode: number
   timestamp: string
 }
 
-export type ErrorResponseCard = {
-  data: ErrorData
+export type ErrorResponseField = {
+  data: ErrorsField
   status: number
 }

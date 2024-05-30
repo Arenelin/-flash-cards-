@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 
 import { Search, TrashOutline } from '@/assets/icons'
@@ -5,6 +6,12 @@ import { Button, Input, InputType, Pagination, Slider, Tabs, Typography } from '
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { columnsDecks } from '@/common/consts'
 import { path } from '@/common/enums'
+import { CreateDecksArgs } from '@/common/types'
+import { useCreateDeckId } from '@/features/decks/deckById/lib/useCreateDeckId'
+import { useDeleteDeckId } from '@/features/decks/deckById/lib/useDeleteDeckId'
+import { useUpdateDeckId } from '@/features/decks/deckById/lib/useUpdateDeckId'
+import { ModalDeck } from '@/features/decks/modals/modalDeck/ModalDeck'
+import { ModalDelete } from '@/features/decks/modals/modalDelete/ModalDelete'
 
 import s from './decks.module.scss'
 
@@ -12,6 +19,8 @@ import { useDecksList } from './lib/useDecksList'
 import { TableDecksList } from './ui/TableDecksList'
 
 export function DecksList() {
+  const [deckUpdate, setDeckUpdate] = useState<CreateDecksArgs>()
+  const [deckId, setDeckId] = useState<string | undefined>(undefined)
   const {
     clearFilterHandle,
     currentUserId,
@@ -30,9 +39,28 @@ export function DecksList() {
     tabsOptions,
   } = useDecksList()
 
+  const { requestUpdateDeck, setUpdateModalDeck, updateModalDeck } = useUpdateDeckId()
+  const { deleteModalDeck, requestDeleteDeck, setDeleteModalDeck } = useDeleteDeckId()
+  const { createModalDeck, requestCreateDeck, setCreateModalDeck } = useCreateDeckId()
+  const onDelete = (id: string, name: string) => {
+    setDeleteModalDeck(true)
+    setDeckId(id)
+    setDeckUpdate({ name: name })
+  }
+  const onEdit = (id: string, args: CreateDecksArgs) => {
+    setUpdateModalDeck(true)
+    setDeckUpdate(args)
+    setDeckId(id)
+  }
+
+  const onAddDeck = () => {
+    setCreateModalDeck(true)
+  }
+
   if (isErrorMe) {
     return <Navigate to={path.decks} />
   }
+
   if (decksIsLoading) {
     return (
       <div className={s.preloader}>
@@ -57,7 +85,7 @@ export function DecksList() {
         <Typography as={'h1'} variant={'h1'}>
           Decks list
         </Typography>
-        <Button>Add New Deck</Button>
+        <Button onClick={onAddDeck}>Add New Deck</Button>
       </div>
       <div className={s.settingsBlock}>
         <div>
@@ -99,12 +127,34 @@ export function DecksList() {
         columnsDecks={columnsDecks}
         currentUserId={currentUserId}
         decks={decksData?.items}
+        onDelete={onDelete}
+        onEdit={onEdit}
         onSort={setSort}
         sort={sort}
       />
       <div className={s.paginationSettings}>
         <Pagination totalCount={decksData?.pagination?.totalItems || 1} />
       </div>
+      <ModalDeck
+        onOpenChange={setCreateModalDeck}
+        onSubmit={requestCreateDeck}
+        open={createModalDeck}
+        title={'Create Deck'}
+      />
+      <ModalDeck
+        defaultValues={deckUpdate}
+        onOpenChange={setUpdateModalDeck}
+        onSubmit={args => deckId && requestUpdateDeck({ ...args, id: deckId })}
+        open={updateModalDeck}
+        title={'Edit Deck'}
+      />
+      <ModalDelete
+        onDelete={() => deckId && requestDeleteDeck(deckId)}
+        onOpenChange={setDeleteModalDeck}
+        open={deleteModalDeck}
+        text={`Do you really want to remove ${deckUpdate?.name}?\n` + 'All cards will be deleted.'}
+        title={'Delete Deck'}
+      />
     </div>
   )
 }

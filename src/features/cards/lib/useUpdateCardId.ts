@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
-import { CardUpdateBody, ErrorResponseCard } from '@/common/types'
+import { CardUpdateBody, ErrorResponseField } from '@/common/types'
 import { useUpdateCardMutation } from '@/features/cards/api/cardsApi'
 
 export const useUpdateCardId = () => {
@@ -14,7 +14,7 @@ export const useUpdateCardId = () => {
       await updateCard({ ...args, id: dataIdTable ?? '' }).unwrap()
       toast.success('Card Update')
     } catch (e) {
-      const error = e as ErrorResponseCard
+      const error = e as ErrorResponseField
 
       toast.error(error.data.message ?? 'Update Card failed')
     } finally {

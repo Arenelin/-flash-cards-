@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { path } from '@/common/enums'
-import { SignErrorResponse } from '@/common/types'
+import { LoginError } from '@/common/types'
 import { FormSignIn, SignIn } from '@/features/auth'
 import { useGetMeQuery, useSignInMutation } from '@/features/auth/api/authApi'
 
@@ -19,19 +19,13 @@ export const PageSignIn = () => {
     return <Preloader />
   }
 
-  if (isSuccess) {
-    navigate(path.decks)
-  }
-
   if (signInResult.error) {
-    const error = signInResult.error as SignErrorResponse
-    const Error = error.data?.errorMessages.reduce((acc, error) => {
-      return acc + String(error)
-    }, '')
-
-    toast.error(Error ?? 'You are not login')
+    toast.error((signInResult.error as LoginError).data.message ?? 'You are not login')
   }
   if (signInResult.isSuccess) {
+    navigate(path.decks)
+  }
+  if (isSuccess) {
     navigate(path.decks)
   }
 

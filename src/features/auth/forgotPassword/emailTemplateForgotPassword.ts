@@ -1,7 +1,7 @@
 // const appDeploy = `https://flash-cards-main.vercel.app/new-password/##token##`
 const appDeploy = `http://localhost:3000/new-password/##token##` //TODO change to vercel, when finish develop
 
-export const emailTemplate = `
+export const emailTemplateForgotPassword = `
 <!DOCTYPE html >
 <html lang="en">
 <head>
@@ -14,7 +14,7 @@ export const emailTemplate = `
   <table style="border-collapse:collapse;border-spacing:0;max-width:600px;width:100%;margin: 0 auto;">
     <tr>
       <td style="border-radius:25px;color:#ffffff;padding:20px;background-color:#bea6ff" >
-        <img style="float:left;margin-right:20px;border-radius:15px;width:95px:height:95px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7trqI1p3zximPfE3gm9QUio42NKBfa5xlQoLgCcTYSBH3ZO4x6S3K4-mf1BlZNrgz6Q&usqp=CAU" alt=''/>
+        <img style="float:left;margin-right:20px;border-radius:15px;width:95px;height:95px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7trqI1p3zximPfE3gm9QUio42NKBfa5xlQoLgCcTYSBH3ZO4x6S3K4-mf1BlZNrgz6Q&usqp=CAU" alt=''/>
         <p style='margin: 0'>
            <h2 style='margin: 0'>Hi, ##name##.</h2>
            Resetting your password is easy. Just press the button below and follow the instructions. We'll have you up and running in no time.

@@ -34,7 +34,7 @@ export type ForgotPasswordArgs = {
   html?: string
   subject?: string
 }
-export type ResetPasswordTokenArgs = {
+export type ResetPasswordArgs = {
   password: string
   token: string
 }
@@ -51,4 +51,17 @@ export type DataSignUp = {
 export type SignErrorResponse = {
   data: DataSignUp
   status: number
+}
+
+export type LoginError = {
+  data: MeError
+  status: number
+}
+export type NewPasswordError = {
+  data?: {
+    message: string
+    statusCode: number
+  }
+  error?: string
+  status: number | string
 }

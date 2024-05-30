@@ -21,32 +21,32 @@ import { Layout } from '@/features/layout/Layout'
 
 export const publicRoutes: RouteObject[] = [
   {
-    element: <PageNewPassword />,
-    path: `${path.newPassword}/:token`,
+    element: <Navigate to={path.signIn} />,
+    path: path.base,
   },
   {
     element: <PageSignIn />,
     path: path.signIn,
   },
   {
-    element: <PageForgotPassword />,
-    path: path.forgotPassword,
-  },
-  {
     element: <PageSignUp />,
     path: path.signUp,
   },
   {
-    element: <Error />,
-    path: '*',
+    element: <PageForgotPassword />,
+    path: path.forgotPassword,
   },
+  {
+    element: <PageNewPassword />,
+    path: `${path.newPassword}/:token`,
+  },
+  // {
+  //   element: ,
+  //   path: '*',
+  // },
 ]
 
 export const privateRoutes: RouteObject[] = [
-  {
-    element: <Navigate to={path.decks} />,
-    path: path.base,
-  },
   {
     element: <DecksList />,
     path: path.decks,
@@ -82,6 +82,7 @@ export const router = createBrowserRouter([
       ...publicRoutes,
     ],
     element: <Layout />,
+    errorElement: <Error />,
     path: path.base,
   },
 ])

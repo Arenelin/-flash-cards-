@@ -1,9 +1,9 @@
 import { ElementRef, forwardRef, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import { ArrowArrowBack } from '@/assets/icons'
 import { Button, Card, RadioGroup, Typography } from '@/common/components'
-import { path } from '@/common/enums'
+import { dynamicPathDeckById } from '@/common/enums'
 import { Card as CardItem, Deck, GradeScale, Option } from '@/common/types'
 
 import s from '@/features/cards/ui/learnCards.module.scss'
@@ -35,8 +35,8 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
   if (!deckData?.cardsCount) {
     return (
       <div className={s.main}>
-        <Typography as={NavLink} className={s.back} to={path.decks}>
-          <ArrowArrowBack /> Back to Decks List
+        <Typography as={NavLink} className={s.back} to={dynamicPathDeckById(deckData?.id || '')}>
+          <ArrowArrowBack /> Back to Deck List
         </Typography>
         <Typography as={'p'} className={s.empty} variant={'body1'}>
           <b>Cards list is empty</b>
@@ -47,8 +47,8 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
 
   return (
     <div className={s.main}>
-      <Typography as={NavLink} className={s.back} to={path.decks}>
-        <ArrowArrowBack /> Back to Decks List
+      <Typography as={Link} className={s.back} to={dynamicPathDeckById(deckData?.id || '')}>
+        <ArrowArrowBack /> Back to Deck List
       </Typography>
       <Card className={s.container} ref={ref}>
         <Typography as={'h1'} variant={'h1'}>

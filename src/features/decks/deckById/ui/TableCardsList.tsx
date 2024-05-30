@@ -1,23 +1,23 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { ButtonSort, Grade, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
+import { Grade, Table, TablesHeaderSort, Tbody, Td, Tools, Tr } from '@/common/components'
 import { ContainerImageText } from '@/common/components/tables/ui/containerImgText/ContainerImageText'
-import { Card, GradeScale } from '@/common/types'
+import { Card, CardById, Column, GradeScale, Sort } from '@/common/types'
 
-export type CardById = Pick<Card, 'answer' | 'answerImg' | 'id' | 'question' | 'questionImg'>
 type Props = {
   cards?: Card[]
+  columnsCards: Column[]
   isMy: boolean
   onDelete?: (idCard: string, question: string) => void
   onEdit?: (args: CardById) => void
-  onSort: (sort: 'asc' | 'desc', text: string) => void
-  sort: 'asc' | 'desc'
+  onSort: (sort: Sort) => void
+  sort: Sort
 }
 
 type TableDecksListProps = ComponentPropsWithoutRef<'table'> & Props
 export const TableCardsList = forwardRef<ElementRef<'table'>, TableDecksListProps>((props, ref) => {
-  const { cards, isMy, onDelete, onEdit, onSort, sort, ...rest } = props
-
+  const { cards, columnsCards, isMy, onDelete, onEdit, onSort, sort, ...rest } = props
+  const columns = columnsCards.filter(column => (isMy ? column : column.key !== 'tools'))
   const onDeleteHandler = (id: string, question: string) => {
     if (onDelete) {
       onDelete(id, question)
@@ -34,17 +34,7 @@ export const TableCardsList = forwardRef<ElementRef<'table'>, TableDecksListProp
 
   return (
     <Table {...rest} ref={ref}>
-      <Thead>
-        <Tr>
-          <Th>Question</Th>
-          <Th>Answer</Th>
-          <Th>
-            <ButtonSort onSort={onSort} sort={sort} text={'Last Updated'} />
-          </Th>
-          <Th>Grade</Th>
-          {isMy && <Th></Th>}
-        </Tr>
-      </Thead>
+      <TablesHeaderSort columns={columns} onSort={onSort} sort={sort} />
       <Tbody>
         {cards?.map(card => {
           return (

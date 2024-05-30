@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
-import { Card } from '@/common/types'
-import { CardById, TableCardsList } from '@/features/decks/deckById/ui/TableCardsList'
+import { useState } from 'react'
+
+import { columnsCards } from '@/common/consts'
+import { Card, CardById, Sort } from '@/common/types'
+import { TableCardsList } from '@/features/decks/deckById/ui/TableCardsList'
 
 const meta = {
   component: TableCardsList,
@@ -76,16 +78,17 @@ const cards: Card[] = [
 
 export const Table_Cards_List_My = {
   render() {
-    const { onSort, sort } = useStoryButtonSort()
+    const [sort, setSort] = useState<Sort>(null)
 
     return (
       <div>
         <TableCardsList
           cards={cards}
+          columnsCards={columnsCards}
           isMy
           onDelete={testDelete}
           onEdit={testEdit}
-          onSort={onSort}
+          onSort={setSort}
           sort={sort}
         />
       </div>
@@ -95,16 +98,17 @@ export const Table_Cards_List_My = {
 
 export const Table_Cards_List = {
   render() {
-    const { onSort, sort } = useStoryButtonSort()
+    const [sort, setSort] = useState<Sort>(null)
 
     return (
       <div>
         <TableCardsList
           cards={cards}
+          columnsCards={columnsCards}
           isMy={false}
           onDelete={testDelete}
           onEdit={testEdit}
-          onSort={onSort}
+          onSort={setSort}
           sort={sort}
         />
       </div>

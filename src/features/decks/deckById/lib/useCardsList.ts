@@ -45,11 +45,16 @@ export const useCardsList = () => {
   }
   const sortedString = useMemo(() => {
     if (!sort) {
+      searchParams.delete(`orderBy`)
+      setSearchParams(searchParams)
+
       return null
     }
+    searchParams.set(`orderBy`, `${sort.key}-${sort.direction}`)
+    setSearchParams(searchParams)
 
     return `${sort.key}-${sort.direction}`
-  }, [sort])
+  }, [searchParams, setSearchParams, sort])
 
   const {
     data: cardsData,

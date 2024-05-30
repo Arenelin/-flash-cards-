@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { Grade, HeaderSort, Table, Tbody, Td, Tools, Tr } from '@/common/components'
+import { Grade, Table, TablesHeaderSort, Tbody, Td, Tools, Tr } from '@/common/components'
 import { GradeScale, Sort } from '@/common/types'
 import { withRouter } from 'storybook-addon-remix-react-router'
 
@@ -93,7 +93,7 @@ export const Tables = {
     return (
       <div>
         <Table>
-          <HeaderSort columns={columns} onSort={setSort} sort={sort} />
+          <TablesHeaderSort columns={columns} onSort={setSort} sort={sort} />
           <Tbody>
             {data.map(element => {
               return (

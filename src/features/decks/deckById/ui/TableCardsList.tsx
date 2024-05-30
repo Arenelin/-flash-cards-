@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { Grade, HeaderSort, Table, Tbody, Td, Tools, Tr } from '@/common/components'
+import { Grade, Table, TablesHeaderSort, Tbody, Td, Tools, Tr } from '@/common/components'
 import { ContainerImageText } from '@/common/components/tables/ui/containerImgText/ContainerImageText'
 import { Card, CardById, Column, GradeScale, Sort } from '@/common/types'
 
@@ -34,7 +34,7 @@ export const TableCardsList = forwardRef<ElementRef<'table'>, TableDecksListProp
 
   return (
     <Table {...rest} ref={ref}>
-      <HeaderSort columns={columns} onSort={onSort} sort={sort} />
+      <TablesHeaderSort columns={columns} onSort={onSort} sort={sort} />
       <Tbody>
         {cards?.map(card => {
           return (

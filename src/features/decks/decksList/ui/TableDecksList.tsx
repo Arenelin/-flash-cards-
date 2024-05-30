@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import defaultDeckImage from '@/assets/defaultDeckImage.jpeg'
-import { HeaderSort, Table, Tbody, Td, Tools, Tr } from '@/common/components'
+import { Table, TablesHeaderSort, Tbody, Td, Tools, Tr } from '@/common/components'
 import { ContainerImageText } from '@/common/components/tables/ui/containerImgText/ContainerImageText'
 import { columnsDecks } from '@/common/consts'
 import { path } from '@/common/enums'
@@ -38,7 +38,7 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
 
   return (
     <Table {...rest} ref={ref}>
-      <HeaderSort columns={columnsDecks} onSort={onSort} sort={sort} />
+      <TablesHeaderSort columns={columnsDecks} onSort={onSort} sort={sort} />
       <Tbody>
         {decks?.map((deck: Deck) => {
           return (

@@ -4,7 +4,7 @@ import { ArrowDown, ArrowUp } from '@/assets/icons'
 import { Th, Thead, Tr } from '@/common/components'
 import { Column, Sort } from '@/common/types'
 
-import s from './headerSort.module.scss'
+import s from './tablesHeaderSort.module.scss'
 
 export type Props = {
   columns: Column[]
@@ -12,7 +12,7 @@ export type Props = {
   sort?: Sort
 } & ComponentPropsWithoutRef<'thead'>
 type HeaderSortProps = Omit<Props, 'children'>
-export const HeaderSort = ({ columns, onSort, sort, ...rest }: HeaderSortProps) => {
+export const TablesHeaderSort = ({ columns, onSort, sort, ...rest }: HeaderSortProps) => {
   const handleSort = (key: string, sortable?: boolean) => () => {
     if (!onSort || !sortable) {
       return

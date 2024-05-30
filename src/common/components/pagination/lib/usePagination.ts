@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import { PaginationProps } from '@/common/components'
@@ -19,7 +19,18 @@ const range = (start: number, end: number) => {
 export const usePagination = ({ siblingCount = 1, totalCount = 0 }: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams()
   const itemsPerPage = searchParams.get('itemsPerPage') || '10'
-  const currentPage: number = Number(searchParams.get('currentPage')) || 1
+  const currentPage = Number(searchParams.get('currentPage')) || 1
+
+  useEffect(() => {
+    searchParams.delete('currentPage')
+    setSearchParams(searchParams)
+  }, [
+    searchParams.get('name'),
+    searchParams.get('minCardsCount'),
+    searchParams.get('maxCardsCount'),
+    searchParams.get('orderBy'),
+  ])
+
   const options: Option[] = [
     { label: '10', value: '10' },
     { label: '20', value: '20' },

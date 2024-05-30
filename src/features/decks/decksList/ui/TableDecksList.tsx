@@ -1,18 +1,20 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import defaultDeckImage from '@/assets/defaultDeckImage.jpeg'
-import { ButtonSort, Table, Tbody, Td, Th, Thead, Tools, Tr } from '@/common/components'
+import { Table, TablesHeaderSort, Tbody, Td, Tools, Tr } from '@/common/components'
 import { ContainerImageText } from '@/common/components/tables/ui/containerImgText/ContainerImageText'
+import { columnsDecks } from '@/common/consts'
 import { path } from '@/common/enums'
-import { Deck } from '@/common/types'
+import { Column, Deck, Sort } from '@/common/types'
 
 type Props = {
+  columnsDecks: Column[]
   currentUserId?: string
   decks?: Deck[]
   onDelete?: (idDeck: string) => void
   onEdit?: (idDeck: string) => void
-  onSort: (sort: 'asc' | 'desc', text: string) => void
-  sort: 'asc' | 'desc'
+  onSort: (sort: Sort) => void
+  sort: Sort
 }
 
 type TableDecksListProps = Omit<ComponentPropsWithoutRef<'table'>, keyof Props> & Props
@@ -36,17 +38,7 @@ export const TableDecksList = forwardRef<ElementRef<'table'>, TableDecksListProp
 
   return (
     <Table {...rest} ref={ref}>
-      <Thead>
-        <Tr>
-          <Th>Name</Th>
-          <Th>Cards</Th>
-          <Th>
-            <ButtonSort onSort={onSort} sort={sort} text={'Last Updated'} />
-          </Th>
-          <Th>Created by</Th>
-          <Th></Th>
-        </Tr>
-      </Thead>
+      <TablesHeaderSort columns={columnsDecks} onSort={onSort} sort={sort} />
       <Tbody>
         {decks?.map((deck: Deck) => {
           return (

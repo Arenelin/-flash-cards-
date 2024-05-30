@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Button } from '@/common/components'
-import { EditDeck, ModalCard } from '@/features/decks/modals/ModalCard/ModalCard'
+import { CardForm, ModalCard } from '@/features/decks/modals/ModalCard/ModalCard'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
@@ -22,7 +22,7 @@ export const ModalEditCardWithImage = {
       questionImg:
         'https://staging-it-incubator.s3.eu-central-1.amazonaws.com/flashcards/Image/d0f80403-d36f-440d-a30d-795f69386a9d_Screenshot 2023-07-27 112732.png',
     },
-    onSubmit: (d: EditDeck) => {
+    onSubmit: (d: CardForm) => {
       alert(`${d.answer} ${d.question} ${d.questionImg} ${d.answerImg}: data `)
     },
     title: 'Edit Card',
@@ -79,7 +79,7 @@ export const ModalEditCard = {
 } satisfies Story
 export const ModalNewCard = {
   args: {
-    onSubmit: (data: EditDeck) => {
+    onSubmit: (data: CardForm) => {
       alert(`${data.answer} ${data.question} ${data.questionImg} ${data.answerImg}: data `)
     },
     title: 'Add New Deck',

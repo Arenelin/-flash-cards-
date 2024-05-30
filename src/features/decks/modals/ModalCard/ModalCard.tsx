@@ -30,7 +30,7 @@ const CardSchema = z.object({
   questionImg: z.union([schemaFile, z.string(), z.null()]).optional(),
 })
 
-type CardForm = z.infer<typeof CardSchema>
+export type CardForm = z.infer<typeof CardSchema>
 export const ModalCard = forwardRef<ElementRef<typeof DialogPrimitive.Content>, ModalProps>(
   (props, ref) => {
     const { defaultValues, onOpenChange, onSubmit, open, title } = props

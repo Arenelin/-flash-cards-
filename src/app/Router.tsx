@@ -21,10 +21,6 @@ import { Layout } from '@/features/layout/Layout'
 
 export const publicRoutes: RouteObject[] = [
   {
-    element: <Navigate to={path.signIn} />,
-    path: path.base,
-  },
-  {
     element: <PageSignIn />,
     path: path.signIn,
   },
@@ -40,13 +36,13 @@ export const publicRoutes: RouteObject[] = [
     element: <PageNewPassword />,
     path: `${path.newPassword}/:token`,
   },
-  // {
-  //   element: ,
-  //   path: '*',
-  // },
 ]
 
 export const privateRoutes: RouteObject[] = [
+  {
+    element: <Navigate to={path.decks} />,
+    path: path.base,
+  },
   {
     element: <DecksList />,
     path: path.decks,
@@ -78,7 +74,6 @@ export const router = createBrowserRouter([
         children: privateRoutes,
         element: <PrivateRouter />,
       },
-      // ...privateRoutes,
       ...publicRoutes,
     ],
     element: <Layout />,

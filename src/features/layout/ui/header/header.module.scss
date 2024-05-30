@@ -25,3 +25,16 @@
   gap: 14px;
   align-items: center;
 }
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--color-accent-300);
+}
+
+header.container p {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-accent-300);
+  border-bottom: 3px dashed var(--color-accent-300);
+}

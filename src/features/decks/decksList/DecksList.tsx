@@ -1,9 +1,12 @@
+import { Navigate } from 'react-router-dom'
+
 import { Search, TrashOutline } from '@/assets/icons'
 import { Button, Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { columnsDecks } from '@/common/consts'
+import { path } from '@/common/enums'
 
-import s from '../decks.module.scss'
+import s from './decks.module.scss'
 
 import { useDecksList } from './lib/useDecksList'
 import { TableDecksList } from './ui/TableDecksList'
@@ -15,6 +18,7 @@ export function DecksList() {
     decksData,
     decksError,
     decksIsLoading,
+    isErrorMe,
     maxCardsCount,
     minCardsCount,
     searchChangeHandle,
@@ -26,6 +30,9 @@ export function DecksList() {
     tabsOptions,
   } = useDecksList()
 
+  if (isErrorMe) {
+    return <Navigate to={path.decks} />
+  }
   if (decksIsLoading) {
     return (
       <div className={s.preloader}>

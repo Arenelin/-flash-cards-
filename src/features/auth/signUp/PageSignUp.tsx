@@ -7,21 +7,16 @@ import { SignErrorResponse, SignUpArgs } from '@/common/types'
 import { FormSignUp, SignUp } from '@/features/auth'
 import { useSignUpMutation } from '@/features/auth/api/authApi'
 
+import { emailTemplateConfirmEmail } from './emailTemplateConfirmEmail'
+
 export const PageSignUp = () => {
   const [signUp, signUpResult] = useSignUpMutation()
   const navigate = useNavigate()
 
-  const html =
-    '<b>Hello, ##name##!</b>' +
-    '<br/>Please confirm your email by clicking on the link below:<br/>' +
-    "<a href='http://localhost:3000/confirm-email/##token##'>Confirm email</a>. " +
-    "If it doesn't work, copy and paste the following link in your browser:" +
-    '<br/>http://localhost:3000/confirm-email/##token##'
-
   const onSubmit = (data: SignUp) => {
     const registrationData: SignUpArgs = {
       email: data.email,
-      html: html,
+      html: emailTemplateConfirmEmail,
       name: data.name,
       password: data.password,
       sendConfirmationEmail: true,

@@ -19,9 +19,9 @@ import { DecksList } from '@/features/decks/decksList/DecksList'
 import { Error } from '@/features/error/Error'
 import { Layout } from '@/features/layout/Layout'
 
-const publicRoutes: RouteObject[] = [
+export const publicRoutes: RouteObject[] = [
   {
-    element: <Navigate to={path.decks} />,
+    element: <Navigate to={path.signIn} />,
     path: path.base,
   },
   {
@@ -29,25 +29,24 @@ const publicRoutes: RouteObject[] = [
     path: path.signIn,
   },
   {
-    element: <PageForgotPassword />,
-    path: path.forgotPassword,
-  },
-  {
     element: <PageSignUp />,
     path: path.signUp,
   },
   {
-    element: <PageNewPassword />,
-    path: path.newPassword,
+    element: <PageForgotPassword />,
+    path: path.forgotPassword,
   },
-
   {
-    element: <Error />,
-    path: '*',
+    element: <PageNewPassword />,
+    path: `${path.newPassword}/:token`,
   },
+  // {
+  //   element: ,
+  //   path: '*',
+  // },
 ]
 
-const privateRoutes: RouteObject[] = [
+export const privateRoutes: RouteObject[] = [
   {
     element: <DecksList />,
     path: path.decks,
@@ -67,9 +66,9 @@ const privateRoutes: RouteObject[] = [
 ]
 
 const PrivateRouter = () => {
-  const { data } = useGetMeQuery()
+  const { isSuccess } = useGetMeQuery()
 
-  return data?.id ? <Outlet /> : <Navigate to={path.signIn} />
+  return isSuccess ? <Outlet /> : <Navigate to={path.signIn} />
 }
 
 export const router = createBrowserRouter([
@@ -79,9 +78,11 @@ export const router = createBrowserRouter([
         children: privateRoutes,
         element: <PrivateRouter />,
       },
+      // ...privateRoutes,
       ...publicRoutes,
     ],
     element: <Layout />,
+    errorElement: <Error />,
     path: path.base,
   },
 ])

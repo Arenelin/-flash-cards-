@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Button } from '@/common/components'
-import { ModalDeck } from '@/features/modals/modalDeck/ModalDeck'
+import { ModalDeck } from '@/features/decks/modals/modalDeck/ModalDeck'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

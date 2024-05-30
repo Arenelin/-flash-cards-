@@ -14,10 +14,10 @@ import { useDeleteCardId } from '@/features/cards/lib/useDeleteCardId'
 import { useUpdateCardId } from '@/features/cards/lib/useUpdateCardId'
 import { useCardsList } from '@/features/decks/deckById/lib/useCardsList'
 import { TableCardsList } from '@/features/decks/deckById/ui/TableCardsList'
-import { ModalCard } from '@/features/modals/ModalCard/ModalCard'
-import { ModalDelete } from '@/features/modals/modalDelete/ModalDelete'
+import { ModalCard } from '@/features/decks/modals/ModalCard/ModalCard'
+import { ModalDelete } from '@/features/decks/modals/modalDelete/ModalDelete'
 
-import s from '@/features/decks/decks.module.scss'
+import s from '@/features/decks/decksList/decks.module.scss'
 
 export const DeckById = () => {
   const {

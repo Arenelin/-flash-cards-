@@ -13,7 +13,7 @@ export const useDecksList = () => {
   const clearFilterHandle = () => {
     setSearchParams({})
   }
-  const { data: me } = useGetMeQuery()
+  const { data: me, isError: isErrorMe } = useGetMeQuery()
 
   const {
     data: getDecksMinMaxCardsData,
@@ -109,6 +109,7 @@ export const useDecksList = () => {
     decksData,
     decksError,
     decksIsLoading,
+    isErrorMe,
     maxCardsCount,
     minCardsCount,
     searchChangeHandle,

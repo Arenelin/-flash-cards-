@@ -24,11 +24,18 @@ export const usePagination = ({ siblingCount = 1, totalCount = 0 }: PaginationPr
   useEffect(() => {
     searchParams.delete('currentPage')
     setSearchParams(searchParams)
+    // eslint-disable-next-line
   }, [
+    // eslint-disable-next-line
     searchParams.get('name'),
+    // eslint-disable-next-line
     searchParams.get('minCardsCount'),
+    // eslint-disable-next-line
     searchParams.get('maxCardsCount'),
+    // eslint-disable-next-line
     searchParams.get('orderBy'),
+    // eslint-disable-next-line
+    searchParams.get('authorId'),
   ])
 
   const options: Option[] = [

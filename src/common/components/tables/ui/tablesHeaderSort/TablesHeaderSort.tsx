@@ -37,18 +37,22 @@ export const TablesHeaderSort = ({ columns, onSort, sort, ...rest }: HeaderSortP
       <Tr>
         {columns.map(({ key, sortable, title }) => (
           <Th key={key} onClick={handleSort(key, sortable)}>
-            <button className={s.button}>
-              {title}
-              {sort && sort.key === key && (
-                <span>
-                  {sort.direction === 'asc' ? (
-                    <ArrowUp className={s.icon} />
-                  ) : (
-                    <ArrowDown className={s.icon} />
-                  )}
-                </span>
-              )}
-            </button>
+            {sortable ? (
+              <button className={s.button}>
+                {title}
+                {sort && sort.key === key && (
+                  <span>
+                    {sort.direction === 'asc' ? (
+                      <ArrowUp className={s.icon} />
+                    ) : (
+                      <ArrowDown className={s.icon} />
+                    )}
+                  </span>
+                )}
+              </button>
+            ) : (
+              title
+            )}
           </Th>
         ))}
       </Tr>

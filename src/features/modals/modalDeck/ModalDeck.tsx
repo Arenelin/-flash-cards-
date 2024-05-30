@@ -26,7 +26,7 @@ type ModalProps = {
 const newDeckSchema = z.object({
   cover: z.union([schemaFile, z.string(), z.null()]).optional(),
   isPrivate: z.boolean().optional(),
-  name: text.optional(),
+  name: text,
 })
 
 export type EditDeck = z.infer<typeof newDeckSchema>
@@ -58,7 +58,7 @@ export const ModalDeck = forwardRef<ElementRef<typeof DialogPrimitive.Content>, 
 
         for (const key in defaultValues) {
           if (defaultValues[key as DataKey] === currentValues[key as DataKey]) {
-            data[key as DataKey] = undefined
+            delete data[key as DataKey]
           }
         }
       }

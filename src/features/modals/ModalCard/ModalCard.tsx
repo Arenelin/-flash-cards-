@@ -65,7 +65,7 @@ export const ModalCard = forwardRef<ElementRef<typeof DialogPrimitive.Content>, 
 
         for (const key in defaultValues) {
           if (defaultValues[key as DataKey] === currentValues[key as DataKey]) {
-            data[key as DataKey] = ''
+            delete data[key as DataKey]
           }
         }
       }

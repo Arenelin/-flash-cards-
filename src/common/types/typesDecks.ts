@@ -43,7 +43,7 @@ export type GetDeckById = {
 export type CreateDecksArgs = {
   cover?: File | null | string
   isPrivate?: boolean
-  name?: string
+  name: string
 }
 export type UpdateDecksArgs = { id: string } & Partial<CreateDecksArgs>
 

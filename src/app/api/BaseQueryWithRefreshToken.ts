@@ -1,3 +1,5 @@
+import { publicRoutes, router } from '@/app/Router'
+import { path } from '@/common/enums'
 import { SignInResponse } from '@/common/types'
 import { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react'
@@ -51,12 +53,13 @@ export const baseQueryWithRefreshToken: BaseQueryFn<
           localStorage.setItem('refreshToken', (refreshResult.data as SignInResponse).refreshToken)
           result = await baseQuery(args, api, extraOptions)
         } else {
-          //   const isPublicRoutes = publicRoutes.find(_ => location.pathname.includes('new-password'))
-          //
-          //   if (isPublicRoutes) {
-          //     return
-          //   }
-          //   router.navigate(path.signIn)
+          const isPublicRoutes = publicRoutes.find(_ => location.pathname.includes('new-password'))
+
+          if (isPublicRoutes) {
+            router.navigate(1)
+          } else {
+            router.navigate(path.signIn)
+          }
         }
       } finally {
         release()

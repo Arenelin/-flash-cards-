@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { useStoryButtonSort } from '@/common/hooks/stotybookHooks/useStoryButtonSort'
-import { Deck } from '@/common/types'
+import { useState } from 'react'
+
+import { columnsDecks } from '@/common/consts'
+import { Deck, Sort } from '@/common/types'
 import { TableDecksList } from '@/features/decks/decksList/ui/TableDecksList'
 import { withRouter } from 'storybook-addon-remix-react-router'
 
@@ -64,17 +66,18 @@ const decks: Deck[] = [
 
 export const Table_Decks_List = {
   render() {
-    const { onSort, sort } = useStoryButtonSort()
+    const [sort, setSort] = useState<Sort>(null)
     const userId = 'a6fa6add-7d35-46a5-ad86-995874537623'
 
     return (
       <div>
         <TableDecksList
+          columnsDecks={columnsDecks}
           currentUserId={userId}
           decks={decks}
           onDelete={testDelete}
           onEdit={testEdit}
-          onSort={onSort}
+          onSort={setSort}
           sort={sort}
         />
       </div>

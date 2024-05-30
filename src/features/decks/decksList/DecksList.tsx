@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 import { Search, TrashOutline } from '@/assets/icons'
 import { Button, Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
+import { columnsDecks } from '@/common/consts'
 import { path } from '@/common/enums'
 
 import s from './decks.module.scss'
@@ -22,7 +23,9 @@ export function DecksList() {
     minCardsCount,
     searchChangeHandle,
     searchParams,
+    setSort,
     sliderValueHandle,
+    sort,
     tabsChangeHandler,
     tabsOptions,
   } = useDecksList()
@@ -93,10 +96,11 @@ export function DecksList() {
       </div>
       <TableDecksList
         className={s.tables}
+        columnsDecks={columnsDecks}
         currentUserId={currentUserId}
         decks={decksData?.items}
-        onSort={() => {}}
-        sort={'asc'}
+        onSort={setSort}
+        sort={sort}
       />
       <div className={s.paginationSettings}>
         <Pagination totalCount={decksData?.pagination?.totalItems || 1} />

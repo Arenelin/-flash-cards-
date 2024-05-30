@@ -1,12 +1,14 @@
+import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import { Tab } from '@/common/components'
-import { ErrorResponse, GetDecksMinMaxCardsResponse } from '@/common/types'
+import { ErrorResponse, GetDecksMinMaxCardsResponse, Sort } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { useGetDecksMinMaxCardsQuery, useGetDecksQuery } from '@/features/decks/api/decksApi'
 
 export const useDecksList = () => {
   const [searchParams, setSearchParams] = useSearchParams()
+  const [sort, setSort] = useState<Sort>(null)
 
   const clearFilterHandle = () => {
     setSearchParams({})
@@ -61,6 +63,18 @@ export const useDecksList = () => {
     value[1] === maxCardsCount && searchParams.delete('maxCardsCount')
     setSearchParams(searchParams)
   }
+  const sortedString = useMemo(() => {
+    if (!sort) {
+      searchParams.delete(`orderBy`)
+      setSearchParams(searchParams)
+
+      return null
+    }
+    searchParams.set(`orderBy`, `${sort.key}-${sort.direction}`)
+    setSearchParams(searchParams)
+
+    return `${sort.key}-${sort.direction}`
+  }, [searchParams, setSearchParams, sort])
 
   const {
     data: getDecksData,
@@ -74,7 +88,7 @@ export const useDecksList = () => {
       maxCardsCount: Number(searchParams.get('maxCardsCount')) || maxCardsCount,
       minCardsCount: Number(searchParams.get('minCardsCount')) || minCardsCount,
       name: searchParams.get('name') || undefined,
-      // orderBy?: string,
+      orderBy: sortedString || undefined,
     },
     { skip: getDecksMinMaxCardsIsLoading }
   )
@@ -100,7 +114,9 @@ export const useDecksList = () => {
     minCardsCount,
     searchChangeHandle,
     searchParams,
+    setSort,
     sliderValueHandle,
+    sort,
     tabsChangeHandler,
     tabsOptions,
   }

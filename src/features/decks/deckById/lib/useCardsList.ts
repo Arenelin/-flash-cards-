@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Params, useParams, useSearchParams } from 'react-router-dom'
 
 import { useDebounce } from '@/common/hooks/useDebounce'
+import { Sort } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { useGetDeckByIdQuery, useGetDeckCardsQuery } from '@/features/decks/api/decksApi'
 
 export const useCardsList = () => {
   const params: Readonly<Params<string>> = useParams()
-  const [sort, setSort] = useState<'asc' | 'desc'>('asc')
+  const [sort, setSort] = useState<Sort>(null)
   const [searchParams, setSearchParams] = useSearchParams()
   const debouncedSearch = useDebounce(searchParams, 500)
 
@@ -22,19 +23,6 @@ export const useCardsList = () => {
   const deck = deckData
 
   const isMy = me?.id === deck?.userId
-  const onSortHandler = (sort: 'asc' | 'desc', name: string) => {
-    searchParams.delete(name)
-
-    if (sort === 'asc') {
-      setSort('desc')
-    } else {
-      setSort('asc')
-    }
-
-    searchParams.set('orderBy', `${name}-${sort}`)
-
-    setSearchParams(searchParams)
-  }
   const searchChangeHandle = (value: string) => {
     if (value.length) {
       searchParams.set('question', value)
@@ -55,6 +43,18 @@ export const useCardsList = () => {
     searchParams.set('currentPage', currentPage.toString())
     setSearchParams(searchParams)
   }
+  const sortedString = useMemo(() => {
+    if (!sort) {
+      searchParams.delete(`orderBy`)
+      setSearchParams(searchParams)
+
+      return null
+    }
+    searchParams.set(`orderBy`, `${sort.key}-${sort.direction}`)
+    setSearchParams(searchParams)
+
+    return `${sort.key}-${sort.direction}`
+  }, [searchParams, setSearchParams, sort])
 
   const {
     data: cardsData,
@@ -64,7 +64,7 @@ export const useCardsList = () => {
     currentPage: Number(searchParams.get('currentPage')) || 1,
     id: params?.id ?? '',
     itemsPerPage: Number(searchParams.get('itemsPerPage') || 10),
-    orderBy: searchParams.get('orderBy') || undefined,
+    orderBy: sortedString || undefined,
     question: debouncedSearch.get('question') || undefined,
   })
 
@@ -80,10 +80,10 @@ export const useCardsList = () => {
     isLoadingDeck,
     isMy,
     onClearClick,
-    onSortHandler,
     pageSizeHandler,
     searchChangeHandle,
     searchParams,
+    setSort,
     sort,
   }
 }

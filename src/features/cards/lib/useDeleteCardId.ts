@@ -18,7 +18,7 @@ export const useDeleteCardId = () => {
       } catch (e) {
         const error = e as ErrorResponseCard
 
-        toast.error(error.data.message ?? 'Registration failed')
+        toast.error(error.data.message ?? 'Delete Card failed')
       } finally {
         setDeleteModal(false)
       }

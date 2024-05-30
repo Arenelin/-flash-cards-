@@ -6,11 +6,15 @@ import CloseOutline from '@/assets/icons/CloseOutline'
 import { Button, Input, InputType, Pagination, Typography } from '@/common/components'
 import { SettingsDropdown } from '@/common/components/dropdown/settingsDropdown/SettingsDropdown'
 import { Preloader } from '@/common/components/preloader/Preloader'
+import { columnsCards } from '@/common/consts'
 import { path } from '@/common/enums'
-import { ErrorResponse, ErrorResponseCard } from '@/common/types'
+import { CardUpdateArgs, ErrorResponse, ErrorResponseCard } from '@/common/types'
+import { useCreateCardId } from '@/features/cards/lib/useCreateCardId'
+import { useDeleteCardId } from '@/features/cards/lib/useDeleteCardId'
+import { useUpdateCardId } from '@/features/cards/lib/useUpdateCardId'
 import { useCardsList } from '@/features/decks/deckById/lib/useCardsList'
-import { useDeleteCardId } from '@/features/decks/deckById/lib/useDeleteCardId'
 import { TableCardsList } from '@/features/decks/deckById/ui/TableCardsList'
+import { ModalCard } from '@/features/decks/modals/ModalCard/ModalCard'
 import { ModalDelete } from '@/features/decks/modals/modalDelete/ModalDelete'
 
 import s from '@/features/decks/decksList/decks.module.scss'
@@ -25,9 +29,9 @@ export const DeckById = () => {
     isLoadingDeck,
     isMy,
     onClearClick,
-    onSortHandler,
     searchChangeHandle,
     searchParams,
+    setSort,
     sort,
   } = useCardsList()
 
@@ -39,8 +43,19 @@ export const DeckById = () => {
     setDataTableDelete,
     setDeleteModal,
   } = useDeleteCardId()
+  const {
+    dataUpdateTable,
+    isLoadingUpdate,
+    requestUpdate,
+    setIdTable,
+    setUpdateModal,
+    setUpdateTable,
+    updateModal,
+  } = useUpdateCardId()
 
-  if (isLoadingDeck || isLoadingCards || isLoadingError) {
+  const { createModal, requestCreate, setCreateModal } = useCreateCardId()
+
+  if (isLoadingDeck || isLoadingCards || isLoadingError || isLoadingUpdate) {
     return (
       <div className={s.preloader}>
         <Preloader />
@@ -69,6 +84,15 @@ export const DeckById = () => {
     setDeleteModal(true)
     setDataTableDelete({ id: idCard, title: question })
   }
+  const onEdit = ({ id, ...args }: CardUpdateArgs) => {
+    setUpdateTable(args)
+    setIdTable(id)
+    setUpdateModal(true)
+  }
+
+  const onAddCard = () => {
+    setCreateModal(true)
+  }
 
   const contentSearch = Boolean(searchParams.get('question')) && !cards?.items?.length
   const contentNotCardInDeck = !cards?.items?.length && Boolean(!searchParams.get('question'))
@@ -90,7 +114,7 @@ export const DeckById = () => {
                 This deck is empty.
                 {isMy && 'Click add new card to fill this deck'}
               </Typography>
-              {isMy && <Button>Add New Card</Button>}
+              {isMy && <Button onClick={onAddCard}>Add New Card</Button>}
             </div>
           </div>
         ) : (
@@ -103,7 +127,7 @@ export const DeckById = () => {
                 {isMy && <SettingsDropdown />}
               </div>
               {isMy ? (
-                <Button> Add New Card </Button>
+                <Button onClick={onAddCard}>Add New Card</Button>
               ) : (
                 <Button as={Link} to={`/decks/${deck?.id || ''}/learn`}>
                   Learn to deck
@@ -125,9 +149,11 @@ export const DeckById = () => {
             </div>
             <TableCardsList
               cards={cards?.items}
+              columnsCards={columnsCards}
               isMy={isMy}
               onDelete={onDelete}
-              onSort={onSortHandler}
+              onEdit={onEdit}
+              onSort={setSort}
               sort={sort}
             />
             {contentSearch && (
@@ -147,6 +173,19 @@ export const DeckById = () => {
         open={deleteModal}
         text={`Do you really want to remove ${dataTableDelete?.title}?\n` + `Card will be deleted.`}
         title={'Delete Card'}
+      />
+      <ModalCard
+        defaultValues={dataUpdateTable}
+        onOpenChange={setUpdateModal}
+        onSubmit={requestUpdate}
+        open={updateModal}
+        title={'Edit Card'}
+      />
+      <ModalCard
+        onOpenChange={setCreateModal}
+        onSubmit={requestCreate}
+        open={createModal}
+        title={'Create Card'}
       />
     </div>
   )

@@ -4,10 +4,10 @@ import {
   RouteObject,
   RouterProvider,
   createBrowserRouter,
-  useOutletContext,
 } from 'react-router-dom'
 
 import { path } from '@/common/enums'
+import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { PageForgotPassword } from '@/features/auth/forgotPassword/PagesForgotPassword'
 import { PageNewPassword } from '@/features/auth/newPasswordForm/PageNewPassword'
 import { Profile } from '@/features/auth/profile/Profile'
@@ -19,7 +19,7 @@ import { DecksList } from '@/features/decks/decksList/DecksList'
 import { Error } from '@/features/error/Error'
 import { Layout } from '@/features/layout/Layout'
 
-const publicRoutes: RouteObject[] = [
+export const publicRoutes: RouteObject[] = [
   {
     element: <PageNewPassword />,
     path: `${path.newPassword}/:token`,
@@ -42,7 +42,7 @@ const publicRoutes: RouteObject[] = [
   },
 ]
 
-const privateRoutes: RouteObject[] = [
+export const privateRoutes: RouteObject[] = [
   {
     element: <Navigate to={path.decks} />,
     path: path.base,
@@ -66,10 +66,9 @@ const privateRoutes: RouteObject[] = [
 ]
 
 const PrivateRouter = () => {
-  debugger
-  const { isAuth } = useOutletContext<{ isAuth: boolean }>()
+  const { isSuccess } = useGetMeQuery()
 
-  return isAuth ? <Outlet /> : <Navigate to={path.base} />
+  return isSuccess ? <Outlet /> : <Navigate to={path.signIn} />
 }
 
 export const router = createBrowserRouter([
@@ -79,6 +78,7 @@ export const router = createBrowserRouter([
         children: privateRoutes,
         element: <PrivateRouter />,
       },
+      // ...privateRoutes,
       ...publicRoutes,
     ],
     element: <Layout />,

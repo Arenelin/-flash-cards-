@@ -43,12 +43,16 @@
   }
 }
 
+.card form .forgotPassword {
+  color: var(--color-light-100);
+}
+
 .registration {
   margin-bottom: 8px;
   color: var(--color-light-900);
 }
 
-.signUp {
+.card .signUp {
   color: var(--color-accent-500);
 
   &:hover {

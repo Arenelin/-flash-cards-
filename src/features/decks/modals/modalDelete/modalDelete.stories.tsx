@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { TrashOutline } from '@/assets/icons'
-import { ModalDelete } from '@/features/modals/modalDelete/ModalDelete'
+import { ModalDelete } from '@/features/decks/modals/modalDelete/ModalDelete'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

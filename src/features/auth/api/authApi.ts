@@ -4,7 +4,7 @@ import { appApi } from '@/app/api/appApi'
 import {
   ForgotPasswordArgs,
   MeResponse,
-  ResetPasswordTokenArgs,
+  ResetPasswordArgs,
   SignInArgs,
   SignInResponse,
   SignUpArgs,
@@ -22,9 +22,9 @@ export const authApi = appApi.injectEndpoints({
         }),
       }),
 
-      forgotPassword: builder.query<undefined, ForgotPasswordArgs>({
+      forgotPassword: builder.mutation<undefined, ForgotPasswordArgs>({
         query: body => ({
-          body: body,
+          body,
           method: 'POST',
           url: 'v1/auth/recover-password',
         }),
@@ -48,10 +48,10 @@ export const authApi = appApi.injectEndpoints({
         }),
       }),
 
-      resetPasswordToken: builder.mutation<undefined, ResetPasswordTokenArgs>({
-        query: ({ token, ...body }) => ({
+      resetPassword: builder.mutation<undefined, ResetPasswordArgs>({
+        query: ({ password, token }) => ({
+          body: { password },
           method: 'POST',
-          params: body,
           url: `v1/auth/reset-password/${token}`,
         }),
       }),
@@ -111,10 +111,10 @@ export const authApi = appApi.injectEndpoints({
 
 export const {
   useAuthTokenMutation,
-  useForgotPasswordQuery,
+  useForgotPasswordMutation,
   useGetMeQuery,
   useLogOutMutation,
-  useResetPasswordTokenMutation,
+  useResetPasswordMutation,
   useSignInMutation,
   useSignUpMutation,
   useUpdateMeMutation,

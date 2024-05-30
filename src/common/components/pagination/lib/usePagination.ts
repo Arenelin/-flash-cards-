@@ -36,7 +36,7 @@ export const usePagination = ({ siblingCount = 1, totalCount = 0 }: PaginationPr
     searchParams.get('orderBy'),
     // eslint-disable-next-line
     searchParams.get('authorId'),
-  ])
+  ]) //forced to disable the check, because requires adding searchParams and setSearchParams, which absolutely cannot be done
 
   const options: Option[] = [
     { label: '10', value: '10' },

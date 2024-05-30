@@ -8,13 +8,16 @@ import { SettingsDropdown } from '@/common/components/dropdown/settingsDropdown/
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { columnsCards } from '@/common/consts'
 import { path } from '@/common/enums'
-import { CardUpdateArgs, ErrorResponse, ErrorResponseCard } from '@/common/types'
+import { CardUpdateArgs, ErrorResponse, ErrorResponseField } from '@/common/types'
 import { useCreateCardId } from '@/features/cards/lib/useCreateCardId'
 import { useDeleteCardId } from '@/features/cards/lib/useDeleteCardId'
 import { useUpdateCardId } from '@/features/cards/lib/useUpdateCardId'
 import { useCardsList } from '@/features/decks/deckById/lib/useCardsList'
+import { useDeleteDeckId } from '@/features/decks/deckById/lib/useDeleteDeckId'
+import { useUpdateDeckId } from '@/features/decks/deckById/lib/useUpdateDeckId'
 import { TableCardsList } from '@/features/decks/deckById/ui/TableCardsList'
 import { ModalCard } from '@/features/modals/ModalCard/ModalCard'
+import { ModalDeck } from '@/features/modals/modalDeck/ModalDeck'
 import { ModalDelete } from '@/features/modals/modalDelete/ModalDelete'
 
 import s from '@/features/decks/decks.module.scss'
@@ -36,12 +39,12 @@ export const DeckById = () => {
   } = useCardsList()
 
   const {
-    dataTableDelete,
-    deleteModal,
+    dataDeleteCard,
+    deleteModalCard,
     isLoadingError,
-    requestDeletion,
-    setDataTableDelete,
-    setDeleteModal,
+    requestDeleteCard,
+    setDataDeleteCard,
+    setDeleteModalCard,
   } = useDeleteCardId()
   const {
     dataUpdateTable,
@@ -53,7 +56,9 @@ export const DeckById = () => {
     updateModal,
   } = useUpdateCardId()
 
-  const { createModal, requestCreate, setCreateModal } = useCreateCardId()
+  const { deleteModalDeck, requestDeleteDeck, setDeleteModalDeck } = useDeleteDeckId()
+  const { createModalCard, requestCreate, setCreateModalCard } = useCreateCardId()
+  const { requestUpdateDeck, setUpdateModalDeck, updateModalDeck } = useUpdateDeckId()
 
   if (isLoadingDeck || isLoadingCards || isLoadingError || isLoadingUpdate) {
     return (
@@ -65,7 +70,7 @@ export const DeckById = () => {
 
   if (deckError || cardsError) {
     if (deckError) {
-      const errDeck: ErrorResponse = deckError as ErrorResponse
+      const errDeck = deckError as ErrorResponse
       const Error = errDeck.data.errorMessages.reduce((acc, error) => {
         return acc + String(error)
       }, '')
@@ -74,15 +79,15 @@ export const DeckById = () => {
     }
 
     if (cardsError) {
-      const error = cardsError as ErrorResponseCard
+      const error = cardsError as ErrorResponseField
 
       toast.error(error.data.message ?? 'Registration failed')
     }
   }
 
   const onDelete = (idCard: string, question: string) => {
-    setDeleteModal(true)
-    setDataTableDelete({ id: idCard, title: question })
+    setDeleteModalCard(true)
+    setDataDeleteCard({ id: idCard, title: question })
   }
   const onEdit = ({ id, ...args }: CardUpdateArgs) => {
     setUpdateTable(args)
@@ -91,7 +96,14 @@ export const DeckById = () => {
   }
 
   const onAddCard = () => {
-    setCreateModal(true)
+    setCreateModalCard(true)
+  }
+  const onSelectDelete = () => {
+    setDeleteModalDeck(true)
+  }
+
+  const onSelectEdit = () => {
+    setUpdateModalDeck(true)
   }
 
   const contentSearch = Boolean(searchParams.get('question')) && !cards?.items?.length
@@ -124,7 +136,13 @@ export const DeckById = () => {
                 <Typography as={'h1'} variant={'h1'}>
                   {deck?.name}
                 </Typography>
-                {isMy && <SettingsDropdown />}
+                {isMy && (
+                  <SettingsDropdown
+                    link={`/decks/${deck?.id || ''}/learn`}
+                    onSelectDelete={onSelectDelete}
+                    onSelectEdit={onSelectEdit}
+                  />
+                )}
               </div>
               {isMy ? (
                 <Button onClick={onAddCard}>Add New Card</Button>
@@ -168,10 +186,10 @@ export const DeckById = () => {
         <Pagination totalCount={cards?.pagination.totalItems || 1} />{' '}
       </div>
       <ModalDelete
-        onDelete={requestDeletion}
-        onOpenChange={setDeleteModal}
-        open={deleteModal}
-        text={`Do you really want to remove ${dataTableDelete?.title}?\n` + `Card will be deleted.`}
+        onDelete={() => dataDeleteCard?.id && requestDeleteCard(dataDeleteCard?.id)}
+        onOpenChange={setDeleteModalCard}
+        open={deleteModalCard}
+        text={`Do you really want to remove ${dataDeleteCard?.title}?\n` + `Card will be deleted.`}
         title={'Delete Card'}
       />
       <ModalCard
@@ -182,10 +200,24 @@ export const DeckById = () => {
         title={'Edit Card'}
       />
       <ModalCard
-        onOpenChange={setCreateModal}
+        onOpenChange={setCreateModalCard}
         onSubmit={requestCreate}
-        open={createModal}
+        open={createModalCard}
         title={'Create Card'}
+      />
+      <ModalDeck
+        defaultValues={deck && { cover: deck?.cover, isPrivate: deck?.isPrivate, name: deck?.name }}
+        onOpenChange={setUpdateModalDeck}
+        onSubmit={args => deck && requestUpdateDeck({ ...args, id: deck.id })}
+        open={updateModalDeck}
+        title={'Edit Deck'}
+      />
+      <ModalDelete
+        onDelete={() => deck && requestDeleteDeck(deck.id)}
+        onOpenChange={setDeleteModalDeck}
+        open={deleteModalDeck}
+        text={`Do you really want to remove ${deck?.name}?\n` + 'All cards will be deleted.'}
+        title={'Delete Deck'}
       />
     </div>
   )

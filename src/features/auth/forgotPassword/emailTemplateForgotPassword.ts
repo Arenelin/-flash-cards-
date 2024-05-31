@@ -17,7 +17,6 @@ export const emailTemplateForgotPassword = `
         <p style='margin: 0'>
            <h2 style='margin: 0'>Hi, ##name##.</h2>
            </br>
-           </br>
            Resetting your password is easy. Just press the button below and follow the instructions. We'll have you up and running in no time.
         </p>
         <p></p>

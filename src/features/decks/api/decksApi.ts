@@ -107,7 +107,7 @@ export const decksApi = appApi.injectEndpoints({
           if (name) {
             formData.append('name', name)
           }
-          if (isPrivate) {
+          if (isPrivate !== undefined) {
             formData.append('isPrivate', isPrivate.toString())
           }
           if (cover) {

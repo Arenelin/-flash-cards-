@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { CardUpdateBody, ErrorResponseField } from '@/common/types'
 import { useUpdateCardMutation } from '@/features/cards/api/cardsApi'
 
-export const useUpdateCardId = () => {
+export const useUpdateCardById = () => {
   const [updateModal, setUpdateModal] = useState<boolean>(false)
   const [updateCard, { isLoading: isLoadingUpdateCard }] = useUpdateCardMutation()
   const [dataUpdateTable, setUpdateTable] = useState<CardUpdateBody>()

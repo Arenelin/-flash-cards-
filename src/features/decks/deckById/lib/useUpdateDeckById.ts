@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { ErrorResponseField, UpdateDecksArgs } from '@/common/types'
 import { useUpdateDeckMutation } from '@/features/decks/api/decksApi'
 
-export const useUpdateDeckId = () => {
+export const useUpdateDeckById = () => {
   const [updateModalDeck, setUpdateModalDeck] = useState(false)
   const [updateDeck, { isLoading: isLoadingUpdateDeck }] = useUpdateDeckMutation()
   const requestUpdateDeck = async (args: UpdateDecksArgs) => {

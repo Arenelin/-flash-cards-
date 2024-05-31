@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import { CardBodyCreate, ErrorResponseField } from '@/common/types'
 import { useCreateCardMutation } from '@/features/decks/api/decksApi'
 
-export const useCreateCardId = () => {
+export const useCreateCardById = () => {
   const [createModalCard, setCreateModalCard] = useState<boolean>(false)
   const [createCard, { isLoading: isLoadingCreateCard }] = useCreateCardMutation()
   const params = useParams()

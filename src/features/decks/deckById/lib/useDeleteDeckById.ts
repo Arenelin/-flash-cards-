@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 import { ErrorResponseField } from '@/common/types'
 import { useDeleteDeckMutation } from '@/features/decks/api/decksApi'
 
-export const useDeleteDeckId = () => {
+export const useDeleteDeckById = () => {
   const [deleteModalDeck, setDeleteModalDeck] = useState(false)
   const navigate = useNavigate()
   const [deleteDeck, { isLoading: isLoadingDeleteDeck }] = useDeleteDeckMutation()

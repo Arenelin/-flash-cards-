@@ -9,12 +9,12 @@ import { Preloader } from '@/common/components/preloader/Preloader'
 import { columnsCards } from '@/common/consts'
 import { path } from '@/common/enums'
 import { CardUpdateArgs, ErrorResponse, ErrorResponseField } from '@/common/types'
-import { useCreateCardId } from '@/features/cards/lib/useCreateCardId'
-import { useDeleteCardId } from '@/features/cards/lib/useDeleteCardId'
-import { useUpdateCardId } from '@/features/cards/lib/useUpdateCardId'
-import { useCardsList } from '@/features/decks/deckById/lib/useCardsList'
-import { useDeleteDeckId } from '@/features/decks/deckById/lib/useDeleteDeckId'
-import { useUpdateDeckId } from '@/features/decks/deckById/lib/useUpdateDeckId'
+import { useCreateCardById } from '@/features/cards/lib/useCreateCardById'
+import { useDeleteCardById } from '@/features/cards/lib/useDeleteCardById'
+import { useUpdateCardById } from '@/features/cards/lib/useUpdateCardById'
+import { useDeckById } from '@/features/decks/deckById/lib/useDeckById'
+import { useDeleteDeckById } from '@/features/decks/deckById/lib/useDeleteDeckById'
+import { useUpdateDeckById } from '@/features/decks/deckById/lib/useUpdateDeckById'
 import { TableCardsList } from '@/features/decks/deckById/ui/TableCardsList'
 import { ModalCard } from '@/features/decks/modals/ModalCard/ModalCard'
 import { ModalDeck } from '@/features/decks/modals/modalDeck/ModalDeck'
@@ -36,7 +36,7 @@ export const DeckById = () => {
     searchParams,
     setSort,
     sort,
-  } = useCardsList()
+  } = useDeckById()
 
   const {
     dataDeleteCard,
@@ -45,7 +45,7 @@ export const DeckById = () => {
     requestDeleteCard,
     setDataDeleteCard,
     setDeleteModalCard,
-  } = useDeleteCardId()
+  } = useDeleteCardById()
   const {
     dataUpdateTable,
     isLoadingUpdateCard,
@@ -54,14 +54,14 @@ export const DeckById = () => {
     setUpdateModal,
     setUpdateTable,
     updateModal,
-  } = useUpdateCardId()
+  } = useUpdateCardById()
 
   const { deleteModalDeck, isLoadingDeleteDeck, requestDeleteDeck, setDeleteModalDeck } =
-    useDeleteDeckId()
+    useDeleteDeckById()
   const { createModalCard, isLoadingCreateCard, requestCreate, setCreateModalCard } =
-    useCreateCardId()
+    useCreateCardById()
   const { isLoadingUpdateDeck, requestUpdateDeck, setUpdateModalDeck, updateModalDeck } =
-    useUpdateDeckId()
+    useUpdateDeckById()
 
   if (
     isLoadingDeck ||

@@ -7,9 +7,9 @@ import { Preloader } from '@/common/components/preloader/Preloader'
 import { columnsDecks } from '@/common/consts'
 import { path } from '@/common/enums'
 import { CreateDecksArgs } from '@/common/types'
-import { useCreateDeckId } from '@/features/decks/deckById/lib/useCreateDeckId'
-import { useDeleteDeckId } from '@/features/decks/deckById/lib/useDeleteDeckId'
-import { useUpdateDeckId } from '@/features/decks/deckById/lib/useUpdateDeckId'
+import { useCreateDeckById } from '@/features/decks/deckById/lib/useCreateDeckById'
+import { useDeleteDeckById } from '@/features/decks/deckById/lib/useDeleteDeckById'
+import { useUpdateDeckById } from '@/features/decks/deckById/lib/useUpdateDeckById'
 import { ModalDeck } from '@/features/decks/modals/modalDeck/ModalDeck'
 import { ModalDelete } from '@/features/decks/modals/modalDelete/ModalDelete'
 
@@ -40,11 +40,11 @@ export function DecksList() {
   } = useDecksList()
 
   const { isLoadingUpdateDeck, requestUpdateDeck, setUpdateModalDeck, updateModalDeck } =
-    useUpdateDeckId()
+    useUpdateDeckById()
   const { deleteModalDeck, isLoadingDeleteDeck, requestDeleteDeck, setDeleteModalDeck } =
-    useDeleteDeckId()
+    useDeleteDeckById()
   const { createModalDeck, isLoadingCreateDeck, requestCreateDeck, setCreateModalDeck } =
-    useCreateDeckId()
+    useCreateDeckById()
   const onDelete = (id: string, name: string) => {
     setDeleteModalDeck(true)
     setDeckId(id)

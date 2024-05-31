@@ -8,7 +8,7 @@ import { useDeleteDeckMutation } from '@/features/decks/api/decksApi'
 export const useDeleteDeckId = () => {
   const [deleteModalDeck, setDeleteModalDeck] = useState(false)
   const navigate = useNavigate()
-  const [deleteDeck, {}] = useDeleteDeckMutation()
+  const [deleteDeck, { isLoading: isLoadingDeleteDeck }] = useDeleteDeckMutation()
 
   const requestDeleteDeck = async (id: string) => {
     try {
@@ -26,6 +26,7 @@ export const useDeleteDeckId = () => {
 
   return {
     deleteModalDeck,
+    isLoadingDeleteDeck,
     requestDeleteDeck,
     setDeleteModalDeck,
   }

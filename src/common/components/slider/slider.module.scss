@@ -8,7 +8,6 @@
   display: flex;
   column-gap: 10px;
   align-items: center;
-
 }
 
 .range {
@@ -66,9 +65,7 @@
     &::before {
       outline: 3px solid var(--color-info-700);
     }
-
   }
-
 }
 
 .value {

@@ -7,7 +7,7 @@ import { useCreateDeckMutation } from '@/features/decks/api/decksApi'
 export const useCreateDeckId = () => {
   const [createModalDeck, setCreateModalDeck] = useState<boolean>(false)
   // eslint-disable-next-line no-undef
-  const [createDeck] = useCreateDeckMutation()
+  const [createDeck, { isLoading: isLoadingCreateDeck }] = useCreateDeckMutation()
   const requestCreateDeck = async (args: CreateDecksArgs) => {
     try {
       await createDeck(args).unwrap()
@@ -23,6 +23,7 @@ export const useCreateDeckId = () => {
 
   return {
     createModalDeck,
+    isLoadingCreateDeck,
     requestCreateDeck,
     setCreateModalDeck,
   }

@@ -41,14 +41,14 @@ export const DeckById = () => {
   const {
     dataDeleteCard,
     deleteModalCard,
-    isLoadingError,
+    isLoadingDeleteCard,
     requestDeleteCard,
     setDataDeleteCard,
     setDeleteModalCard,
   } = useDeleteCardId()
   const {
     dataUpdateTable,
-    isLoadingUpdate,
+    isLoadingUpdateCard,
     requestUpdate,
     setIdTable,
     setUpdateModal,
@@ -56,11 +56,22 @@ export const DeckById = () => {
     updateModal,
   } = useUpdateCardId()
 
-  const { deleteModalDeck, requestDeleteDeck, setDeleteModalDeck } = useDeleteDeckId()
-  const { createModalCard, requestCreate, setCreateModalCard } = useCreateCardId()
-  const { requestUpdateDeck, setUpdateModalDeck, updateModalDeck } = useUpdateDeckId()
+  const { deleteModalDeck, isLoadingDeleteDeck, requestDeleteDeck, setDeleteModalDeck } =
+    useDeleteDeckId()
+  const { createModalCard, isLoadingCreateCard, requestCreate, setCreateModalCard } =
+    useCreateCardId()
+  const { isLoadingUpdateDeck, requestUpdateDeck, setUpdateModalDeck, updateModalDeck } =
+    useUpdateDeckId()
 
-  if (isLoadingDeck || isLoadingCards || isLoadingError || isLoadingUpdate) {
+  if (
+    isLoadingDeck ||
+    isLoadingCards ||
+    isLoadingDeleteCard ||
+    isLoadingUpdateCard ||
+    isLoadingCreateCard ||
+    isLoadingDeleteDeck ||
+    isLoadingUpdateDeck
+  ) {
     return (
       <div className={s.preloader}>
         <Preloader />

@@ -16,6 +16,8 @@ export const emailTemplateForgotPassword = `
         <img style="float:left;margin-right:20px;border-radius:15px;width:95px;height:95px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7trqI1p3zximPfE3gm9QUio42NKBfa5xlQoLgCcTYSBH3ZO4x6S3K4-mf1BlZNrgz6Q&usqp=CAU" alt=''/>
         <p style='margin: 0'>
            <h2 style='margin: 0'>Hi, ##name##.</h2>
+           </br>
+           </br>
            Resetting your password is easy. Just press the button below and follow the instructions. We'll have you up and running in no time.
         </p>
         <p></p>

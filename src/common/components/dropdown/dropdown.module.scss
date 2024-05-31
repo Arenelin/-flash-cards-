@@ -2,6 +2,12 @@
   cursor: pointer;
   position: relative;
   outline: none;
+  &:focus-visible {
+    border-radius: 5px;
+    outline: 2px solid var(--color-info-700);
+    outline-offset: 2px;
+
+  }
 }
 
 .DropdownMenuContent {

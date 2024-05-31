@@ -2,6 +2,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { Typography } from '@/common/components'
+import classNames from 'classnames'
 
 import s from '@/common/components/tables/ui/containerImgText/containerImageText.module.scss'
 
@@ -17,12 +18,12 @@ export const ContainerImageText = forwardRef<ElementRef<'a'>, ContainerNameProps
   const image = Boolean(img) || Boolean(defaultImg)
 
   return link ? (
-    <NavLink className={s.link} ref={ref} to={link} {...rest}>
-      <div className={s.container} title={text}>
+    <div title={text}>
+      <NavLink className={classNames(s.link, s.container)} ref={ref} to={link} {...rest}>
         {image && <img alt={'Image'} className={s.img} src={img || defaultImg} />}
         <Typography className={s.text}>{text}</Typography>
-      </div>
-    </NavLink>
+      </NavLink>
+    </div>
   ) : (
     <div className={s.container} title={text}>
       {image && <img alt={'Image'} className={s.img} src={img || defaultImg} />}

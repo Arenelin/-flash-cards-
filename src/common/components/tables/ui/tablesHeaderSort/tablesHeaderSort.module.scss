@@ -14,8 +14,9 @@
   gap: 5px;
 
   &:focus-visible {
+    border: 4px;
     outline: 2px solid var(--color-info-700);
-    outline-offset: 2px;
+    outline-offset: 4px;
   }
 }
 

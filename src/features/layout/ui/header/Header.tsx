@@ -23,7 +23,7 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <header className={classNames(s.container)} {...rest}>
-      <Typography as={'a'} href={path.base}>
+      <Typography as={'a'} className={s.link} href={path.base}>
         <img alt={'logo'} className={s.img} height={'36px'} src={logo} width={'160px'} />
       </Typography>
 

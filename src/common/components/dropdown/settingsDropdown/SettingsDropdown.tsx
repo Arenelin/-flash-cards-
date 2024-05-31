@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { Edit2Outline, MoreVerticalOutline, PlayCircleOutline, TrashOutline } from '@/assets/icons'
 import { Dropdown } from '@/common/components'
@@ -16,10 +16,10 @@ export const SettingsDropdown = ({ link, onSelectDelete, onSelectEdit }: Props) 
   return (
     <Dropdown trigger={<MoreVerticalOutline className={s.iconMenu} />}>
       <DropdownItem asChild>
-        <Link to={link}>
+        <NavLink className={s.link} to={link}>
           <PlayCircleOutline className={s.icon} />
           <DefaultDescription className={s.description} text={'Learn'} />
-        </Link>
+        </NavLink>
       </DropdownItem>
       <DropdownSeparator />
       <DropdownItem onSelect={onSelectEdit}>

@@ -38,3 +38,11 @@ header.container p {
   color: var(--color-accent-300);
   border-bottom: 3px dashed var(--color-accent-300);
 }
+
+.link {
+  &:focus-visible {
+    border-radius: 5px;
+    outline: 2px solid var(--color-info-700);
+    outline-offset: 2px;
+  }
+}

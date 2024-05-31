@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { ErrorResponseField } from '@/common/types'
 import { useDeleteCardMutation } from '@/features/cards/api/cardsApi'
 
-export const useDeleteCardId = () => {
+export const useDeleteCardById = () => {
   const [dataDeleteCard, setDataDeleteCard] = useState<{ id: string; title: string }>()
   const [deleteModalCard, setDeleteModalCard] = useState<boolean>(false)
 

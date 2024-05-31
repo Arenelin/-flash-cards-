@@ -1,5 +1,4 @@
-// const appDeploy = `https://flash-cards-main.vercel.app/new-password/##token##`
-const appDeploy = `http://localhost:3000/new-password/##token##` //TODO change to vercel, when finish develop
+const appDeploy = `https://flash-cards-main.vercel.app/new-password/##token##`
 
 export const emailTemplateForgotPassword = `
 <!DOCTYPE html >

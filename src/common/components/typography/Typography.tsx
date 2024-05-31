@@ -7,11 +7,10 @@ import {
   forwardRef,
 } from 'react'
 
+import { Theme } from '@/common/types'
 import classNames from 'classnames'
 
 import s from './typography.module.scss'
-
-type Theme = 'dark' | 'light' // TODO move to store
 
 export type TextProps<T extends ElementType> = {
   as?: T

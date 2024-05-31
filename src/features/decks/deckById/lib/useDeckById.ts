@@ -6,7 +6,7 @@ import { Sort } from '@/common/types'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
 import { useGetDeckByIdQuery, useGetDeckCardsQuery } from '@/features/decks/api/decksApi'
 
-export const useCardsList = () => {
+export const useDeckById = () => {
   const params: Readonly<Params<string>> = useParams()
   const [sort, setSort] = useState<Sort>(null)
   const [searchParams, setSearchParams] = useSearchParams()

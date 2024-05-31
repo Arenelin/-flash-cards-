@@ -1,5 +1,6 @@
-// const appDeploy = `https://flash-cards-main.vercel.app/confirm-email##token##`
-const appDeploy = `http://localhost:3000/confirm-email/##token##` //TODO change to vercel, when finish develop
+// The email confirmation functionality has not yet been implemented on the server, so for now it’s just a stub letter
+
+const appDeploy = `https://flash-cards-main.vercel.app/confirm-email##token##`
 
 export const emailTemplateConfirmEmail = `
 <!DOCTYPE html >
@@ -17,22 +18,25 @@ export const emailTemplateConfirmEmail = `
                 <img style="float:left;margin-right:20px;border-radius:15px;width:95px;height:95px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7trqI1p3zximPfE3gm9QUio42NKBfa5xlQoLgCcTYSBH3ZO4x6S3K4-mf1BlZNrgz6Q&usqp=CAU" alt=''/>
                 <p style='margin: 0'>
                 <h2 style='margin: 0'>Hello, ##name##.</h2>
-                Please confirm your email by clicking on the link below:
+<!--                Please confirm your email by clicking on the link below:-->
+                </br>
+                You have successfully registered on our project.</br>
+                Good luck in your studies!
                 </p>
-                <br/>
-                <a href="${appDeploy}" style="text-decoration:none;color:#ffffff;background-color:#382766;margin-top: 20px;border-radius:10px;padding:10px 150px;text-align:center;">
-                    Confirm email
-                </a>
-                <br/>
-                <br/>
-                <p>
-                    If it doesn't work, copy and paste the following link in your browser:
-                    <br/>${appDeploy}
-                </p>
-                <p></p>
-                <h3 style="color:#cc1439;text-align:center;margin-bottom: 0">
-                    If you didn't request this message just ignore it.
-                </h3>
+<!--                <br/>-->
+<!--                <a href="${appDeploy}" style="text-decoration:none;color:#ffffff;background-color:#382766;margin-top: 20px;border-radius:10px;padding:10px 150px;text-align:center;">-->
+<!--                    Confirm email-->
+<!--                </a>-->
+<!--                <br/>-->
+<!--                <br/>-->
+<!--                <p>-->
+<!--                    If it doesn't work, copy and paste the following link in your browser:-->
+<!--                    <br/>${appDeploy}-->
+<!--                </p>-->
+<!--                <p></p>-->
+<!--                <h3 style="color:#cc1439;text-align:center;margin-bottom: 0">-->
+<!--                    If you didn't request this message just ignore it.-->
+<!--                </h3>-->
             </td>
         </tr>
     </table>

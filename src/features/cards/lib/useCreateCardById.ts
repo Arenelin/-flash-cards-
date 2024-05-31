@@ -7,7 +7,7 @@ import { useCreateCardMutation } from '@/features/decks/api/decksApi'
 
 export const useCreateCardById = () => {
   const [createModalCard, setCreateModalCard] = useState<boolean>(false)
-  const [createCard] = useCreateCardMutation()
+  const [createCard, { isLoading: isLoadingCreateCard }] = useCreateCardMutation()
   const params = useParams()
   const requestCreate = async (args: CardBodyCreate) => {
     if (params.id) {
@@ -26,6 +26,7 @@ export const useCreateCardById = () => {
 
   return {
     createModalCard,
+    isLoadingCreateCard,
     requestCreate,
     setCreateModalCard,
   }

@@ -6,7 +6,7 @@ import { useUpdateCardMutation } from '@/features/cards/api/cardsApi'
 
 export const useUpdateCardById = () => {
   const [updateModal, setUpdateModal] = useState<boolean>(false)
-  const [updateCard, { isLoading: isLoadingUpdate }] = useUpdateCardMutation()
+  const [updateCard, { isLoading: isLoadingUpdateCard }] = useUpdateCardMutation()
   const [dataUpdateTable, setUpdateTable] = useState<CardUpdateBody>()
   const [dataIdTable, setIdTable] = useState<string>()
   const requestUpdate = async (args: CardUpdateBody) => {
@@ -24,7 +24,7 @@ export const useUpdateCardById = () => {
 
   return {
     dataUpdateTable,
-    isLoadingUpdate,
+    isLoadingUpdateCard,
     requestUpdate,
     setIdTable,
     setUpdateModal,

@@ -15,7 +15,7 @@ export const columnsDecks = [
     title: 'Last Updated',
   },
   {
-    key: 'created',
+    key: 'author.name',
     sortable: true,
     title: 'Created by',
   },

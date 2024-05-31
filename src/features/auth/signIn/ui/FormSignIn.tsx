@@ -33,6 +33,11 @@ export const FormSignIn = ({ onSubmit }: Props) => {
       <Typography as={'h1'} variant={'h1'}>
         Sign In
       </Typography>
+      <Typography className={s.free}>
+        Free account: <b>test@test.com</b>
+        <br />
+        Password: <b>test</b>
+      </Typography>
       <form className={s.form} id={formId} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.containerInput}>
           <ControlledInput

@@ -59,3 +59,12 @@
     text-decoration: none;
   }
 }
+
+.free {
+  align-self: flex-start;
+  margin: 10px 0 -10px;
+
+  & b {
+    color: var(--color-accent-500);
+  }
+}

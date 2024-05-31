@@ -39,9 +39,12 @@ export function DecksList() {
     tabsOptions,
   } = useDecksList()
 
-  const { requestUpdateDeck, setUpdateModalDeck, updateModalDeck } = useUpdateDeckById()
-  const { deleteModalDeck, requestDeleteDeck, setDeleteModalDeck } = useDeleteDeckById()
-  const { createModalDeck, requestCreateDeck, setCreateModalDeck } = useCreateDeckById()
+  const { isLoadingUpdateDeck, requestUpdateDeck, setUpdateModalDeck, updateModalDeck } =
+    useUpdateDeckById()
+  const { deleteModalDeck, isLoadingDeleteDeck, requestDeleteDeck, setDeleteModalDeck } =
+    useDeleteDeckById()
+  const { createModalDeck, isLoadingCreateDeck, requestCreateDeck, setCreateModalDeck } =
+    useCreateDeckById()
   const onDelete = (id: string, name: string) => {
     setDeleteModalDeck(true)
     setDeckId(id)
@@ -61,7 +64,7 @@ export function DecksList() {
     return <Navigate to={path.decks} />
   }
 
-  if (decksIsLoading) {
+  if (decksIsLoading || isLoadingDeleteDeck || isLoadingCreateDeck || isLoadingUpdateDeck) {
     return (
       <div className={s.preloader}>
         <Preloader />

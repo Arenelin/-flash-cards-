@@ -16,8 +16,6 @@ export type Card = {
   userId: string
 }
 
-export type CardById = Pick<Card, 'answer' | 'answerImg' | 'id' | 'question' | 'questionImg'>
-
 export type CardId = { id: string }
 
 export type CardUpdateCreateResponse = Omit<Card, 'grade'>

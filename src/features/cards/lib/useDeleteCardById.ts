@@ -8,7 +8,7 @@ export const useDeleteCardById = () => {
   const [dataDeleteCard, setDataDeleteCard] = useState<{ id: string; title: string }>()
   const [deleteModalCard, setDeleteModalCard] = useState<boolean>(false)
 
-  const [deleteCard, { isLoading: isLoadingError }] = useDeleteCardMutation()
+  const [deleteCard, { isLoading: isLoadingDeleteCard }] = useDeleteCardMutation()
 
   const requestDeleteCard = async (id: string) => {
     try {
@@ -26,7 +26,7 @@ export const useDeleteCardById = () => {
   return {
     dataDeleteCard,
     deleteModalCard,
-    isLoadingError,
+    isLoadingDeleteCard,
     requestDeleteCard,
     setDataDeleteCard,
     setDeleteModalCard,

@@ -6,7 +6,7 @@ import { useUpdateDeckMutation } from '@/features/decks/api/decksApi'
 
 export const useUpdateDeckById = () => {
   const [updateModalDeck, setUpdateModalDeck] = useState(false)
-  const [updateDeck] = useUpdateDeckMutation()
+  const [updateDeck, { isLoading: isLoadingUpdateDeck }] = useUpdateDeckMutation()
   const requestUpdateDeck = async (args: UpdateDecksArgs) => {
     try {
       await updateDeck(args).unwrap()
@@ -21,6 +21,7 @@ export const useUpdateDeckById = () => {
   }
 
   return {
+    isLoadingUpdateDeck,
     requestUpdateDeck,
     setUpdateModalDeck,
     updateModalDeck,

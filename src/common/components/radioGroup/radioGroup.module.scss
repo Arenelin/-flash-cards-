@@ -6,6 +6,8 @@ button {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: relative;
+  z-index: 999;
 }
 
 .containerItem {
@@ -51,6 +53,7 @@ button {
 
   &:focus-visible::before {
     background-color: var(--color-dark-700);
+    outline: 2px solid var(--color-accent-900);
   }
 
   &:disabled {

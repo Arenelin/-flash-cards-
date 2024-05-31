@@ -82,9 +82,9 @@ export const LearnCards = forwardRef<ElementRef<'div'>, Props>((props, ref) => {
                   <b>Rate yourself:</b>
                 </Typography>
                 <RadioGroup
+                  defaultValue={'1'}
                   onValueChange={value => setRate(+value as GradeScale)}
                   options={answerRate}
-                  value={rate.toString()}
                 />
                 <Button disabled={rate === 0} fullWidth onClick={onClickHandler}>
                   Next Question

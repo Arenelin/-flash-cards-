@@ -135,7 +135,7 @@ export const DeckById = () => {
             <div className={s.emptyText}>
               <Typography as={'p'} variant={'body1'}>
                 This deck is empty.
-                {isMy && 'Click add new card to fill this deck'}
+                {isMy && ' Click add new card to fill this deck'}
               </Typography>
               {isMy && <Button onClick={onAddCard}>Add New Card</Button>}
             </div>

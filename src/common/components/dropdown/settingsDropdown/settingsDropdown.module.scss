@@ -17,4 +17,11 @@
   &:hover {
     text-decoration: underline;
   }
+  &:visited {
+    color: var(--color-light-100);
+  }
+  &:active {
+    color: var(--color-light-100);;
+  }
+
 }

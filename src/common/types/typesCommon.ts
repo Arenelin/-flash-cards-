@@ -1,4 +1,4 @@
-import { Card } from '@/common/types/typesCards'
+export type Theme = 'dark' | 'light'
 
 export type Option = {
   label: string
@@ -14,7 +14,5 @@ export type Sort = {
   direction: 'asc' | 'desc'
   key: string
 } | null
-
-export type CardById = Pick<Card, 'answer' | 'answerImg' | 'id' | 'question' | 'questionImg'>
 
 export type GradeScale = 0 | 1 | 2 | 3 | 4 | 5

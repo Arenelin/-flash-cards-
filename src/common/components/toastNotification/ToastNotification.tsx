@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 export const ToastNotification = () => {
   return (
     <ToastContainer
-      autoClose={4000}
+      autoClose={2000}
       closeOnClick
       draggable
       hideProgressBar={false}

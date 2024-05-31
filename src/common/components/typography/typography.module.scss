@@ -70,11 +70,6 @@
 .link3 {
   cursor: pointer;
   text-decoration: underline;
-
-  &:visited {
-    color: var(--color-info-500);
-  }
-
   &:focus-visible {
     border-radius: 2px;
     outline: 2px solid var(--color-info-700);

@@ -25,3 +25,9 @@
     outline-offset: 2px;
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+   flex-direction: column;
+  }
+}

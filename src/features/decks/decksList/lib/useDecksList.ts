@@ -11,6 +11,7 @@ export const useDecksList = () => {
   const [sort, setSort] = useState<Sort>(null)
 
   const clearFilterHandle = () => {
+    setSort(null)
     setSearchParams({})
   }
   const { data: me, isError: isErrorMe } = useGetMeQuery()
@@ -70,10 +71,12 @@ export const useDecksList = () => {
 
       return null
     }
-    searchParams.set(`orderBy`, `${sort.key}-${sort.direction}`)
+    const orderBy = `${sort.key}-${sort.direction}`
+
+    searchParams.set(`orderBy`, orderBy)
     setSearchParams(searchParams)
 
-    return `${sort.key}-${sort.direction}`
+    return searchParams.get('orderBy')
   }, [searchParams, setSearchParams, sort])
 
   const {
@@ -88,7 +91,7 @@ export const useDecksList = () => {
       maxCardsCount: Number(searchParams.get('maxCardsCount')) || maxCardsCount,
       minCardsCount: Number(searchParams.get('minCardsCount')) || minCardsCount,
       name: searchParams.get('name') || undefined,
-      orderBy: sortedString || undefined,
+      orderBy: sortedString || null,
     },
     { skip: getDecksMinMaxCardsIsLoading }
   )

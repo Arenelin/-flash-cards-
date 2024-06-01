@@ -28,9 +28,11 @@
 }
 
 .title {
+  text-align: center;
   font-size: 40px;
-  font-weight: 700;
   color: var(--color-accent-300);
+  line-height: var(--line-height-m);
+  margin: 5px;
 }
 
 header.container p {
@@ -45,5 +47,20 @@ header.container p {
     border-radius: 5px;
     outline: 2px solid var(--color-info-700);
     outline-offset: 2px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 8px 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 8px 35px;
+  }
+  .title {
+    font-size: 30px;
   }
 }

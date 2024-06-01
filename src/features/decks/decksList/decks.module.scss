@@ -40,12 +40,17 @@
 }
 
 .settingsBlock,
-.paginationSettings {
+.paginationSettings,
+.containerFilter {
   display: flex;
   gap: 10px;
   align-items: flex-end;
   justify-content: space-between;
 
+  width: 100%;
+}
+
+.input {
   width: 100%;
 }
 
@@ -65,10 +70,6 @@
 .inputContainer {
   width: 100%;
   margin: 25px auto;
-}
-
-.input {
-  width: 100%;
 }
 
 .emptyCardsBlock {
@@ -124,4 +125,10 @@
 .emptySearch {
   margin: 50px auto;
   text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .settingsBlock {
+    flex-direction: column;
+  }
 }

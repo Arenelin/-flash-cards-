@@ -79,6 +79,11 @@ export const useDecksList = () => {
     return searchParams.get('orderBy')
   }, [searchParams, setSearchParams, sort])
 
+  const onClearClick = () => {
+    searchParams.delete('name')
+    setSearchParams(searchParams)
+  }
+
   const {
     data: getDecksData,
     error: getDecksError,
@@ -115,6 +120,7 @@ export const useDecksList = () => {
     isErrorMe,
     maxCardsCount,
     minCardsCount,
+    onClearClick,
     searchChangeHandle,
     searchParams,
     setSort,

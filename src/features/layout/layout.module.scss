@@ -9,7 +9,9 @@
   height: 100%;
   margin: 0 auto;
   padding: 0 135px;
+
 }
+
 
 .main {
   width: 100%;
@@ -22,3 +24,15 @@
   justify-content: center;
   width: 100%;
 }
+
+@media (max-width: 1024px) {
+  .container{
+    padding: 0 60px;
+  }
+}
+@media (max-width: 768px) {
+  .container{
+    padding: 0 35px;
+  }
+}
+

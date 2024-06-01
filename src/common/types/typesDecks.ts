@@ -34,7 +34,7 @@ export type GetDecks = {
   maxCardsCount?: number
   minCardsCount?: number
   name?: string
-  orderBy?: string
+  orderBy?: null | string
 }
 export type GetDeckById = {
   id: string

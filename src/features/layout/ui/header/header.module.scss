@@ -19,6 +19,8 @@
 .img {
   object-fit: cover;
   object-position: 50% 50%;
+  height: 36px;
+  width: 160px;
 }
 
 .userContainer {
@@ -58,9 +60,22 @@ header.container p {
 
 @media (max-width: 768px) {
   .container {
-    padding: 8px 35px;
+    padding: 8px 30px;
   }
   .title {
     font-size: 30px;
+  }
+  header.container p {
+    font-size: 12px;
+  }
+  .image {
+    height: 26px;
+    width: 140px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container{
+    padding: 8px 10px;
   }
 }

@@ -112,16 +112,18 @@ export function DecksList() {
             tabs={tabsOptions}
             value={searchParams.get('authorId') ? 'My Cards' : 'All Cards'}
           />
-          <Slider
-            label={'Number of cards in deck'}
-            max={maxCardsCount}
-            min={minCardsCount}
-            onValueChange={e => sliderValueHandle(e)}
-            value={[
-              Number(searchParams.get('minCardsCount')) || minCardsCount,
-              Number(searchParams.get('maxCardsCount')) || maxCardsCount,
-            ]}
-          />
+          <div className={s.slider}>
+            <Slider
+              label={'Number of cards in deck'}
+              max={maxCardsCount}
+              min={minCardsCount}
+              onValueChange={e => sliderValueHandle(e)}
+              value={[
+                Number(searchParams.get('minCardsCount')) || minCardsCount,
+                Number(searchParams.get('maxCardsCount')) || maxCardsCount,
+              ]}
+            />
+          </div>
           <Button
             onClick={clearFilterHandle}
             style={{ minWidth: '150px', padding: '6px' }}

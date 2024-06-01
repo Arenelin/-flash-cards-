@@ -1,0 +1,18 @@
+https://github.com/Arenelin/-flash-cards-
+
+Application: https://flash-cards-main.vercel.app/
+Components: https://storybook-components-flash-cards.vercel.app/
+
+
+https://code-style.it-incubator.io/react/naming
+https://flashcards-docs.andrii.es/ru/extras/tables
+
+
+https://github.com/MrUnderSan/flashcards/tree/main
+https://github.com/AlekseiBestuzhev/quiz-cards
+https://github.com/Philian73/easy-trello/blob/main/types/app.d.ts
+https://github.com/ershisan99/flashcards-example-project
+
+https://github.com/ershisan99/flashcards-example-project/tree/live-lessons/18-05-2024
+
+

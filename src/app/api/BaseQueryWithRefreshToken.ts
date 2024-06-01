@@ -1,3 +1,5 @@
+import { matchPath } from 'react-router-dom'
+
 import { publicRoutes, router } from '@/app/Router'
 import { path } from '@/common/enums'
 import { SignInResponse } from '@/common/types'
@@ -53,12 +55,12 @@ export const baseQueryWithRefreshToken: BaseQueryFn<
           localStorage.setItem('refreshToken', (refreshResult.data as SignInResponse).refreshToken)
           result = await baseQuery(args, api, extraOptions)
         } else {
-          const isPublicRoutes = publicRoutes.find(_ => location.pathname.includes('new-password'))
+          const isPublicRoutes = publicRoutes.find(route =>
+            matchPath(route.path ?? '', window.location.pathname)
+          )
 
-          if (isPublicRoutes) {
-            router.navigate(1)
-          } else {
-            router.navigate(path.signIn)
+          if (!isPublicRoutes) {
+            void router.navigate(path.signIn)
           }
         }
       } finally {

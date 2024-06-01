@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 
 import { Search, TrashOutline } from '@/assets/icons'
+import CloseOutline from '@/assets/icons/CloseOutline'
 import { Button, Input, InputType, Pagination, Slider, Tabs, Typography } from '@/common/components'
 import { Preloader } from '@/common/components/preloader/Preloader'
 import { columnsDecks } from '@/common/consts'
@@ -30,6 +31,7 @@ export function DecksList() {
     isErrorMe,
     maxCardsCount,
     minCardsCount,
+    onClearClick,
     searchChangeHandle,
     searchParams,
     setSort,
@@ -91,39 +93,43 @@ export function DecksList() {
         <Button onClick={onAddDeck}>Add New Deck</Button>
       </div>
       <div className={s.settingsBlock}>
-        <div>
+        <div className={s.input}>
           <Input
+            iconEnd={<CloseOutline />}
             iconStart={<Search />}
             onChange={e => searchChangeHandle(e.currentTarget.value)}
+            onClickIconEnd={onClearClick}
             placeholder={'Filter by cards name'}
             type={InputType.search}
             value={searchParams.get('name') || ''}
           />
         </div>
-        <Tabs
-          label={'Show decks cards'}
-          onValueChange={tabsChangeHandler}
-          tabs={tabsOptions}
-          value={searchParams.get('authorId') ? 'My Cards' : 'All Cards'}
-        />
-        <Slider
-          label={'Number of cards in deck'}
-          max={maxCardsCount}
-          min={minCardsCount}
-          onValueChange={e => sliderValueHandle(e)}
-          value={[
-            Number(searchParams.get('minCardsCount')) || minCardsCount,
-            Number(searchParams.get('maxCardsCount')) || maxCardsCount,
-          ]}
-        />
-        <Button
-          onClick={clearFilterHandle}
-          style={{ minWidth: '150px', padding: '6px' }}
-          variant={'secondary'}
-        >
-          <TrashOutline />
-          Clear Filter
-        </Button>
+        <div className={s.containerFilter}>
+          <Tabs
+            label={'Show decks cards'}
+            onValueChange={tabsChangeHandler}
+            tabs={tabsOptions}
+            value={searchParams.get('authorId') ? 'My Cards' : 'All Cards'}
+          />
+          <Slider
+            label={'Number of cards in deck'}
+            max={maxCardsCount}
+            min={minCardsCount}
+            onValueChange={e => sliderValueHandle(e)}
+            value={[
+              Number(searchParams.get('minCardsCount')) || minCardsCount,
+              Number(searchParams.get('maxCardsCount')) || maxCardsCount,
+            ]}
+          />
+          <Button
+            onClick={clearFilterHandle}
+            style={{ minWidth: '150px', padding: '6px' }}
+            variant={'secondary'}
+          >
+            <TrashOutline />
+            Clear Filter
+          </Button>
+        </div>
       </div>
       <TableDecksList
         className={s.tables}

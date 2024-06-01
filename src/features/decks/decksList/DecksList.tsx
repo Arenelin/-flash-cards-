@@ -95,6 +95,7 @@ export function DecksList() {
       <div className={s.settingsBlock}>
         <div className={s.input}>
           <Input
+            className={s.input}
             iconEnd={<CloseOutline />}
             iconStart={<Search />}
             onChange={e => searchChangeHandle(e.currentTarget.value)}

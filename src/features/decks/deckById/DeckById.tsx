@@ -166,6 +166,7 @@ export const DeckById = () => {
             {deck?.cover && <img alt={'Image Deck'} className={s.img} src={deck?.cover} />}
             <div className={s.inputContainer}>
               <Input
+                className={s.input}
                 iconEnd={<CloseOutline />}
                 iconStart={<Search />}
                 onChange={e => searchChangeHandle(e.currentTarget.value)}
